@@ -1,5 +1,5 @@
 <?php
-require_once('Module_connexion/module/mod_login.php');
+require_once('Module_connexion/mod_login.php');
 session_start();
 //user : dutinfopw201612
 //passwd : rupapare
@@ -21,24 +21,32 @@ session_start();
             <p> menu </p>
         </nav>
         <?php
-        $module = new moduleLogin;
-        /*     echo "<a href=\"index.php?action=registration\">S'inscrire</a><br>";
-        echo "<a href=\"index.php?action=connexion\">Se connecter</a><br>"; */
+
+        if (!isset($_SESSION['email'])) { //probleme "!isset" -> a la pace "isset" 
+            echo '<a href="index.php?action=deconnexion">Se deconnecter</a>';
+        } else {
+            echo "<a href=\"index.php?Modules=Module_connexion&action=sign-up\">S'inscrire</a><br>";
+            echo "<a href=\"index.php?action=connexion\">Se connecter</a><br>";
+        }
+
+        if (isset($_GET["Modules"])) {
+            $module = $_GET['Modules'];
+            switch ($module) {
+                case 'Module_connexion':
+                    $module = new moduleLogin();
+                    break;
+
+                default:
+                    # code...
+                    break;
+            }
+        }
+
+
         ?>
+
     </header>
 
-    <?php
-
-    if (isset($_SESSION['email'])) {
-        echo '<a href="index.php?action=deconnexion">Se deconnecter</a>';
-    } else {
-        //echo "<a href=\"index.php?action=registration\">S'inscrire</a><br>";
-        echo "<a href=\"Modules/View/viewLogin.php\">S'inscrire</a><br>";
-        echo "<a href=\"index.php?action=connexion\">Se connecter</a><br>";
-    }
-    $module = new moduleLogin;
-
-    ?>
 
 
     <footer>

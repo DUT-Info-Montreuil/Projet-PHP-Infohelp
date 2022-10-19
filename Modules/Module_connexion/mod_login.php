@@ -1,5 +1,5 @@
 <?php
-require_once('Module_connexion/control/controleur.php');
+require_once('Module_connexion/controleur.php');
 require_once('Login.php');
 
 
@@ -16,7 +16,11 @@ class moduleLogin
             case "registration":
                 //$this->control->vue->showRegistration();
                 break;
+            case "b1":
                 $this->control->getModele()->add_log_in();
+                break;
+            case "sign-up":
+                $this->control->getVue();
                 break;
             case "b2":
                 $canDisconnect = false;
