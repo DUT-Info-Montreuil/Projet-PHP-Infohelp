@@ -17,32 +17,30 @@ class moduleLogin
                 $this->control->vue->showRegistration();
                 break;
             case "connect":
-                $this->control->vue->showConnection();
+                //$this->control->vue->showConnection();
                 break;
             case "b1":
 
                 $this->control->getModele()->add_log_in();
                 break;
-            case "b2": 
+            case "b2":
                 $canDisconnect = false;
                 try {
                     $this->control->getModele()->connect();
                     $canDisconnect = true;
-
                 } catch (Exception $e) {
                     $canDisconnect = false;
 
                     echo "dans l'exception veuillez vous connectez";
                     $this->control->vue->showRegistration();
-
                 }
-                if ($canDisconnect==true ) {
-                    $this->control->vue->showDisconnect();
+                if ($canDisconnect == true) {
+                    //$this->control->vue->showDisconnect();
                 }
-                break; 
-            case "disconnect":        
+                break;
+            case "disconnect":
                 $this->control->getModele()->log_out();
-                break;                   
+                break;
             default:
                 //echo "Dans le default";
                 break;
