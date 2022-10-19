@@ -1,6 +1,6 @@
 <?php
-require_once('Modules/control/controleur.php');
-require_once('Modules/Login.php');
+require_once('Module_connexion/control/controleur.php');
+require_once('Login.php');
 
 
 class moduleLogin
@@ -16,11 +16,6 @@ class moduleLogin
             case "registration":
                 //$this->control->vue->showRegistration();
                 break;
-            case "connect":
-                //$this->control->vue->showConnection();
-                break;
-            case "b1":
-
                 $this->control->getModele()->add_log_in();
                 break;
             case "b2":
@@ -35,14 +30,12 @@ class moduleLogin
                     //$this->control->vue->showRegistration();
                 }
                 if ($canDisconnect == true) {
-                    //$this->control->vue->showDisconnect();
                 }
                 break;
             case "disconnect":
                 $this->control->getModele()->log_out();
                 break;
             default:
-                //echo "Dans le default";
                 break;
         }
     }

@@ -1,5 +1,5 @@
 <?php
-require_once('Modules/module/mod_login.php');
+require_once('Module_connexion/module/mod_login.php');
 session_start();
 //user : dutinfopw201612
 //passwd : rupapare
@@ -16,6 +16,16 @@ session_start();
 
 <body>
     <h1>TEST SAE</h1>
+    <header>
+        <nav>
+            <p> menu </p>
+        </nav>
+        <?php
+        $module = new moduleLogin;
+        /*     echo "<a href=\"index.php?action=registration\">S'inscrire</a><br>";
+        echo "<a href=\"index.php?action=connexion\">Se connecter</a><br>"; */
+        ?>
+    </header>
 
     <?php
 
@@ -29,6 +39,11 @@ session_start();
     $module = new moduleLogin;
 
     ?>
+
+
+    <footer>
+        <p>Footer de la page </p>
+    </footer>
 </body>
 
 </html>
