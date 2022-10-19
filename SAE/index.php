@@ -1,5 +1,5 @@
 <?php
-require_once('Modules/module/mod_login.php');
+require_once('/home/etudiants/info/lchipan/local_html/SAE/Projet-PHP-Infohelp/SAE/Modules/module/mod_login.php');
 session_start();
 //user : dutinfopw201612
 //passwd : rupapare

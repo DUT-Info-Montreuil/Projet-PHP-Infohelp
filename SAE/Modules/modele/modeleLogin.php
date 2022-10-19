@@ -1,10 +1,9 @@
 <?php
-require_once('login.php');
+require_once('/home/etudiants/info/lchipan/local_html/SAE/Projet-PHP-Infohelp/SAE/Modules/login.php');
 class modeleLogin extends ConnexionUI
 {
     public function __construct()
     {
-
     }
     public function add_log_in()
     {
@@ -15,42 +14,41 @@ class modeleLogin extends ConnexionUI
             $insert->execute(array(':par' => $email, ':par2' => $passwd));
 
             $recupuser = self::$bdd->prepare('SELECT * FROM `utilisateurs` WHERE `email` = ? and `password` = ?');
-            $recupuser -> execute(array($email,$passwd));
-            
-            
-            if($recupuser->rowCount()>0){
+            $recupuser->execute(array($email, $passwd));
+
+
+            if ($recupuser->rowCount() > 0) {
                 $_SESSION["email"] = $email;
                 $_SESSION["password"] = $passwd;
                 $_SESSION["userID"] = $recupuser->fetch()['userID'];
             }
-                } else {
-                    echo "Pas adjout";
+        } else {
+            echo "Pas adjout";
         }
         echo "Good registration \t";
     }
     public function connect()
     {
-    $recupuser = self::$bdd->prepare('SELECT * FROM `utilisateurs` WHERE `email` = ?');
-    $recupuser -> execute(array($_POST['email']));
-    if (($tab = $recupuser->fetch())===false) {
-        throw new Exception("Error Processing Request", 1);
-    } 
+        $recupuser = self::$bdd->prepare('SELECT * FROM `utilisateurs` WHERE `email` = ?');
+        $recupuser->execute(array($_POST['email']));
+        if (($tab = $recupuser->fetch()) === false) {
+            throw new Exception("Error Processing Request", 1);
+        }
 
         if (password_verify($_POST['password'], $tab['password'])) {
-        if ($recupuser->rowCount()>0) {
-            $_SESSION['email'] = $_POST['email'];
-            $_SESSION['password'] = $_POST['password'];
-            $_SESSION['userID'] = $tab['userID'];
-        } else {
-            echo "completer tous les champs ";
-        }
-    }else 
-    echo "boolean ";
-    
-}
+            if ($recupuser->rowCount() > 0) {
+                $_SESSION['email'] = $_POST['email'];
+                $_SESSION['password'] = $_POST['password'];
+                $_SESSION['userID'] = $tab['userID'];
+            } else {
+                echo "completer tous les champs ";
+            }
+        } else
+            echo "boolean ";
+    }
     public function log_out()
     {
-        echo $_SESSION['email'].", Vous êtes déconnecté sous l'userIDentifiant : " . $_SESSION['userID'];
+        echo $_SESSION['email'] . ", Vous êtes déconnecté sous l'userIDentifiant : " . $_SESSION['userID'];
         unset($_SESSION['userID']);
     }
 }
