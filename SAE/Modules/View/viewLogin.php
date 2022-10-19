@@ -12,14 +12,14 @@ class viewLogin
     public function showRegistration()
     {
         echo '
-            <form action="index.php?action=registration" method="POST" class="form-example">
+            <form action="index.php?action=b1" method="POST" class="form-example">
             <div class="form-example">
                 <h2>Inscription</h2>
                 <input type="text" name="last_name" placeholder="nom(ex:Dupont)" id="type" maxlength="255" required>
                 <input type="text" name="first_name" placeholder="prenom(ex:Alice)" id="type" maxlength="255" required>
                 <input type="text" name="email" placeholder="email" length="255" required>                
                 <input type="password" name="password" placeholder="mot de passe" id="type" maxlength="255" required>
-                <input type="submit" name="send" id="send" required>
+                <input type="submit" name="b1" id="b1" required>
             </div>
             </form>
             <style>
