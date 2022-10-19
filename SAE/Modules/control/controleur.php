@@ -1,6 +1,6 @@
 <?php
-require_once('/home/etudiants/info/lchipan/local_html/SAE/Projet-PHP-Infohelp/SAE/Modules/modele/modeleLogin.php');
-require_once('/home/etudiants/info/lchipan/local_html/SAE/Projet-PHP-Infohelp/SAE/Modules/View/viewLogin.php');
+require_once('Modules/modele/modeleLogin.php');
+require_once('Modules/View/viewLogin.php');
 
 class controlLogin
 {
