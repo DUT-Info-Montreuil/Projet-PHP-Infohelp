@@ -1,6 +1,6 @@
 <?php
-require_once('/home/etudiants/info/lchipan/local_html/SAE/Projet-PHP-Infohelp/SAE/Modules/control/controleur.php');
-require_once('/home/etudiants/info/lchipan/local_html/SAE/Projet-PHP-Infohelp/SAE/Modules/Login.php');
+require_once('Modules/control/controleur.php');
+require_once('Modules/Login.php');
 
 
 class moduleLogin
@@ -14,7 +14,7 @@ class moduleLogin
         $this->action = isset($_GET['action']) ? $_GET['action'] : "rien";
         switch ($this->action) {
             case "registration":
-                $this->control->vue->showRegistration();
+                //$this->control->vue->showRegistration();
                 break;
             case "connect":
                 //$this->control->vue->showConnection();
@@ -32,7 +32,7 @@ class moduleLogin
                     $canDisconnect = false;
 
                     echo "dans l'exception veuillez vous connectez";
-                    $this->control->vue->showRegistration();
+                    //$this->control->vue->showRegistration();
                 }
                 if ($canDisconnect == true) {
                     //$this->control->vue->showDisconnect();

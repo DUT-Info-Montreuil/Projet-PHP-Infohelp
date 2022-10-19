@@ -1,5 +1,5 @@
 <?php
-require_once('/home/etudiants/info/lchipan/local_html/SAE/Projet-PHP-Infohelp/SAE/Modules/module/mod_login.php');
+require_once('Modules/module/mod_login.php');
 session_start();
 //user : dutinfopw201612
 //passwd : rupapare
@@ -18,14 +18,15 @@ session_start();
     <h1>TEST SAE</h1>
 
     <?php
-    $module = new moduleLogin;
 
     if (isset($_SESSION['email'])) {
         echo '<a href="index.php?action=deconnexion">Se deconnecter</a>';
     } else {
-        echo "<a href=\"index.php?action=registration\">S'inscrire</a><br>";
+        //echo "<a href=\"index.php?action=registration\">S'inscrire</a><br>";
+        echo "<a href=\"Modules/View/viewLogin.php\">S'inscrire</a><br>";
         echo "<a href=\"index.php?action=connexion\">Se connecter</a><br>";
     }
+    $module = new moduleLogin;
 
     ?>
 </body>
