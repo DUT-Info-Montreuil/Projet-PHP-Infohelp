@@ -40,7 +40,6 @@ class ModeleConnexion extends ConnexionUSER
     }
 
    public function deconnexion(){
-    //cette fonction ne s'execute pas
         unset($_SESSION['email']);
         echo "Déconnexion réusie";
     }

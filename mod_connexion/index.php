@@ -14,15 +14,21 @@
     </head>
     <body>
         <?php
-            $moduleConnexion = new ModConnexion();
+            if (isset($_GET["module"])){
+                switch($_GET["module"]){
+                    case "connexion" : 
+                        $mod_connexion = new ModConnexion();
+                    break; 
+                }
+            }
             $text = ob_get_clean();
         ?>
         <header>
             <?php
                 if(isset($_SESSION['email'])){
-                    echo "<a href=\"index.php?action=deconnexion\">Se Deconnecter</a></br>";
+                    echo "<a href=\"index.php?action=deconnexion&module=connexion\">Se Deconnecter</a></br>";
                 }else{
-                    echo "<a href=\"index.php?action=connecter\">Se Connecter</a></br>";
+                    echo "<a href=\"index.php?action=connecter&module=connexion\">Se Connecter</a></br>";
                 }
             ?>
         </header>

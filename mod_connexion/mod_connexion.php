@@ -17,24 +17,12 @@ class ModConnexion
 
 
         switch ($this->action) {
-            case "connecter":
-                $this->connexion();
-                break;
             case "connexion":
                 $this->controleur->getModele()->connexion();
                 break;
             case "deconnexion":
                  $this->controleur->getModele()->deconnexion();
         }
-    }
-
-
-    public function ajout(){
-        $this->controleur->getVue()->inscription();
-    }
-
-    public function connexion(){
-        $this->controleur->getVue()->connexion();
     }
 
     /*récupérer l’action demandée par l’utilisateur, et appeler la bonne méthode du

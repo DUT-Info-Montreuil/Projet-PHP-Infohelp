@@ -9,7 +9,7 @@ class ContConnexion
 
     public function __construct()
     {
-        $this->vue = new VueConnexion;
+/*         $this->vue = new VueConnexion; */
         $this->modele = new ModeleConnexion();
     }
 

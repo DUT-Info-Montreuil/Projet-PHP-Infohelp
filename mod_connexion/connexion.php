@@ -14,7 +14,6 @@ class ConnexionUSER {
         self::$bdd = new PDO($bd, $username, $passdatabase);
 }
 
-
 }
 
 ?>
