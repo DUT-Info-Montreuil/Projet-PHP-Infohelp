@@ -1,6 +1,6 @@
 <?php
-require_once('controleur.php');
-require_once('login.php');
+require_once('/home/etudiants/info/lchipan/local_html/SAE/Projet-PHP-Infohelp/SAE/Modules/control/controleur.php');
+require_once('/home/etudiants/info/lchipan/local_html/SAE/Projet-PHP-Infohelp/SAE/Modules/login.php');
 
 
 class moduleLogin
