@@ -39,8 +39,6 @@ class View extends vueGenerique
                 form {
                     text-align: center;
                     margin-bottom: 15px;
-                    background: #f7f7f7;
-                    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
                     padding: 30px;
                 }
 
@@ -78,37 +76,30 @@ class View extends vueGenerique
         <html lang="fr">
 
         <body>
-            <form action="index.php?Modules=Module_connexion&action=b2" method="POST" class="form-example">
-                <div class="form-example">
-                    <h2>Connexion</h2>
-                    <label for="connexion">Connexion: </label>
-                    <input type="text" name="email" id="type" maxlength="255" required>
-                    <input type="text" name="password" id="type" maxlength="255" required>
-                    <input type="submit" name="send" id="send" required>
-                </div>
-            </form>
+        <form action="index.php?Modules=Module_connexion&action=b2" method="POST">
+    <img class="mb-4" src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+    <h1 class="h3 mb-3 fw-normal">Connexion</h1>
+
+    <div class="form-floating">
+      <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating">
+      <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <label for="floatingPassword">Password</label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Se connecter</button>
+  </form>
+
             <style>
                 form {
-                    margin-bottom: 15px;
-                    background: #f7f7f7;
+                    width: 500px;
+                    margin: auto;
                     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
                     padding: 30px;
                 }
 
-                .login-form h2 {
-                    margin: 0 0 15px;
-                }
-
-                .form-control,
-                .btn {
-                    min-height: 38px;
-                    border-radius: 2px;
-                }
-
-                .btn {
-                    font-size: 15px;
-                    font-weight: bold;
-                }
+  
             </style>
         </body>
 

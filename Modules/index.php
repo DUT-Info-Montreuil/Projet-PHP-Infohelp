@@ -21,7 +21,7 @@ session_start();
 </head>
 
 <body>
-   <!--  <div class="container">
+    <div class="container">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
             <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
                 <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
@@ -38,10 +38,10 @@ session_start();
             </ul>
 
             <div class="col-md-3 text-end">
-                <a type="button" class="btn btn-outline-primary me-2">Login</a>
-                <button type="button" class="btn btn-primary">Sign-up</button>
+                <a href="index.php?Modules=Module_connexion&action=connexion"type="button" class="btn btn-outline-primary me-2">Se connecter</a>
+                <a href="index.php?Modules=Module_connexion&action=sign-up"type="button" class="btn btn-primary">S'inscrire</a>
             </div>
-        </header> -->
+        </header>
     </div>
     <h1>TEST SAE</h1>
     <header>
