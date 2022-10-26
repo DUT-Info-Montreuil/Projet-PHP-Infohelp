@@ -22,7 +22,7 @@ session_start();
         </nav>
         <?php
 
-        if (!isset($_SESSION['email'])) { //probleme "!isset" -> a la pace "isset" 
+        if (isset($_SESSION['email'])) { //probleme "!isset" -> a la pace "isset" 
             echo '<a href="index.php?action=deconnexion">Se deconnecter</a>';
         } else {
             echo "<a href=\"index.php?Modules=Module_connexion&action=sign-up\">S'inscrire</a><br>";
