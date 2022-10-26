@@ -49,6 +49,7 @@ class modeleLogin extends ConnexionUI
                 $_SESSION['email'] = $_POST['email'];
                 $_SESSION['password'] = $_POST['password'];
                 $_SESSION['userID'] = $tab['userID'];
+                echo "utilisateur " . $_SESSION['email'] . " vous êtes bien connecté";
             } else {
                 echo "completer tous les champs ";
             }
