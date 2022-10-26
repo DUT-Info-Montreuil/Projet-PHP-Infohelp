@@ -5,11 +5,10 @@ class VueConnexion extends VueGenerique
 {
     public function __construct() //Constructeur de la classe
     {
-        parent::__construct();
+
     }
 
-
-}
+    public function afficheConnexion(){
 ?>
 
 <!DOCTYPE html>
@@ -49,3 +48,5 @@ class VueConnexion extends VueGenerique
 <!-- Template ou utiliser les variables stocker dans le modeles -->
 <?php
 
+    }
+}

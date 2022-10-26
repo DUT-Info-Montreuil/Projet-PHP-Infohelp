@@ -13,7 +13,9 @@
         <title>Connexion</title>
     </head>
     <body>
+        <header>
         <?php
+        $vue_gen = new VueGenerique() ; 
             if (isset($_GET["module"])){
                 switch($_GET["module"]){
                     case "connexion" : 
@@ -21,18 +23,17 @@
                     break; 
                 }
             }
-            $text = ob_get_clean();
-        ?>
-        <header>
-            <?php
+            $result = $vue_gen->getAffichage();
                 if(isset($_SESSION['email'])){
                     echo "<a href=\"index.php?action=deconnexion&module=connexion\">Se Deconnecter</a></br>";
                 }else{
-                    echo "<a href=\"index.php?action=connecter&module=connexion\">Se Connecter</a></br>";
+                    echo "<a href=\"index.php?module=connexion&action=connecter\">Se Connecter</a></br>";
                 }
+
+                echo $result;
             ?>
+
         </header>
-        <?=$text?>
         <footer>
             <p>Copyright Geovany Germana - Tous droits réservés</p>
             <p>Adresse mail : ggermana@iut.univ-paris8.fr</p>

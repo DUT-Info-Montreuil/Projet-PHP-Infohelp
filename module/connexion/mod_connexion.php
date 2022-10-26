@@ -20,6 +20,9 @@ class ModConnexion
             case "connexion":
                 $this->controleur->getModele()->connexion();
                 break;
+            case "connecter":
+
+                $this->controleur->getVue()->afficheConnexion();
             case "deconnexion":
                  $this->controleur->getModele()->deconnexion();
         }
