@@ -15,7 +15,7 @@ class View extends vueGenerique
         <html lang="en">
 
         <body>
-            <form action="index.php?module=connexion&action=b1" method="POST" class="form-example">
+            <form action="index.php?Modules=Module_connexion&action=b1" method="POST" class="form-example">
                 <div class="form-example">
                     <h2>Inscription</h2>
                     <p>Nom</p>
