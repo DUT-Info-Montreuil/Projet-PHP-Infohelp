@@ -13,14 +13,18 @@ class moduleLogin
         $this->control = new  controlLogin;
         $this->action = isset($_GET['action']) ? $_GET['action'] : "rien";
         switch ($this->action) {
-            case "registration":
-                //$this->control->vue->showRegistration();
+
+            case "sign-up":
+                $this->control->getVue()->showRegistration();
                 break;
             case "b1":
                 $this->control->getModele()->add_log_in();
                 break;
-            case "sign-up":
-                $this->control->getVue();
+
+
+
+            case "connexion":
+                $this->control->getVue()->showConnection();
                 break;
             case "b2":
                 $canDisconnect = false;
@@ -31,12 +35,15 @@ class moduleLogin
                     $canDisconnect = false;
 
                     echo "dans l'exception veuillez vous connectez";
-                    //$this->control->vue->showRegistration();
+                    $this->control->getVue();
                 }
                 if ($canDisconnect == true) {
                 }
                 break;
-            case "disconnect":
+
+
+
+            case "deconnexion":
                 $this->control->getModele()->log_out();
                 break;
             default:

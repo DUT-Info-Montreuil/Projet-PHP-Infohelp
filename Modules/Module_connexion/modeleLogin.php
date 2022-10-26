@@ -58,5 +58,6 @@ class modeleLogin extends ConnexionUI
     {
         echo $_SESSION['email'] . ", Vous êtes déconnecté sous l'userIDentifiant : " . $_SESSION['userID'];
         unset($_SESSION['userID']);
+        unset($_SESSION['email']);
     }
 }

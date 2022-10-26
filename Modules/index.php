@@ -1,5 +1,6 @@
 <?php
 require_once('Module_connexion/mod_login.php');
+require_once("vue_generique.php");
 session_start();
 //user : dutinfopw201612
 //passwd : rupapare
@@ -22,11 +23,13 @@ session_start();
         </nav>
         <?php
 
-        if (isset($_SESSION['email'])) { //probleme "!isset" -> a la pace "isset" 
-            echo '<a href="index.php?action=deconnexion">Se deconnecter</a>';
-        } else {
+        $vue_gen = new vueGenerique();
+        if (!isset($_SESSION['email'])) {
             echo "<a href=\"index.php?Modules=Module_connexion&action=sign-up\">S'inscrire</a><br>";
-            echo "<a href=\"index.php?action=connexion\">Se connecter</a><br>";
+            echo "<a href=\"index.php?Modules=Module_connexion&action=connexion\">Se connecter</a><br>";
+        }
+        if (isset($_SESSION['email'])) {
+            echo '<a href="index.php?Modules=Module_connexion&action=deconnexion">Se deconnecter</a>';
         }
 
         if (isset($_GET["Modules"])) {
