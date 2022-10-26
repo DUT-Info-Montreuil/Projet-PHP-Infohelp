@@ -1,6 +1,6 @@
 <?php
 require_once('Module_connexion/mod_login.php');
-require_once("vue_generique.php");
+require_once("vuegenerique.php");
 session_start();
 //user : dutinfopw201612
 //passwd : rupapare
@@ -24,13 +24,6 @@ session_start();
         <?php
 
         $vue_gen = new vueGenerique();
-        if (!isset($_SESSION['email'])) {
-            echo "<a href=\"index.php?Modules=Module_connexion&action=sign-up\">S'inscrire</a><br>";
-            echo "<a href=\"index.php?Modules=Module_connexion&action=connexion\">Se connecter</a><br>";
-        }
-        if (isset($_SESSION['email'])) {
-            echo '<a href="index.php?Modules=Module_connexion&action=deconnexion">Se deconnecter</a>';
-        }
 
         if (isset($_GET["Modules"])) {
             $module = $_GET['Modules'];
@@ -45,6 +38,20 @@ session_start();
             }
         }
 
+        $result = $vue_gen->getAffichage();
+
+        if (isset($_SESSION['email'])) {
+            echo '<a href="index.php?Modules=Module_connexion&action=deconnexion">Se deconnecter</a><br>';
+        } else {
+
+            echo "<a href=\"index.php?Modules=Module_connexion&action=sign-up\">S'inscrire</a><br>";
+
+
+
+            echo "<a href=\"index.php?Modules=Module_connexion&action=connexion\">Se connecter</a><br>";
+        }
+
+        echo $result;
 
         ?>
 

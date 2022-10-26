@@ -25,15 +25,16 @@ class modeleLogin extends ConnexionUI
             echo "Good registration \t";
 
 
-            if ($recupuser->rowCount() > 0) {
+            /*  if ($recupuser->rowCount() > 0) {
                 $_SESSION["email"] = $email;
                 $_SESSION["password"] = $passwd;
                 $_SESSION["userID"] = $recupuser->fetch()['userID'];
-            }
+            } */
         } else {
             echo "Pas adjout";
         }
         echo "Good registration \t";
+        return true;
     }
     public function connect()
     {
