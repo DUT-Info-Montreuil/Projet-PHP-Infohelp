@@ -12,60 +12,60 @@ class View extends vueGenerique
 ?>
 
         <!DOCTYPE html>
+
+
+        
         <html lang="en">
-
         <body>
-            <form action="index.php?Modules=Module_connexion&action=b1" method="POST" class="form-example">
-                <div class="form-example">
-                    <h2>Inscription</h2>
-                    <p>Nom</p>
-                    <input type="text" name="last_name" placeholder="nom(ex:Dupont)" class="type" maxlength="255" required><br>
-                    <p>Prenom</p>
-                    <input type="text" name="first_name" placeholder="prenom(ex:Alice)" class="type" maxlength="255" required><br>
-                    <p>email</p>
-                    <input type="text" name="email" placeholder="email" length="255" required><br>
-                    <p>Mots de passe</p>
-                    <input type="password" name="mdp" placeholder="mot de passe" id="type" maxlength="255" required><br>
-                    <input type="submit" name="send" id="send" required>
-                </div>
-            </form>
+        <form action="index.php?Modules=Module_connexion&action=b1" method="POST">
+        <img class="mb-4" src="logo.PNG" alt="" width="72" height="57">
+        <h1 class="h3 mb-3 fw-normal">Inscription</h1>
+
+        <div class="form-floating">
+        <input type="text" class="form-control" name="first_name">
+        <label for="floatingInput">Prenom</label>
+        </div>
+        <div class="form-floating">
+        <input type="text" class="form-control" name="last_name" >
+        <label for="floatingInput">Nom</label>
+        </div>
+        <div class="form-floating">
+        <input type="email" class="form-control" name="email">
+        <label for="floatingInput">Email</label>
+        </div>
+        <div class="form-floating">
+        <input type="password" class="form-control" name="password" >
+        <label for="floatingInput">Mot de passe</label>
+        </div>
+        <div class="form-floating">
+        <input type="text" class="form-control" name="city">
+        <label for="floatingInput">Ville</label>
+        </div>
+        <div class="form-floating">
+        <input  type="text" class="form-control" name="postal_address">
+        <label for="floatingInput">Code Postal</label>
+        </div>
+        <button class="btn btn-primary" type="submit">S'inscrire</button>
+    </form>
+
             <style>
-                .form-example {
-                    width: 1500px;
-                    margin: auto;
-                }
-
-
                 form {
-                    text-align: center;
-                    margin-bottom: 15px;
+                    width: 500px;
+                    margin: auto;
+                    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
                     padding: 30px;
                 }
-
-                form input {
-                    margin-bottom: 6px;
-                    width: 250px;
-
+                .form-floating{
+                    margin-bottom:15px;
                 }
-
-                .login-form h2 {
-                    margin: 0 0 15px;
-                }
-
-                .form-control,
-                .btn {
-                    min-height: 38px;
-                    border-radius: 2px;
-                }
-
-                .btn {
-                    font-size: 15px;
-                    font-weight: bold;
-                }
+  
             </style>
         </body>
 
         </html>
+
+
+    
 
     <?php
     }
@@ -77,7 +77,7 @@ class View extends vueGenerique
 
         <body>
         <form action="index.php?Modules=Module_connexion&action=b2" method="POST">
-    <img class="mb-4" src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+    <img class="mb-4" src="logo.PNG" alt="" width="72" height="57">
     <h1 class="h3 mb-3 fw-normal">Connexion</h1>
 
     <div class="form-floating">
@@ -97,6 +97,9 @@ class View extends vueGenerique
                     margin: auto;
                     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
                     padding: 30px;
+                }
+                .form-floating{
+                    margin-bottom:15px;
                 }
 
   

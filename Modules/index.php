@@ -1,5 +1,6 @@
 <?php
 require_once('Module_connexion/mod_login.php');
+require_once('Module_accueil');
 require_once("vuegenerique.php");
 session_start();
 //user : dutinfopw201612
@@ -17,7 +18,7 @@ session_start();
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
-    <title>Document</title>
+    <title>InfoHelp</title>
 </head>
 
 <body>
@@ -43,11 +44,7 @@ session_start();
             </div>
         </header>
     </div>
-    <h1>TEST SAE</h1>
-    <header>
-        <nav>
-            <p> menu </p>
-        </nav>
+
         <?php
 
         $vue_gen = new vueGenerique();
