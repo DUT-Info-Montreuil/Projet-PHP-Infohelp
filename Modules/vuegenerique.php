@@ -8,7 +8,7 @@ class vueGenerique{
 
     public function getAffichage(){
         return ob_get_clean();
-        //ob_end_flush();
+        ob_end_flush();
     }
 
 }

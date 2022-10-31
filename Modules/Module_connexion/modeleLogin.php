@@ -34,6 +34,8 @@ class modeleLogin extends ConnexionUI
             echo "Pas adjout";
         }
         echo "Good registration \t";
+        header("Location: index.php?Modules=Module_connexion&action=connexion");
+        die();
         return true;
     }
     public function connect()
@@ -60,8 +62,11 @@ class modeleLogin extends ConnexionUI
     }
     public function log_out()
     {
-        echo $_SESSION['email'] . ", Vous êtes déconnecté sous l'userIDentifiant : " . $_SESSION['userID'];
+        //echo $_SESSION['email'] . ", Vous êtes déconnecté sous l'userIDentifiant : " . $_SESSION['userID'];
         unset($_SESSION['userID']);
         unset($_SESSION['email']);
+        unset($_SESSION['password']);
+        header("Location: index.php?Modules=Module_connexion&action=connexion");
+        die();
     }
 }
