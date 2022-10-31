@@ -28,9 +28,10 @@ session_start();
 
 
         <?php
-       $header=new moduleHeader();
-       
         $vue_gen = new vueGenerique();
+
+        $header=new moduleHeader();
+       
 
         if (isset($_GET["Modules"])) {
             $module = $_GET['Modules'];
