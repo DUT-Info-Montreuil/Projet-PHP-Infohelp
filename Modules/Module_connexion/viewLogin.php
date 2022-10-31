@@ -18,7 +18,7 @@ class View extends vueGenerique
         <html lang="en">
         <body>
         <form action="index.php?Modules=Module_connexion&action=b1" method="POST">
-        <img class="mb-4" src="logo.PNG" alt="" width="72" height="57">
+        <img class="mb-4" src="images/logo.PNG" alt="" width="72" height="57">
         <h1 class="h3 mb-3 fw-normal">Inscription</h1>
 
         <div class="form-floating">
@@ -77,7 +77,7 @@ class View extends vueGenerique
 
         <body>
         <form action="index.php?Modules=Module_connexion&action=b2" method="POST">
-    <img class="mb-4" src="logo.PNG" alt="" width="72" height="57">
+    <img class="mb-4" src="images/logo.PNG" alt="" width="72" height="57">
     <h1 class="h3 mb-3 fw-normal">Connexion</h1>
 
     <div class="form-floating">

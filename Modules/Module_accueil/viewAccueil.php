@@ -1,12 +1,12 @@
 <!-- Template ou utiliser les variables stocker dans le modeles -->
 <?php
 require_once("vuegenerique.php");
-class View extends vueGenerique
+class ViewAccueil extends vueGenerique
 {
     public function __construct()
     {
     }
-    public function showRegistration()
+    public function affichePageAccueil()
     {
 ?>
         <!DOCTYPE html>

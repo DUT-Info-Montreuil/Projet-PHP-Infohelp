@@ -1,6 +1,6 @@
 <?php
 require_once('Login.php');
-class modeleLogin extends ConnexionUI
+class modeleAccueil extends ConnexionUI
 {
     public function __construct()
     {

@@ -1,21 +1,21 @@
 <?php
-require_once('Module_connexion/controleur.php');
+require_once('Module_accueil/controleur.php');
 require_once('Login.php');
 
 
-class moduleLogin
+class moduleAccueil
 {
     public $control;
     public $action;
     public function __construct()
     {
         ConnexionUI::initConnexion();
-        $this->control = new  controlLogin;
+        $this->control = new  controlAccueil;
         $this->action = isset($_GET['action']) ? $_GET['action'] : "rien";
         switch ($this->action) {
 
-            case "sign-up":
-                $this->control->getVue()->showRegistration();
+            case "Accueil":
+                $this->control->getVue()->affichePageAccueil();
                 break;
             case "b1":
                 $this->control->getModele()->add_log_in();

@@ -1,6 +1,9 @@
 <?php
 require_once('Module_connexion/mod_login.php');
-require_once('Module_accueil');
+require_once('Module_accueil/mod_accueil.php');
+require_once('Composant_Footer/module_footer.php');
+require_once('Composant_Header/module_header.php');
+
 require_once("vuegenerique.php");
 session_start();
 //user : dutinfopw201612
@@ -22,31 +25,11 @@ session_start();
 </head>
 
 <body>
-    <div class="container">
-        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-            <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                    <use xlink:href="#bootstrap" />
-                </svg>
-            </a>
 
-            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-                <li><a href="#" class="nav-link px-2 link-dark">Features</a></li>
-                <li><a href="#" class="nav-link px-2 link-dark">Pricing</a></li>
-                <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
-                <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
-            </ul>
-
-            <div class="col-md-3 text-end">
-                <a href="index.php?Modules=Module_connexion&action=connexion"type="button" class="btn btn-outline-primary me-2">Se connecter</a>
-                <a href="index.php?Modules=Module_connexion&action=sign-up"type="button" class="btn btn-primary">S'inscrire</a>
-            </div>
-        </header>
-    </div>
 
         <?php
-
+       $header=new moduleHeader();
+       
         $vue_gen = new vueGenerique();
 
         if (isset($_GET["Modules"])) {
@@ -55,7 +38,9 @@ session_start();
                 case 'Module_connexion':
                     $module = new moduleLogin();
                     break;
-
+                case 'Module_accueil':
+                    $module = new moduleAccueil();
+                    break;
                 default:
                     # code...
                     break;
@@ -64,6 +49,9 @@ session_start();
 
         $result = $vue_gen->getAffichage();
 
+       
+ 
+        /*
         if (isset($_SESSION['email'])) {
             echo '<a href="index.php?Modules=Module_connexion&action=deconnexion">Se deconnecter</a><br>';
         } else {
@@ -71,18 +59,18 @@ session_start();
             echo "<a href=\"index.php?Modules=Module_connexion&action=sign-up\">S'inscrire</a><br>";
             echo "<a href=\"index.php?Modules=Module_connexion&action=connexion\">Se connecter</a><br>";
         }
+        */
+
 
         echo $result;
+
+        $footer=new moduleFooter();
 
         ?>
 
     </header>
 
 
-
-    <footer>
-        <p>Footer de la page </p>
-    </footer>
 </body>
 
 </html>
