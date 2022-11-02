@@ -1,16 +1,16 @@
 <?php
-require_once('Module_rendezVous/modeleLogin.php');
-require_once('Module_rendezVous/viewLogin.php');
+require_once('Module_rendezVous/modeleRdv.php');
+require_once('Module_rendezVous/vueRdv.php');
 
-class controlLogin
+class controleurRdv
 {
     public $vue;
     public $modele;
 
     public function __construct()
     {
-        $this->vue = new View();
-        $this->modele = new modeleLogin();
+        $this->vue = new VueRdv();
+        $this->modele = new modeleRdv();
     }
     public function getVue()
     {
