@@ -1,5 +1,6 @@
 <?php
-require_once('Module_connexion/mod_login.php');
+require_once(' C:/wamp64/www/SAE/Projet-PHP-Infohelp/Modules/Module_connexion/mod_login.php');
+require_once(' C:/wamp64/www/SAE/Projet-PHP-Infohelp/Modules/affichage_technicien/mod_affichage.php');
 require_once("vuegenerique.php");
 session_start();
 //user : dutinfopw201612
@@ -58,12 +59,17 @@ session_start();
                 case 'Module_connexion':
                     $module = new moduleLogin();
                     break;
-
+                case 'affiche_technicien' :
+                    $module = new module_techniciens();
+                    break;
                 default:
                     # code...
                     break;
             }
         }
+        
+        echo '<a href="index.php?Modules=affiche_technicien&action=recherche_liste">list</a><br>';
+
 
         $result = $vue_gen->getAffichage();
 

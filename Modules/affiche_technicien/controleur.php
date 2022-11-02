@@ -20,4 +20,7 @@ class controleur_techniciens
     {
         return $this->modele;
     }
+    public function listeDeLaRecherche(){
+        $this->vue->barre_de_recherche($this->modele->getlistTechnicien());
+    }
 }
