@@ -76,9 +76,9 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
     $date = $ym . '-' . $day;
      
     if ($today == $date) {
-        $week .= '<td class="today">' . $day;
+        $week .= '<td class="today"><button class="btn cal-btn" type="button">'.$day .'</button>';
     } else {
-        $week .= '<td>' . $day;
+        $week .= '<td><button class="btn cal-btn" type="button">'.$day .'</button>';
     }
     $week .= '</td>';
      
@@ -148,8 +148,7 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
             </tr>
             <?php
                 foreach ($weeks as $week) {
-                    echo "<a href=\"index.php?Modules=Module_rendezVous&action=prendreRdv\">".$week."</a>";
-
+                    echo $week;
                 }
             ?>
         </table>
