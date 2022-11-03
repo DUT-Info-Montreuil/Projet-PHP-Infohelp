@@ -1,6 +1,7 @@
 <?php
-require_once(' C:/wamp64/www/SAE/Projet-PHP-Infohelp/Modules/Module_connexion/mod_login.php');
-require_once(' C:/wamp64/www/SAE/Projet-PHP-Infohelp/Modules/affichage_technicien/mod_affichage.php');
+require_once("C:\wamp64\www\SAE\Projet-PHP-Infohelp\Modules\Module_connexion\mod_login.php");
+require_once("C:\wamp64\www\SAE\Projet-PHP-Infohelp\Modules\affiche_technicien\mod_affichage.php");
+
 require_once("vuegenerique.php");
 session_start();
 //user : dutinfopw201612
