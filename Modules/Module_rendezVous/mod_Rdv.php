@@ -17,6 +17,9 @@ class moduleRdv
             case "prendreRdv":
                 $this->control->getVue()->AffichageRdv();
                 break;
+            case "jour":
+                $this->control->getModele()->AffichageJour();
+                break;
             default:
                 break;
         }

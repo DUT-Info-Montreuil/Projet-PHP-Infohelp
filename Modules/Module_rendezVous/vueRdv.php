@@ -76,9 +76,13 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
     $date = $ym . '-' . $day;
      
     if ($today == $date) {
-        $week .= '<td class="today"><button class="btn cal-btn" type="button">'.$day .'</button>';
+        $week .= '<form action="index.php?Modules=Module_rendezVous&action=jour" method="POST" class="form-example">
+        <td class="today">
+        <input name="jour" for"jour" class="btn cal-btn" type="button" value="'.$day.'"></input>' ;
     } else {
-        $week .= '<td><button class="btn cal-btn" type="button">'.$day .'</button>';
+        $week .= '<form action="index.php?Modules=Module_rendezVous&action=jour" method="POST" class="form-example">
+        <td>
+        <input name="jour" for"jour" class="btn cal-btn" type="button" value="'.$day.'"></input>' ;
     }
     $week .= '</td>';
      
@@ -149,8 +153,14 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
             <?php
                 foreach ($weeks as $week) {
                     echo $week;
+                    
                 }
             ?>
+            
+        <input type="submit" name="send" id="send" required>
+        </form>
+            
+
         </table>
     </div>
 </body>
@@ -159,8 +169,10 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
 
 <?php
     }
-    
-}
 
+
+}
 ?>
+
+
 

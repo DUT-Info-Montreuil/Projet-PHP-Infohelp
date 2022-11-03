@@ -5,6 +5,22 @@ class modeleRdv extends ConnexionUI
     public function __construct()
     {
     }
+
+
+
+    
+    public function AffichageJour()
+    {
+        if(isset($_POST['jour'])){
+            echo"jour enregistré";
+        }
+        else{
+            echo "erreur";
+    
+        }
+    }
+
+
     public function add_log_in()
     {
 
