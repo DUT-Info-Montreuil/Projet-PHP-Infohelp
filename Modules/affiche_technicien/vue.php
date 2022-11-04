@@ -6,7 +6,7 @@ class vue_techniciens extends vueGenerique{
 public function __construct()
     {
     }
-    public function barre_de_recherche($resultquery){
+    public function barre_de_recherche(){
         ?>
         <!DOCTYPE html>
         <html lang="en">
@@ -22,7 +22,13 @@ public function __construct()
             <input type="text" name="recherche" placeholder="Valeur rechercher">
             <input type="submit" value="sub">
             </form>
-            <table>
+        </body>
+        </html>
+        <?php
+    }
+    public function afficher($req){
+?>
+<table>
                 <tr>
                     <th>
                         Id
@@ -46,22 +52,21 @@ public function __construct()
                         rayon d'activité
                     </th>
                 </tr>
-                <?php while($row = mysql_fetch_array($resultquery)): ?>
+                
+            </table>
+        <?php while ($row = $req->fetch()) {?>
+                    
                 <tr>
-                    <td><?php echo $row['idTechnicien']?></td>
-                    <td><?php echo $row['nom']?></td>
-                    <td><?php echo $row['prenom']?></td>
-                    <td><?php echo $row['idVille']?></td>
-                    <td><?php echo $row['avis']?></td>
-                    <td><?php echo $row['favoris']?></td>
-                    <td><?php echo $row['rayon d\'activité']?></td>
+                    <td><?php echo $row['idTechnicien'];?></td>
+                    <td><?php echo $row['nom'];?></td>
+                    <td><?php echo $row['prenom'];?></td>
+                    <td><?php echo $row['idVille'];?></td>
+                    <td><?php echo $row['avis'];?></td>
+                    <td><?php echo $row['favoris'];?></td>
+                    <td><?php echo $row['rayon d\'activité'];?></td>
 
                 </tr>
-                <?php endwhile;?>
-            </table>
-        </body>
-        </html>
-        <?php
+                <?php }
     }
 }
 

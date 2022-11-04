@@ -14,9 +14,10 @@ class module_techniciens
         $this->action = isset($_GET['action']) ? $_GET['action'] : "rien";
         switch ($this->action) {
             case 'recherche_liste':
-                $this->control->listeDeLaRecherche();
+                $this->control->getVue()->barre_de_recherche();
                 break;
-            
+            case 'list':
+                $this->control->listeDeLaRecherche();
             default:
                 break;
         }
