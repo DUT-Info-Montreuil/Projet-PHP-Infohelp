@@ -10,6 +10,11 @@ class ConnexionUI
         $user = "dutinfopw201612";
         $pass = "rupapare";
 
+
+        $log = "mysql:host=localhost;dbname=dutinfopw201612";
+        $user = "root";
+        $pass = "";
+
         self::$bdd = new PDO($log, $user, $pass);
     }
 }

@@ -1,5 +1,6 @@
 <?php
 require_once('Module_connexion/mod_login.php');
+require_once('Module_tutos/mod_tuto.php');
 require_once("vuegenerique.php");
 session_start();
 //user : dutinfopw201612
@@ -58,7 +59,9 @@ session_start();
                 case 'Module_connexion':
                     $module = new moduleLogin();
                     break;
-
+                case 'Module_tuto':
+                    $module = new moduleTuto();
+                    break;
                 default:
                     # code...
                     break;
@@ -74,6 +77,7 @@ session_start();
             echo "<a href=\"index.php?Modules=Module_connexion&action=sign-up\">S'inscrire</a><br>";
             echo "<a href=\"index.php?Modules=Module_connexion&action=connexion\">Se connecter</a><br>";
         }
+        echo "<a href=\"index.php?Modules=Module_tuto&action=afficheCategorieVideo\">Tutos</a><br>";
 
         echo $result;
 
