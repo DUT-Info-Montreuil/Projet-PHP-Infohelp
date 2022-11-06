@@ -20,4 +20,9 @@ class controleurRdv
     {
         return $this->modele;
     }
+    public function getRdv()
+    {
+        $resultat=$this->modele->getListeRdv();
+        $this->vue->afficherRdvUtilisateur($resultat);
+    }
 }

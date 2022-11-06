@@ -20,6 +20,12 @@ class moduleRdv
             case "ajoutRdv":
                 $this->control->getModele()->ajouterRdv();
                 break;
+            case "retirerRdv":
+                $this->control->getModele()->annulerRdv();
+                break;
+            case "annulerRdv":
+                $this->control->getRdv();
+                break;
             default:
                 break;
         }

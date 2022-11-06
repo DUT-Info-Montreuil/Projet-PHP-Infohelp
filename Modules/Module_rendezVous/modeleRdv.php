@@ -22,4 +22,31 @@ class modeleRdv extends ConnexionUI
     
         }
     }
+
+    public function getListeRdv()
+    {
+        $requete = self::$bdd->prepare('SELECT * FROM `rendezvous`');
+        $requete->execute();
+        $recupRdv=$requete->fetchAll();
+        
+        return $recupRdv;
+
+    }
+
+    public function annulerRdv()
+    {
+        if(isset($_POST['idRdv'])){
+            $idRdv=$_POST['idRdv'];
+            echo $idRdv;
+            $delete = self::$bdd->prepare("DELETE FROM `rendezvous` WHERE idRdv='$idRdv'");
+            $delete->execute();
+            echo"suppression effectuée";
+
+        }
+        else{
+            echo "erreur lors de l'execution de la requete SQL";
+    
+        }
+    }
+    
 }

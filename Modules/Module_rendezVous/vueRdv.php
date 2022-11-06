@@ -8,7 +8,7 @@ class VueRdv extends vueGenerique
 
     }
 
-    public function AffichageFormRdv()
+    public function affichageFormRdv()
     {
 ?>
     <form action="index.php?Modules=Module_rendezVous&action=ajoutRdv" method="POST">
@@ -26,7 +26,31 @@ class VueRdv extends vueGenerique
 <?php
     }
 
+    public function afficherRdvUtilisateur($data)
+    {
+        ?>
+        <form action="index.php?Modules=Module_rendezVous&action=retirerRdv" method="POST">
+        <label>Selectionnez le rendez-vous que vous souhaitez annuler:</label></br>
+        <?php
+        foreach ($data as $rdv) { 
+            $idRdv=$rdv["idRdv"];
+            $horaireRdv=$rdv["horaire"];
+            $dateRdv=$rdv["dateRDV"];
 
+            ?>
+            <button name="idRdv" value="<?php echo $idRdv;?>">
+            <?php echo $horaireRdv." ".$dateRdv;?>
+            </button>
+
+        <?php
+        }
+        ?> 
+
+        </form>
+        
+   
+<?php
+    }
 }
 ?>
 

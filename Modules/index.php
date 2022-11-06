@@ -79,6 +79,7 @@ session_start();
             echo "<a href=\"index.php?Modules=Module_connexion&action=connexion\">Se connecter</a><br>";
         }
         echo "<a href=\"index.php?Modules=Module_rendezVous&action=prendreRdv\">Prendre un rdv</a><br>";
+        echo "<a href=\"index.php?Modules=Module_rendezVous&action=annulerRdv\">Annuler un rdv</a><br>";
 
         echo $result;
 
