@@ -15,10 +15,10 @@ class moduleRdv
         switch ($this->action) {
 
             case "prendreRdv":
-                $this->control->getVue()->AffichageRdv();
+                $this->control->getVue()->affichageFormRdv();
                 break;
-            case "jour":
-                $this->control->getModele()->AffichageJour();
+            case "ajoutRdv":
+                $this->control->getModele()->ajouterRdv();
                 break;
             default:
                 break;
