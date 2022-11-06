@@ -8,7 +8,7 @@ class modeleTuto extends ConnexionUI
 
     public function get_categrorieVideo()
     {
-        $requete = self::$bdd->prepare('SELECT * FROM `tutos`');
+        $requete = self::$bdd->prepare('SELECT * FROM `categorietutos`');
         $requete->execute();
         $recupCategorie=$requete->fetchAll();
         
@@ -17,15 +17,15 @@ class modeleTuto extends ConnexionUI
 
     public function get_video()
     {
-        $cat=$_GET["categorie"];
-        echo "dd".$cat;
-        $requete = self::$bdd->prepare("SELECT * FROM `tutos` where categorie=$cat");
+        $idCat=$_POST["categorie"];
+        echo "categorie selectionnée: ".$idCat;
+        $requete = self::$bdd->prepare("SELECT * FROM `tutos` where idCategorieVideo='$idCat'");
         $requete->execute();
         $recupvideo=$requete->fetchAll();
         if ($requete->rowCount() > 0) {
-            echo"reussi";
+            echo"  | requete SQL reussi <br>";
         }else{
-            echo"erreur";
+            echo"  | erreur select SQL";
         }
         return $recupvideo;
     

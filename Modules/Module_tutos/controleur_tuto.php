@@ -29,7 +29,6 @@ class controlTuto
 
     public function getVideo()
     {
-        echo $_GET["categorie"];
         $tab = $this->modele->get_video();
         $this->vue->afficher_Video($tab);
 
