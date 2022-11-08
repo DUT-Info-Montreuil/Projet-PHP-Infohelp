@@ -1,6 +1,6 @@
 <!-- Template ou utiliser les variables stocker dans le modeles -->
 <?php
-require_once("C:/wamp64/www/Projet-PHP-Infohelp/Modules/vuegenerique.php");
+require_once("vuegenerique.php");
 class ViewAccueil extends vueGenerique
 {
     public function __construct()
@@ -22,8 +22,6 @@ class ViewAccueil extends vueGenerique
   <body>
       <main>
         <div class="lignes">
-            <div class="l1"></div>
-            <div class="l2"></div>
         </div>
 
         <section>

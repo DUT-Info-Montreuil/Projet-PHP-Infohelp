@@ -20,30 +20,40 @@ body img{
     width: 100%;
 }
 
+
+/* 
 #d1{
     margin: 50px;
-}
+}*/
 
 #c1{
-    display: flex;
-    width: 50%;
+    display: inline-block;
+    margin-left: 15%;
+    margin-top: 5%;
+    width: 45%;
 }
 
 #c2{
-    display: flex;
+    display: inline-block;
     float: right;
-    width: 50%;
+    margin-right: 15%;
+    margin-top: 5%;
+    width: 45%;
 }
 
 #c3{
-    display: flex;
-    width: 50%;
+    display: inline-block;
+    margin-left: 15%;
+    margin-top: 7%;
+    width: 45%;
 }
 
 #c4{
     display: inline-block;
     float: right;
-    width: 50%;
+    margin-right: 15%;
+    margin-top: 7%;
+    width: 45%;
 }
 
 h1{
@@ -51,34 +61,6 @@ h1{
     font-size: 15px;
     color: black;
     font-family: "Abril fatface", sans-serif;
-}
-
-h1 span {
-    position: relative;
-}
-
-
-
-.lignes{
-    position: absolute;
-    top: 6%;
-    left: 5%;
-}
-
-.l1{
-    width: 250px;
-    height: 3px;
-    background: grey;
-    border-radius: 5px;
-}
-
-.l2{
-    width: 140px;
-    height: 3px;
-    background: grey;
-    border-radius: 5px;
-    position: relative;
-    top: 20px;;
 }
 
 .logo{
@@ -119,4 +101,4 @@ h1 span {
 .logo-medias{
     width: 40px;
     height: 40px;
-}
+} 
