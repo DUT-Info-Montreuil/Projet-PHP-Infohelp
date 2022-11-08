@@ -15,7 +15,7 @@ class modeleRdv extends ConnexionUI
             $insert = self::$bdd->prepare("INSERT INTO `rendezvous` (`horaire`, `DateRDV`,`idTechnicien`) VALUES (:par,:par2,:par3)");
             $insert->execute(array(':par' => $heure, ':par2' => $date,':par3' => '1'));
             echo"insertion de ".$date." ".$heure;
-
+            $this->envoiNotification();
         }
         else{
             echo "erreur lors de l'insertion dans la BDD";
@@ -49,4 +49,18 @@ class modeleRdv extends ConnexionUI
         }
     }
     
+
+    public function envoiNotification()
+    {
+        $to = "geovanykink19@gmail.com";
+        $subject = "Confirmation rendez-vous";
+        $message = "Bonjour, votre rendez vous a bien été pris en compte.\nNous vous attendons donc ce **/**/** à **heures dans nos locaux. A bientôt !  ";
+        $headers = "Content-Type: text/plain; charset=utf-8\r\n";
+        $headers .= "From: geovafrancisco3012@gmail.com\r\n";
+
+        if(mail($to, $subject, $message, $headers))
+            echo "Envoyé !";
+        else
+            echo "Erreur de l'envoi";
+    }  
 }

@@ -14,13 +14,21 @@ class VueRdv extends vueGenerique
     <form action="index.php?Modules=Module_rendezVous&action=ajoutRdv" method="POST">
         <label>
             Veuillez selectionner le jour ainsi que l'heure qui vous convient :
-            <input type="date" name="jour">
-            <input type="time" name="heure">
+            <input type="date" name="jour" required>
+            <input type="time" name="heure" required>
         </label>
-
+        
         <p><button>Envoyer</button></p>
     </form>
 
+<!--     <form action="index.php?Modules=Module_connexion&action=b1" method="POST" class="form-example">
+                <div class="form-example">
+                    <h2>Prenez un rendez vous</h2>
+                    <p>Date</p>
+                    <input type="date" name="date"  id="date" class="type" maxlength="255" required><br>
+                    <input type="submit" name="send" id="send" required>
+                </div>
+            </form> -->
 
 
 <?php
