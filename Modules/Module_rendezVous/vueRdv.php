@@ -44,6 +44,7 @@ class VueRdv extends vueGenerique
             $idRdv=$rdv["idRdv"];
             $horaireRdv=$rdv["horaire"];
             $dateRdv=$rdv["dateRDV"];
+            $dateRdv=$rdv["userID"];
 
             ?>
             <button name="idRdv" value="<?php echo $idRdv;?>">

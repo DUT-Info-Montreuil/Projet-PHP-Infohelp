@@ -12,8 +12,8 @@ class modeleRdv extends ConnexionUI
             echo"jour enregistré";
             $date=$_POST['jour'];
             $heure=$_POST['heure'];
-            $insert = self::$bdd->prepare("INSERT INTO `rendezvous` (`horaire`, `DateRDV`,`idTechnicien`) VALUES (:par,:par2,:par3)");
-            $insert->execute(array(':par' => $heure, ':par2' => $date,':par3' => '1'));
+            $insert = self::$bdd->prepare("INSERT INTO `rendezvous` (`horaire`, `DateRDV`,`idTechnicien`, `idUtilisateur`) VALUES (:par,:par2,:par3,:par4)");
+            $insert->execute(array(':par' => $heure, ':par2' => $date,':par3' => '1', ':par4' => $_SESSION['userID']));
             echo"insertion de ".$date." ".$heure;
             $this->envoiNotification();
         }
@@ -25,7 +25,8 @@ class modeleRdv extends ConnexionUI
 
     public function getListeRdv()
     {
-        $requete = self::$bdd->prepare('SELECT * FROM `rendezvous`');
+        $iduser=$_SESSION['userID'];
+        $requete = self::$bdd->prepare("SELECT * FROM `rendezvous` inner join `utilisateurs` on rendezvous.idUtilisateur=utilisateurs.userID WHERE idUtilisateur = '$iduser'");
         $requete->execute();
         $recupRdv=$requete->fetchAll();
         
