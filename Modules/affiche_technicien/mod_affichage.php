@@ -15,10 +15,10 @@ class module_techniciens
         switch ($this->action) {
                 /* case 'recherche_liste':
                 $this->control->getVue()->barre_de_recherche();
-                break;
-            case 'list':
-                $this->control->listeDeLaRecherche();
-            default: */
+                break; */
+            case 'liste_tech':
+                $this->control->listeTechnicien();
+            default:
             case 'liste_catégorie':
                 $this->control->listeCategorie();
                 break;

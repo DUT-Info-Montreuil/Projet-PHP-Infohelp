@@ -29,88 +29,74 @@ class vue_techniciens extends vueGenerique
         </body>
 
         </html>
-        <?php
+    <?php
     }
     public function afficherTechnicien($req)
     {
-        if ($req->rowcount() > 0) {
-        ?>
-            <table>
-                <tr>
-                    <th>
-                        Id
-                    </th>
-                    <th>
-                        Nom
-                    </th>
-                    <th>
-                        Prenom
-                    </th>
-                    <th>
-                        idVille
-                    </th>
-                    <th>
-                        avis
-                    </th>
-                    <th>
-                        favoris
-                    </th>
-                    <th>
-                        rayon d'activité
-                    </th>
-                    <th>
-                        id Catégorie
-                    </th>
-                </tr>
+        //if ($req->rowcount() > 0) {
+    ?>
+        <!-- <table>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Nom
+                </th>
+                <th>
+                    Prenom
+                </th>
+                <th>
+                    Catégorie
+                </th>
+            </tr>
 
-            </table>
-            <?php
-            while ($row = $req->fetch()) { ?>
-
-                <tr>
-                    <td><?php echo $row['idTechnicien']; ?></td>
-                    <td><?php echo $row['nom']; ?></td>
-                    <td><?php echo $row['prenom']; ?></td>
-                    <td><?php echo $row['idVille']; ?></td>
-                    <td><?php echo $row['avis']; ?></td>
-                    <td><?php echo $row['favoris']; ?></td>
-                    <td><?php echo $row["rayon d'activite"]; ?>
-                    <td><?php echo $row["idCategorie"]; ?>
-                    <td><?php echo $row["nomCat"];
-                    } ?></td>
-
-
-                <?php } else {
-                ?>
-
-                    <p>ERREUR DE SAISIE</p>
-                <?php }
-                ?>
-
-                </tr>
-            <?php }
-
-        public function afficherCat($req)
-        {
-            ?>
-                <form action="index.php?Modules=Module_tuto&action=liste_catégorie" method="POST">
-                    <label>Selectionnez la categorie que vous souhaitez :</label></br>
-                    <?php
-                    while ($line = $req->fetch()) {
-                        $id = $line["idCat"];
-                        $nomCategorie = $line["nomCat"];
-                    ?>
-                        <button name="categorie" value="<?= $id ?>;">
-                            <?= $nomCategorie; ?>
-                        </button>
-
-                    <?php
-                    }
-                    ?>
-
-                </form>
+        </table> -->
         <?php
-        }
-    }
-
+        //while ($row = $req->fetch()) { 
+        foreach ($req as $row) {
         ?>
+
+            <tr>
+                <br>
+                <td> id : <?= $row['idTechnicien']; ?></td><br>
+                <td> nom : <?= $row['nom']; ?></td><br>
+                <td> prenom : <?= $row['prenom']; ?></td><br>
+                <td> categorie :<?= $row["nomCat"];
+                            } ?></td><br>
+
+
+                <?php //} else {
+                ?>
+
+                <!-- <p>ERREUR DE SAISIE</p> -->
+                <?php //}
+                ?>
+
+            </tr>
+        <?php }
+
+    public function afficherCat($req)
+    {
+        ?>
+            <form action="index.php?Modules=affiche_technicien&action=liste_tech" method="POST">
+                <label>Selectionnez la categorie que vous souhaitez :</label></br>
+                <?php
+                while ($line = $req->fetch()) {
+                    $id = $line["idCat"];
+                    $nomCategorie = $line["nomCat"];
+                ?>
+                    <button name="categorie" value=<?= $id ?>>
+                        <?= $nomCategorie; ?>
+                    </button>
+
+                <?php
+                }
+                ?>
+
+            </form>
+    <?php
+    }
+}
+
+    ?>

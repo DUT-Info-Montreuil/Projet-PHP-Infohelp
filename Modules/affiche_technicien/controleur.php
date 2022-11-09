@@ -20,7 +20,7 @@ class controleur_techniciens
     {
         return $this->modele;
     }
-    public function listeDeLaRecherche()
+    public function listeTechnicien()
     {
         $this->vue->afficherTechnicien($this->modele->getlistTechnicien());
     }

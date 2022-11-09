@@ -5,10 +5,13 @@ class modele_techniciens extends ConnexionUI
 
     public function getlistTechnicien()
     {
-        $str = $_POST["recherche"];
-        $sth = self::$bdd->query("SELECT * FROM `techniciens` INNER JOIN `Categories` ON  `Categories.idCat` = `techniciens.idCategorie` WHERE `nomCat` like '%$str%'");
-
-        return $sth;
+        //$str = $_POST["recherche"];
+        //$idCat = $_POST["idCat"] where techniciens.idCategorie ='$idCat';
+        $cat = $_POST["categorie"];
+        $sth1 = self::$bdd->prepare("SELECT * FROM `techniciens` inner join `Categories` on techniciens.idCategorie = Categories.idCat where idCat = '$cat'");
+        $sth1->execute();
+        $recuptech = $sth1->fetchAll();
+        return $recuptech;
     }
 
     public function getCategories()
@@ -16,7 +19,7 @@ class modele_techniciens extends ConnexionUI
         $sth = self::$bdd->query("SELECT * FROM `Categories`");
         return $sth;
     }
-    public function detailsCat()
+    /* public function detailsCat()
     {
         $id = $_GET["idCat"];
         try {
@@ -27,5 +30,5 @@ class modele_techniciens extends ConnexionUI
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();
         }
-    }
+    } */
 }
