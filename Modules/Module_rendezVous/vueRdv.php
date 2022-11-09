@@ -16,9 +16,9 @@ class VueRdv extends vueGenerique
             Veuillez selectionner le jour ainsi que l'heure qui vous convient :
             <input type="date" name="jour" required>
             <input type="time" name="heure" required>
+            <input type="hidden" name="tec" value="<?=$_POST['tec']?>">
         </label>
-        
-        <p><button class="btn btn-outline-secondary">Confirmer</button></p>
+        <p><button class="btn btn-outline-secondary" value=<?=$_POST['tec']?>>Confirmer</button></p>
     </form>
 
 <?php
@@ -73,41 +73,32 @@ class VueRdv extends vueGenerique
     {
         //if ($req->rowcount() > 0) {
     ?>
-        <!-- <table>
-            <tr>
-                <th>
-                    Id
-                </th>
-                <th>
-                    Nom
-                </th>
-                <th>
-                    Prenom
-                </th>
-                <th>
-                    Catégorie
-                </th>
-            </tr>
-
-        </table> -->
         <form action="index.php?Modules=Module_rendezVous&action=prendreRdv" method="POST">
         <?php
 
         foreach ($req as $row) {
         ?>
-            <button name="tec" value=<?=$row['idTechnicien']?>>
             <tr>
                 <br>
-                <td> id : <?= $row['idTechnicien']; ?></td><br>
+                <input type="submit" name="tec" value="<?php echo $row['idTechnicien'];?>">
+                    <td> id : <?= $row['idTechnicien']?></td>
+                <br>
                 <td> nom : <?= $row['nom']; ?></td><br>
                 <td> prenom : <?= $row['prenom']; ?></td><br>
                 <td> categorie :<?= $row["nomCat"];?></td><br>
-            
-    <?php }  
-            ?>
             </tr>
-                </button>
-                </form>
+
+        
+        <button class="btn btn-outline-secondary">Confirmer</button>
+                <?php 
+
+            } 
+            
+            
+            ?>  
+
+            </form>
+       
         <?php 
         }
 

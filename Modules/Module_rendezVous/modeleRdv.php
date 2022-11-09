@@ -8,14 +8,15 @@ class modeleRdv extends ConnexionUI
 
     public function ajouterRdv()
     {
-        if(isset($_POST['jour']) && isset($_POST['heure'])){
+        echo "var dump". var_dump($_POST['tec']);
+        if(isset($_POST['jour']) && isset($_POST['heure']) && isset($_POST['tec'])){
             echo"jour enregistré";
             $date=$_POST['jour'];
             $heure=$_POST['heure'];
             $idTech=$_POST['tec'];
             $insert = self::$bdd->prepare("INSERT INTO `rendezvous` (`horaire`, `DateRDV`,`idTechnicien`, `idUtilisateur`) VALUES (:par,:par2,:par3,:par4)");
             $insert->execute(array(':par' => $heure, ':par2' => $date,':par3' => $idTech, ':par4' => $_SESSION['userID']));
-            echo"insertion de ".$date." ".$heure;
+            echo"insertion de ".$date." ".$heure. " tec:".$idTech;
             $this->envoiNotification($date,$heure);
         }
         else{

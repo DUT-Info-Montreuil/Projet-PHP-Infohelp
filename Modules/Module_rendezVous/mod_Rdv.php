@@ -14,10 +14,13 @@ class moduleRdv
         $this->action = isset($_GET['action']) ? $_GET['action'] : "rien";
         switch ($this->action) {
 
-            case "prendreRdv":
+             case "prendreRdv":
+                
                 $this->control->getVue()->affichageFormRdv();
-                break;
+                break; 
             case "ajoutRdv":
+                var_dump($_POST['tec']);
+                $idtec=$_POST['tec'];
                 $this->control->getModele()->ajouterRdv();
                 break;
             case "retirerRdv":
