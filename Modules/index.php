@@ -4,7 +4,6 @@ require_once('Module_rendezVous/mod_Rdv.php');
 require_once('Module_accueil/mod_accueil.php');
 require_once('Composant_Footer/module_footer.php');
 require_once('Composant_Header/module_header.php');
-require_once("affiche_technicien/mod_affichage.php");
 require_once("vuegenerique.php");
 session_start();
 //user : dutinfopw201612
@@ -51,16 +50,11 @@ session_start();
                 case 'Module_accueil':
                     $module = new moduleAccueil();
                     break;
-                case 'affiche_technicien':
-                    $module = new module_techniciens();
-                    break;
                 default:
                     # code...
                     break;
             }
         }
-
-        echo '<a href="index.php?Modules=affiche_technicien&action=liste_catégorie">Categories</a><br>';
 
 
         $result = $vue_gen->getAffichage();

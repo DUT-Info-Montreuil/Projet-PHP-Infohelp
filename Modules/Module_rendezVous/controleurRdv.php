@@ -25,4 +25,16 @@ class controleurRdv
         $resultat=$this->modele->getListeRdv();
         $this->vue->afficherRdvUtilisateur($resultat);
     }
+
+    public function listeTechnicien()
+    {
+        $res=$this->modele->getlistTechnicien();
+        $this->vue->afficherTechnicien($res);
+    }
+    
+    public function listeCategorie()
+    {
+        $resultat=$this->modele->getCategories();
+        $this->vue->afficherCat($resultat);
+    }
 }

@@ -22,7 +22,7 @@ class VueHeader extends vueGenerique
 
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="index.php?Modules=Module_accueil&action=Accueil" class="nav-link px-2 link-secondary">Accueil</a></li>
-                <li><a href="#" class="nav-link px-2 link-dark">Catgories</a></li>
+                <li><a href="index.php?Modules=Module_rendezVous&action=liste_catégorie" class="nav-link px-2 link-dark">Catgories</a></li>
                 <li><a href="#" class="nav-link px-2 link-dark">Tutos</a></li>
                 <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
                 <li><a href="#" class="nav-link px-2 link-dark">A propos</a></li>

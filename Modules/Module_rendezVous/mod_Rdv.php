@@ -26,6 +26,11 @@ class moduleRdv
             case "annulerRdv":
                 $this->control->getRdv();
                 break;
+            case 'liste_tech':
+                $this->control->listeTechnicien();
+            case 'liste_catégorie':
+                $this->control->listeCategorie();
+                break;
             default:
                 break;
         }
