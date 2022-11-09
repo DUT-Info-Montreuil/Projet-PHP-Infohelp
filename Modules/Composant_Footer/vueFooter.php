@@ -35,7 +35,7 @@ class VueFooter extends vueGenerique
     </div>
 
     <div class="col mb-3">
-      <h5>Section</h5>
+      <h5>Nous suivre</h5>
         <ul class="medias">
             <li class="bulle"><a href="#"><img src="images/facebook.png" alt="Facebook" class="logo-medias"></a></li>
             <li class="bulle"><a href="#"><img src="images/twitter.png" alt="Twitter"  class="logo-medias"></a></li>

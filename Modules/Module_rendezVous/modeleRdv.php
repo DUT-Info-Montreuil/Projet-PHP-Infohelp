@@ -53,11 +53,11 @@ class modeleRdv extends ConnexionUI
 
     public function envoiNotification($date,$heure)
     {
-        $to = "geovanykink19@gmail.com";
+        $to = $_SESSION['email'];
         $subject = "Confirmation rendez-vous";
         $message = "Bonjour, votre rendez vous a bien été pris en compte.\nNous vous attendons donc le ".$date ." à ". $heure." dans nos locaux. A bientôt !  ";
         $headers = "Content-Type: text/plain; charset=utf-8\r\n";
-        $headers .= "From: geovafrancisco3012@gmail.com\r\n";
+        $headers .= "From: infoHelp@gmail.com\r\n";
 
         if(mail($to, $subject, $message, $headers))
             echo "Envoyé !";

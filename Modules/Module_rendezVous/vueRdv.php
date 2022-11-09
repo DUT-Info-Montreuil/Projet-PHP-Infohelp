@@ -21,16 +21,6 @@ class VueRdv extends vueGenerique
         <p><button>Envoyer</button></p>
     </form>
 
-<!--     <form action="index.php?Modules=Module_connexion&action=b1" method="POST" class="form-example">
-                <div class="form-example">
-                    <h2>Prenez un rendez vous</h2>
-                    <p>Date</p>
-                    <input type="date" name="date"  id="date" class="type" maxlength="255" required><br>
-                    <input type="submit" name="send" id="send" required>
-                </div>
-            </form> -->
-
-
 <?php
     }
 
@@ -44,7 +34,7 @@ class VueRdv extends vueGenerique
             $idRdv=$rdv["idRdv"];
             $horaireRdv=$rdv["horaire"];
             $dateRdv=$rdv["dateRDV"];
-            $dateRdv=$rdv["userID"];
+            $idTechnicien=$rdv["userID"];
 
             ?>
             <button name="idRdv" value="<?php echo $idRdv;?>">
