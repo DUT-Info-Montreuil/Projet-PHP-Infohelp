@@ -17,14 +17,9 @@ body{
 
 
 body img{
-    width: 100%;
+    width: 80%;
 }
 
-
-/* 
-#d1{
-    margin: 50px;
-}*/
 
 #c1{
     display: inline-block;
@@ -63,30 +58,15 @@ h1{
     font-family: "Abril fatface", sans-serif;
 }
 
-.logo{
-    position: absolute;
-    right: 3%;
-    top: 4%;
-    width: 80px;
-    height: 80px;
-    cursor: pointer;
-}
-
 .medias{
-    list-style-type: none;
-    position: absolute;
-    right: 3%;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
 .bulle{
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     border: 1px solid #f1f1f1;
     display: flex;
@@ -94,11 +74,10 @@ h1{
     align-items: center;
     margin : 10px 0;
     background: grey;
-    cursor: pointer;
-    position: relative;
+
 }
 
 .logo-medias{
-    width: 40px;
-    height: 40px;
+    width: 25px;
+    height: 25px;
 } 
