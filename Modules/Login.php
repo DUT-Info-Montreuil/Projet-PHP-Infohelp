@@ -11,9 +11,9 @@ class ConnexionUI
         $pass = "rupapare";
 
 
-        $log = "mysql:host=localhost;dbname=dutinfopw201612";
+/*         $log = "mysql:host=localhost;dbname=dutinfopw201612";
         $user = "root";
-        $pass = "";
+        $pass = ""; */
 
         self::$bdd = new PDO($log, $user, $pass);
     }
