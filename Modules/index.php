@@ -4,7 +4,7 @@ require_once('Module_rendezVous/mod_Rdv.php');
 require_once('Module_accueil/mod_accueil.php');
 require_once('Composant_Footer/module_footer.php');
 require_once('Composant_Header/module_header.php');
-
+require_once("affiche_technicien/mod_affichage.php");
 require_once("vuegenerique.php");
 session_start();
 //user : dutinfopw201612
@@ -27,13 +27,38 @@ session_start();
 </head>
 
 <body>
+    <!--  <div class="container">
+        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+            <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                    <use xlink:href="#bootstrap" />
+                </svg>
+            </a>
 
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
+                <li><a href="#" class="nav-link px-2 link-dark">Features</a></li>
+                <li><a href="#" class="nav-link px-2 link-dark">Pricing</a></li>
+                <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
+                <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
+            </ul>
 
+            <div class="col-md-3 text-end">
+                <a type="button" class="btn btn-outline-primary me-2">Login</a>
+                <button type="button" class="btn btn-primary">Sign-up</button>
+            </div>
+        </header> -->
+    </div>
+    <h1>TEST SAE</h1>
+    <header>
+        <nav>
+            <p> menu </p>
+        </nav>
         <?php
         $vue_gen = new vueGenerique();
 
-        $header=new moduleHeader();
-       
+        $header = new moduleHeader();
+
 
         if (isset($_GET["Modules"])) {
             $module = $_GET['Modules'];
@@ -47,16 +72,22 @@ session_start();
                 case 'Module_accueil':
                     $module = new moduleAccueil();
                     break;
+                case 'affiche_technicien':
+                    $module = new module_techniciens();
+                    break;
                 default:
                     # code...
                     break;
             }
         }
 
+        echo '<a href="index.php?Modules=affiche_technicien&action=liste_catégorie">Categories</a><br>';
+
+
         $result = $vue_gen->getAffichage();
 
-       
- 
+
+
         /*
         if (isset($_SESSION['email'])) {
             echo '<a href="index.php?Modules=Module_connexion&action=deconnexion">Se deconnecter</a><br>';
@@ -67,12 +98,12 @@ session_start();
         }*/
         echo "<a href=\"index.php?Modules=Module_rendezVous&action=prendreRdv\">Prendre un rdv</a><br>";
         echo "<a href=\"index.php?Modules=Module_rendezVous&action=annulerRdv\">Annuler un rdv</a><br>";
-        
+
 
 
         echo $result;
 
-        $footer=new moduleFooter();
+        $footer = new moduleFooter();
 
         ?>
 
