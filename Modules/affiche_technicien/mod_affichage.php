@@ -13,12 +13,19 @@ class module_techniciens
         $this->control = new  controleur_techniciens;
         $this->action = isset($_GET['action']) ? $_GET['action'] : "rien";
         switch ($this->action) {
-            case 'recherche_liste':
+                /* case 'recherche_liste':
                 $this->control->getVue()->barre_de_recherche();
                 break;
             case 'list':
                 $this->control->listeDeLaRecherche();
-            default:
+            default: */
+            case 'liste_catégorie':
+                $this->control->listeCategorie();
+                break;
+
+            case 'detail':
+                # code...
+
                 break;
         }
     }

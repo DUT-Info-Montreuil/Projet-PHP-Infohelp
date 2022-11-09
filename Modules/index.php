@@ -48,7 +48,7 @@ session_start();
             }
         }
 
-        echo '<a href="index.php?Modules=affiche_technicien&action=recherche_liste">list</a><br>';
+        echo '<a href="index.php?Modules=affiche_technicien&action=liste_catégorie">Categories</a><br>';
 
 
         $result = $vue_gen->getAffichage();

@@ -22,6 +22,10 @@ class controleur_techniciens
     }
     public function listeDeLaRecherche()
     {
-        $this->vue->afficher($this->modele->getlistTechnicien());
+        $this->vue->afficherTechnicien($this->modele->getlistTechnicien());
+    }
+    public function listeCategorie()
+    {
+        $this->vue->afficherCat($this->modele->getCategories());
     }
 }
