@@ -92,8 +92,6 @@ class vue_techniciens extends vueGenerique
 
         public function afficherCat($req)
         {
-
-
             ?>
                 <form action="index.php?Modules=Module_tuto&action=liste_catégorie" method="POST">
                     <label>Selectionnez la categorie que vous souhaitez :</label></br>
