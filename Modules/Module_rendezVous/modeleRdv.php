@@ -12,8 +12,9 @@ class modeleRdv extends ConnexionUI
             echo"jour enregistré";
             $date=$_POST['jour'];
             $heure=$_POST['heure'];
+            $idTech=$_POST['tec'];
             $insert = self::$bdd->prepare("INSERT INTO `rendezvous` (`horaire`, `DateRDV`,`idTechnicien`, `idUtilisateur`) VALUES (:par,:par2,:par3,:par4)");
-            $insert->execute(array(':par' => $heure, ':par2' => $date,':par3' => '1', ':par4' => $_SESSION['userID']));
+            $insert->execute(array(':par' => $heure, ':par2' => $date,':par3' => $idTech, ':par4' => $_SESSION['userID']));
             echo"insertion de ".$date." ".$heure;
             $this->envoiNotification($date,$heure);
         }

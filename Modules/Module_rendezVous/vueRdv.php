@@ -18,7 +18,7 @@ class VueRdv extends vueGenerique
             <input type="time" name="heure" required>
         </label>
         
-        <p><button>Envoyer</button></p>
+        <p><button class="btn btn-outline-secondary">Confirmer</button></p>
     </form>
 
 <?php
@@ -37,7 +37,7 @@ class VueRdv extends vueGenerique
             $idTechnicien=$rdv["userID"];
 
             ?>
-            <button name="idRdv" value="<?php echo $idRdv;?>">
+            <button class="btn btn-outline-secondary" name="idRdv" value="<?php echo $idRdv;?>">
             <?php echo $horaireRdv." ".$dateRdv;?>
             </button>
 
@@ -90,29 +90,26 @@ class VueRdv extends vueGenerique
             </tr>
 
         </table> -->
+        <form action="index.php?Modules=Module_rendezVous&action=prendreRdv" method="POST">
         <?php
-        //while ($row = $req->fetch()) { 
+
         foreach ($req as $row) {
         ?>
-
+            <button name="tec" value=<?=$row['idTechnicien']?>>
             <tr>
                 <br>
                 <td> id : <?= $row['idTechnicien']; ?></td><br>
                 <td> nom : <?= $row['nom']; ?></td><br>
                 <td> prenom : <?= $row['prenom']; ?></td><br>
-                <td> categorie :<?= $row["nomCat"];
-                            } ?></td><br>
-
-
-                <?php //} else {
-                ?>
-
-                <!-- <p>ERREUR DE SAISIE</p> -->
-                <?php //}
-                ?>
-
+                <td> categorie :<?= $row["nomCat"];?></td><br>
+            
+    <?php }  
+            ?>
             </tr>
-        <?php }
+                </button>
+                </form>
+        <?php 
+        }
 
     public function afficherCat($req)
     {
@@ -124,7 +121,7 @@ class VueRdv extends vueGenerique
                     $id = $line["idCat"];
                     $nomCategorie = $line["nomCat"];
                 ?>
-                    <button name="categorie" value=<?= $id ?>>
+                    <button class="btn btn-outline-secondary" name="categorie" value=<?= $id ?>>
                         <?= $nomCategorie; ?>
                     </button>
 
