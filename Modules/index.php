@@ -10,7 +10,7 @@ session_start();
 //passwd : rupapare
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">

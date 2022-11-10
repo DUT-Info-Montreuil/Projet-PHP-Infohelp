@@ -80,16 +80,14 @@ class VueRdv extends vueGenerique
         ?>
             <tr>
                 <br>
-                <input type="submit" name="tec" value="<?php echo $row['idTechnicien'];?>">
-                    <td> id : <?= $row['idTechnicien']?></td>
-                <br>
+                <td> n° : <?= $row['idTechnicien']?></td><br>
                 <td> nom : <?= $row['nom']; ?></td><br>
                 <td> prenom : <?= $row['prenom']; ?></td><br>
                 <td> categorie :<?= $row["nomCat"];?></td><br>
-            </tr>
+                
+                <label>Choisir le technicien n° </label><input class="btn btn-outline-secondary" type="submit" name="tec" value="<?php echo $row['idTechnicien'];?>"> 
 
-        
-        <button class="btn btn-outline-secondary">Confirmer</button>
+            </tr>
                 <?php 
 
             } 
@@ -114,7 +112,7 @@ class VueRdv extends vueGenerique
                 ?>
                     <button class="btn btn-outline-secondary" name="categorie" value=<?= $id ?>>
                         <?= $nomCategorie; ?>
-                    </button>
+                    </button></br>
 
                 <?php
                 }

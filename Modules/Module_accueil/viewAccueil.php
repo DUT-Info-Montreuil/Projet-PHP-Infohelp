@@ -16,7 +16,12 @@ class ViewAccueil extends vueGenerique
         </div>
 
         <section>
-            <h1><br><br><br><p>Bienvenu sur InfoHelp <br>La plateforme qui traite votre problème numérique à coup portant et en un temps éclair<br>Mais sur toi l’Eternel se lève, Sur toi sa gloire apparaît. » </p><br><br><br><br><br><br><br><br><p>Nos services</p></h1>
+        <div id="bienvenue">  
+          <h1><br><br><br><p>Bienvenu sur InfoHelp <br>
+            La plateforme qui traite votre problème numérique à coup portant et en un temps éclair<br>
+            Mais sur toi l’Eternel se lève, Sur toi sa gloire apparaît. » </p>
+        </div>  
+            <br><br><br><br><br><br><p id="nosServices">Nos services</p></h1>
             <div id="d1">
               <div class="card" style="width: 25rem;" id="c1">
                 <img src="images/conseil.webp" alt="" >

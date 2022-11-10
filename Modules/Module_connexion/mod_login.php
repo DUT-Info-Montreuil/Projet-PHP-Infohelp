@@ -20,9 +20,6 @@ class moduleLogin
             case "b1":
                 $this->control->getModele()->add_log_in();
                 break;
-
-
-
             case "connexion":
                 $this->control->getVue()->showConnection();
                 break;
@@ -35,6 +32,8 @@ class moduleLogin
                     $canDisconnect = false;
 
                     echo "dans l'exception veuillez vous connectez";
+                    header("Location: index.php?Modules=Module_connexion&action=connexion");
+                    die();
                     $this->control->getVue();
                 }
                 if ($canDisconnect == true) {

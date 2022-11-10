@@ -57,9 +57,14 @@ class modeleLogin extends ConnexionUI
             } else {
                 echo "completer tous les champs ";
             }
-        } else
-            echo "boolean ";
+        } else{
+            header("Location: index.php?Modules=Module_connexion&action=connexion");
+            die(); 
+            echo "erreur de connexion";
+
+        }
     }
+
     public function log_out()
     {
         //echo $_SESSION['email'] . ", Vous êtes déconnecté sous l'userIDentifiant : " . $_SESSION['userID'];
