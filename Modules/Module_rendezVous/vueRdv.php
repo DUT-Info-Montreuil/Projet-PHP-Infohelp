@@ -18,18 +18,78 @@ class VueRdv extends vueGenerique
             <input type="time" name="heure" required>
             <input type="hidden" name="tec" value="<?=$_POST['tec']?>">
         </label>
-        <p><button class="btn btn-outline-secondary" value=<?=$_POST['tec']?>>Confirmer</button></p>
+        <button class="btn btn-outline-secondary" value=<?=$_POST['tec']?>>Confirmer</button>
     </form>
 
 <?php
     }
 
+
+    public function afficherRdv($data)
+    {
+?>
+
+        <body>
+            <form action="index.php?Modules=Module_rendezVous&action=rdvTechnicien" method="post">
+            <?php
+                foreach ($data as $rdv) { 
+                    $idRdv=$rdv["idRdv"];
+                    $dateRdv=$rdv["dateRDV"];
+                    $heureRdv=$rdv["horaire"];
+                    $nomTechnicien=$rdv["nom"];
+                    $prenomTechnicien=$rdv["prenom"];
+
+                ?>                        
+                    <div>
+                        <h3>Rendez-vous<h3></br>
+                    </div>
+                    <label>Technicien: <?= $nomTechnicien." ".$prenomTechnicien?></br>
+                    Le <?=$dateRdv?>, à <?=$dateRdv?></label></br>
+                    
+                    <label>Mettre une note au technicien (note/5): </label>
+                    <input placeholder="facultatif" minlength="0" maxlength="1" size="3" type="text" name="note"></br>
+                    <p id="AnnulerRdv">Annuler le rendez-vous <input type="checkbox" name="boutonAnnuler" ></p>
+                    <input type="hidden" name="idRdv" value="<?=$idRdv?>">
+
+                    <button class="btn btn-outline-secondary">Confirmer</button>
+                <?php
+                }
+                ?> 
+            </form>
+        </body>
+
+        </html>
+    <?php
+    }
+
+
     public function afficherRdvUtilisateur($data)
     {
         ?>
-        <form action="index.php?Modules=Module_rendezVous&action=retirerRdv" method="POST">
+        <form action="index.php?Modules=Module_rendezVous&action=afficherRdv" method="POST">
+        <label>Selectionnez le rendez-vous vous souhaitez consulter:</label></br>
+        <?php
+        foreach ($data as $rdv) { 
+            $idRdv=$rdv["idRdv"];
+            $dateRdv=$rdv["dateRDV"];
+            $nomTechnicien=$rdv["nom"];
+
+            ?>
+            <button class="btn btn-outline-secondary" name="idRdv" value="<?php echo $idRdv;?>">
+            <?php echo $nomTechnicien.", le ".$dateRdv;?>
+            </button>
+
+        <?php
+        }
+        ?> 
+
+        </form>
+
+
+        <!-- <form action="index.php?Modules=Module_rendezVous&action=retirerRdv" method="POST">
         <label>Selectionnez le rendez-vous que vous souhaitez annuler:</label></br>
         <?php
+        /*
         foreach ($data as $rdv) { 
             $idRdv=$rdv["idRdv"];
             $horaireRdv=$rdv["horaire"];
@@ -42,14 +102,18 @@ class VueRdv extends vueGenerique
             </button>
 
         <?php
-        }
+        }*/
         ?> 
-
-        </form>
+        
+        </form> -->
+        
         
    
 <?php
     }
+
+
+
 
 
 

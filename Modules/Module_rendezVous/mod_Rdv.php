@@ -14,26 +14,37 @@ class moduleRdv
         $this->action = isset($_GET['action']) ? $_GET['action'] : "rien";
         switch ($this->action) {
 
-             case "prendreRdv":
-                
+            case"prendreRdv":
                 $this->control->getVue()->affichageFormRdv();
                 break; 
+
             case "ajoutRdv":
-                var_dump($_POST['tec']);
-                $idtec=$_POST['tec'];
                 $this->control->getModele()->ajouterRdv();
                 break;
+
+            case "afficherRdv":
+                $this->control->getRdv();
+                break;
+
             case "retirerRdv":
                 $this->control->getModele()->annulerRdv();
                 break;
-            case "annulerRdv":
-                $this->control->getRdv();
+
+            case "afficherListeRdv":
+                $this->control->getListeRdv();
                 break;
+                
             case 'liste_tech':
                 $this->control->listeTechnicien();
-            case 'liste_catégorie':
+            
+            case 'liste_catégorie':    
                 $this->control->listeCategorie();
                 break;
+
+            case 'rdvTechnicien':    
+                $this->control->getModele()->modifRdv();
+                break;
+
             default:
                 break;
         }

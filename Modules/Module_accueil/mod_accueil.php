@@ -17,6 +17,10 @@ class moduleAccueil
             case "Accueil":
                 $this->control->getVue()->affichePageAccueil();
                 break;
+
+            case "Profil":
+                $this->control->getVue()->affichePageProfil();
+                break;
             default:
                 break;
         }

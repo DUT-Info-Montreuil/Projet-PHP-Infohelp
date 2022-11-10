@@ -20,12 +20,19 @@ class controleurRdv
     {
         return $this->modele;
     }
-    public function getRdv()
+
+    public function getListeRdv()
     {
         $resultat=$this->modele->getListeRdv();
         $this->vue->afficherRdvUtilisateur($resultat);
     }
 
+    public function getRdv()
+    {
+        $resultat=$this->modele->getRdv();
+        $this->vue->afficherRdv($resultat);
+    }
+   
     public function listeTechnicien()
     {
         $res=$this->modele->getlistTechnicien();

@@ -28,7 +28,7 @@ class modeleRdv extends ConnexionUI
     public function getListeRdv()
     {
         $iduser=$_SESSION['userID'];
-        $requete = self::$bdd->prepare("SELECT * FROM `rendezvous` inner join `utilisateurs` on rendezvous.idUtilisateur=utilisateurs.userID WHERE idUtilisateur = '$iduser'");
+        $requete = self::$bdd->prepare("SELECT * FROM `utilisateurs` inner join `rendezvous` on rendezvous.idUtilisateur=utilisateurs.userID inner join techniciens on techniciens.idTechnicien = rendezvous.idTechnicien WHERE idUtilisateur = '$iduser'");
         $requete->execute();
         $recupRdv=$requete->fetchAll();
         
@@ -36,22 +36,48 @@ class modeleRdv extends ConnexionUI
 
     }
 
-    public function annulerRdv()
+    public function getRdv()
     {
-        if(isset($_POST['idRdv'])){
+
+        $idRDV=$_POST['idRdv'];
+        $requete = self::$bdd->prepare("SELECT * FROM `utilisateurs` inner join `rendezvous` on rendezvous.idUtilisateur=utilisateurs.userID inner join techniciens on techniciens.idTechnicien = rendezvous.idTechnicien WHERE idRdv = '$idRDV'");
+        $requete->execute();
+        $recupRdv=$requete->fetchAll();
+
+        return $recupRdv;
+
+    }
+
+    public function annulerRdv($idRdv)
+    {
             $idRdv=$_POST['idRdv'];
             echo $idRdv;
             $delete = self::$bdd->prepare("DELETE FROM `rendezvous` WHERE idRdv='$idRdv'");
             $delete->execute();
             echo"suppression effectuée";
-
-        }
-        else{
-            echo "erreur lors de l'execution de la requete SQL";
-    
-        }
     }
     
+    public function modifRdv()
+    {
+        if(isset($_POST['boutonAnnuler'])){
+            $idRdv=$_POST['idRdv'];
+            $this->annulerRdv($idRdv);
+        }
+
+        if(isset($_POST['note'])&&($_POST['note']!='')){
+            $note=$_POST['note'];
+            $idRdv=$_POST['idRdv'];
+            $this->ajoutNoteRdv($note,$idRdv);
+        }
+    }
+
+    public function ajoutNoteRdv($note,$idRdv)
+    {
+            echo $idRdv;
+            $requete = self::$bdd->prepare("UPDATE `rendezvous` SET note = '$note' WHERE idRdv = '$idRdv'");
+            $requete->execute();
+            echo"note ajoutée au rdv: ".$idRdv;
+    }
 
     public function envoiNotification($date,$heure)
     {
