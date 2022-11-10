@@ -18,8 +18,7 @@ class ViewAccueil extends vueGenerique
         <section>
         <div id="bienvenue">  
           <h1><br><br><br><p>Bienvenu sur InfoHelp <br>
-            La plateforme qui traite votre problème numérique à coup portant et en un temps éclair<br>
-            Mais sur toi l’Eternel se lève, Sur toi sa gloire apparaît. » </p>
+            La plateforme qui traite votre problème numérique à coup portant et en un temps éclair.<br></p>
         </div>  
             <br><br><br><br><br><br><p id="nosServices">Nos services</p></h1>
             <div id="d1">

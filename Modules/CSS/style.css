@@ -24,11 +24,11 @@ section img{
 } 
 
 #bienvenue{
+    font: italic 1.2em "Fira Sans", serif;
     width: 100%;
     text-align: center;
     margin: auto;
-    font-size: 250px;
-
+    color:blue;
 }
 
 #nosServices{
