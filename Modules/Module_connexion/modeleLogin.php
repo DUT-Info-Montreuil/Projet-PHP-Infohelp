@@ -10,29 +10,33 @@ class modeleLogin extends ConnexionUI
 
         echo "login methode \t";
 
+
         if (isset($_POST["email"]) && isset($_POST["password"])) {
+
+            /* if (isset($_POST["checkbox"])) {
+                $admin = 1;
+            } else {
+                $admin = 0;
+            } */
+
             $lastname = htmlspecialchars($_POST["last_name"]);
             $firstname = htmlspecialchars($_POST["first_name"]);
             $email = htmlspecialchars($_POST["email"]);
             $passwd = password_hash($_POST["password"], PASSWORD_DEFAULT);
-            $postAdress = htmlspecialchars($_POST["postal_address"]);;
-            $city = htmlspecialchars($_POST["city"]);;
-            $insert = self::$bdd->prepare('INSERT INTO `utilisateurs` (`last_name`, `first_name`, `email`, `password`, `postal_address`, `city`) VALUES (:par,:par2,:par3,:par4,:par5,:par6)');
+            $postAdress = htmlspecialchars($_POST["postal_address"]);
+            $city = htmlspecialchars($_POST["city"]);
 
-            $insert->execute(array(':par' => $lastname, ':par2' => $firstname, ':par3' => $email, ':par4' => $passwd, ':par5' => $postAdress, ':par6' => $city));
+            $insertUser = self::$bdd->prepare('INSERT INTO `utilisateurs` (`last_name`, `first_name`, `email`, `password`, `postal_address`, `city`, `admin`) VALUES (:par,:par2,:par3,:par4,:par5,:par6, :par7)');
+            $insertUser->execute(array(':par' => $lastname, ':par2' => $firstname, ':par3' => $email, ':par4' => $passwd, ':par5' => $postAdress, ':par6' => $city, ':par7' => 0));
+
+
             $recupuser = self::$bdd->prepare('SELECT * FROM `utilisateurs` WHERE `email` = ? and `password` = ?');
             $recupuser->execute(array($email, $passwd));
             echo "Good registration \t";
-
-
-            /*  if ($recupuser->rowCount() > 0) {
-                $_SESSION["email"] = $email;
-                $_SESSION["password"] = $passwd;
-                $_SESSION["userID"] = $recupuser->fetch()['userID'];
-            } */
         } else {
             echo "Pas adjout";
         }
+
         echo "Good registration \t";
         header("Location: index.php?Modules=Module_connexion&action=connexion");
         die();
@@ -57,11 +61,10 @@ class modeleLogin extends ConnexionUI
             } else {
                 echo "completer tous les champs ";
             }
-        } else{
+        } else {
             header("Location: index.php?Modules=Module_connexion&action=connexion");
-            die(); 
+            die();
             echo "erreur de connexion";
-
         }
     }
 
@@ -73,5 +76,12 @@ class modeleLogin extends ConnexionUI
         unset($_SESSION['password']);
         header("Location: index.php?Modules=Module_connexion&action=connexion");
         die();
+    }
+    public function getAdmin()
+    {
+        $req = self::$bdd->prepare('SELECT * FROM `utilisateurs` WHERE `admin` = 1');
+        $req->execute();
+        $nbr = $req->rowCount();
+        return $nbr;
     }
 }
