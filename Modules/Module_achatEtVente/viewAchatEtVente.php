@@ -45,7 +45,7 @@ class viewAchatEtVente extends vueGenerique
     {
 ?>
         <table class="tableau-style">
-        <form action="" method="POST">
+        <form action="index.php?Modules=Module_achatEtVente&action=acheter" method="POST">
             <label>Tous les articles</label></br>
             <thead>
               <tr>
@@ -60,7 +60,7 @@ class viewAchatEtVente extends vueGenerique
                 <?php
                 foreach($materiels as $materiel){?>
                 <tr>
-                <td><input type="button" value="<?=$materiel['idMateriel']?>"></td></input>
+                <td><input name="acheter" type="button" value="<?=$materiel['idMateriel']?>"></td></input>
                 <td><?= $materiel["nomMateriel"]?></td>
                 <td><?=$materiel["quantite"]?></td>
                 </tr>
