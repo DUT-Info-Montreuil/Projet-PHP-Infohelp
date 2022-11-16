@@ -46,8 +46,9 @@ class View extends vueGenerique
                     <input type="text" class="form-control" name="postal_address" required>
                     <label for="floatingInput">Code Postal</label>
                 </div>
+                <button class="btn btn-primary" type="submit">S'inscrire</button>
+
                 <!-- <div>
-                    <button class="btn btn-primary" type="submit">S'inscrire</button>
 
                     <input type="checkbox" name="checkbox">
                     <label for="floatingInput">Je suis un technicien</label>

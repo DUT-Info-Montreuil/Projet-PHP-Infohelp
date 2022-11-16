@@ -1,6 +1,7 @@
 <?php
 require_once('Module_connexion/mod_login.php');
 require_once('Module_rendezVous/mod_Rdv.php');
+require_once('ADMIN/mod_admin.php');
 require_once('Module_accueil/mod_accueil.php');
 require_once('Composant_Footer/module_footer.php');
 require_once('Composant_Header/module_header.php');
@@ -50,6 +51,9 @@ session_start();
                 case 'Module_accueil':
                     $module = new moduleAccueil();
                     break;
+                case 'ADMIN':
+                    $module = new moduleAdmin();
+                    break;
                 default:
                     # code...
                     break;
@@ -59,19 +63,9 @@ session_start();
 
         $result = $vue_gen->getAffichage();
 
-
-
-        /*
-        if (isset($_SESSION['email'])) {
-            echo '<a href="index.php?Modules=Module_connexion&action=deconnexion">Se deconnecter</a><br>';
-        } else {
-
-            echo "<a href=\"index.php?Modules=Module_connexion&action=sign-up\">S'inscrire</a><br>";
-            echo "<a href=\"index.php?Modules=Module_connexion&action=connexion\">Se connecter</a><br>";
-        }*/
         echo "<a href=\"index.php?Modules=Module_rendezVous&action=prendreRdv\">Prendre un rdv</a><br>";
         echo "<a href=\"index.php?Modules=Module_rendezVous&action=annulerRdv\">Annuler un rdv</a><br>";
-
+        echo "<a href=\"index.php?Modules=ADMIN&action=Afficher_user\">afficher les utilisateurs</a><br>";
 
 
         echo $result;

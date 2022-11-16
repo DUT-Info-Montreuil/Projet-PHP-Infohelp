@@ -77,11 +77,4 @@ class modeleLogin extends ConnexionUI
         header("Location: index.php?Modules=Module_connexion&action=connexion");
         die();
     }
-    public function getAdmin()
-    {
-        $req = self::$bdd->prepare('SELECT * FROM `utilisateurs` WHERE `admin` = 1');
-        $req->execute();
-        $nbr = $req->rowCount();
-        return $nbr;
-    }
 }
