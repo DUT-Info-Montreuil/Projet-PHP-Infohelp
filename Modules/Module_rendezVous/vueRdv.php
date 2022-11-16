@@ -38,6 +38,10 @@ class VueRdv extends vueGenerique
                     $heureRdv=$rdv["horaire"];
                     $nomTechnicien=$rdv["nom"];
                     $prenomTechnicien=$rdv["prenom"];
+                    $note=$rdv["note"];
+                    $idTechnicien=$rdv["idTechnicien"];
+                    $idUtilisateur=$rdv["idUtilisateur"];
+
 
                 ?>                        
                     <div>
@@ -47,9 +51,15 @@ class VueRdv extends vueGenerique
                     Le <?=$dateRdv?>, à <?=$dateRdv?></label></br>
                     
                     <label>Mettre une note au technicien (note/5): </label>
-                    <input placeholder="facultatif" minlength="0" maxlength="1" size="3" type="text" name="note"></br>
+                    <input placeholder="<?=$note?>" minlength="0" maxlength="1" size="3" type="text" name="note"></br>
                     <p id="AnnulerRdv">Annuler le rendez-vous <input type="checkbox" name="boutonAnnuler" ></p>
+                    
+                    <p>Mettre ce technicien en favoris if()
+                        <input type="checkbox" name="MettreFavoris"></p>
+                    
                     <input type="hidden" name="idRdv" value="<?=$idRdv?>">
+                    <input type="hidden" name="idTechnicien" value="<?=$idTechnicien?>">
+                    <input type="hidden" name="idUtilisateur" value="<?=$idUtilisateur?>">
 
                     <button class="btn btn-outline-secondary">Confirmer</button>
                 <?php
@@ -185,6 +195,24 @@ class VueRdv extends vueGenerique
             </form>
     <?php
     }
+    public function afficherTechnicienFavoris($data)
+    {
+        ?>
+                <label>Liste de mes techniciens favoris: </label></br>
+                <?php
+                foreach ($data as $tech) {
+                    $nom = $tech["nom"];
+                    $prenom = $tech["prenom"];
+                ?>
+                    <label><?=$nom?> , <?=$prenom?></label>
+
+                <?php
+                }
+                ?>
+    <?php
+    }
+
+    
 }
 ?>
 
