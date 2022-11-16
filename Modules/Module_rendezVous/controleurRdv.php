@@ -44,4 +44,10 @@ class controleurRdv
         $resultat=$this->modele->getCategories();
         $this->vue->afficherCat($resultat);
     }
+
+    public function getTechnicienFavoris()
+    {
+        $resultat=$this->modele->getFavoris();
+        $this->vue->afficherTechnicienFavoris($resultat);
+    }
 }

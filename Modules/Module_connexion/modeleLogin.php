@@ -20,8 +20,6 @@ class modeleLogin extends ConnexionUI
             $insert = self::$bdd->prepare('INSERT INTO `utilisateurs` (`last_name`, `first_name`, `email`, `password`, `postal_address`, `city`) VALUES (:par,:par2,:par3,:par4,:par5,:par6)');
 
             $insert->execute(array(':par' => $lastname, ':par2' => $firstname, ':par3' => $email, ':par4' => $passwd, ':par5' => $postAdress, ':par6' => $city));
-            $recupuser = self::$bdd->prepare('SELECT * FROM `utilisateurs` WHERE `email` = ? and `password` = ?');
-            $recupuser->execute(array($email, $passwd));
             echo "Good registration \t";
 
 
@@ -33,9 +31,10 @@ class modeleLogin extends ConnexionUI
         } else {
             echo "Pas adjout";
         }
-        echo "Good registration \t";
         header("Location: index.php?Modules=Module_connexion&action=connexion");
         die();
+        echo "Good registration \t";
+
         return true;
     }
     public function connect()
@@ -62,6 +61,29 @@ class modeleLogin extends ConnexionUI
             die(); 
             echo "erreur de connexion";
 
+        }
+    }
+
+    public function getUtilisateur()
+    {
+        $email=$_SESSION['email'];
+        $recupuser = self::$bdd->prepare("SELECT * FROM `utilisateurs` WHERE `email` = '$email'");
+        $recupuser->execute();
+        $user=$recupuser->fetchAll();
+        return $user;
+    }
+
+    public function modifInformationsUtilisateur()
+    {
+        if (isset($_POST["email"]) || isset($_POST["first_name"]) || isset($_POST["last_name"]) || isset($_POST["city"]) || isset($_POST["password"])|| isset($_POST["postal_address"])) {
+            $lastname = htmlspecialchars($_POST["last_name"]);
+            $firstname = htmlspecialchars($_POST["first_name"]);
+            $email = htmlspecialchars($_POST["email"]);
+            $postal_address = htmlspecialchars($_POST["postal_address"]);;
+            $city = htmlspecialchars($_POST["city"]);
+            $userID=$_SESSION['userID'];
+            $update = self::$bdd->prepare("UPDATE `utilisateurs` SET `email`= '$email' , `first_name`= '$firstname' ,`last_name`= '$lastname' , `city`= '$city' , `postal_address`= '$postal_address' WHERE `userID`= '$userID'");
+            $update->execute();
         }
     }
 

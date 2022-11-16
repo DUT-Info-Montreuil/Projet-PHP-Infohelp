@@ -5,9 +5,9 @@ class VueHeader extends vueGenerique
 {
     public function __construct()
     {
-        $this->afficherFooter();
+        $this->afficherHeader();
     }
-    public function afficherFooter()
+    public function afficherHeader()
     {
 ?>
     

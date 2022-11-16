@@ -20,4 +20,10 @@ class controlLogin
     {
         return $this->modele;
     }
+    public function getUtilisateurAchanger()
+    {
+        $data=$this->modele->getUtilisateur();
+        $this->getVue()->afficherFormChangerInfo($data);
+
+    }
 }

@@ -47,6 +47,9 @@ class moduleRdv
                     $this->control->getModele()->modifRdv();
                     break;
 
+                case 'afficherFavoris':    
+                    $this->control->getTechnicienFavoris();
+                    break;
                 default:
                     break;
             }

@@ -109,6 +109,73 @@ class View extends vueGenerique
         </html>
 <?php
     }
+
+
+
+    public function afficherFormChangerInfo($data)
+    {
+        foreach ($data as $utilisateur) { 
+
+?>
+
+        <!DOCTYPE html>
+
+        
+        <html lang="en">
+        <body>
+        <form action="index.php?Modules=Module_connexion&action=changement" method="POST">
+        <img class="mb-4" src="images/logo.PNG" alt="" width="72" height="57">
+        <h1 class="h3 mb-3 fw-normal">Changer les informations</h1>
+
+        <div class="form-floating">
+        <input type="text" class="form-control" value="<?=$utilisateur['first_name']?>" name="first_name">
+        <label for="floatingInput">Prenom</label>
+        </div>
+        <div class="form-floating">
+        <input type="text" class="form-control" value="<?=$utilisateur['last_name']?>" name="last_name" >
+        <label for="floatingInput">Nom</label>
+        </div>
+        <div class="form-floating">
+        <input type="email" class="form-control" value="<?=$utilisateur['email']?>" name="email">
+        <label for="floatingInput">Email</label>
+        </div>
+        <div class="form-floating">
+        <input type="text" class="form-control" name="password" >
+        <label for="floatingInput">Mot de passe</label>
+        </div>
+        <div class="form-floating">
+        <input type="text" class="form-control" value="<?=$utilisateur['city']?>" name="city">
+        <label for="floatingInput">Ville</label>
+        </div>
+        <div class="form-floating">
+        <input  type="text" class="form-control" value="<?=$utilisateur['postal_address']?>" name="postal_address">
+        <label for="floatingInput">Code Postal</label>
+        </div>
+        <button class="btn btn-primary" type="submit">Confirmer</button>
+    </form>
+
+            <style>
+                form {
+                    width: 500px;
+                    margin: auto;
+                    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+                    padding: 30px;
+                }
+                .form-floating{
+                    margin-bottom:15px;
+                }
+  
+            </style>
+        </body>
+
+        </html>
+
+
+    
+
+    <?php
+        }
+    }
 }
 
 ?>
