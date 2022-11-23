@@ -18,9 +18,9 @@ class modAchatEtVente
             case "vente":
                 $this->control->getMateriels();
                 break;
-            case "acheter":
-                var_dump($_POST["idMateriel"]);
-                $this->control->getModele()->acheterMateriel();
+            case "afficher":
+/*                 $this->control->getModele()->acheterMateriel(); */
+                $this->control->getVue()->afficheDetailMateriel();
                 break;
             default:
                 break;

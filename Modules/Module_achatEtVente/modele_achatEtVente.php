@@ -32,6 +32,3 @@ class modeleAchatEtVente extends ConnexionUI
         }
     }
 }
-
-
-
