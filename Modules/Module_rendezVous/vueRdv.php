@@ -42,8 +42,8 @@ class VueRdv extends vueGenerique
                     $idTechnicien=$rdv["idTechnicien"];
                     $idUtilisateur=$rdv["idUtilisateur"];
 
-                    $fav= isset($_GET['MettreFavoris']) ? $_GET['MettreFavoris'] : 0;
-                ?>                        
+/*                     $fav= isset($_GET['MettreFavoris']) ? $_GET['MettreFavoris'] : 0;
+ */                ?>                        
                     <div>
                         <h3>Rendez-vous<h3></br>
                     </div>

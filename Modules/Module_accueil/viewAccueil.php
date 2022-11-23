@@ -74,7 +74,7 @@ class ViewAccueil extends vueGenerique
     <tr>        
 
                 <br>
-                <td> <a href="index.php?Modules=Module_connexion&action=changementInfo">Changer mes informations</a></td><br>
+                <td> <a href="index.php?Modules=Module_connexion&action=monProfil">Changer mes informations</a></td><br>
                 <td> <a href="index.php?Modules=Module_rendezVous&action=afficherListeRdv">Voir mes rendez-vous</a></td><br>
                 <td> <a href="index.php?Modules=Module_rendezVous&action=afficherFavoris">Voir mes techniciens favoris</a></td><br>
             </tr>

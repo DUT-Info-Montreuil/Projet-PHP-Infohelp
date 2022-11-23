@@ -70,7 +70,7 @@ class modeleLogin extends ConnexionUI
         $email=$_SESSION['email'];
         $recupuser = self::$bdd->prepare("SELECT * FROM `utilisateurs` WHERE `email` = '$email'");
         $recupuser->execute();
-        $user=$recupuser->fetchAll();
+        $user=$recupuser->fetch();
         return $user;
     }
 

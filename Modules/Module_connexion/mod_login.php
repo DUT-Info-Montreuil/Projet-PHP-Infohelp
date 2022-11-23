@@ -43,7 +43,7 @@ class moduleLogin
                 $this->control->getModele()->log_out();
                 break;
 
-            case "changementInfo":
+            case "monProfil":
                 $this->control->getUtilisateurAchanger();
                 break;  
                 
