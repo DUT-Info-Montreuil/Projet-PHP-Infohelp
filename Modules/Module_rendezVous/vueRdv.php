@@ -42,7 +42,7 @@ class VueRdv extends vueGenerique
                     $idTechnicien=$rdv["idTechnicien"];
                     $idUtilisateur=$rdv["idUtilisateur"];
 
-
+                    $fav= isset($_GET['MettreFavoris']) ? $_GET['MettreFavoris'] : 0;
                 ?>                        
                     <div>
                         <h3>Rendez-vous<h3></br>
@@ -52,16 +52,18 @@ class VueRdv extends vueGenerique
                     
                     <label>Mettre une note au technicien (note/5): </label>
                     <input placeholder="<?=$note?>" minlength="0" maxlength="1" size="3" type="text" name="note"></br>
-                    <p id="AnnulerRdv">Annuler le rendez-vous <input type="checkbox" name="boutonAnnuler" ></p>
-                    
-                    <p>Mettre ce technicien en favoris if()
-                        <input type="checkbox" name="MettreFavoris"></p>
+                    <label for="MettreFavoris">Mettre ce technicien en favoris </label>
+                        <input type="checkbox" class="form-check-input" id="MettreFavoris" name="MettreFavoris" value="1" <?php if(isset($_GET['MettreFavoris'])==1){echo"checked";}?>></br>
+                        <button class="btn btn-outline-secondary">Confirmer</button>
+
+
+                        <button type="submit" name="boutonAnnuler" class="btn btn-outline-danger">Annuler le rendez-vous</button>
+
                     
                     <input type="hidden" name="idRdv" value="<?=$idRdv?>">
                     <input type="hidden" name="idTechnicien" value="<?=$idTechnicien?>">
                     <input type="hidden" name="idUtilisateur" value="<?=$idUtilisateur?>">
 
-                    <button class="btn btn-outline-secondary">Confirmer</button>
                 <?php
                 }
                 ?> 

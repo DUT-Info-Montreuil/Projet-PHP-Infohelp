@@ -41,6 +41,7 @@ class VueHeader extends vueGenerique
             ?>    
             </div>
         </header>
+            </br>
     </div>
 
         <?php

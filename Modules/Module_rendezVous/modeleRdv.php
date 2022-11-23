@@ -108,7 +108,7 @@ class modeleRdv extends ConnexionUI
     {
         $to = $_SESSION['email'];
         $subject = "Confirmation rendez-vous";
-        $message = "Bonjour, votre rendez vous a bien été pris en compte.\nNous vous attendons donc le ".$date ." à ". $heure." dans nos locaux. A bientôt !  ";
+        $message = "Bonjour, votre rendez vous a bien été pris en compte.\nLe technicien se presentera donc à vous le ".$date ." à ". $heure." . A bientôt !  ";
         $headers = "Content-Type: text/plain; charset=utf-8\r\n";
         $headers .= "From: infoHelp@gmail.com\r\n";
 
@@ -142,7 +142,7 @@ class modeleRdv extends ConnexionUI
 
     public function getFavoris()
     {
-        $requete = self::$bdd->prepare("SELECT * FROM `favoris` inner join `techniciens` on  favoris.idTechnicien = techniciens.idTechnicien ");
+        $requete = self::$bdd->prepare("SELECT DISTINCT * FROM `favoris` inner join `techniciens` on  favoris.idTechnicien = techniciens.idTechnicien ");
         $requete->execute();
         $recupFavoris=$requete->fetchAll();
         return $recupFavoris;

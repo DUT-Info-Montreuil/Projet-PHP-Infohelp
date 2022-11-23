@@ -19,8 +19,11 @@ class moduleAccueil
                 break;
 
             case "Profil":
-                $this->control->getVue()->affichePageProfil();
+                if(isset($_SESSION['email'])){
+                    $this->control->getVue()->affichePageProfil();
+                }else{echo "connectez vous";}
                 break;
+            
             default:
                 break;
         }

@@ -36,7 +36,7 @@ session_start();
         $vue_gen = new vueGenerique();
 
         $header = new moduleHeader();
-
+        
 
         if (isset($_GET["Modules"])) {
             $module = $_GET['Modules'];
@@ -58,20 +58,6 @@ session_start();
 
 
         $result = $vue_gen->getAffichage();
-
-
-
-        /*
-        if (isset($_SESSION['email'])) {
-            echo '<a href="index.php?Modules=Module_connexion&action=deconnexion">Se deconnecter</a><br>';
-        } else {
-
-            echo "<a href=\"index.php?Modules=Module_connexion&action=sign-up\">S'inscrire</a><br>";
-            echo "<a href=\"index.php?Modules=Module_connexion&action=connexion\">Se connecter</a><br>";
-        }*/
-        echo "<a href=\"index.php?Modules=Module_rendezVous&action=prendreRdv\">Prendre un rdv</a><br>";
-        echo "<a href=\"index.php?Modules=Module_rendezVous&action=annulerRdv\">Annuler un rdv</a><br>";
-
 
 
         echo $result;
