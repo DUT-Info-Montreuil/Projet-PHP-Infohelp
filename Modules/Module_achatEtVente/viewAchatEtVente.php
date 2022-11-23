@@ -59,8 +59,10 @@ class viewAchatEtVente extends vueGenerique
 
                 <?php
                 foreach($materiels as $materiel){?>
+
                 <tr>
-                <td><input name="acheter" type="button" value="<?=$materiel['idMateriel']?>"></td></input>
+<!--                 <td><button name="idMateriel" value="<?=$materiel['idMateriel']?>">Ajouter dans panier</button></td> -->
+                <td><button name="idMateriel" value="<?=$materiel['idMateriel']?>">Ajouter</button></td>
                 <td><?= $materiel["nomMateriel"]?></td>
                 <td><?=$materiel["quantite"]?></td>
                 </tr>

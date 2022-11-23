@@ -7,21 +7,33 @@ class modeleAchatEtVente extends ConnexionUI
     }
 
     public function getListeMateriel(){
-        $idMateriel=$_SESSION['userID'];
-        $requete = self::$bdd->prepare("SELECT * FROM `materiels`");
+        $requete = self::$bdd->prepare("SELECT * FROM `materiels` WHERE `quantite`");
         $requete->execute();
         $recupMateriels=$requete->fetchAll();
         return $recupMateriels;
     }
 
     public function acheterMateriel(){
-        if(isset($_POST['acheter'])){
-            $idMateriel=$_SESSION['idMateriel'];
-            $requete = self::$bdd->prepare("UPDATE `materiels` SET 'quantite'= 'quantite'."-1 . "WHERE idMateriel='$idMateriel'");
+            $idMateriel=$_POST['idMateriel'];
+            $req_quantite =  self::$bdd->prepare("SELECT `quantite` FROM `materiels` WHERE idMateriel = $idMateriel");
+            $quantite = $req_quantite->execute();    
+            $requete = self::$bdd->prepare("UPDATE `materiels` SET `quantite`= (`quantite`-1) WHERE idMateriel='$idMateriel'");
             $requete->execute();
-            $recupMateriel=$requete->fetchAll();
-            
-            return $recupMateriel;
+            $this->verif_quantite($idMateriel);
+            header("Location: index.php?Modules=Module_achatEtVente&action=vente");
+            die();
+    }
+
+    public function verif_quantite($idMateriel){
+        $req_quantite =  self::$bdd->prepare("SELECT `quantite` FROM `materiels` WHERE idMateriel = $idMateriel");
+        $req_quantite->execute();
+        $res=$req_quantite->fetch();
+        if($res == "0"){
+            $requete = self::$bdd->prepare("DELETE FROM `materiels` WHERE `idMateriel` = '$idMateriel'");
+            $requete->execute();
         }
     }
 }
+
+
+
