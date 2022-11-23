@@ -7,7 +7,7 @@ class modeleAchatEtVente extends ConnexionUI
     }
 
     public function getListeMateriel(){
-        $requete = self::$bdd->prepare("SELECT * FROM `materiels` WHERE `quantite`");
+        $requete = self::$bdd->prepare("SELECT * FROM `materiels`");
         $requete->execute();
         $recupMateriels=$requete->fetchAll();
         return $recupMateriels;
@@ -16,7 +16,6 @@ class modeleAchatEtVente extends ConnexionUI
     public function acheterMateriel(){
             $idMateriel=$_POST['idMateriel'];
             $req_quantite =  self::$bdd->prepare("SELECT `quantite` FROM `materiels` WHERE idMateriel = $idMateriel");
-            $quantite = $req_quantite->execute();    
             $requete = self::$bdd->prepare("UPDATE `materiels` SET `quantite`= (`quantite`-1) WHERE idMateriel='$idMateriel'");
             $requete->execute();
             $this->verif_quantite($idMateriel);
@@ -25,10 +24,9 @@ class modeleAchatEtVente extends ConnexionUI
     }
 
     public function verif_quantite($idMateriel){
-        $req_quantite =  self::$bdd->prepare("SELECT `quantite` FROM `materiels` WHERE idMateriel = $idMateriel");
+        $req_quantite =  self::$bdd->prepare("SELECT * FROM `materiels` WHERE idMateriel = $idMateriel and quantite='0'");
         $req_quantite->execute();
-        $res=$req_quantite->fetch();
-        if($res == "0"){
+        if($req_quantite ->rowCount()>0){
             $requete = self::$bdd->prepare("DELETE FROM `materiels` WHERE `idMateriel` = '$idMateriel'");
             $requete->execute();
         }
