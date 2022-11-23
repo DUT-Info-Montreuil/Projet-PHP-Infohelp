@@ -5,12 +5,16 @@ class modeleAdmin extends ConnexionUI
     public function __construct()
     {
     }
-    public function getAdmin()
+    public function verifAdmin()
     {
+        $present = false;
         $req = self::$bdd->prepare('SELECT * FROM `utilisateurs` WHERE `admin` = 1');
         $req->execute();
-        $nbr = $req->rowCount();
-        return $nbr;
+
+        $present = true;
+
+
+        return $present;
     }
 
     public function afficheUser()
@@ -22,9 +26,9 @@ class modeleAdmin extends ConnexionUI
     }
     public function suppUser()
     {
-        if (isset($_POST['userID'])) {
-            $iduser = $_POST['userID'];
-            $delete = self::$bdd->prepare("DELETE FROM `utilisateurs` where first_name = '$iduser'");
+        if (isset($_POST['idUser'])) {
+            $iduser = $_POST['idUser'];
+            $delete = self::$bdd->prepare("DELETE FROM `utilisateurs` where `userID` = '$iduser'");
             $delete->execute();
         }
     }

@@ -49,6 +49,7 @@ class modeleLogin extends ConnexionUI
         if (($tab = $recupuser->fetch()) === false) {
             throw new Exception("Error Processing Request", 1);
         }
+        //Condition pour la connexion des techniciens et admin
 
         if (password_verify($_POST['password'], $tab['password'])) {
             if ($recupuser->rowCount() > 0) {

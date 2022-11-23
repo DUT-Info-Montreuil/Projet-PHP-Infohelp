@@ -12,9 +12,15 @@ class moduleAdmin
         ConnexionUI::initConnexion();
         $this->control = new controlAdmin;
         $this->action = isset($_GET['action']) ? $_GET['action'] : "rien";
+
+
+
         switch ($this->action) {
             case "Afficher_user":
                 $this->control->listeUSer();
+                break;
+            case "retirerUser":
+                $this->control->getModele()->suppUser();
                 break;
             default:
                 break;
