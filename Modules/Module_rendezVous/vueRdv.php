@@ -179,22 +179,35 @@ class VueRdv extends vueGenerique
     public function afficherCat($req)
     {
         ?>
-            <form action="index.php?Modules=Module_rendezVous&action=liste_tech" method="POST">
-                <label>Selectionnez la categorie que vous souhaitez :</label></br>
-                <?php
-                foreach ($req->fetchAll() as $line) {
-                    $id = $line["idCat"];
-                    $nomCategorie = $line["nomCat"];
-                ?>
-                    <button class="btn btn-outline-secondary" name="categorie" value=<?= $id ?>>
+
+<form id="formCategorie" action="index.php?Modules=Module_rendezVous&action=liste_tech" method="POST">
+    <label>Selectionnez la categorie que vous souhaitez :</label></br>
+    <?php
+        $id = $req[1]["idCat"];
+        $nomCategorie = $req[1]["nomCat"];
+    ?>
+        <div id="categorie" class="d-block">
+            <button onclick="afficheSousCat()" name="categorie">
+                Reparation
+            </button>
+        <div>
+            
+            <div id="div_categorie" class="d-none">
+                <button type="submit" class="btn btn-outline-secondary" name="categorie" value=<?= $req[0]["idCat"] ?> name="categorie">
+                    <?=$req[0]["nomCat"];?>
+                </button>
+
+                <button type="submit" class="btn btn-outline-secondary" name="categorie" value=<?= $id ?>>
                         <?= $nomCategorie; ?>
-                    </button></br>
+                </button>
+            <div>
 
-                <?php
-                }
-                ?>
+    <?php
+    
+    ?>
 
-            </form>
+</form>
+
     <?php
     }
     public function afficherTechnicienFavoris($data)
@@ -212,6 +225,55 @@ class VueRdv extends vueGenerique
                 }
                 ?>
     <?php
+    /*                           <div id="div_categorie" class="d-none">
+                <button id="squeez" onclick="afficheSousCat1()" name="categorie">
+                    <?=$req[0]["nomCat"];?>
+                </button>
+            <div>
+
+            <div id="div_categorie1" class="d-none">
+                <button type="submit" class="btn btn-outline-secondary" name="categorie" value=<?= $id ?>>
+                        <?= $nomCategorie; ?>
+                </button>
+            <div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <form id="formCategorie" action="index.php?Modules=Module_rendezVous&action=liste_tech" method="POST">
+    <label>Selectionnez la categorie que vous souhaitez :</label></br>
+    <?php
+        $id = $req[1]["idCat"];
+        $nomCategorie = $req[1]["nomCat"];
+    ?>
+        <div id="categorie">
+            <button id="squeez" onclick="afficheSousCat()" name="categorie">
+                Reparation
+            </button>
+        <div>
+            
+            <div id="div_categorie" class="d-none">
+                <button id="squeez" onclick="afficheSousCat1()" name="categorie">
+                    <?=$req[0]["nomCat"];?>
+                </button>
+            <div>
+
+            <div id="div_categorie1" class="d-none">
+                <button type="submit" class="btn btn-outline-secondary" name="categorie" value=<?= $id ?>>
+                        <?= $nomCategorie; ?>
+    </button>
+            <div>
+
+    <?php
+    
+    ?>
+
+</form>*/ 
     }
 
     

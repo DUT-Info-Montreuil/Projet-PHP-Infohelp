@@ -77,20 +77,25 @@ class View extends vueGenerique
         <html lang="fr">
 
         <body>
-        <form action="index.php?Modules=Module_connexion&action=b2" method="POST">
-    <img class="mb-4" src="images/logo.PNG" alt="" width="72" height="57">
-    <h1 class="h3 mb-3 fw-normal">Connexion</h1>
+        <form id="formConnexion" action="index.php?Modules=Module_connexion&action=b2" method="POST">
+            <img class="mb-4" src="images/logo.PNG" alt="" width="72" height="57">
+            <h1 class="h3 mb-3 fw-normal">Connexion</h1>
 
-    <div class="form-floating">
-      <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">Email address</label>
-    </div>
-    <div class="form-floating">
-      <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
-      <label for="floatingPassword">Password</label>
-    </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Se connecter</button>
-  </form>
+            <div class="form-floating">
+            <input name="email" type="email" class="form-control" id="email" placeholder="name@example.com">
+            <label for="floatingInput">Email address</label>
+            </div>
+            <div class="form-floating">
+            <input name="password" type="password" class="form-control" id="password" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit" onclick="message()">Se connecter</button>
+            
+            <div class="message">
+                <span class="danger" id="danger"></span> 
+            </div>
+        </form>
+    <script src=""></script>
 
             <style>
                 form {

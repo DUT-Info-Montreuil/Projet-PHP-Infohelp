@@ -135,8 +135,10 @@ class modeleRdv extends ConnexionUI
     
     public function getCategories()
     {
-        $sth = self::$bdd->query("SELECT * FROM `Categories`");
-        return $sth;
+        $sth = self::$bdd->prepare("SELECT * FROM `Categories`");
+        $sth->execute();
+        $recupCate = $sth->fetchAll();
+        return $recupCate;
     }
 
 
