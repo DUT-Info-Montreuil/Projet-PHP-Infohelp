@@ -13,7 +13,8 @@ class moduleAdmin
         $this->control = new controlAdmin;
         $this->action = isset($_GET['action']) ? $_GET['action'] : "rien";
 
-
+        if ($_SESSION["admin"] == 1) {
+        
 
         switch ($this->action) {
             case "Afficher_user":
@@ -24,6 +25,11 @@ class moduleAdmin
                 break;
             default:
                 break;
+        }
+           
+        }
+        else {
+            header("Location: index.php?Modules=Module_accueil&action=Accueil");
         }
     }
 }

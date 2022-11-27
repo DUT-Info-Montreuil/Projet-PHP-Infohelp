@@ -53,6 +53,9 @@ class modeleLogin extends ConnexionUI
 
         if (password_verify($_POST['password'], $tab['password'])) {
             if ($recupuser->rowCount() > 0) {
+
+                $_SESSION["admin"] = $tab["admin"] ? 1 : 0;//ture : false 
+                
                 $_SESSION['email'] = $_POST['email'];
                 $_SESSION['password'] = $_POST['password'];
                 $_SESSION['userID'] = $tab['userID'];
