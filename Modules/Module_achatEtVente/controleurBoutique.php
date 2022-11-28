@@ -25,5 +25,11 @@ class controlAchatEtVente
         $resultat=$this->modele->getListeMateriel();
         $this->vue->affichageMaterielsEnVente($resultat);
     }
+    public function getDetailMateriel()
+    {
+        $resultat=$this->modele->get_Detail();
+        $this->vue->afficheDetailMateriel($resultat);
+    }
+
 
 }

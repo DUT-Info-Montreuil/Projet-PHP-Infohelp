@@ -6,7 +6,7 @@ class ConnexionUI
         public static function initConnexion()
         {
 
-                $log = "mysql:host=database-etudiants.iut.univ-paris8.fr;dbname=dutinfopw201612";
+                $log = "mysql:host=database-etudiants.iut.univ-paris8.fr;dbname=dutinfopw201612;charset=utf8";
                 $user = "dutinfopw201612";
                 $pass = "rupapare";
 /*                 $log = "mysql:host=localhost;dbname=dutinfopw201612";

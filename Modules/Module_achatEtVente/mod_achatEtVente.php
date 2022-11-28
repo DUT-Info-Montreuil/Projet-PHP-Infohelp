@@ -20,8 +20,8 @@ class modAchatEtVente
                 break;
             case "afficher":
 /*                 $this->control->getModele()->acheterMateriel(); */
-                $this->control->getVue()->afficheDetailMateriel();
-                break;
+                $this->control->getDetailMateriel();
+                break;  
             default:
                 break;
         }

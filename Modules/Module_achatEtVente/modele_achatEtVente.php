@@ -31,4 +31,11 @@ class modeleAchatEtVente extends ConnexionUI
             $requete->execute();
         }
     }
+    public function get_Detail(){
+        $idMateriel=$_POST['idMateriel'];
+        $req_quantite =  self::$bdd->prepare("SELECT nomMateriel,description,couleur,marque FROM `materiels` WHERE idMateriel = $idMateriel");
+        $req_quantite->execute();
+        $res=$req_quantite->fetchAll();
+        return $res;
+    }
 }
