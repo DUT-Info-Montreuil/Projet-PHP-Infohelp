@@ -49,24 +49,6 @@ class VueRdv extends vueGenerique
     <?php
     }
 
-
-
-    public function barre_de_recherche()
-    {
-    ?>
-
-        <body>
-            <form action="index.php?Modules=Module_rendezVous&action=list" method="post">
-                <label> rechercher </label>
-                <input type="text" name="recherche" placeholder="Technicien de la catégorie ...">
-                <input type="submit" value="sub">
-            </form>
-        </body>
-
-        </html>
-    <?php
-    }
-
     public function afficherTechnicien($req)
     {
         //if ($req->rowcount() > 0) {

@@ -32,4 +32,16 @@ class modeleAdmin extends ConnexionUI
             $delete->execute();
         }
     }
+
+    public function getlistTechnicien()
+    {
+        $str = $_POST["recherche"];
+        $sth = self::$bdd->query("SELECT * FROM `techniciens` WHERE `nom` like '%$str%'");
+
+
+
+        //$sth->execute();
+
+        return $sth;
+    }
 }

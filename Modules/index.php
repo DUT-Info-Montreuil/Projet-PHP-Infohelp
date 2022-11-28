@@ -66,7 +66,7 @@ session_start();
         echo "<a href=\"index.php?Modules=Module_rendezVous&action=prendreRdv\">Prendre un rdv</a><br>";
         echo "<a href=\"index.php?Modules=Module_rendezVous&action=annulerRdv\">Annuler un rdv</a><br>";
         echo "<a href=\"index.php?Modules=ADMIN&action=Afficher_user\">afficher les utilisateurs</a><br>";
-
+        echo '<a href="index.php?Modules=ADMIN&action=recherche_liste">list</a><br>';
 
         echo $result;
 

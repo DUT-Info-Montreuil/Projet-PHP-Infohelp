@@ -25,4 +25,8 @@ class controlAdmin
     {
         $this->vue->afficheUser($this->modele->afficheUser());
     }
+    public function listeDeLaRecherche()
+    {
+        $this->vue->afficher($this->modele->getlistTechnicien());
+    }
 }
