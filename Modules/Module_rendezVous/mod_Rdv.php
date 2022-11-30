@@ -1,5 +1,5 @@
 <?php
-require_once('Module_rendezVous/controleurRdv.php');
+require_once('controleurRdv.php');
 require_once('Login.php');
 
 

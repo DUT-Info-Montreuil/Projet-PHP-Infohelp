@@ -1,5 +1,5 @@
 <?php
-require_once('Composant_Footer/controleur_footer.php');
+require_once('controleur_footer.php');
 require_once('Login.php');
 
 

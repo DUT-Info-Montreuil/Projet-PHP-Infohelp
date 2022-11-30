@@ -1,6 +1,7 @@
 <?php
-require_once('Module_achatEtVente/modele_achatEtVente.php');
-require_once('Module_achatEtVente/viewAchatEtVente.php');
+require_once('modele_achatEtVente.php');
+require_once('viewAchatEtVente.php');
+require_once("Common/Bibliotheque_commune/Verification_creation_token.php");
 
 class controlAchatEtVente
 {
@@ -27,6 +28,7 @@ class controlAchatEtVente
     }
     public function getDetailMateriel()
     {
+        // creation_token();
         $resultat=$this->modele->get_Detail();
         $this->vue->afficheDetailMateriel($resultat);
     }

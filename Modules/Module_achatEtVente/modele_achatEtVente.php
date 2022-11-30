@@ -1,5 +1,6 @@
 <?php
 require_once('Login.php');
+require_once("Common/Bibliotheque_commune/Verification_creation_token.php");
 class modeleAchatEtVente extends ConnexionUI
 {
     public function __construct()
@@ -31,6 +32,8 @@ class modeleAchatEtVente extends ConnexionUI
         }
     }
     public function get_Detail(){
+        // if (!verification_token())
+        // return 1;
         $idMateriel=$_POST['idMateriel'];
         $req_quantite =  self::$bdd->prepare("SELECT * FROM `materiels` WHERE idMateriel = $idMateriel");
         $req_quantite->execute();

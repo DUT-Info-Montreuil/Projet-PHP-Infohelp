@@ -1,6 +1,6 @@
 <?php
-require_once('Module_accueil/modeleAccueil.php');
-require_once('Module_accueil/viewAccueil.php');
+require_once('modeleAccueil.php');
+require_once('viewAccueil.php');
 
 class controlAccueil
 {

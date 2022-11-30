@@ -1,5 +1,6 @@
 <?php
 require_once('Login.php');
+require_once("Common/Bibliotheque_commune/Verification_creation_token.php");
 class modeleLogin extends ConnexionUI
 {
     public function __construct()
@@ -7,6 +8,8 @@ class modeleLogin extends ConnexionUI
     }
     public function add_log_in()
     {
+        if (isset($_GET['token'] )|| !verification_token())
+            return 1;
 
         echo "login methode \t";
 
@@ -40,6 +43,9 @@ class modeleLogin extends ConnexionUI
     }
     public function connect()
     {
+        if (!verification_token())
+        return 1;
+
         $recupuser = self::$bdd->prepare('SELECT * FROM `utilisateurs` WHERE `email` = ?');
         $recupuser->execute(array($_POST['email']));
         if (($tab = $recupuser->fetch()) === false) {

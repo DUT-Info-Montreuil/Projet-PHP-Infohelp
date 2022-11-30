@@ -1,5 +1,5 @@
 <?php
-require_once('Module_achatEtVente/controleurBoutique.php');
+require_once('controleurBoutique.php');
 
 
 class modAchatEtVente

@@ -1,6 +1,6 @@
 <?php
-require_once('Module_connexion/modeleLogin.php');
-require_once('Module_connexion/viewLogin.php');
+require_once('modeleLogin.php');
+require_once('viewLogin.php');
 
 class controlLogin
 {

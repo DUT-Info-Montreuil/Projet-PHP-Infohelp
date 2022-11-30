@@ -1,6 +1,7 @@
 <?php
-require_once('Module_connexion/controleur.php');
+require_once('controleur.php');
 require_once('Login.php');
+require_once("Common/Bibliotheque_commune/Verification_creation_token.php");
 
 
 class moduleLogin
@@ -13,14 +14,15 @@ class moduleLogin
         $this->control = new  controlLogin;
         $this->action = isset($_GET['action']) ? $_GET['action'] : "rien";
         switch ($this->action) {
-
             case "sign-up":
+                creation_token();
                 $this->control->getVue()->showRegistration();
                 break;
             case "b1":
                 $this->control->getModele()->add_log_in();
                 break;
             case "connexion":
+                creation_token();
                 $this->control->getVue()->showConnection();
                 break;
             case "b2":
