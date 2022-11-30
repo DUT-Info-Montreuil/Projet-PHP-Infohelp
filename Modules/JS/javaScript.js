@@ -7,10 +7,11 @@ function message(){
         var email = document.getElementById('email');
         var mdp = document.getElementById('password');
 
-    if(email.value.trim() ==="" && mdp.value.trim() ===""){
-        let danger = document.getElementById('danger');
-        danger.innerHTML = "votre email ou mot de passe est incorrect";
-        danger.style.color ='red';
+    if(email.value.trim() ==="" || mdp.value.trim() ===""){
+        let erreur = document.getElementById('messageErreur');
+        
+        erreur.classList.remove("d-none");
+        erreur.classList.add("d-block");
 
         e.preventDefault();
     }});
@@ -19,31 +20,32 @@ function message(){
 
 }
 
-function afficheSousCat(){
 
-    let form = document.getElementById('formCategorie');
-    let div = document.getElementById('div_categorie');
-    
-    form.addEventListener('submit',function(e){
-        if(div.classList.contains("d-none")){
-        div.classList.remove("d-none");
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal
+    btn.onclick = function(e) {
         e.preventDefault();
-        }
-    
 
-    });
-}
+    modal.style.display = "block";
+    }
 
-function afficheSousCat1(){
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+    modal.style.display = "none";
+    }
 
-    let form = document.getElementById('formCategorie');
-    let div = document.getElementById('div_categorie1');
-    
-    form.addEventListener('submit',function(e){
-        if(div.classList.contains("d-none")){
-            div.classList.remove("d-none");
-            e.preventDefault();
-        }
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 
-    });
-}
+    }

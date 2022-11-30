@@ -82,20 +82,22 @@ class View extends vueGenerique
             <h1 class="h3 mb-3 fw-normal">Connexion</h1>
 
             <div class="form-floating">
-            <input name="email" type="email" class="form-control" id="email" placeholder="name@example.com">
+            <input required name="email" type="email" class="form-control" id="email" placeholder="name@example.com">
             <label for="floatingInput">Email address</label>
             </div>
             <div class="form-floating">
-            <input name="password" type="password" class="form-control" id="password" placeholder="Password">
+            <input required name="password" type="password" class="form-control" id="password" placeholder="Password">
             <label for="floatingPassword">Password</label>
             </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit" onclick="message()">Se connecter</button>
+            <button class="w-100 btn btn-lg btn-primary" type="submit" >Se connecter</button>
             
-            <div class="message">
-                <span class="danger" id="danger"></span> 
+            <div id="messageErreur" class="d-none">
+                <div class="message">
+                    <span class="danger" id="danger">Veuillez rensigner tous les champs</span> 
+                </div>
             </div>
+
         </form>
-    <script src=""></script>
 
             <style>
                 form {
@@ -203,7 +205,31 @@ class View extends vueGenerique
 								<div class="col-sm-3"></div>
 								<div class="col-sm-9 text-secondary">
 									<input type="submit" class="btn btn-primary px-4" value="Sauvegarder">
+                                    <!-- Trigger/Open The Modal -->
+                                    <button type="submit" class="btn btn-secondary px-4" id="myBtn">modifier mon mot de passe</button>
+
+                                    <!-- The Modal -->
+                                    <div id="myModal" class="modal">
+
+                                    <!-- Modal content -->
+                                    <div class="modal-content">
+                                        <span class="close">&times;</span>
+                                        <h3>Changement de mot de passe</h3>
+                                        <div class="form-group">
+                                            <label for="mdp1">Saisir le nouveau mot de passe</label>
+                                            <input type="password" class="form-control" name="mdp1" id="mdp1" placeholder="mot de passe">
+                                            <label for="mdp2">Confirmer le nouveau mot de passe</label>
+                                            <input type="password" class="form-control" name="mdp2" id="mdp2" placeholder="mot de passe">
+                                        </div>
+                                        <div>
+                                            <input id="changeMdpBtn" type="submit" class="btn btn-primary px-4" value="Confirmer">
+                                        </div>
+                                    </div>
+
+                                    </div>
+                                    <script src="JS/javaScript.js"></script>
 								</div>
+                                
 							</div>
 						</div>
                     </form>

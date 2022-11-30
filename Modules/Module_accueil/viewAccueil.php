@@ -64,24 +64,6 @@ class ViewAccueil extends vueGenerique
             <?php
     }
 
-
-    public function affichePageProfil()
-    {
-?>
-            
-  <body>
-    <h1>Mon Profil</h1>    
-    <tr>        
-
-                <br>
-                <td> <a href="index.php?Modules=Module_connexion&action=monProfil">Changer mes informations</a></td><br>
-                <td> <a href="index.php?Modules=Module_rendezVous&action=afficherListeRdv">Voir mes rendez-vous</a></td><br>
-                <td> <a href="index.php?Modules=Module_rendezVous&action=afficherFavoris">Voir mes techniciens favoris</a></td><br>
-            </tr>
-  </body>
-</html>
-            <?php
-    }
 }
 
 ?>
