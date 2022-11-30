@@ -39,12 +39,17 @@ class moduleLogin
                 if ($canDisconnect == true) {
                 }
                 break;
-
-
-
             case "deconnexion":
                 $this->control->getModele()->log_out();
                 break;
+
+            case "monProfil":
+                $this->control->getUtilisateurAchanger();
+                break;  
+                
+            case "changement":
+                $this->control->getModele()->modifInformationsUtilisateur();
+                break;         
             default:
                 break;
         }

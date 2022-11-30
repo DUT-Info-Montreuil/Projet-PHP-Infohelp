@@ -18,8 +18,7 @@ class ViewAccueil extends vueGenerique
         <section>
         <div id="bienvenue">  
           <h1><br><br><br><p>Bienvenu sur InfoHelp <br>
-            La plateforme qui traite votre problème numérique à coup portant et en un temps éclair<br>
-            Mais sur toi l’Eternel se lève, Sur toi sa gloire apparaît. » </p>
+            La plateforme qui traite votre problème numérique à coup portant et en un temps éclair.<br></p>
         </div>  
             <br><br><br><br><br><br><p id="nosServices">Nos services</p></h1>
             <div id="d1">
@@ -60,6 +59,25 @@ class ViewAccueil extends vueGenerique
             </div>
         </section>
       </main>
+  </body>
+</html>
+            <?php
+    }
+
+
+    public function affichePageProfil()
+    {
+?>
+            
+  <body>
+    <h1>Mon Profil</h1>    
+    <tr>        
+
+                <br>
+                <td> <a href="index.php?Modules=Module_connexion&action=monProfil">Changer mes informations</a></td><br>
+                <td> <a href="index.php?Modules=Module_rendezVous&action=afficherListeRdv">Voir mes rendez-vous</a></td><br>
+                <td> <a href="index.php?Modules=Module_rendezVous&action=afficherFavoris">Voir mes techniciens favoris</a></td><br>
+            </tr>
   </body>
 </html>
             <?php

@@ -24,11 +24,11 @@ section img{
 } 
 
 #bienvenue{
+    font: italic 1.2em "Fira Sans", serif;
     width: 100%;
     text-align: center;
     margin: auto;
-    font-size: 250px;
-
+    color:blue;
 }
 
 #nosServices{
@@ -94,3 +94,41 @@ h1{
     width: 25px;
     height: 25px;
 } 
+
+
+#changeInfo{
+    padding-right: 100px;
+}
+
+
+.message{
+    width: 100%;
+    position : relative;
+    margin-bottom: 60px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.message .danger{
+    font-size: 20px;
+    color: red;
+    position: absolute;
+    animation: buttons .3s linear;
+}
+
+@keyframes buttons{
+    0%{
+        transform: scale(0,1);
+    }
+    50%{
+        transform: scale(0.5);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+#mdpChangeBouton{
+    margin-left: 200px;
+}

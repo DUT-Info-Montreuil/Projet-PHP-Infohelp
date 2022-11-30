@@ -5,9 +5,9 @@ class VueHeader extends vueGenerique
 {
     public function __construct()
     {
-        $this->afficherFooter();
+        $this->afficherHeader();
     }
-    public function afficherFooter()
+    public function afficherHeader()
     {
 ?>
     
@@ -26,7 +26,7 @@ class VueHeader extends vueGenerique
                 <li class="nav-item"><a href="#" class="nav-link px-2 link-primary text-white">Tutos</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 link-primary text-white">FAQs</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 link-primary text-white">A propos</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 link-primary text-white"><img id="profil" src="images/profile.png" alt=""></a></li>
+                <li class="nav-item"><a href="index.php?Modules=Module_connexion&action=monProfil" class="nav-link px-2 link-primary text-white"><img id="profil" src="images/profile.png" alt=""></a></li>
 
             </ul>
 
@@ -41,6 +41,7 @@ class VueHeader extends vueGenerique
             ?>    
             </div>
         </header>
+            </br>
     </div>
 
         <?php

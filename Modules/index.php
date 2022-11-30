@@ -21,6 +21,8 @@ session_start();
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="CSS/style.css">
+    <script src="JS/javaScript.js"></script>
+
 
     <title>InfoHelp</title>
 </head>
@@ -36,7 +38,7 @@ session_start();
         $vue_gen = new vueGenerique();
 
         $header = new moduleHeader();
-
+        
 
         if (isset($_GET["Modules"])) {
             $module = $_GET['Modules'];
@@ -58,20 +60,6 @@ session_start();
 
 
         $result = $vue_gen->getAffichage();
-
-
-
-        /*
-        if (isset($_SESSION['email'])) {
-            echo '<a href="index.php?Modules=Module_connexion&action=deconnexion">Se deconnecter</a><br>';
-        } else {
-
-            echo "<a href=\"index.php?Modules=Module_connexion&action=sign-up\">S'inscrire</a><br>";
-            echo "<a href=\"index.php?Modules=Module_connexion&action=connexion\">Se connecter</a><br>";
-        }*/
-        echo "<a href=\"index.php?Modules=Module_rendezVous&action=prendreRdv\">Prendre un rdv</a><br>";
-        echo "<a href=\"index.php?Modules=Module_rendezVous&action=annulerRdv\">Annuler un rdv</a><br>";
-
 
 
         echo $result;
