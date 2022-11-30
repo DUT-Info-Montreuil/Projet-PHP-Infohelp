@@ -19,9 +19,11 @@ class modAchatEtVente
                 $this->control->getMateriels();
                 break;
             case "afficher":
-/*                 $this->control->getModele()->acheterMateriel(); */
                 $this->control->getDetailMateriel();
-                break;  
+                break;
+            case "acheter":
+                $this->control->getModele()->acheterMateriel();
+                break;
             default:
                 break;
         }
