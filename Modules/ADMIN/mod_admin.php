@@ -13,23 +13,37 @@ class moduleAdmin
         $this->control = new controlAdmin;
         $this->action = isset($_GET['action']) ? $_GET['action'] : "rien";
 
-        if ($_SESSION["admin"] == 1) {
-        
 
         switch ($this->action) {
+
             case "Afficher_user":
-                $this->control->listeUSer();
+                if ($_SESSION["admin"] == 1) {
+                    $this->control->listeUSer();
+                }
                 break;
             case "retirerUser":
-                $this->control->getModele()->suppUser();
+                if ($_SESSION["admin"] == 1) {
+                    $this->control->getModele()->suppUser();
+                }
+                break;
+
+
+
+
+            case 'recherche_liste':
+                if ($_SESSION["admin"] == 2) {
+                    $this->control->getVue()->barre_de_recherche();
+                }
+                break;
+            case 'liste_tech':
+                if ($_SESSION["admin"] == 2) {
+                    $this->control->listeTechnicien();
+                }
                 break;
             default:
+                header("Location: index.php?Modules=Module_accueil&action=Accueil");
+
                 break;
-        }
-           
-        }
-        else {
-            header("Location: index.php?Modules=Module_accueil&action=Accueil");
         }
     }
 }

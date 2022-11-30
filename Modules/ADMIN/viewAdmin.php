@@ -35,7 +35,7 @@ class vueAdmin extends vueGenerique
     ?>
 
         <body>
-            <form action="index.php?Modules=Module_rendezVous&action=list" method="post">
+            <form action="index.php?Modules=ADMIN&action=list" method="post">
                 <label> rechercher </label>
                 <input type="text" name="recherche" placeholder="Technicien de la catégorie ...">
                 <input type="submit" value="sub">
