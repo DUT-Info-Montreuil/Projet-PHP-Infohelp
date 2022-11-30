@@ -35,9 +35,9 @@ class vueAdmin extends vueGenerique
     ?>
 
         <body>
-            <form action="index.php?Modules=ADMIN&action=list" method="post">
+            <form action="index.php?Modules=ADMIN&action=liste_tech" method="post">
                 <label> rechercher </label>
-                <input type="text" name="recherche" placeholder="Technicien de la catégorie ...">
+                <input type="text" name="recherche" placeholder="Nom du technicien">
                 <input type="submit" value="sub">
             </form>
         </body>
@@ -48,46 +48,23 @@ class vueAdmin extends vueGenerique
     public function afficher($req)
     {
     ?>
-        <table>
-            <tr>
-                <th>
-                    Id
-                </th>
-                <th>
-                    Nom
-                </th>
-                <th>
-                    Prenom
-                </th>
-                <th>
-                    idVille
-                </th>
-                <th>
-                    avis
-                </th>
-                <th>
-                    favoris
-                </th>
-                <th>
-                    rayon d'activité
-                </th>
-            </tr>
 
-        </table>
-        <?php
-        while ($row = $req->fetch()) { ?>
+        <form action="index.php?Modules=ADMIN&action=user" method="post">
+            <label>Liste des techniciens rechercher : </label></br>
 
-            <tr>
-                <td><?php echo $row['idTechnicien']; ?></td>
-                <td><?php echo $row['nom']; ?></td>
-                <td><?php echo $row['prenom']; ?></td>
-                <td><?php echo $row['idVille']; ?></td>
-                <td><?php echo $row['avis']; ?></td>
-                <td><?php echo $row['favoris']; ?></td>
-                <td><?php echo $row["rayon d'activite"]; ?></td>
+            <?php
+            foreach ($req as $tech) {
+                $idTech = $tech["idTechnicien"];
+                $nom = $tech["nom"];
+                $prenom = $tech["prenom"];
 
-            </tr>
-        <?php } ?>
+
+            ?>
+                <br><button class="btn btn-outline-secondary" name="idUser" value="<?= $idTech ?>">
+                    <?= $nom . " " . $prenom ?>
+                </button>
+            <?php } ?>
+        </form>
         </tr>
     <?php }
 

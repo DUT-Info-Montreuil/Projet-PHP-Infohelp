@@ -37,11 +37,11 @@ class modeleAdmin extends ConnexionUI
     {
         $str = $_POST["recherche"];
         $sth = self::$bdd->query("SELECT * FROM `techniciens` WHERE `nom` like '%$str%'");
+        $sth->execute();
 
 
+        $recuptech = $sth->fetchAll();
 
-        //$sth->execute();
-
-        return $sth;
+        return $recuptech;
     }
 }

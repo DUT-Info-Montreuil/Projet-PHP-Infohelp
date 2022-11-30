@@ -40,6 +40,8 @@ class moduleAdmin
                     $this->control->listeTechnicien();
                 }
                 break;
+
+
             default:
                 header("Location: index.php?Modules=Module_accueil&action=Accueil");
 
