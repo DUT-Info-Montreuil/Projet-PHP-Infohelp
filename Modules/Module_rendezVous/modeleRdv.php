@@ -59,7 +59,7 @@ class modeleRdv extends ConnexionUI
         $subject = "Confirmation rendez-vous";
         $message = "Bonjour, votre rendez vous a bien été pris en compte.\nNous vous attendons donc le ".$date ." à ". $heure." dans nos locaux. A bientôt !  ";
         $headers = "Content-Type: text/plain; charset=utf-8\r\n";
-        $headers .= "From: infoHelp@gmail.com\r\n";
+        $headers .= "From: infohelp93100@gmail.com\r\n";
 
         if(mail($to, $subject, $message, $headers))
             echo "Envoyé !";
