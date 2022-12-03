@@ -78,8 +78,14 @@ class modeleLogin extends ConnexionUI
     {
         $userID=$_SESSION['userID'];
         $userEmail=$_SESSION['email'];
-        var_dump($_POST["mdp1"]);
-        var_dump($_POST["mdp2"]);
+
+
+        if(isset($_POST['save'])){
+            echo "<pre>", print_r($_FILES), "</pre>";
+            $profileImageName = time() . '_' . $_FILES['profileImage']['name'];
+            $destination = 'C:/wamp/www/Projet-PHP-Infohelp/Modules/Module_connexion\image/' . $profileImageName;
+            move_uploaded_file($_FILES['profileImage']['tmp_name'], $destination);
+        }
         
         if(isset($_POST["mdp1"])&&isset($_POST["mdp2"])){
             if ($_POST['mdp1'] == $_POST['mdp2']) {
@@ -111,8 +117,8 @@ class modeleLogin extends ConnexionUI
 
                 }
             }
-            header("Location: index.php?Modules=Module_connexion&action=monProfil");
-            die;
+            //header("Location: index.php?Modules=Module_connexion&action=monProfil");
+            //die;
 
     }
 

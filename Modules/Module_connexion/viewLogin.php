@@ -133,11 +133,17 @@ class View extends vueGenerique
 					<div class="card">
 						<div class="card-body">
 							<div class="d-flex flex-column align-items-center text-center">
-								<img src="https://media-exp1.licdn.com/dms/image/C4E03AQEFTrxKnEz0iw/profile-displayphoto-shrink_200_200/0/1648712566634?e=1672272000&v=beta&t=Rn6EFA4nFqLW-MPmtq-cAgMNs5ZbceMm02KrismimX0" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
-								<div class="mt-3">
+                            <form class="col-lg-12" action="index.php?Modules=Module_connexion&action=changement" method="POST">
+                                <img src="https://media-exp1.licdn.com/dms/image/C4E03AQEFTrxKnEz0iw/profile-displayphoto-shrink_200_200/0/1648712566634?e=1672272000&v=beta&t=Rn6EFA4nFqLW-MPmtq-cAgMNs5ZbceMm02KrismimX0" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
+								<label for="profileImage">image de profil</label>
+                                <div class="mt-3">
 									<h4><?=$utilisateur['first_name']." ".$utilisateur['last_name']?></h4>
 									<p class="text-muted font-size-sm"><?=$utilisateur['city'].", ".$utilisateur['postal_address']?></p>
 								</div>
+
+                                <input type="file" name ="profileImage" id="profileImage" class="form-control">
+
+                                <button type="submit" name="save"class="btn btn-primary btn-block">save</button>
 							</div>
 
                             <hr class="my-4">
@@ -157,7 +163,6 @@ class View extends vueGenerique
 
 					<div class="card">
 
-                    <form class="col-lg-12" action="index.php?Modules=Module_connexion&action=changement" method="POST">
 
 						<div class="card-body">
 
