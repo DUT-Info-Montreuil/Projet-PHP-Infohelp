@@ -27,11 +27,16 @@ class controlTuto
 
     }
 
-    public function getVideo()
+    public function getListeVideos()
     {
-        $tab = $this->modele->get_video();
-        $this->vue->afficher_Video($tab);
-
+        $tab = $this->modele->getListeVideos();
+        //$this->vue->afficher_Video($tab);
+        $this->vue->afficher_Liste_Video($tab);
     }
 
+    public function afficher_Video($data)
+    {
+        $tab = $this->modele->get_Video($data);
+        $this->vue->afficher_Video($tab);
+    }
 }

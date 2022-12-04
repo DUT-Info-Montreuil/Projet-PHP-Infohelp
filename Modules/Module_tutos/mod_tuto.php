@@ -18,10 +18,21 @@ class moduleTuto
 
                 break;
             case "afficheListeTutos":
-                $this->control->getVideo();
+                if(isset($_POST['ajoutTutoBtn'])){
+                    $this->control->getModele()->ajoutTuto();
+                }else{
+                    $this->control->getListeVideos();
+                }
                 break;
-            default:
+            case "afficheVideo":
+                $lien=$_POST['lien'];
+                $this->control->afficher_Video($lien);
                 break;
+            case "ajoutTuto":
+                break;
+
+                default:
+                    break;
         }
     }
 }

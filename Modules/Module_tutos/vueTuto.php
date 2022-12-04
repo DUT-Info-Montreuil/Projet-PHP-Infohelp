@@ -19,11 +19,69 @@ class VueTuto extends vueGenerique
             <button name="categorie" value="<?= $idCategorie;?>">
             <?= $nomCategorie?>
             </button>
-
-        <?php
+            <?php
         }
+        
         ?> 
 
+            <!-- Trigger/Open The Modal -->
+            <button type="submit" class="btn btn-secondary px-4" id="ajoutTuto">Ajouter un nouveau Tuto</button>
+
+            <!-- The Modal -->
+            <div id="ModalTuto" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+
+                <h3>Ajout d'un tuto</h3>
+                <div class="form-group">
+                    <label for="titreTuto">Entrez le titre du tuto</label>
+                    <input type="text" class="form-control" name="titreTuto" id="titreTuto">
+                    <label for="auteurTuto">Entrez l'auteur du tuto</label>
+                    <input type="text" class="form-control" name="auteurTuto" id="auteurTuto">
+                    <label for="lienTuto">Entrez l'id du lien de la video (uniquement)</label>
+                    <input type="text" class="form-control" name="lienTuto" id="lienTuto" placeholder="ex:(KecoxVL2UDU)">
+                    
+                    <label for="choixCategorie">Choisissez la catégorie de la video</label>
+                    <select name="choix" id="choixCategorie" class="form-select" aria-label="Default select example">
+                    <option disabled selected>--Choix de la categorie--</option>
+                    <?php foreach ($data as $cate) {  ?>
+
+                        <option value="<?=$cate['idCategorieTuto']?>"><?=$cate['nomCategorie']?></option>
+                        <?php
+                    }               
+                    ?> 
+                        </select>
+                </div>
+                <div>
+                    <input name="ajoutTutoBtn" type="submit" class="btn btn-primary px-4" value="Confirmer">
+                </div>
+            </div>
+
+            <script>
+            var modal = document.getElementById("ModalTuto");
+
+            var btn = document.getElementById("ajoutTuto");
+
+            var span = document.getElementsByClassName("close")[0];
+
+            btn.onclick = function(e) {
+                e.preventDefault();
+
+            modal.style.display = "block";
+            }
+
+            span.onclick = function() {
+            modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+            </script>
         </form>
         
    
@@ -34,18 +92,17 @@ class VueTuto extends vueGenerique
     public function afficher_Liste_Video($data)
     {
         ?>
-        <form action="index.php?Modules=Module_tuto&action=afficheListeTutos" method="POST">
-        <label>Selectionnez la categorie qui vous concerne:</label></br>
+        <form action="index.php?Modules=Module_tuto&action=afficheVideo" method="POST">
+        <label>Selectionnez la video qui vous concerne:</label></br>
         <?php
-        foreach ($data as $categorie) { 
-            $idCategorie=$categorie["idCategorieTuto"];
-            $nomCategorie=$categorie["nomCategorie"];
+        foreach ($data as $videos) { 
+            $titreVideo=$videos["titre"];
+            $lienVideo=$videos["lienVideo"];
             ?>
-            <button name="categorie" value="<?= $idCategorie?>">
-            <?= $nomCategorie?>
+            <button name="lien" value="<?= $lienVideo?>">
+            <?= $titreVideo?>
             </button>
-
-        <?php
+            <?php
         }
         ?> 
 
@@ -55,18 +112,17 @@ class VueTuto extends vueGenerique
     }
 
     public function afficher_Video($data)
-    {
-        foreach ($data as $lien) { 
-            ?>
-                <button name="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo $lien['lienVideo'];?>" frameborder="0"  allowfullscreen></iframe></button>
-                <label>Titre: <?= $lien['titre']?>
-                <br>Vues:
+    {       
+        ?>
+                <iframe width="360" height="215" src="https://www.youtube.com/embed/<?php echo $data[0]['lienVideo'];?>" frameborder="0"  allowfullscreen></iframe><br>
+                <label>Titre: <?= $data[0]['titre']?>
+                <br>Vues: <?= $data[0]['nbVues']?>
                 </label>
         <?php
         }
 
 
-    }
+    
 
 }
 ?>
