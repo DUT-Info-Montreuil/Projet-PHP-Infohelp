@@ -40,7 +40,9 @@ section img{
 }
 
 #profil{
-    width: 25px;
+    width: 28px;
+    border-radius: 50%;
+    border: 1px solid #DCDCDC;
 }
 
 #c1{

@@ -93,6 +93,7 @@ class modeleLogin extends ConnexionUI
 
             $newImageName = date("Y.m.d") . " - " . date("h.i.sa"); // Generate new image name
             $newImageName .= '.' . $imageExtension;
+            $_SESSION['image']=$newImageName;
             $query = self::$bdd->prepare("UPDATE `utilisateurs` SET image = '$newImageName' WHERE userID = $userID");
             $query->execute();
             move_uploaded_file($tmpName, 'image_profil/' . $newImageName);
@@ -100,38 +101,37 @@ class modeleLogin extends ConnexionUI
             
         }
         
-        if(isset($_POST["mdp1"])&&isset($_POST["mdp2"])){
+        if(isset($_POST["changeMdpBtn"]) && isset($_POST["mdp1"])&&isset($_POST["mdp2"])){
             if ($_POST['mdp1'] == $_POST['mdp2']) {
                 $mdp1=$_POST["mdp1"];
                 $nouveauMdp = password_hash($mdp1, PASSWORD_DEFAULT);
-
                 $update = self::$bdd->prepare("UPDATE `utilisateurs` SET `password`= '$nouveauMdp' WHERE `userID`= '$userID'");
                 $update->execute();
             }
         }
-            if (isset($_POST["email"]) || isset($_POST["first_name"]) || isset($_POST["last_name"]) || isset($_POST["city"]) || isset($_POST["password"])|| isset($_POST["postal_address"])) {
-                $lastname = htmlspecialchars($_POST["last_name"]);
-                $firstname = htmlspecialchars($_POST["first_name"]);
-                $email = htmlspecialchars($_POST["email"]);
-                $postal_address = htmlspecialchars($_POST["postal_address"]);;
-                $city = htmlspecialchars($_POST["city"]);
-                $userID=$_SESSION['userID'];
-                $userEmail=$_SESSION['email'];
+        if (isset($_POST["btnChangerInfo"]) && isset($_POST["email"]) || isset($_POST["first_name"]) || isset($_POST["last_name"]) || isset($_POST["city"]) || isset($_POST["password"])|| isset($_POST["postal_address"])) {
+            $lastname = htmlspecialchars($_POST["last_name"]);
+            $firstname = htmlspecialchars($_POST["first_name"]);
+            $email = htmlspecialchars($_POST["email"]);
+            $postal_address = htmlspecialchars($_POST["postal_address"]);;
+            $city = htmlspecialchars($_POST["city"]);
+            $userID=$_SESSION['userID'];
+            $userEmail=$_SESSION['email'];
 
-                $verifEmailExistant = self::$bdd->prepare("SELECT * FROM `utilisateurs` WHERE `email` = '$email' and `email` !='$userEmail' ");
-                $verifEmailExistant->execute();
+            $verifEmailExistant = self::$bdd->prepare("SELECT * FROM `utilisateurs` WHERE `email` = '$email' and `email` !='$userEmail' ");
+            $verifEmailExistant->execute();
 
-                if ($verifEmailExistant->rowCount() > 0) {
-                    echo"errerur l'email existe déjà";
-                }else{
+            if ($verifEmailExistant->rowCount() > 0) {
+                echo"errerur l'email existe déjà";
+            }else{
                 $update = self::$bdd->prepare("UPDATE `utilisateurs` SET `email`= '$email' , `first_name`= '$firstname' ,`last_name`= '$lastname' , `city`= '$city' , `postal_address`= '$postal_address' WHERE `userID`= '$userID'");
                 $update->execute();
                 $_SESSION['email']=$email;
 
-                }
             }
-            //header("Location: index.php?Modules=Module_connexion&action=monProfil");
-            //die;
+            }
+            header("Location: index.php?Modules=Module_connexion&action=monProfil");
+            die;
 
     }
 

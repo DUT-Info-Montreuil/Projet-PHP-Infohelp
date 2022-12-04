@@ -208,7 +208,7 @@ class View extends vueGenerique
 							<div class="row">
 								<div class="col-sm-3"></div>
 								<div class="col-sm-9 text-secondary">
-									<input type="submit" class="btn btn-primary px-4" value="Sauvegarder">
+									<input name="btnChangerInfo" type="submit" class="btn btn-primary px-4" value="Sauvegarder">
                                     <!-- Trigger/Open The Modal -->
                                     <button type="submit" class="btn btn-secondary px-4" id="myBtn">modifier mon mot de passe</button>
 
@@ -226,7 +226,7 @@ class View extends vueGenerique
                                             <input type="password" class="form-control" name="mdp2" id="mdp2" placeholder="mot de passe">
                                         </div>
                                         <div>
-                                            <input id="changeMdpBtn" type="submit" class="btn btn-primary px-4" value="Confirmer">
+                                            <input name="changeMdpBtn" id="changeMdpBtn" type="submit" class="btn btn-primary px-4" value="Confirmer">
                                         </div>
                                     </div>
 
