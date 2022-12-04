@@ -1,6 +1,6 @@
 <?php
-require_once("Modules/vuegenerique.php");
-class viewReparation extends vueGenerique
+require_once("vuegenerique.php");
+class View_Reparation extends vueGenerique
 {
     public function __construct()
     {
@@ -111,10 +111,10 @@ class viewReparation extends vueGenerique
         <div style="float:left;width:10%;height:40px;"></div>
         <div style="float:left;width:80%;height:auto;text-align:center;">
             <div class="titre_h1">
-                <h1>Facturation Clients avec gestion des Stocks</h1>
+                <h1>Facturation</h1>
             </div>
         </div>
-        <div style="float:left;width:10%;height:40px;"></div>
+        <!-- <div style="float:left;width:10%;height:40px;"></div> -->
 
         <div class="div_saut_ligne" style="height:30px;">
         </div>
@@ -147,9 +147,8 @@ class viewReparation extends vueGenerique
                             ?>
                         </select>
                     </div>
-                    <div style="width:15%;height:75px;float:left;font-size:16px;font-weight:bold;text-align:left;">
-                        Civilité :<br />
-                        <input type="text" id="civilite" name="civilite" />
+ <div style="width:15%;height:50px;float:left;font-size:16px;font-weight:bold;text-align:left;">
+
                     </div>
                     <div style="width:25%;height:75px;float:left;font-size:16px;font-weight:bold;text-align:left;">
                         Nom du client :<br />
@@ -198,6 +197,7 @@ class viewReparation extends vueGenerique
                     <div style="width:25%;height:75px;font-size:16px;font-weight:bold;">
                         <input type="button" id="valider" name="valider" value="Valider" style="margin-top:10px;" /><br />
                     </div>
+                    <a href="Module_reparations/Export.php/">Exporter</a>
                 </div>
             </form>
         </div>

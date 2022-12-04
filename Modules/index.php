@@ -2,6 +2,7 @@
 require_once('Module_connexion/mod_login.php');
 require_once('Module_rendezVous/mod_Rdv.php');
 require_once('Module_accueil/mod_accueil.php');
+require_once('Module_reparations/mod_Reparation.php');
 require_once('Composant_Footer/module_footer.php');
 require_once('Composant_Header/module_header.php');
 require_once("vuegenerique.php");
@@ -49,6 +50,9 @@ session_start();
                     break;
                 case 'Module_accueil':
                     $module = new moduleAccueil();
+                    break;
+                case 'Module_reparations':
+                    $module = new ModuleReparation();
                     break;
                 default:
                     # code...
