@@ -21,8 +21,8 @@ session_start();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-
-    <title>InfoHelp</title>
+    <link rel="stylesheet" href="CSS/style.css">
+        <title>InfoHelp</title>
 </head>
 
 <body>
@@ -60,23 +60,6 @@ session_start();
 
 
         $result = $vue_gen->getAffichage();
-
-
-
-        /*
-        if (isset($_SESSION['email'])) {
-            echo '<a href="index.php?Modules=Module_connexion&action=deconnexion">Se deconnecter</a><br>';
-        } else {
-
-            echo "<a href=\"index.php?Modules=Module_connexion&action=sign-up\">S'inscrire</a><br>";
-            echo "<a href=\"index.php?Modules=Module_connexion&action=connexion\">Se connecter</a><br>";
-        }*/
-        echo "<a href=\"index.php?Modules=Module_rendezVous&action=prendreRdv\">Prendre un rdv</a><br>";
-        echo "<a href=\"index.php?Modules=Module_rendezVous&action=annulerRdv\">Annuler un rdv</a><br>";
-
-
-        }
-        echo "<a href=\"index.php?Modules=Module_tuto&action=afficheCategorieVideo\">Tutos</a><br>";
 
         echo $result;
 
