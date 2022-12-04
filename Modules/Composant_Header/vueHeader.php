@@ -22,7 +22,7 @@ class VueHeader extends vueGenerique
             <?php if (isset($_SESSION['image'])) {
                 $image=$_SESSION['image'];    
             }else{
-                $image="profil.png";
+                $image="profile.png";
             }
 
             ?>  

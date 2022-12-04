@@ -51,6 +51,8 @@ class modeleLogin extends ConnexionUI
                 $_SESSION['email'] = $_POST['email'];
                 $_SESSION['password'] = $_POST['password'];
                 $_SESSION['userID'] = $tab['userID'];
+                $_SESSION['image']=$tab['image'];
+
                 echo "utilisateur " . $_SESSION['email'] . " vous êtes bien connecté";
                 header("Location: index.php?Modules=Module_accueil&action=Accueil");
                 die();
