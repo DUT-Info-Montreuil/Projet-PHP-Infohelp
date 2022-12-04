@@ -80,11 +80,24 @@ class modeleLogin extends ConnexionUI
         $userEmail=$_SESSION['email'];
 
 
-        if(isset($_POST['save'])){
-            echo "<pre>", print_r($_FILES), "</pre>";
-            $profileImageName = time() . '_' . $_FILES['profileImage']['name'];
-            $destination = 'C:/wamp/www/Projet-PHP-Infohelp/Modules/Module_connexion\image/' . $profileImageName;
-            move_uploaded_file($_FILES['profileImage']['tmp_name'], $destination);
+        if(isset($_FILES["image"]["name"])){
+      
+            $imageName = $_FILES["image"]["name"];
+            $imageSize = $_FILES["image"]["size"];
+            $tmpName = $_FILES["image"]["tmp_name"];
+      
+            // Image validation
+            $validImageExtension = ['jpg', 'jpeg', 'png'];
+            $imageExtension = explode('.', $imageName);
+            $imageExtension = strtolower(end($imageExtension));
+
+            $newImageName = date("Y.m.d") . " - " . date("h.i.sa"); // Generate new image name
+            $newImageName .= '.' . $imageExtension;
+            $query = self::$bdd->prepare("UPDATE `utilisateurs` SET image = '$newImageName' WHERE userID = $userID");
+            $query->execute();
+            move_uploaded_file($tmpName, 'image_profil/' . $newImageName);
+
+            
         }
         
         if(isset($_POST["mdp1"])&&isset($_POST["mdp2"])){

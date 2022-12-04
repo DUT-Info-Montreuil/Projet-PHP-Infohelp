@@ -122,6 +122,7 @@ class View extends vueGenerique
 
     public function afficherFormChangerInfo($utilisateur)
     {
+        $image = $utilisateur["image"];
 
 ?>
 
@@ -133,18 +134,15 @@ class View extends vueGenerique
 					<div class="card">
 						<div class="card-body">
 							<div class="d-flex flex-column align-items-center text-center">
-                            <form class="col-lg-12" action="index.php?Modules=Module_connexion&action=changement" method="POST">
-                                <img src="https://media-exp1.licdn.com/dms/image/C4E03AQEFTrxKnEz0iw/profile-displayphoto-shrink_200_200/0/1648712566634?e=1672272000&v=beta&t=Rn6EFA4nFqLW-MPmtq-cAgMNs5ZbceMm02KrismimX0" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
-								<label for="profileImage">image de profil</label>
-                                <div class="mt-3">
-									<h4><?=$utilisateur['first_name']." ".$utilisateur['last_name']?></h4>
-									<p class="text-muted font-size-sm"><?=$utilisateur['city'].", ".$utilisateur['postal_address']?></p>
-								</div>
-
-                                <input type="file" name ="profileImage" id="profileImage" class="form-control">
-
-                                <button type="submit" name="save"class="btn btn-primary btn-block">save</button>
-							</div>
+                                <form id = "form" class="col-lg-12" action="index.php?Modules=Module_connexion&action=changement" method="POST" enctype="multipart/form-data">
+                                <div class="upload">
+                                    <img src="image_profil/<?php echo $image; ?>" width = 125 height = 125 title="<?php echo $image; ?>">
+                                    <div class="round">
+                                        <input type="file" name="image" id = "image" accept=".jpg, .jpeg, .png">
+                                        <i class = "fa fa-camera" style = "color: #fff;"></i>
+                                    </div>
+                                </div>
+                            </div>
 
                             <hr class="my-4">
 							<ul class="list-group list-group-flush">
@@ -158,7 +156,8 @@ class View extends vueGenerique
 						</div>
 					</div>
 				</div>
-                
+
+
 				<div class="col-lg-8">
 
 					<div class="card">
@@ -238,7 +237,11 @@ class View extends vueGenerique
 							</div>
 						</div>
                     </form>
-
+                    <script type="text/javascript">
+      document.getElementById("image").onchange = function(){
+          document.getElementById("form").submit();
+      };
+    </script>
 					</div>
 				</div>
 			</div>
