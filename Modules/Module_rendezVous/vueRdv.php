@@ -181,10 +181,13 @@ class VueRdv extends vueGenerique
         var_dump($req);
         ?>
 
-            
+         
+ 
+
         <div class="container py-5">
             <h1 class="mb-4">Multilevel Dropdown</h1>
             <div class="dropdown">
+                
                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> Menu </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <li class="dropdown dropend">
@@ -192,35 +195,20 @@ class VueRdv extends vueGenerique
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <li><a class="dropdown-item" id="cat1" href="#"></a></li>
                             <li><a class="dropdown-item" id="cat2" href="#"></a></li>
-
-                            <li class="dropdown dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#" id="multilevelDropdownMenu1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Multilevel Action 2</a>
-                                <ul class="dropdown-menu" aria-labelledby="multilevelDropdownMenu2">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
+                </ul>
                     </li>
                     <li class="dropdown dropend">
+                        <!-- Default dropstart button -->
+                        <div class="btn-group dropstart">
                         <a class="dropdown-item dropdown-toggle" href="#" id="multilevelDropdownMenu1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Materiel</a>
-                        <ul class="dropdown-menu" aria-labelledby="multilevelDropdownMenu1">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li class="dropdown dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#" id="multilevelDropdownMenu1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Multilevel Action 2</a>
-                                <ul class="dropdown-menu" aria-labelledby="multilevelDropdownMenu2">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                            </li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" id="cat3" href="#"></a></li>
+                            <li><a class="dropdown-item" id="cat2" href="#"></a></li>                        
                         </ul>
+                        </div>
+                        
                     </li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
             </div>
         </div>
