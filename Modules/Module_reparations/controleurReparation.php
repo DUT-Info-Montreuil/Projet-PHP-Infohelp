@@ -30,10 +30,8 @@ class Controleur_Reparation
 	 */
 	public function exportTraces()
 	{
-		$direction = $_POST['direction'];
-		
 		$this->load->model("Modele_Reparation");
-		$traces = $this->Modele_Reparation->getTraces($direction);
+		$traces = $this->Modele_Reparation->getTraces();
 		
 		$this->load->model("Export");
 		$this->Export->exportTraces($traces);

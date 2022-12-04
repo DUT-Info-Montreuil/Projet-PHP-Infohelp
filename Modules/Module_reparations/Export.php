@@ -2,13 +2,12 @@
 class Export
 {
     /**
-     * Exporte le résultat de la recherche
+     * Exporte les traces vers un fichier excel
      *
      * @param [type] $result
      * @return void
      */
-
-     public function exportTraces($result)
+    public function exportTraces($result)
     {
         /* Initialisation de l'excel */
         include_once 'application/third_party/PHPExcel/Classes/PHPExcel.php';
@@ -16,7 +15,7 @@ class Export
         $objPHPExcel->setActiveSheetIndex(0);
 
         /* Titres des colonnes */
-        $titres = array('Description', 'Quantité', 'Prix unitaire HT', 'Prix total HT');
+        $titres = array('BALPRO', 'DIRECTION', 'DATE', 'RECHERCHE');
         $alphabet = range("A", "Z");
 
         /* Remplit les colonnes des données */
@@ -30,16 +29,16 @@ class Export
         }
 
         //Style
-        $objPHPExcel->getActiveSheet()->getStyle("A1:Z1")->getFont()->setBold(true);
-        $objPHPExcel->getActiveSheet()->getStyle("A1:Z1")->getFont()->setSize(12);
-        $objPHPExcel->getActiveSheet()->getStyle("A1:Z1")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        $objPHPExcel->getActiveSheet()->getStyle("A1:D1")->getFont()->setBold(true);
+        $objPHPExcel->getActiveSheet()->getStyle("A1:D1")->getFont()->setSize(12);
+        $objPHPExcel->getActiveSheet()->getStyle("A1:D1")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
         for ($i = 0; $i < count($titres); $i++) {
             $objPHPExcel->getActiveSheet()->SetCellValue("$alphabet[$i]1", $titres[$i]);
             $objPHPExcel->getActiveSheet()->getColumnDimension("$alphabet[$i]")->setAutoSize(true);
         }
 
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-        header('Content-Disposition: attachment;filename="devis.xlsx"');
+        header('Content-Disposition: attachment;filename="DAS2web"');
         $objWriter->save('php://output');
     }
 }

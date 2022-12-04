@@ -197,7 +197,7 @@ class View_Reparation extends vueGenerique
                     <div style="width:25%;height:75px;font-size:16px;font-weight:bold;">
                         <input type="button" id="valider" name="valider" value="Valider" style="margin-top:10px;" /><br />
                     </div>
-                    <a href="Module_reparations/Export.php/">Exporter</a>
+                    <a href="index.php?Modules=Module_reparations&action=devis">Exporter</a>
                 </div>
             </form>
         </div>

@@ -8,7 +8,10 @@ class Modele_Reparation extends ConnexionUI
     }
 
     public function getTraces(){
-
-        
+        $requete = self::$bdd->prepare("SELECT * FROM materiels;");
+        $requete->execute();
+        $data= $requete->fetchAll();
+        return $data;
+        print($data);
     }
 }

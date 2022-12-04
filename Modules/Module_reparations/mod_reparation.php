@@ -15,6 +15,9 @@ class ModuleReparation
             case "reparation":
                 $this->control->getVue()->affichageDevis();
                 break;
+             case "devis":
+                $this->control->exportTraces();
+                break;
             default:
             echo "Ouais";
                 break;
