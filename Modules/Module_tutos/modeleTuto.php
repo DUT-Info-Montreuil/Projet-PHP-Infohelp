@@ -53,9 +53,20 @@ class modeleTuto extends ConnexionUI
             $auteur=$_POST['auteurTuto'];
             $lien=$_POST['lienTuto'];
             $categorie= $_POST['choix'];
-            $insert = self::$bdd->prepare("INSERT INTO `tutos` (`titre`, `auteur`, `lienVideo`, `idCategorieVideo`) VALUES (:par,:par2,:par3,:par4)");
-            $insert->execute(array(':par' => $titre, ':par2' => $auteur, ':par3' => $lien, ':par4' => $categorie));
-        
+
+            $imageName = $_FILES["image"]["name"];
+            $tmpName = $_FILES["image"]["tmp_name"];
+      
+            $validImageExtension = ['jpg', 'jpeg', 'png'];
+            $imageExtension = explode('.', $imageName);
+            $imageExtension = strtolower(end($imageExtension));
+            $newImageName = date("Y.m.d") . " - " . date("h.i.sa"); // Generate new image name
+            $newImageName .= '.' . $imageExtension;
+
+            $insert = self::$bdd->prepare("INSERT INTO `tutos` (`titre`, `auteur`, `lienVideo`, `idCategorieVideo`, `miniature`) VALUES (:par,:par2,:par3,:par4,:par5)");
+            $insert->execute(array(':par' => $titre, ':par2' => $auteur, ':par3' => $lien, ':par4' => $categorie, ':par5' => $newImageName));
+            move_uploaded_file($tmpName, 'Module_tutos/images/' . $newImageName);
+
         }
     }
 

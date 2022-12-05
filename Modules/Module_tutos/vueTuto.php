@@ -6,10 +6,11 @@ class VueTuto extends vueGenerique
     public function __construct()
     {
     }
+
     public function afficher_categrorieVideo($data)
     {
         ?>
-        <form action="index.php?Modules=Module_tuto&action=afficheListeTutos" method="POST">
+        <form action="index.php?Modules=Module_tuto&action=afficheListeTutos" method="POST" enctype="multipart/form-data">
         <label>Selectionnez la categorie qui vous concerne:</label></br>
         <?php
         foreach ($data as $categorie) { 
@@ -42,7 +43,8 @@ class VueTuto extends vueGenerique
                     <input type="text" class="form-control" name="auteurTuto" id="auteurTuto">
                     <label for="lienTuto">Entrez l'id du lien de la video (uniquement)</label>
                     <input type="text" class="form-control" name="lienTuto" id="lienTuto" placeholder="ex:(KecoxVL2UDU)">
-                    
+                    <label for="image">Mettre une miniature</label>
+                    <input type="file" class="form-control" name="image" id = "image" accept=".jpg, .jpeg, .png">
                     <label for="choixCategorie">Choisissez la catégorie de la video</label>
                     <select name="choix" id="choixCategorie" class="form-select" aria-label="Default select example">
                     <option disabled selected>--Choix de la categorie--</option>
@@ -98,9 +100,14 @@ class VueTuto extends vueGenerique
         foreach ($data as $videos) { 
             $titreVideo=$videos["titre"];
             $lienVideo=$videos["lienVideo"];
+            $miniature=$videos["miniature"];
+
             ?>
             <button name="lien" value="<?= $lienVideo?>">
+
+            <img id="miniature" src="Module_tutos/images/<?=$miniature?>" alt="miniature de la video"></br>
             <?= $titreVideo?>
+
             </button>
             <?php
         }
