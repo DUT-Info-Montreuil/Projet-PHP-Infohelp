@@ -136,9 +136,9 @@ class View_Reparation extends vueGenerique
                     <div style="width:10%;height:75px;float:left;"></div>
                     <div style="width:15%;height:75px;float:left;font-size:16px;font-weight:bold;text-align:left;">
                         Réf. Client :<br />
-                        <select id="ref_client" name="ref_client">
+                        <select  name="ref_client">
                             <option value="0">Choisir client</option>
-                            <option value="1">Vous</option>
+                            <option id="ref_client" value="1">Vous</option>
                             <option value="2">Une autre personne</option>
                             <!-- Si c'est lui alors en cliquant dessus les champs sont automatiquement rempli -->
                             <!-- Si c'est une autre personne, il remplit lui même les champs -->
@@ -152,7 +152,7 @@ class View_Reparation extends vueGenerique
                     </div>
                     <div style="width:25%;height:75px;float:left;font-size:16px;font-weight:bold;text-align:left;">
                         Nom du client :<br />
-                        <input type="text" id="nom_client" name="nom_client" />
+                        <input type="text" id="nom_client" name="nom_client" value=""/>
                     </div>
                     <div style="width:25%;height:75px;float:left;font-size:16px;font-weight:bold;text-align:left;">
                         Prénom du client :<br />
@@ -202,32 +202,22 @@ class View_Reparation extends vueGenerique
             </form>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
                         <script>
-                            // let dropdowns = document.querySelectorAll('.dropdown-toggle')
-                            // dropdowns.forEach((dd)=>{
-                            //     dd.addEventListener('click', function (e) {
-                            //         var el = this.nextElementSibling
-                            //         el.style.display = el.style.display==='block'?'none':'block'
-                            //     })
-                            // })
-                            var nom;
-                            var select= document.getElementById('ref_client');
-                            $('.ref_client').click(function() {
-                                if(select.value.trim()==="1"){
+
+                            $('#ref_client').click(function() {
                                 $.ajax({
                                     url: '../devis.php',
                                     type: 'POST',
                                     dataType: 'json',
                                     data: {id : "<?=$_SESSION['userID']?>"},
-                                    success: function(response){
-                                        console.log(response);
-                                        nom = response[0][1];
-                                        prenom = response[1][1];
-
-                                        $("#nom_client").html(nom);
-                                        $("#prenom_client").html(prenom);
+                                    success: function(reponse){
+                                        console.log(reponse);
+                                        nom = reponse[1];
+                                        prenom = reponse[2];
+                                        document.getElementById('nom_client').setAttribute('value', nom);
+                                        document.getElementById('prenom_client').setAttribute('value', prenom);
                                     }
                                 });
-                            }})
+                            })
                         </script>
         </div>
 <?php

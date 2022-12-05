@@ -7,6 +7,6 @@
 
     $req = ConnexionUI::getBDD()->prepare("select * from utilisateurs where userID ='$id'");
     $req->execute();
-    $resultat = $req->fetchAll();
+    $resultat = $req->fetch();
     echo json_encode($resultat);
 ?>

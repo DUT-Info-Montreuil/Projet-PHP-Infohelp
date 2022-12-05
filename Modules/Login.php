@@ -14,4 +14,8 @@ class ConnexionUI
                 $pass = "";
                 self::$bdd = new PDO($log, $user, $pass);
         }
+
+        public static function getBDD() {
+            return self::$bdd;
+        }
 }
