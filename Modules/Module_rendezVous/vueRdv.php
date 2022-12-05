@@ -101,7 +101,7 @@ class VueRdv extends vueGenerique
         }
 
     public function afficherCat($req)
-    {
+    { var_dump($req);
         ?>
             <form action="index.php?Modules=Module_rendezVous&action=liste_tech" method="POST">
                 <label>Selectionnez la categorie que vous souhaitez :</label></br>
