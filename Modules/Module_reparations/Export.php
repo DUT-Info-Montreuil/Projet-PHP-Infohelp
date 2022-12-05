@@ -1,16 +1,15 @@
 <?php
-class Export
-{
+
     /**
      * Exporte les traces vers un fichier excel
      *
      * @param [type] $result
      * @return void
      */
-    public function exportTraces($result)
+    function exportTraces($result)
     {
         /* Initialisation de l'excel */
-        include_once 'application/third_party/PHPExcel/Classes/PHPExcel.php';
+        include_once 'C:/wamp64/www/Projet-PHP-Infohelp/PHPExcel/Classes/PHPExcel.php';
         $objPHPExcel = new PHPExcel();
         $objPHPExcel->setActiveSheetIndex(0);
 
@@ -38,9 +37,7 @@ class Export
         }
 
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-        header('Content-Disposition: attachment;filename="DAS2web"');
+        header('Content-Disposition: attachment;filename="devis.csv"');
         $objWriter->save('php://output');
     }
-}
-
 ?>

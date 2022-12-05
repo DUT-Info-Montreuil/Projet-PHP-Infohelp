@@ -16,7 +16,7 @@ class ModuleReparation
                 $this->control->getVue()->affichageDevis();
                 break;
              case "devis":
-                $this->control->exportTraces();
+                $this->control->getModele()->getTraces();
                 break;
             default:
             echo "Ouais";

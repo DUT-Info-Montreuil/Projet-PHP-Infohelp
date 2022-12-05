@@ -121,7 +121,7 @@ class View_Reparation extends vueGenerique
 
         <div style="float:left;width:10%;height:350px;"></div>
         <div style="float:left;width:80%;height:350px;text-align:center;">
-            <form id="formulaire" name="formulaire" method="post" action="rep_facture.php">
+            <form id="formulaire" name="formulaire" method="post" action="Module_reparations/modele_reparation.php">
                 <div class="titre_h1" style="height:350px;">
                     <div style="width:10%;height:50px;float:left;"></div>
                     <div style="width:35%;height:50px;float:left;font-size:20px;font-weight:bold;text-align:left;color:#a13638;">
@@ -197,6 +197,7 @@ class View_Reparation extends vueGenerique
                     <div style="width:25%;height:75px;font-size:16px;font-weight:bold;">
                         <input type="button" id="valider" name="valider" value="Valider" style="margin-top:10px;" /><br />
                     </div>
+                    <input type="submit" value="Telecharger">
                     <a href="index.php?Modules=Module_reparations&action=devis">Exporter</a>
                 </div>
             </form>

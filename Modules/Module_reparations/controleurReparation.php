@@ -23,19 +23,7 @@ class Controleur_Reparation
     }
 
 
-    /**
-	 * Exporte les traces
-	 *
-	 * @return void
-	 */
-	public function exportTraces()
-	{
-		$this->load->model("Modele_Reparation");
-		$traces = $this->Modele_Reparation->getTraces();
-		
-		$this->load->model("Export");
-		$this->Export->exportTraces($traces);
-	}
+
 
 
 }
