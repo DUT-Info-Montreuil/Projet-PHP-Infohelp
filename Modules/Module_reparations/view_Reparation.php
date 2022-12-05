@@ -200,6 +200,35 @@ class View_Reparation extends vueGenerique
                     <a href="index.php?Modules=Module_reparations&action=devis">Exporter</a>
                 </div>
             </form>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+                        <script>
+                            // let dropdowns = document.querySelectorAll('.dropdown-toggle')
+                            // dropdowns.forEach((dd)=>{
+                            //     dd.addEventListener('click', function (e) {
+                            //         var el = this.nextElementSibling
+                            //         el.style.display = el.style.display==='block'?'none':'block'
+                            //     })
+                            // })
+                            var nom;
+                            var select= document.getElementById('ref_client');
+                            $('.ref_client').click(function() {
+                                if(select.value.trim()==="1"){
+                                $.ajax({
+                                    url: '../devis.php',
+                                    type: 'POST',
+                                    dataType: 'json',
+                                    data: {id : "<?=$_SESSION['userID']?>"},
+                                    success: function(response){
+                                        console.log(response);
+                                        nom = response[0][1];
+                                        prenom = response[1][1];
+
+                                        $("#nom_client").html(nom);
+                                        $("#prenom_client").html(prenom);
+                                    }
+                                });
+                            }})
+                        </script>
         </div>
 <?php
     }
