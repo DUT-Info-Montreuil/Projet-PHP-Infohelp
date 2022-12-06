@@ -178,7 +178,6 @@ class VueRdv extends vueGenerique
 
     public function afficherCat($req)
     {
-        var_dump($req);
         ?>
 
          
@@ -191,29 +190,38 @@ class VueRdv extends vueGenerique
     <ul class="nav nav-list-main">
       
         <li class="nav-divider"></li>
-        <li><label class="nav-toggle nav-header"><span>Reparation</span></label>
+        <li><label class="btn btn-secondary dropdown-toggle nav-toggle nav-header"><span>Reparation</span></label>
             <ul class="nav nav-list nav-left-ml">
-            <li><label class="nav-toggle nav-header"><span>Logiciel</span></label>
+            <li><label class="dropdown-item dropdown-toggle nav-toggle nav-header"><span>Logiciel</span></label>
             <ul class="nav nav-list nav-left-ml">
-                        <li><a class="categorie" id="cat1" href="#"></a></li>
-                        <li><a class="categorie" id="cat2" href="#"></a></li>
-                      <li><label class="nav-toggle nav-header"><span>Header 2.1.1</span></label>
-                            <ul class="nav nav-list nav-left-ml">
-                                <li><a href="#">Link</a></li>
-                                <li><a href="#">Link</a></li>
-                            </ul>
-                        </li>
+                    <li><label class="dropdown-item dropdown-toggle nav-toggle nav-header"><span>Developpement</span></label>
+                        <ul class="nav nav-list nav-left-ml">
+                        <li><a class="nav-link px-2 link-secondary text-black categorie" id="cat1" href="#"></a></li>  
+                        <li><a class="nav-link px-2 link-secondary text-black categorie" id="cat2" href="#"></a></li>
+                        </ul>
+                    </li>
+                    <li><label class="dropdown-item dropdown-toggle nav-toggle nav-header"><span>Securité</span></label>
+                        <ul class="nav nav-list nav-left-ml">
+                        <li><a class="nav-link px-2 link-secondary text-black categorie" id="cat3" href="#"></a></li> 
+                        <li><a class="nav-link px-2 link-secondary text-black categorie" id="cat8" href="#"></a></li>
+ 
+                        </ul>
+                    </li>
+
                     </ul>
-            <li><label class="nav-toggle nav-header"><span>Materiel</span></label>
+            <li><label class="dropdown-item dropdown-toggle nav-toggle nav-header"><span>Materiel</span></label>
             <ul class="nav nav-list nav-left-ml">
-                        <li><a class="categorie" id="cat3" href="#"></a></li>
-                        <li><a href="#">Link</a></li>
-                      <li><label class="nav-toggle nav-header"><span>Header 2.1.1</span></label>
-                            <ul class="nav nav-list nav-left-ml">
-                                <li><a href="#">Link</a></li>
-                                <li><a href="#">Link</a></li>
-                            </ul>
-                        </li>
+            <li><label class="dropdown-item dropdown-toggle nav-toggle nav-header"><span>Appareils éléctroniques</span></label>
+                        <ul class="nav nav-list nav-left-ml">
+                        <li><a class="nav-link px-2 link-secondary text-black categorie" id="cat4" href="#"></a></li>  
+                        <li><a class="nav-link px-2 link-secondary text-black categorie" id="cat5" href="#"></a></li>
+                        <li><a class="nav-link px-2 link-secondary text-black categorie" id="cat9" href="#"></a></li>
+                        <li><a class="nav-link px-2 link-secondary text-black categorie" id="cat7" href="#"></a></li>
+
+                        </ul>
+                    </li>
+                        <li><a class="categorie" id="cat2" href="#"></a></li>
+
                     </ul>
             </ul>
         </li>
@@ -241,16 +249,29 @@ class VueRdv extends vueGenerique
                     url: '../nom.php',
                     type: 'POST',
                     dataType: 'json',
-                    data: {id1 : "<?=$req[0]['idCat']?>", id2 : "<?=$req[1]['idCat']?>",id3 : "<?=$req[2]['idCat']?>"},
+                    data: {id1 : "<?=$req[0]['idCat']?>", id2 : "<?=$req[1]['idCat']?>",id3 : "<?=$req[2]['idCat']?>",id4 : "<?=$req[3]['idCat']?>",id5 : "<?=$req[4]['idCat']?>",id6 : "<?=$req[5]['idCat']?>",id7 : "<?=$req[6]['idCat']?>",id8 : "<?=$req[7]['idCat']?>",id9 : "<?=$req[8]['idCat']?>"},
                     success: function(response){
                         console.log(response);
                         nom = response[0][1];
                         nom1 = response[1][1];
                         nom2 = response[2][1];
+                        nom3 = response[3][1];
+                        nom4 = response[4][1];
+                        nom5 = response[5][1];
+                        nom6 = response[6][1];
+                        nom7 = response[7][1];
+                        nom8 = response[8][1];
 
                         $("#cat1").html(nom);
                         $("#cat2").html(nom1);
                         $("#cat3").html(nom2);
+                        $("#cat4").html(nom3);
+                        $("#cat5").html(nom4);
+                        $("#cat6").html(nom5);
+                        $("#cat7").html(nom6);
+                        $("#cat8").html(nom7);
+                        $("#cat9").html(nom8);
+
                     }
                 });
             })

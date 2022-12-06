@@ -137,9 +137,15 @@ h1{
 .nav-list-main{padding-left:0px;padding-right:0px;margin-bottom:0;}
 span.nav-toggle-icon{font-size:7px !important;top:-2px !important;color:#888 !important;}
 
+
+.nav-header{
+    font-weight: bold;
+    text-decoration: underline;
+}
 .nav-toggle{
     margin-right: 10px;
 }
 .categorie{
     margin-right: 10px;
+    color: black;
 }
