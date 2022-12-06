@@ -14,8 +14,7 @@ class moduleRdv
         $this->action = isset($_GET['action']) ? $_GET['action'] : "rien";
         switch ($this->action) {
 
-             case "prendreRdv":
-                
+             case "prendreRdv":              
                 $this->control->getVue()->affichageFormRdv();
                 break; 
             case "ajoutRdv":
@@ -34,6 +33,13 @@ class moduleRdv
             case 'liste_catégorie':
                 $this->control->listeCategorie();
                 break;
+            case "reparation":
+                $this->control->getVue()->affichageDevis();
+                break;
+            case "devis":
+                $this->control->exportTraces();
+                break;
+    
             default:
                 break;
         }
