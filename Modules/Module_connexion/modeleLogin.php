@@ -18,14 +18,15 @@ class modeleLogin extends ConnexionUI
             $email = htmlspecialchars($_POST["email"]);
             $passwd = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
-            $verifville = self::$bdd->prepare('SELECT * FROM `utilisateurs` inner join `ville` on utilisateurs.city=ville.nom WHERE `city` is not null');
+            /*$verifville = self::$bdd->prepare('SELECT * FROM `utilisateurs` inner join `ville` on utilisateurs.city=ville.nom WHERE `city` is not null');
             $verifville->execute();
             $tab = $verifville->fetch();
             if ($tab['ville'] == $_POST["city"] && $tab['codePostal'] == $_POST["postal_address"]) {
                 $city = htmlspecialchars($_POST["city"]);
                 $postAdress = htmlspecialchars($_POST["postal_address"]);
-            }
-
+            }*/
+            $city = htmlspecialchars($_POST["city"]);
+            $postAdress = htmlspecialchars($_POST["postal_address"]);
             $insertUser = self::$bdd->prepare('INSERT INTO `utilisateurs` (`last_name`, `first_name`, `email`, `password`, `postal_address`, `city`, `admin`) VALUES (:par,:par2,:par3,:par4,:par5,:par6, :par7)');
             $insertUser->execute(array(':par' => $lastname, ':par2' => $firstname, ':par3' => $email, ':par4' => $passwd, ':par5' => $postAdress, ':par6' => $city, ':par7' => 0));
 

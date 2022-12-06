@@ -9,6 +9,26 @@ class ViewAccueil extends vueGenerique
     public function affichePageAccueil()
     {
 ?>
+<style>
+  <?php if($_SESSION['admin'] == 1){?>
+    body {
+    background: black;
+    
+    }
+    body p{
+      color: green;
+    }
+  <?php } ?>
+  <?php if($_SESSION['admin'] == 2){?>
+    body {
+    background: gray;
+    
+    }
+    body p{
+      color: red;
+    }
+  <?php } ?>
+</style>
             
   <body>
       <main>
