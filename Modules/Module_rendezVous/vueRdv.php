@@ -195,8 +195,8 @@ class VueRdv extends vueGenerique
             <ul class="nav nav-list nav-left-ml">
             <li><label class="nav-toggle nav-header"><span>Logiciel</span></label>
             <ul class="nav nav-list nav-left-ml">
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
+                        <li><a class="categorie" id="cat1" href="#"></a></li>
+                        <li><a class="categorie" id="cat2" href="#"></a></li>
                       <li><label class="nav-toggle nav-header"><span>Header 2.1.1</span></label>
                             <ul class="nav nav-list nav-left-ml">
                                 <li><a href="#">Link</a></li>
@@ -206,7 +206,7 @@ class VueRdv extends vueGenerique
                     </ul>
             <li><label class="nav-toggle nav-header"><span>Materiel</span></label>
             <ul class="nav nav-list nav-left-ml">
-                        <li><a href="#">Link</a></li>
+                        <li><a class="categorie" id="cat3" href="#"></a></li>
                         <li><a href="#">Link</a></li>
                       <li><label class="nav-toggle nav-header"><span>Header 2.1.1</span></label>
                             <ul class="nav nav-list nav-left-ml">
@@ -224,25 +224,19 @@ class VueRdv extends vueGenerique
         <script>
 
             $('ul.nav-left-ml').toggle();
-    $('label.nav-toggle span').click(function () {
-    $(this).parent().parent().children('ul.nav-left-ml').toggle(300);
-    var cs = $(this).attr("class");
-    if(cs == 'nav-toggle-icon glyphicon glyphicon-chevron-right') {
-        $(this).removeClass('glyphicon-chevron-right').addClass('glyphicon-chevron-down');
-    }
-    if(cs == 'nav-toggle-icon glyphicon glyphicon-chevron-down') {
-        $(this).removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-right');
-    }
-    });
-            /* let dropdowns = document.querySelectorAll('.dropdown-toggle')
-            dropdowns.forEach((dd)=>{
-                dd.addEventListener('click', function (e) {
-                    var el = this.nextElementSibling
-                    el.style.display = el.style.display==='block'?'none':'block'
-                })
-            })
+            $('label.nav-toggle span').click(function () {
+            $(this).parent().parent().children('ul.nav-left-ml').toggle(300);
+            var cs = $(this).attr("class");
+            if(cs == 'nav-toggle-icon glyphicon glyphicon-chevron-right') {
+                $(this).removeClass('glyphicon-chevron-right').addClass('glyphicon-chevron-down');
+            }
+            if(cs == 'nav-toggle-icon glyphicon glyphicon-chevron-down') {
+                $(this).removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-right');
+            }
+            });
+            
             var nom;
-            $('.dropdown-toggle').click(function() {
+            $('.nav-header').click(function() {
                 $.ajax({
                     url: '../nom.php',
                     type: 'POST',
@@ -259,7 +253,7 @@ class VueRdv extends vueGenerique
                         $("#cat3").html(nom2);
                     }
                 });
-            }) */
+            })
         </script>
 
 <!--<form id="formCategorie" action="index.php?Modules=Module_rendezVous&action=liste_tech" method="POST">
