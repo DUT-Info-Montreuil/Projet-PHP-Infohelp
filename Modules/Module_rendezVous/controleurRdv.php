@@ -37,4 +37,27 @@ class controleurRdv
         $resultat=$this->modele->getCategories();
         $this->vue->afficherCat($resultat);
     }
+
+
+        /**
+	 * Exporte les traces
+	 *
+	 * @return void
+	 */
+	public function exportTraces()
+	{
+		$this->load->model("Modele_Reparation");
+		$traces = $this->Modele_Reparation->getTraces();
+		
+		$this->load->model("Export");
+		$this->Export->exportTraces($traces);
+	}
+
+    public function affichageDevis()
+	{
+		$traces = $this->getModel->();
+		
+		$this->load->model("Export");
+		$this->Export->exportTraces($traces);
+	}
 }
