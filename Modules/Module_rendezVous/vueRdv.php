@@ -184,37 +184,57 @@ class VueRdv extends vueGenerique
          
  
 
-        <div class="container py-5">
-            <h1 class="mb-4">Multilevel Dropdown</h1>
-            <div class="dropdown">
-                
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> Menu </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li class="dropdown dropend">
-                        <a class="dropdown-item dropdown-toggle" href="#" id="multilevelDropdownMenu1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Logiciel</a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li><a class="dropdown-item" id="cat1" href="#"></a></li>
-                            <li><a class="dropdown-item" id="cat2" href="#"></a></li>
-                </ul>
-                    </li>
-                    <li class="dropdown dropend">
-                        <!-- Default dropstart button -->
-                        <div class="btn-group dropstart">
-                        <a class="dropdown-item dropdown-toggle" href="#" id="multilevelDropdownMenu1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Materiel</a>
+<div class="container">
+  <div class="col-md-12"><h2>Catégories de reparation</h2></div>
+  <div class="col-md-3">
 
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" id="cat3" href="#"></a></li>
-                            <li><a class="dropdown-item" id="cat2" href="#"></a></li>                        
-                        </ul>
-                        </div>
-                        
-                    </li>
-                </ul>
-            </div>
-        </div>
+    <ul class="nav nav-list-main">
+      
+        <li class="nav-divider"></li>
+        <li><label class="nav-toggle nav-header"><span>Reparation</span></label>
+            <ul class="nav nav-list nav-left-ml">
+            <li><label class="nav-toggle nav-header"><span>Logiciel</span></label>
+            <ul class="nav nav-list nav-left-ml">
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                      <li><label class="nav-toggle nav-header"><span>Header 2.1.1</span></label>
+                            <ul class="nav nav-list nav-left-ml">
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+            <li><label class="nav-toggle nav-header"><span>Materiel</span></label>
+            <ul class="nav nav-list nav-left-ml">
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                      <li><label class="nav-toggle nav-header"><span>Header 2.1.1</span></label>
+                            <ul class="nav nav-list nav-left-ml">
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+            </ul>
+        </li>
+    </ul>
+  </div>
+</div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <script>
-            let dropdowns = document.querySelectorAll('.dropdown-toggle')
+
+            $('ul.nav-left-ml').toggle();
+    $('label.nav-toggle span').click(function () {
+    $(this).parent().parent().children('ul.nav-left-ml').toggle(300);
+    var cs = $(this).attr("class");
+    if(cs == 'nav-toggle-icon glyphicon glyphicon-chevron-right') {
+        $(this).removeClass('glyphicon-chevron-right').addClass('glyphicon-chevron-down');
+    }
+    if(cs == 'nav-toggle-icon glyphicon glyphicon-chevron-down') {
+        $(this).removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-right');
+    }
+    });
+            /* let dropdowns = document.querySelectorAll('.dropdown-toggle')
             dropdowns.forEach((dd)=>{
                 dd.addEventListener('click', function (e) {
                     var el = this.nextElementSibling
@@ -239,7 +259,7 @@ class VueRdv extends vueGenerique
                         $("#cat3").html(nom2);
                     }
                 });
-            })
+            }) */
         </script>
 
 <!--<form id="formCategorie" action="index.php?Modules=Module_rendezVous&action=liste_tech" method="POST">

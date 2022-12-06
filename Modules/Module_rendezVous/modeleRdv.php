@@ -125,7 +125,7 @@ class modeleRdv extends ConnexionUI
         //$str = $_POST["recherche"];
         //$idCat = $_POST["idCat"] where techniciens.idCategorie ='$idCat';
         $cat = $_POST["categorie"];
-        $sth1 = self::$bdd->prepare("SELECT * FROM `techniciens` inner join `Categories` on techniciens.idCategorie = Categories.idCat where idCat = '$cat'");
+        $sth1 = self::$bdd->prepare("SELECT * FROM `techniciens` inner join `categories` on techniciens.idCategorie = categories.idCat where idCat = '$cat'");
         $sth1->execute();
         $recuptech = $sth1->fetchAll();
         return $recuptech;
@@ -135,7 +135,7 @@ class modeleRdv extends ConnexionUI
     
     public function getCategories()
     {
-        $sth = self::$bdd->prepare("SELECT * FROM `Categories`");
+        $sth = self::$bdd->prepare("SELECT * FROM `categories`");
         $sth->execute();
         $recupCate = $sth->fetchAll();
         return $recupCate;
