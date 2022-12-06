@@ -1,15 +1,16 @@
 <?php
 
         /* Initialisation de l'excel */
-        require_once('C:/wamp64/www/Projet-PHP-Infohelp/PHPExcel/Classes/PHPExcel.php');
+        require_once('C:\wamp\www\Projet-PHP-Infohelp\PHPExcel\Classes\PHPExcel.php');
         $objPHPExcel = new PHPExcel();
         $objPHPExcel->setActiveSheetIndex(0);
-
+        $prenom=$_POST['prenom_client'];
+        $nom=$_POST['nom_client'];
         $objPHPExcel->getActiveSheet()->SetCellValue("A1", "Nom");
         $objPHPExcel->getActiveSheet()->SetCellValue("A2", "Prenom");
         $objPHPExcel->getActiveSheet()->SetCellValue("A3", "Age");
-        $objPHPExcel->getActiveSheet()->SetCellValue("B1", "Germana");
-        $objPHPExcel->getActiveSheet()->SetCellValue("B2", "Geovany");
+        $objPHPExcel->getActiveSheet()->SetCellValue("B1", "$nom");
+        $objPHPExcel->getActiveSheet()->SetCellValue("B2", "$prenom");
         $objPHPExcel->getActiveSheet()->SetCellValue("B3", "23");
 
         // //Style
