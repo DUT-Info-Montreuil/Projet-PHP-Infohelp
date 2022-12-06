@@ -72,7 +72,7 @@ class modeleRdv extends ConnexionUI
         //$str = $_POST["recherche"];
         //$idCat = $_POST["idCat"] where techniciens.idCategorie ='$idCat';
         $cat = $_POST["categorie"];
-        $sth1 = self::$bdd->prepare("SELECT * FROM `techniciens` inner join `Categories` on techniciens.idCategorie = Categories.idCat where idCat = '$cat'");
+        $sth1 = self::$bdd->prepare("SELECT * FROM `techniciens` inner join `categories` on techniciens.idCategorie = categories.idCat where idCat = '$cat'");
         $sth1->execute();
         $recuptech = $sth1->fetchAll();
         return $recuptech;
@@ -80,19 +80,15 @@ class modeleRdv extends ConnexionUI
 
     public function getCategories()
     {
-        $sth = self::$bdd->query("SELECT * FROM `Categories`");
+        $sth = self::$bdd->query("SELECT * FROM `categories`");
         return $sth;
     }
-    /* public function detailsCat()
-    {
-        $id = $_GET["idCat"];
-        try {
-            foreach (self::$bdd->query("SELECT * from Categories where id=$id ") as $row) {
-                print_r($row);
-            }
-        } catch (PDOException $e) {
-            print "Erreur !: " . $e->getMessage() . "<br/>";
-            die();
-        }
-    } */
+    
+    public function getTraces(){
+        $requete = self::$bdd->prepare("SELECT * FROM materiels");
+        $requete->execute();
+        $data= $requete->fetchAll();
+        return $data;
+        print($data);
+    }
 }
