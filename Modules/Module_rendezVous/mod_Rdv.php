@@ -15,12 +15,9 @@ class moduleRdv
         switch ($this->action) {
 
              case "prendreRdv":
-                
                 $this->control->getVue()->affichageFormRdv();
                 break; 
             case "ajoutRdv":
-                var_dump($_POST['tec']);
-                $idtec=$_POST['tec'];
                 $this->control->getModele()->ajouterRdv();
                 break;
             case "retirerRdv":
@@ -33,6 +30,12 @@ class moduleRdv
                 $this->control->listeTechnicien();
             case 'liste_catégorie':
                 $this->control->listeCategorie();
+                break;
+            case 'selectionVille':
+                $this->control->getVue()->afficherVille();
+                break;
+            case 'voirTechnicien':
+                $this->control->getVue()->toutLesTechniciens($this->control->getModele()->getTechnicienParVille());
                 break;
             default:
                 break;

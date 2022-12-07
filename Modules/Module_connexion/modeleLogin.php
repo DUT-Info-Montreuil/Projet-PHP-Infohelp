@@ -87,6 +87,7 @@ class modeleLogin extends ConnexionUI
         unset($_SESSION['userID']);
         unset($_SESSION['email']);
         unset($_SESSION['password']);
+        unset($_SESSION['admin']);
         header("Location: index.php?Modules=Module_connexion&action=connexion");
         die();
     }

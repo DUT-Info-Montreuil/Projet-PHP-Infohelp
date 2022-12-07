@@ -38,9 +38,7 @@ class View extends vueGenerique
                     <input type="password" class="form-control" name="password" required>
                     <label for="floatingInput">Mot de passe</label>
                 </div>
-                <!-- <div class="form-floating">
-                    <input type="text" class="form-control" name="city" required>
-                    <label for="floatingInput">Ville</label> -->
+
                 <div>
 
                     <label id="ville" for="floatingInput">Selectionner une ville :</label>

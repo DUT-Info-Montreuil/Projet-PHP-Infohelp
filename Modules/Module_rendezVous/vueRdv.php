@@ -5,6 +5,45 @@ class VueRdv extends vueGenerique
     public function __construct()
     {
     }
+    public function afficherVille()
+    {
+        ?>
+                <form action="index.php?Modules=Module_rendezVous&action=voirTechnicien" method="POST">
+                    <label id="ville" for="floatingInput">Selectionner une ville :</label>
+                    <select id="selectVille" name="city" class="form-select" aria-label="Default select example">
+                        <option selected>ville à selectionner</option>
+                        <option value="Paris">Paris</option>
+                        <option value="Sarcelles">Sarcelles</option>
+                        <option value="Nanterre">Nanterre</option>
+                        <option value="Montreuil">Montreuil</option>
+                        <option value="Creteil">Creteil</option>
+                        <option value="Cergy">Cergy</option>
+                    </select>
+                    <button class="btn btn-primary" type="submit">Validé</button>
+                </form>
+        <?php
+    }
+    public function toutLesTechniciens($req){
+        /*index.php?Modules=Module_rendezVous&action=voirTechnicien*/
+        ?>
+        <form action="#" method="post">
+            <label>Liste des utilisateurs, cliquer sur celui que vous souhaitez supprimer :</label></br>
+
+            <?php
+            foreach ($req as $technicien) {
+                $idTech = $technicien["idTechnicien"];
+                $nom = $technicien["nom"];
+                $prenom = $technicien["prenom"];
+
+
+            ?>
+                <button class="btn btn-outline-secondary" name="idUser" value="<?= $idTech ?>">
+                    <?= $nom . " " . $prenom ?>
+                </button>
+            <?php } ?>
+        </form>
+        <?php
+    }
 
     public function affichageFormRdv()
     {
@@ -51,7 +90,7 @@ class VueRdv extends vueGenerique
 
     public function afficherTechnicien($req)
     {
-        //if ($req->rowcount() > 0) {
+        
     ?>
         <form action="index.php?Modules=Module_rendezVous&action=prendreRdv" method="POST">
             <?php
@@ -83,6 +122,15 @@ class VueRdv extends vueGenerique
     public function afficherCat($req)
     {
     ?>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
         <form action="index.php?Modules=Module_rendezVous&action=liste_tech" method="POST">
             <label>Selectionnez la categorie que vous souhaitez :</label></br>
             <?php
@@ -99,6 +147,9 @@ class VueRdv extends vueGenerique
             ?>
 
         </form>
+    </body>
+    </html>
+        
 <?php
     }
 }
