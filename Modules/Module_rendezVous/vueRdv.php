@@ -14,8 +14,8 @@ class VueRdv extends vueGenerique
     <form action="index.php?Modules=Module_rendezVous&action=ajoutRdv" method="POST">
         <label>
             Veuillez selectionner le jour ainsi que l'heure qui vous convient :
-            <input type="date" name="jour" required>
-            <input type="time" name="heure" required>
+            <input type="date" name="jour" min="<?=date("Y-m-d")?>" max="2023-12-31" required>
+            <input type="time" name="heure" min="09:00" max="18:00" required>
             <input type="hidden" name="tec" value="<?=$_POST['tec']?>">
         </label>
         <button class="btn btn-outline-secondary" value=<?=$_POST['tec']?>>Confirmer</button>
@@ -48,16 +48,24 @@ class VueRdv extends vueGenerique
                         <h3>Rendez-vous<h3></br>
                     </div>
                     <label>Technicien: <?= $nomTechnicien." ".$prenomTechnicien?></br>
-                    Le <?=$dateRdv?>, à <?=$dateRdv?></label></br>
+                    Le <?=$dateRdv?>, à <?=$dateRdv?></label></br></br>
                     
                     <label>Mettre une note au technicien (note/5): </label>
-                    <input placeholder="<?=$note?>" minlength="0" maxlength="1" size="3" type="text" name="note"></br>
-                    <label for="MettreFavoris">Mettre ce technicien en favoris </label>
-                        <input type="checkbox" class="form-check-input" id="MettreFavoris" name="MettreFavoris" value="1" <?php if(isset($_GET['MettreFavoris'])==1){echo"checked";}?>></br>
-                        <button class="btn btn-outline-secondary">Confirmer</button>
+                    <select name="choixNote" id="choixNote">
+                    <option>0</option>
+                    <option>1</option>                    
+                    <option>2</option>                    
+                    <option>3</option>                    
+                    <option>4</option>                    
+                    <option>5</option>  
+                    </select></br></br>
+                    
+                    <button class="btn btn-outline-secondary">Confirmer</button></br></br>
+
+                    <button class="btn btn-outline-success" id="MettreFavoris" name="MettreFavoris">Mettre ce technicien en favoris</button>
 
 
-                        <button type="submit" name="boutonAnnuler" class="btn btn-outline-danger">Annuler le rendez-vous</button>
+                    <button type="submit" name="boutonAnnuler" class="btn btn-outline-danger">Annuler le rendez-vous</button>
 
                     
                     <input type="hidden" name="idRdv" value="<?=$idRdv?>">
@@ -147,8 +155,7 @@ class VueRdv extends vueGenerique
 
     public function afficherTechnicien($req)
     {
-        //if ($req->rowcount() > 0) {
-    ?>
+        ?>
         <form action="index.php?Modules=Module_rendezVous&action=prendreRdv" method="POST">
         <?php
 
@@ -161,7 +168,7 @@ class VueRdv extends vueGenerique
                 <td> prenom : <?= $row['prenom']; ?></td><br>
                 <td> categorie :<?= $row["nomCat"];?></td><br>
                 
-                <label>Choisir le technicien n° </label><input class="btn btn-outline-secondary" type="submit" name="tec" value="<?php echo $row['idTechnicien'];?>"> 
+                <label></label><button class="btn btn-outline-secondary" type="submit" name="tec" value="<?php echo $row['idTechnicien'];?>">Choisir ce technicien </button> 
 
             </tr>
                 <?php 
@@ -182,13 +189,13 @@ class VueRdv extends vueGenerique
 
          
  
+<form action="index.php?Modules=Module_rendezVous&action=liste_tech" method="POST">
 
 <div class="container">
-  <div class="col-md-12"><h2>Catégories de reparation</h2></div>
+  <div class="col-md-12"><h2>Choisir la catégorie de reparation</h2></div>
   <div class="col-md-3">
 
     <ul class="nav nav-list-main">
-      
         <li class="nav-divider"></li>
         <li><label class="btn btn-secondary dropdown-toggle nav-toggle nav-header"><span>Reparation</span></label>
             <ul class="nav nav-list nav-left-ml">
@@ -196,14 +203,14 @@ class VueRdv extends vueGenerique
             <ul class="nav nav-list nav-left-ml">
                     <li><label class="dropdown-item dropdown-toggle nav-toggle nav-header"><span>Developpement</span></label>
                         <ul class="nav nav-list nav-left-ml">
-                        <li><a class="nav-link px-2 link-secondary text-black categorie" id="cat1" href="#"></a></li>  
-                        <li><a class="nav-link px-2 link-secondary text-black categorie" id="cat2" href="#"></a></li>
+                        <li><button class="nav-link px-2 link-secondary text-black categorie" name="categorie" id="cat1"></li></button>  
+                        <li><button class="nav-link px-2 link-secondary text-black categorie" name="categorie" id="cat2"></button></li>
                         </ul>
                     </li>
                     <li><label class="dropdown-item dropdown-toggle nav-toggle nav-header"><span>Securité</span></label>
                         <ul class="nav nav-list nav-left-ml">
-                        <li><a class="nav-link px-2 link-secondary text-black categorie" id="cat3" href="#"></a></li> 
-                        <li><a class="nav-link px-2 link-secondary text-black categorie" id="cat8" href="#"></a></li>
+                        <li><button class="nav-link px-2 link-secondary text-black categorie" name="categorie" id="cat3"></button></li> 
+                        <li><button class="nav-link px-2 link-secondary text-black categorie" name="categorie" id="cat4"></button></li>
  
                         </ul>
                     </li>
@@ -213,10 +220,10 @@ class VueRdv extends vueGenerique
             <ul class="nav nav-list nav-left-ml">
             <li><label class="dropdown-item dropdown-toggle nav-toggle nav-header"><span>Appareils éléctroniques</span></label>
                         <ul class="nav nav-list nav-left-ml">
-                        <li><a class="nav-link px-2 link-secondary text-black categorie" id="cat4" href="#"></a></li>  
-                        <li><a class="nav-link px-2 link-secondary text-black categorie" id="cat5" href="#"></a></li>
-                        <li><a class="nav-link px-2 link-secondary text-black categorie" id="cat9" href="#"></a></li>
-                        <li><a class="nav-link px-2 link-secondary text-black categorie" id="cat7" href="#"></a></li>
+                        <li><button class="nav-link px-2 link-secondary text-black categorie" name="categorie" id="cat5"></button></li>  
+                        <li><button class="nav-link px-2 link-secondary text-black categorie" name="categorie" id="cat6"></button></li>
+                        <li><button class="nav-link px-2 link-secondary text-black categorie" name="categorie" id="cat7"></button></li>
+                        <li><button class="nav-link px-2 link-secondary text-black categorie" name="categorie" id="cat8"></button></li>
 
                         </ul>
                     </li>
@@ -228,6 +235,7 @@ class VueRdv extends vueGenerique
     </ul>
   </div>
 </div>
+    </form>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <script>
 
@@ -249,18 +257,25 @@ class VueRdv extends vueGenerique
                     url: '../nom.php',
                     type: 'POST',
                     dataType: 'json',
-                    data: {id1 : "<?=$req[0]['idCat']?>", id2 : "<?=$req[1]['idCat']?>",id3 : "<?=$req[2]['idCat']?>",id4 : "<?=$req[3]['idCat']?>",id5 : "<?=$req[4]['idCat']?>",id6 : "<?=$req[5]['idCat']?>",id7 : "<?=$req[6]['idCat']?>",id8 : "<?=$req[7]['idCat']?>",id9 : "<?=$req[8]['idCat']?>"},
+                    data: {id1 : "<?=$req[0]['idCat']?>", id2 : "<?=$req[1]['idCat']?>",id3 : "<?=$req[2]['idCat']?>",id4 : "<?=$req[3]['idCat']?>",id5 : "<?=$req[4]['idCat']?>",id6 : "<?=$req[5]['idCat']?>",id7 : "<?=$req[6]['idCat']?>",id8 : "<?=$req[7]['idCat']?>"},
                     success: function(response){
                         console.log(response);
-                        nom = response[0][1];
-                        nom1 = response[1][1];
-                        nom2 = response[2][1];
-                        nom3 = response[3][1];
-                        nom4 = response[4][1];
+                        nom = response[2][1];
+                        nom1 = response[3][1];
+                        nom2 = response[6][1];
+                        nom3 = response[4][1];
+                        nom4 = response[1][1];
                         nom5 = response[5][1];
-                        nom6 = response[6][1];
+                        nom6 = response[0][1];
                         nom7 = response[7][1];
-                        nom8 = response[8][1];
+                        document.getElementById('cat1').value =nom;
+                        document.getElementById('cat2').value =nom1;
+                        document.getElementById('cat3').value =nom2;
+                        document.getElementById('cat4').value =nom3;
+                        document.getElementById('cat5').value =nom4;
+                        document.getElementById('cat6').value =nom5;
+                        document.getElementById('cat7').value =nom6;
+                        document.getElementById('cat8').value =nom7;
 
                         $("#cat1").html(nom);
                         $("#cat2").html(nom1);
@@ -270,34 +285,11 @@ class VueRdv extends vueGenerique
                         $("#cat6").html(nom5);
                         $("#cat7").html(nom6);
                         $("#cat8").html(nom7);
-                        $("#cat9").html(nom8);
 
                     }
                 });
             })
         </script>
-
-<!--<form id="formCategorie" action="index.php?Modules=Module_rendezVous&action=liste_tech" method="POST">
-    <label>Selectionnez la categorie que vous souhaitez :</label></br>
-    <?php
-        $id = $req[1]["idCat"];
-        $nomCategorie = $req[1]["nomCat"];
-    ?>
-        <div id="categorie" class="d-block">
-            <button onclick="afficheSousCat()" name="categorie">
-                Reparation
-            </button>
-        <div>
-            
-            <div id="div_categorie" class="d-none">
-                <button type="submit" class="btn btn-outline-secondary" name="categorie" value=<?= $req[0]["idCat"] ?> name="categorie">
-                    <?=$req[0]["nomCat"];?>
-                </button>
-
-                <button type="submit" class="btn btn-outline-secondary" name="categorie" value=<?= $id ?>>
-                        <?= $nomCategorie; ?>
-                </button>
-            <div> -->
 
     <?php
     
@@ -316,61 +308,13 @@ class VueRdv extends vueGenerique
                     $nom = $tech["nom"];
                     $prenom = $tech["prenom"];
                 ?>
-                    <label><?=$nom?> , <?=$prenom?></label>
+                    <label><?=$nom?> <?=$prenom?>, </label>
 
                 <?php
                 }
                 ?>
     <?php
-    /*                           <div id="div_categorie" class="d-none">
-                <button id="squeez" onclick="afficheSousCat1()" name="categorie">
-                    <?=$req[0]["nomCat"];?>
-                </button>
-            <div>
 
-            <div id="div_categorie1" class="d-none">
-                <button type="submit" class="btn btn-outline-secondary" name="categorie" value=<?= $id ?>>
-                        <?= $nomCategorie; ?>
-                </button>
-            <div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <form id="formCategorie" action="index.php?Modules=Module_rendezVous&action=liste_tech" method="POST">
-    <label>Selectionnez la categorie que vous souhaitez :</label></br>
-    <?php
-        $id = $req[1]["idCat"];
-        $nomCategorie = $req[1]["nomCat"];
-    ?>
-        <div id="categorie">
-            <button id="squeez" onclick="afficheSousCat()" name="categorie">
-                Reparation
-            </button>
-        <div>
-            
-            <div id="div_categorie" class="d-none">
-                <button id="squeez" onclick="afficheSousCat1()" name="categorie">
-                    <?=$req[0]["nomCat"];?>
-                </button>
-            <div>
-
-            <div id="div_categorie1" class="d-none">
-                <button type="submit" class="btn btn-outline-secondary" name="categorie" value=<?= $id ?>>
-                        <?= $nomCategorie; ?>
-    </button>
-            <div>
-
-    <?php
-    
-    ?>
-
-</form>*/ 
     }
 
     

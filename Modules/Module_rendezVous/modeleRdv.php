@@ -9,13 +9,13 @@ class modeleRdv extends ConnexionUI
     public function ajouterRdv()
     {
         if(isset($_POST['jour']) && isset($_POST['heure']) && isset($_POST['tec'])){
-            echo"jour enregistré";
+            echo"rdv enregistré ";
             $date=$_POST['jour'];
             $heure=$_POST['heure'];
             $idTech=$_POST['tec'];
             $insert = self::$bdd->prepare("INSERT INTO `rendezvous` (`horaire`, `DateRDV`,`idTechnicien`, `idUtilisateur`) VALUES (:par,:par2,:par3,:par4)");
             $insert->execute(array(':par' => $heure, ':par2' => $date,':par3' => $idTech, ':par4' => $_SESSION['userID']));
-            echo"insertion de ".$date." ".$heure. " tec:".$idTech;
+            echo"| rdv pris le ".$date." à ".$heure. " avec le technicien: ".$idTech;
             $this->envoiNotification($date,$heure);
         }
         else{
@@ -54,7 +54,6 @@ class modeleRdv extends ConnexionUI
     public function annulerRdv($idRdv)
     {
             $idRdv=$_POST['idRdv'];
-            echo $idRdv;
             $delete = self::$bdd->prepare("DELETE FROM `rendezvous` WHERE idRdv='$idRdv'");
             $delete->execute();
             echo"suppression effectuée";
@@ -74,33 +73,45 @@ class modeleRdv extends ConnexionUI
 
             $this->ajoutFavoris($idTechnicien,$idUtilisateur);
         }
-        if(isset($_POST['note'])&&($_POST['note']!='')&&($_POST['note']<='5')){
-            $note=$_POST['note'];
+        if(isset($_POST['choixNote'])){
+            $idTechnicien=$_POST['idTechnicien'];
+
+            $note=$_POST['choixNote'];
             $idRdv=$_POST['idRdv'];
-            $this->ajoutNoteRdv($note,$idRdv);
+            $this->ajoutNoteRdv($note,$idRdv,$idTechnicien);
+            echo"note ajoutée";
         }
-        else{
-            echo "erreur inserez une note inferieur ou egale a 5";
-        }    
+   
     }
 
 
 
-    public function ajoutNoteRdv($note,$idRdv)
+    public function ajoutNoteRdv($note,$idRdv,$idTechnicien)
     {
             $requete = self::$bdd->prepare("UPDATE `rendezvous` SET note = '$note' WHERE idRdv = '$idRdv'");
             $requete->execute();
-            echo"note ajoutée au rdv: ".$idRdv;
+            $reqSelectNotes = self::$bdd->prepare("SELECT avg(note) FROM `rendezvous` WHERE idTechnicien = '$idTechnicien'");
+            $reqSelectNotes->execute();
+            $recupNotes=$reqSelectNotes->fetch();
+            $somme=$recupNotes['avg(note)'];
+
+            $requete = self::$bdd->prepare("UPDATE `techniciens` SET note = '$somme' WHERE idTechnicien = '$idTechnicien'");
+            $requete->execute();
     }
 
 
 
     public function ajoutFavoris($idTechnicien,$idUtilisateur)
     {
+        $requetefavExistant = self::$bdd->prepare("SELECT * FROM `favoris` WHERE idTechnicien = '$idTechnicien' AND idUtilisateur='$idUtilisateur'");
+        $requetefavExistant->execute();
+        if($requetefavExistant -> rowCount() > 0) {
+            echo "ce technicien est déjà dans vos favoris";
+        }else{
             $insert = self::$bdd->prepare("INSERT INTO `favoris` (`idTechnicien`, `idUtilisateur`) VALUES (:par,:par2)");
             $insert->execute(array(':par' => $idTechnicien, ':par2' => $idUtilisateur));
-            echo"nouveau favoris ajouté";
-    }
+        }
+}
 
 
 
@@ -115,7 +126,7 @@ class modeleRdv extends ConnexionUI
         if(mail($to, $subject, $message, $headers))
             echo "Envoyé !";
         else
-            echo "Erreur de l'envoi";
+            echo "Erreur de l'envoi du mail";
     }  
 
 
@@ -125,7 +136,7 @@ class modeleRdv extends ConnexionUI
         //$str = $_POST["recherche"];
         //$idCat = $_POST["idCat"] where techniciens.idCategorie ='$idCat';
         $cat = $_POST["categorie"];
-        $sth1 = self::$bdd->prepare("SELECT * FROM `techniciens` inner join `categories` on techniciens.idCategorie = categories.idCat where idCat = '$cat'");
+        $sth1 = self::$bdd->prepare("SELECT * FROM `techniciens` inner join `categories` on techniciens.idCategorie = categories.idCat where nomCat = '$cat'");
         $sth1->execute();
         $recuptech = $sth1->fetchAll();
         return $recuptech;
