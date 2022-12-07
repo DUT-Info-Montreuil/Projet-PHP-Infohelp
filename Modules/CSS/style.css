@@ -7,7 +7,7 @@
 
 body{
     background: #333, url('images/acceuil.webp');
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Poppins', sans-serif;
     height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
@@ -103,9 +103,73 @@ h1{
     box-shadow: 0 5px 50px rgba(0, 0, 0, 0.15);
     cursor: pointer;
     margin: 100px auto;
-}
+} 
 
 /* #achat{
     display: inline-block;
     float: right;
 } */
+
+.row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.col-2{
+    flex-basis: 50%;
+    min-width: 300px;
+}
+.col-2 img{
+    max-width: 100%;
+    padding: 50px 0;
+}
+
+.col-2 h1{
+    font-size: 50px;
+    line-height: 60px;
+    margin:25px 0;
+}
+
+.col-2 .btn{
+    display: inline-block;
+    background: #3bbeff;
+    color: #fff;
+    padding: 8px 30px;
+    margin: 30px 0;
+    border-radius: 30px;
+    transition: .5s;
+}
+
+.header{
+    background: radial-gradient(#fff, #776f6f);
+}
+
+.header .row{
+    margin-bottom: 100px;
+}
+
+.categories{
+    margin: 70px 0;
+}
+
+.col-3{
+    flex-basis: 30%;
+    min-width: 250px;
+    margin-bottom: 30px;
+}
+.col-3 img{
+    width: 100%;
+}
+
+.col-4{
+    flex-basis: 25%;
+    padding: 10px;
+    min-width: 800px;
+    margin-bottom: 50px;
+}
+
+.col-4 img{
+    width: 20%;
+}

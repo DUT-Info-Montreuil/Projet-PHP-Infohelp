@@ -11,7 +11,7 @@ class viewAchatEtVente extends vueGenerique
 
         <body>
             <main>
-                <div class="lignes">
+                <!-- <div class="lignes">
                 </div>
 
                 <section>
@@ -37,7 +37,36 @@ class viewAchatEtVente extends vueGenerique
                         </div>
                     </div>
                     </div>
-                </section>
+                </section> -->
+
+                <div class="header">
+                    <div class="row">
+                        <div class="col-2">
+                            <h1>Give Your Workout A New Style !</h1>
+                            <p>Lorem ipsum dolor sit amet. Et cnis odio ab rerum aut suscipit necessitatibus vel suscipit recusandae. Vel harum sint aut similique dolores</p>
+                            <a href="index.php?Modules=Module_achatEtVente&action=vente" class="btn btn-primary">Achat&#8594;</a>
+                        </div>
+                        <div class="col-2">
+                            <img src="Modules/images/conseil.webp" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="categories">
+                    <div class="small-container">
+                        <div class="row">
+                            <div class="col-3">
+                                <img src="Modules/images/acceuil.webp" alt="">
+                            </div>
+                            <div class="col-3">
+                                <img src="Modules/images/reparation.webp" alt="">
+                            </div>
+                            <div class="col-3">
+                                <img src="Modules/images/developpeur.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </main>
         </body>
     <?php
@@ -49,30 +78,36 @@ class viewAchatEtVente extends vueGenerique
             <form action="index.php?Modules=Module_achatEtVente&action=afficher" method="POST">
                 <!-- <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'> -->
                 <br><label>Tous les articles</label></br>
-                <thead>
-                    <tr>
-                        <th>Acheter</th>
-                        <th>Nom</th>
-                        <th>Quantite</th>
-                    </tr>
-                </thead>
 
                 <tbody>
 
-                    <?php
-                    foreach ($materiels as $materiel) { ?>
-                        
-                        <tr>
-                            <!--                 <td><button name="idMateriel" value="<?= $materiel['idMateriel'] ?>">Ajouter dans panier</button></td> -->
-                            <td><button type="submit" name="idMateriel" value="<?= $materiel['idMateriel'] ?>">Afficher</button></td>
-                            <td><?= $materiel["nomMateriel"] ?></td>
-                            <td><?= $materiel["quantite"] ?></td>
-                        </tr>
-                    <?php } ?>
-                </tbody>
-        </table>
+                    <div class="small-container">
+                        <h2>Matériels disponibles</h2>
+                            <div class="row">
+                                <div class="col-4" style="border:solid red">
+                                <?php
+                                    foreach ($materiels as $materiel) { ?>
+                                    <img src="Modules/images/dell.jpg" alt="">
+                                    <h4><p><?= $materiel["nomMateriel"] ?></p></h4>
+                                    <div class="rating">
+                                        <!-- <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i> -->
+                                    </div>
+                                    <p>50€</p>
+                                    <button type="submit" name="idMateriel" value="<?= $materiel['idMateriel'] ?>">Afficher</button>
 
-        </form>
+
+                    <?php } ?>
+                                </div>
+                            </div>
+                    </div>
+
+                </tbody>
+            </form>
+        </table>
 
 
 
