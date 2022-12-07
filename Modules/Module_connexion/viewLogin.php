@@ -38,9 +38,19 @@ class View extends vueGenerique
                     <input type="password" class="form-control" name="password" required>
                     <label for="floatingInput">Mot de passe</label>
                 </div>
-                <div class="form-floating">
+                <!-- <div class="form-floating">
                     <input type="text" class="form-control" name="city" required>
-                    <label for="floatingInput">Ville</label>
+                    <label for="floatingInput">Ville</label> -->
+                <label id="ville">Selectionner une ville :</label>
+                <select id="selectVille" name="city" class="form-select" aria-label="Default select example">
+                    <option selected>ville à selectionner</option>
+                    <option value="Paris">Paris</option>
+                    <option value="Sarcelles">Sarcelles</option>
+                    <option value="Nanterre">Nanterre</option>
+                    <option value="Montreuil">Montreuil</option>
+                    <option value="Creteil">Creteil</option>
+                    <option value="Cergy">Cergy</option>
+                </select>
                 </div>
                 <div class="form-floating">
                     <input type="text" class="form-control" name="postal_address" required>
@@ -48,25 +58,8 @@ class View extends vueGenerique
                 </div>
                 <button class="btn btn-primary" type="submit">S'inscrire</button>
 
-                <!-- <div>
 
-                    <input type="checkbox" name="checkbox">
-                    <label for="floatingInput">Je suis un technicien</label>
-                </div> -->
             </form>
-
-            <style>
-                form {
-                    width: 500px;
-                    margin: auto;
-                    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-                    padding: 30px;
-                }
-
-                .form-floating {
-                    margin-bottom: 15px;
-                }
-            </style>
         </body>
 
         </html>
