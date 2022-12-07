@@ -41,16 +41,18 @@ class View extends vueGenerique
                 <!-- <div class="form-floating">
                     <input type="text" class="form-control" name="city" required>
                     <label for="floatingInput">Ville</label> -->
-                <label id="ville">Selectionner une ville :</label>
-                <select id="selectVille" name="city" class="form-select" aria-label="Default select example">
-                    <option selected>ville à selectionner</option>
-                    <option value="Paris">Paris</option>
-                    <option value="Sarcelles">Sarcelles</option>
-                    <option value="Nanterre">Nanterre</option>
-                    <option value="Montreuil">Montreuil</option>
-                    <option value="Creteil">Creteil</option>
-                    <option value="Cergy">Cergy</option>
-                </select>
+                <div>
+
+                    <label id="ville" for="floatingInput">Selectionner une ville :</label>
+                    <select id="selectVille" name="city" class="form-select" aria-label="Default select example">
+                        <option selected>ville à selectionner</option>
+                        <option value="Paris">Paris</option>
+                        <option value="Sarcelles">Sarcelles</option>
+                        <option value="Nanterre">Nanterre</option>
+                        <option value="Montreuil">Montreuil</option>
+                        <option value="Creteil">Creteil</option>
+                        <option value="Cergy">Cergy</option>
+                    </select>
                 </div>
                 <div class="form-floating">
                     <input type="text" class="form-control" name="postal_address" required>
