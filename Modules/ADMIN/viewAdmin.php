@@ -62,12 +62,10 @@ class vueAdmin extends vueGenerique
                         $("#rechercheEnDirect").keyup(function(){
                             var input = $(this).val();
                             //alert(input);
-                            if (input != "") {
-                                                            var_dump(input);
-                                
+                            if (input != "") {                                
                                 $.ajax({
                                     url:"../recherchedirect.php",
-                                    methode:"POST",
+                                    type:"POST",
                                     data:{nom:input},
 
                                     success:function(data){

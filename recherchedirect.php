@@ -2,9 +2,7 @@
     require_once("./Modules/Login.php");
     ConnexionUI::initConnexion();
     //echo "hello";
-    var_dump($_POST['nom']);
     if (isset($_POST['nom'])) {
-        echo "isset nom";
      $input = $_POST['nom'];
      $query =  ConnexionUI::getBDD()->prepare("SELECT * FROM `techniciens` where nom LIKE '{$input}%' ");
      $query->execute();
@@ -36,19 +34,20 @@
                     <th>
                         idCategorie
                     </th>
+                    
                 </tr>
             </thead>
             <tbody>
                 <?php
                 $res = $query->fetchAll();
-                foreach ($row as $res) {
+                foreach ($res as $row) {
                     $id = $row['idTechnicien'];
                     $Nom = $row['nom'];
                     $Prenom = $row['prenom'];
                     $idVille = $row['idVille'];
                     $note = $row['note'];
                     $favoris = $row['favoris'];
-                    $rayonDactivite = $row['rayonDactivite'];
+                    $rayonDactivite = $row['rayon_activite'];
                     $idCategorie = $row['idCategorie'];
                 
                 ?><tr>
@@ -60,6 +59,8 @@
                     <td><?= $favoris; ?></td>
                     <td><?= $rayonDactivite; ?></td>
                     <td><?= $idCategorie; ?></td>
+                    <td><button type="submit">Supprimer</button></td>
+
                 </tr>
                 <?php
                 }
@@ -71,9 +72,7 @@
     }else{
          echo "<h6 class='text-danger text center mt-3'> No data found</h6>";
      }
- }
- else{
-    echo "BADMAN";
+
  }
     //$recup = $query->fetchAll();
 
