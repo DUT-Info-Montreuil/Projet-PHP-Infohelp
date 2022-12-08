@@ -5,19 +5,7 @@ class modeleAdmin extends ConnexionUI
     public function __construct()
     {
     }
-    public function verifAdmin()
-    {
-        $present = false;
-        $req = self::$bdd->prepare('SELECT * FROM `utilisateurs` WHERE `admin` = 1');
-        $req->execute();
-
-        $present = true;
-
-
-        return $present;
-    }
-
-    public function afficheUser()
+     public function afficheUser()
     {
         $requete = self::$bdd->prepare("SELECT * FROM `utilisateurs` where `userID` != 1 ");
         $requete->execute();
