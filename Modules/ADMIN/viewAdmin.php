@@ -34,12 +34,52 @@ class vueAdmin extends vueGenerique
     {
     ?>
 
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+        </head>
         <body>
-            <form action="index.php?Modules=ADMIN&action=liste_tech" method="post">
-                <label> rechercher </label>
-                <input type="text" name="recherche" placeholder="Nom du technicien">
-                <input type="submit" value="sub">
-            </form>
+            
+        </body>
+        </html>
+        <body>
+            <!--<form action="index.php?Modules=ADMIN&action=liste_tech" method="post">-->
+                <!--<label> rechercher </label>-->
+                <div class="container" style="max-width: 50%">
+                <div class="text-center mt-5 mb-4">
+                    <h2>Rechercher des techniciens</h2>
+                </div>
+                
+                <input type="text" class="form-control" name="recherche" id="rechercheEnDirect" autocomplete="off" placeholder="Nom du technicien">
+                </div>
+                <!--<input type="submit" value="sub">-->
+            <!--</form>-->
+
+            <div id="resultatRecherche"></div>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+                <script type = "text/javascript">
+                    $(document).ready(function(){
+                        $("#rechercheEnDirect").keyup(function(){
+                            var input = $(this).val();
+                            //alert(input);
+                            if (input != "") {
+                                $.ajax({
+                                    url:/*"PROJET-PHP-INFOHELP/Modules/ADMIN/recherchedirect.php"*/ "C:/wamp64/www/SAE/Projet-PHP-Infohelp/Modules/ADMIN/recherchedirect.php",
+                                    methode:"POST",
+                                    data:{input:input},
+
+                                    success:function(data){
+                                        $("#resultatRecherche").html(data);
+                                    }
+                                });
+                            }else {
+                                $("#resultatRecherche").css("dipslay","none");
+                            }
+                        });
+                    });
+
+                </script>
+                
         </body>
 
         </html>

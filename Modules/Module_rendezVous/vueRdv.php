@@ -27,7 +27,7 @@ class VueRdv extends vueGenerique
         /*index.php?Modules=Module_rendezVous&action=voirTechnicien*/
         ?>
         <form action="#" method="post">
-            <label>Liste des utilisateurs, cliquer sur celui que vous souhaitez supprimer :</label></br>
+            <label>Liste des technicien</label></br>
 
             <?php
             foreach ($req as $technicien) {
