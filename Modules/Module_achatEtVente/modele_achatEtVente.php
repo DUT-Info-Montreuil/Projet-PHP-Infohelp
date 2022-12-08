@@ -50,6 +50,39 @@ class modeleAchatEtVente extends ConnexionUI
         return $res;
     }
 
+    public function ajoutProduit(){
+        // if (!verification_token())
+        // return 1;
+        $nomMateriel=$_POST['nomMateriel'];
+        $description=$_POST['description'];
+        $marque=$_POST['marque'];
+        $couleur=$_POST['couleur'];
+        $prix=$_POST['prix'];
+        print_r($couleur);
+        if(isset($_FILES["image"]["name"])){
+            $imageName = $_FILES["image"]["name"];
+            $imageSize = $_FILES["image"]["size"];
+            $tmpName = $_FILES["image"]["tmp_name"];
+      
+            // Image validation
+            $validImageExtension = ['jpg', 'jpeg', 'png'];
+            $imageExtension = explode('.', $imageName);
+            $imageExtension = strtolower(end($imageExtension));
+
+            $newImageName = date("Y.m.d") . " - " . date("h.i.sa"); // Generate new image name
+            $newImageName .= '.' . $imageExtension;
+            $insert = self::$bdd->prepare("INSERT INTO `materiels` (`nomMateriel`, `quantite`, `description`, `marque`, `couleur`,`image`,`prix`) VALUES ('$nomMateriel','1','$description','$marque','$couleur','$newImageName','$prix')");
+
+            $insert->execute();
+            move_uploaded_file($tmpName, 'Modules/Module_achatEtVente/image_produit/' . $newImageName);
+
+            header("Location : index.php?Modules=Module_achatEtVente&action=boutique");
+        }else{
+            echo"erreur lors de la saisie du produit";
+        }
+        
+    }
+
     public function envoiNotification($materiel)
     {
         $to = $_SESSION['email'];

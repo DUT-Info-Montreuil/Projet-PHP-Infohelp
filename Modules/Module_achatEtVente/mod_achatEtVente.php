@@ -15,7 +15,7 @@ class modAchatEtVente
             case "boutique":
                 $this->control->getVue()->affichageBoutique();
                 break;
-            case "vente":
+            case "achat":
                 $this->control->getMateriels();
                 break;
             case "afficher":
@@ -24,6 +24,12 @@ class modAchatEtVente
             case "acheter":
                 $this->control->getModele()->acheterMateriel();
                 break;
+            case "vente":
+                $this->control->getVue()->affichageVente();
+                break;    
+            case "ajoutProduit":
+                $this->control->getModele()->ajoutProduit();
+                break;  
             default:
                 break;
         }

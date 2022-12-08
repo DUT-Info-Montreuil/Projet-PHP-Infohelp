@@ -24,7 +24,7 @@ class viewAchatEtVente extends vueGenerique
                             <div class="card-body">
                                 <h5 class="card-title">Achat</h5>
                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="index.php?Modules=Module_achatEtVente&action=vente" class="btn btn-primary">Achat</a>
+                                <a href="index.php?Modules=Module_achatEtVente&action=achat" class="btn btn-primary">Achat</a>
                             </div>
                         </div>
                         <div class="card" style="width: 25rem;" id="c2">
@@ -32,7 +32,7 @@ class viewAchatEtVente extends vueGenerique
                             <div class="card-body">
                                 <h5 class="card-title">Vente</h5>
                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Vente</a>
+                                <a href="index.php?Modules=Module_achatEtVente&action=vente" class="btn btn-primary">Vente</a>
                             </div>
                         </div>
                     </div>
@@ -44,6 +44,58 @@ class viewAchatEtVente extends vueGenerique
         </body>
     <?php
     }
+
+
+
+    public function affichageVente()
+    {
+    ?>
+            <form action="index.php?Modules=Module_achatEtVente&action=ajoutProduit" method="POST" enctype="multipart/form-data">
+                <!-- <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'> -->
+
+                <tbody>
+
+                    <div class="small-container">
+                        <h2>Vente d'un produit</h2>
+                        <label for="floatingInput">Nom du produit</label>                    
+                        <input type="text" class="form-control" name="nomMateriel"></br>
+                        <label for="floatingInput">Marque du produit</label>                    
+                        <input type="text" class="form-control" name="marque"></br>
+                        <label for="floatingInput">Description du produit</label>                    
+                        <input type="text" class="form-control" name="description"></br>
+                        <label for="floatingInput">Prix du produit</label>                    
+                        <input type="text" class="form-control" name="prix"></br>
+                        <label for="floatingInput">Couleur du produit</label>                    
+                        <input type="text" class="form-control" name="couleur"></br>
+                        <label for="floatingInput">Image du produit</label>                    
+                        <input type="file" class="form-control" name="image" id = "image" accept=".jpg, .jpeg, .png"></br>
+                    </div>
+                    <button id="btnConfirmer" class="w-10 btn btn-lg btn-primary" type="submit">Confirmer</button>
+
+                </tbody>
+            </form>
+            <style>
+                form {
+                    width: 550px;
+                    height: 650px;
+                    margin: auto;
+                    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+                    padding: 30px;
+                }
+
+                .form-floating {
+                    margin-bottom: 15px;
+                }
+                #btnConfirmer{
+                    float:right;
+                }
+            </style>
+    <?php
+    }
+
+
+
+
     public function affichageMaterielsEnVente($materiels)
     {
     ?>
@@ -61,7 +113,8 @@ class viewAchatEtVente extends vueGenerique
                                 <?php
                                     foreach ($materiels as $materiel) { ?>
                                     <div class="photoV">
-                                        <img src="Modules/images/dell.jpg" alt="">
+                                        <!-- <img src="Modules/images/dell.jpg" alt=""> -->
+                                        <img src="Modules/Module_achatEtVente/image_produit/<?= $materiel["image"] ?>" alt="">
                                         <h4><p><?= $materiel["nomMateriel"] ?></p></h4>
                                         <p>50€</p>
                                         <button type="submit" name="idMateriel" value="<?= $materiel['idMateriel'] ?>">Afficher</button>
@@ -75,10 +128,6 @@ class viewAchatEtVente extends vueGenerique
                 </tbody>
             </form>
         </table>
-
-
-
-
 
     <?php
     }
