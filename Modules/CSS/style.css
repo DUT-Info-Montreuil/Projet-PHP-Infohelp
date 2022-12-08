@@ -132,14 +132,14 @@ h1{
     margin:25px 0;
 }
 
-.col-2 .btn{
+.bouton{
     display: inline-block;
     background: #3bbeff;
     color: #fff;
     padding: 8px 30px;
     margin: 30px 0;
     border-radius: 30px;
-    transition: .5s;
+    transition: background-color .5s;
 }
 
 .header{
@@ -172,4 +172,15 @@ h1{
 
 .col-4 img{
     width: 20%;
+}
+
+.photoV{
+    display: inline-block;
+    width: 20%;
+    float: left;
+    
+}
+
+.photoV img{
+    width: 100%;
 }
