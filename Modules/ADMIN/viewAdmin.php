@@ -57,14 +57,14 @@ class vueAdmin extends vueGenerique
 
             <div id="resultatRecherche"></div>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-                <script type = "text/javascript">
+                <script>
                     $(document).ready(function(){
                         $("#rechercheEnDirect").keyup(function(){
                             var input = $(this).val();
                             //alert(input);
                             if (input != "") {
                                 $.ajax({
-                                    url:/*"PROJET-PHP-INFOHELP/Modules/ADMIN/recherchedirect.php"*/ "C:/wamp64/www/SAE/Projet-PHP-Infohelp/Modules/ADMIN/recherchedirect.php",
+                                    url:"../recherchedirect.php",
                                     methode:"POST",
                                     data:{input:input},
 
