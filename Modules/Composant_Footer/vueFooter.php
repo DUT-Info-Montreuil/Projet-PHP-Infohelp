@@ -3,16 +3,16 @@
 require_once("Modules/vuegenerique.php");
 class VueFooter extends vueGenerique
 {
-    public function __construct()
-    {
-        $this->afficherFooter();
-    }
-    public function afficherFooter()
-    {
+  public function __construct()
+  {
+    $this->afficherFooter();
+  }
+  public function afficherFooter()
+  {
 ?>
-    
-    <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
-    <div class="col mb-3">
+
+    <footer class="footer">
+      <!--<div class="col mb-3">
       <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
         <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
       </a>
@@ -42,11 +42,34 @@ class VueFooter extends vueGenerique
             <li class="bulle"><a href="#"><img src="images/instagram.png" alt="Instagram" class="logo-medias"></a></li>
             <li class="bulle"><a href="#"><img src="images/youtube.png" alt="Youtube" class="logo-medias"></a></li>
         </ul>
-    </div>
-  </footer>
+    </div> -->
+      <div class="container">
+        <div class="row">
+          <div class="footer-col-1">
+            <h3>Liens utiles</h3>
+            <ul>
+              <li>A</li>
+              <li>B</li>
+              <li>C</li>
+              <li>D</li>
+            </ul>
+          </div>
+          <div class="footer-col-2">
+            <h3>Suivez nous</h3>
+            <ul class="medias">
+              <li class="bulle"><a href="#"><img src="Modules/images/facebook.png" alt="Facebook" class="logo-medias"></a></li>
+              <li class="bulle"><a href="#"><img src="Modules/images/twitter.png" alt="Twitter" class="logo-medias"></a></li>
+              <li class="bulle"><a href="#"><img src="Modules/images/instagram.png" alt="Instagram" class="logo-medias"></a></li>
+              <li class="bulle"><a href="#"><img src="Modules/images/youtube.png" alt="Youtube" class="logo-medias"></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-        <?php
-    }
+    </footer>
+
+<?php
+  }
 }
 
 ?>

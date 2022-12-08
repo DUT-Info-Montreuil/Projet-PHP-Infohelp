@@ -114,9 +114,9 @@ class viewAchatEtVente extends vueGenerique
                                     foreach ($materiels as $materiel) { ?>
                                     <div class="photoV">
                                         <!-- <img src="Modules/images/dell.jpg" alt=""> -->
-                                        <img src="Modules/Module_achatEtVente/image_produit/<?= $materiel["image"] ?>" alt="">
+                                        <img src="Modules/Module_achatEtVente/images_produits/<?= $materiel["image"] ?>" alt="">
                                         <h4><p><?= $materiel["nomMateriel"] ?></p></h4>
-                                        <p>50€</p>
+                                        <p><?= $materiel["prix"] ?>€</p>
                                         <button type="submit" name="idMateriel" value="<?= $materiel['idMateriel'] ?>">Afficher</button>
                                     </div>
 
