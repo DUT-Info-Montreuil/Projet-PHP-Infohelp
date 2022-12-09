@@ -70,7 +70,7 @@ class View extends vueGenerique
 
     <?php
     }
-    public function showConnection()
+    public function showConnection($verif)
     {
     ?>
         <!DOCTYPE html>
@@ -90,12 +90,15 @@ class View extends vueGenerique
             <label for="floatingPassword">Password</label>
             </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit" onclick="message()">Se connecter</button>
-            
-            <div class="message">
-                <span class="danger" id="danger"></span> 
-            </div>
+            <span class="d-none" id="erreurVide"></span> 
+
+            <?php if($verif==1){ ?>
+                <div class="message">
+                    <span id="erreur">Email ou mot de passe incorrect</span> 
+                </div>
+        <?php   }  ?>
+
         </form>
-    <script src=""></script>
 
             <style>
                 form {

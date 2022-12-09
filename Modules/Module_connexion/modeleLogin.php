@@ -43,8 +43,8 @@ class modeleLogin extends ConnexionUI
         $recupuser = self::$bdd->prepare('SELECT * FROM `utilisateurs` WHERE `email` = ?');
         $recupuser->execute(array($_POST['email']));
         if (($tab = $recupuser->fetch()) === false) {
-            throw new Exception("Error Processing Request", 1);
-        }
+            return 1;
+        }else{
 
         if (password_verify($_POST['password'], $tab['password'])) {
             if ($recupuser->rowCount() > 0) {
@@ -52,17 +52,22 @@ class modeleLogin extends ConnexionUI
                 $_SESSION['password'] = $_POST['password'];
                 $_SESSION['userID'] = $tab['userID'];
                 echo "utilisateur " . $_SESSION['email'] . " vous êtes bien connecté";
-                header("Location: index.php?Modules=Module_accueil&action=Accueil");
-                die();
+                //header("Location: index.php?Modules=Module_accueil&action=Accueil");
+                //die();
+                return 0;
             } else {
-                echo "completer tous les champs ";
+                return 1;
             }
         } else{
-            header("Location: index.php?Modules=Module_connexion&action=connexion");
-            die(); 
-            echo "erreur de connexion";
+            // header("Location: index.php?Modules=Module_connexion&action=connexion");
+            // die(); 
+            // echo "<h6 class='text-danger text center mt-3'>Email ou mot de passe incorrect</h6>";
+            return 1;
 
+            ?> 
+            <?php 
         }
+    }
     }
 
     public function getUtilisateur()
