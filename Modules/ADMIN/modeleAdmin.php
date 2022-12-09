@@ -32,4 +32,16 @@ class modeleAdmin extends ConnexionUI
 
         return $recuptech;
     }
+    public function afficherRdv (){
+        $req = self::$bdd->prepare("SELECT * FROM `rendezvous` Where `idRdv` != 0 ");
+        $req->execute();
+        $affiche = $req->fetchAll();
+        return $affiche;
+        
+    }
+    public function suppRdv(){
+        $rdv = $_POST['idRdv'];
+        $del = self::$bdd->prepare("DELETE FROM `rendezvous` where `idRdv` = '%$rdv%'");
+        $del->execute();
+    }
 }

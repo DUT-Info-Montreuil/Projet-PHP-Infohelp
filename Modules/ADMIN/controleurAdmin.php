@@ -25,6 +25,10 @@ class controlAdmin
     {
         $this->vue->afficheUser($this->modele->afficheUser());
     }
+    public function listeRdv()
+    {
+        $this->vue->afficherRdv($this->modele->afficherRdv());
+    }
     public function listeTechnicien()
     {
         $this->vue->afficher($this->modele->getlistTechnicien());

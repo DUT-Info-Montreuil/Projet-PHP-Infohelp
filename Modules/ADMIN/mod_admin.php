@@ -27,8 +27,16 @@ class moduleAdmin
                 }
                 break;
 
-
-
+            case "Afficher_rdv":
+                if ($_SESSION["admin"] == 2) {
+                    $this->control->listeRdv();
+                }
+                break;
+            case "supprimerRdv":
+                if ($_SESSION["admin"] == 2) {
+                    $this->control->getModele()->suppRdv();
+                }
+                break;
 
             case 'recherche_liste':
                 if ($_SESSION["admin"] == 2) {
