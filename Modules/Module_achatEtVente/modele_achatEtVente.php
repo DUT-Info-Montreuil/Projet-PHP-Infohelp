@@ -29,7 +29,7 @@ class modeleAchatEtVente extends ConnexionUI
         $requetNom = self::$bdd->prepare("SELECT nomMateriel FROM materiels WHERE `idMateriel`=$idMateriel");
         $requetNom->execute();
         $nomMateriel= $requetNom->fetch();
-        return $nomMateriel;
+        return $nomMateriel[0];
     }
 
     public function verif_quantite($idMateriel){
@@ -58,7 +58,7 @@ class modeleAchatEtVente extends ConnexionUI
         $marque=$_POST['marque'];
         $couleur=$_POST['couleur'];
         $prix=$_POST['prix'];
-        print_r($couleur);
+        print_r($_POST);
         if(isset($_FILES["image"]["name"])){
             $imageName = $_FILES["image"]["name"];
             $imageSize = $_FILES["image"]["size"];

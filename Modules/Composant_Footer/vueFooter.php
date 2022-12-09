@@ -11,15 +11,14 @@ class VueFooter extends vueGenerique
   {
 ?>
 
-    <footer class="footer">
-      <!--<div class="col mb-3">
+
+    <!--     <div class="col mb-3">
       <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
         <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
       </a>
       <p class="text-muted">&copy; 2022</p>
     </div>
-
-    <div class="col mb-3">
+ <div class="col mb-3">
 
     </div>
 
@@ -43,31 +42,35 @@ class VueFooter extends vueGenerique
             <li class="bulle"><a href="#"><img src="images/youtube.png" alt="Youtube" class="logo-medias"></a></li>
         </ul>
     </div> -->
-      <div class="container">
+    <footer class="footer">
+      <div class="partie1" style="color : grey">
         <div class="row">
           <div class="footer-col-1">
-            <h3>Liens utiles</h3>
-            <ul>
-              <li>A</li>
-              <li>B</li>
-              <li>C</li>
-              <li>D</li>
-            </ul>
-          </div>
-          <div class="footer-col-2">
             <h3>Suivez nous</h3>
-            <ul class="medias">
-              <li class="bulle"><a href="#"><img src="Modules/images/facebook.png" alt="Facebook" class="logo-medias"></a></li>
-              <li class="bulle"><a href="#"><img src="Modules/images/twitter.png" alt="Twitter" class="logo-medias"></a></li>
-              <li class="bulle"><a href="#"><img src="Modules/images/instagram.png" alt="Instagram" class="logo-medias"></a></li>
-              <li class="bulle"><a href="#"><img src="Modules/images/youtube.png" alt="Youtube" class="logo-medias"></a></li>
-            </ul>
+            <div class="bulle">
+              <a><img src="Modules/images/facebook.png" alt="Facebook" class="logo-medias"></a>&ensp;
+              <a href="#"><img src="Modules/images/twitter.png" alt="Twitter" class="logo-medias"></a>&ensp;
+              <a href="#"><img src="Modules/images/instagram.png" alt="Instagram" class="logo-medias"></a>&ensp;
+              <a href="#"><img src="Modules/images/youtube.png" alt="Youtube" class="logo-medias"></a>
+            </div>
           </div>
         </div>
       </div>
-
+      </div>
+      <div class="partie2">
+        <div class="u-wrapper">
+          <div class="cs-copyright" style="text-align: center;">
+            <div class="cs-copyright-row">
+              <div class="cs-copyright-col">
+                <span class="cs-copyright_element">&copy; INFOHELP 2022 - Tous droits réservés</span><span class="cs-copyright_element"> - Mise à jour du site 09/12/2022</span>
+                <p class="cs-copyright_separator"></p>
+              </div>
+              <span class="cs-copyright_element">Réalisé par Daniel Lucas et Geovany</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
-
 <?php
   }
 }

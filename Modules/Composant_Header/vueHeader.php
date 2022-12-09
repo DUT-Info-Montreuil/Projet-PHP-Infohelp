@@ -9,15 +9,17 @@ class VueHeader extends vueGenerique
     }
     public function afficherFooter()
     {
-    ?>
-<!DOCTYPE html>
-    <html lang="en">
+?>
+        <!DOCTYPE html>
+        <html lang="en">
+
         <head>
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Document</title>
         </head>
+
         <body>
 
             <div class="container">
@@ -27,34 +29,37 @@ class VueHeader extends vueGenerique
                             <use xlink:href="#bootstrap" />
                         </svg>
                     </a>
+                    <img src="Modules/images/logo.PNG" alt="" id="logo" onlick="menutoggle()">
+                    <nav>
+                        <ul class="nav col-12 col-md-auto mb-2 mb-md-0" id="MenuItems" style="margin-right: 50px;">
+                            <li class="nav-item"><a href="index.php?Modules=Module_accueil&action=Accueil" class="nav-link px-2 link-secondary">Accueil</a></li>
+                            <li class="nav-item"><a href="index.php?Modules=Module_rendezVous&action=liste_catégorie" class="nav-link px-2 link-primary text-white">Réparation</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link px-2 link-primary text-white">Tutos</a></li>
+                            <li class="nav-item"><a href="index.php?Modules=Module_achatEtVente&action=boutique" class="nav-link px-2 link-primary text-white">Achat/Ventes</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link px-2 link-primary text-white">A propos</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link px-2 link-primary text-white"><img id="profil" src="images/profile.png" alt=""></a></li>
+                        </ul>
+                    </nav>
 
-                    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                    <img src="Modules/images/logo.PNG" alt="" style="width: 8%;display : inline-block; float : left;">
-                        <li class="nav-item"><a href="index.php?Modules=Module_accueil&action=Accueil" class="nav-link px-2 link-secondary">Accueil</a></li>
-                        <li class="nav-item"><a href="index.php?Modules=Module_rendezVous&action=liste_catégorie" class="nav-link px-2 link-primary text-white">Réparation</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link px-2 link-primary text-white">Tutos</a></li>
-                        <li class="nav-item"><a href="index.php?Modules=Module_achatEtVente&action=boutique" class="nav-link px-2 link-primary text-white">Achat/Ventes</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link px-2 link-primary text-white">A propos</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link px-2 link-primary text-white"><img id="profil" src="images/profile.png" alt=""></a></li>
-
-                    </ul>
 
                     <div class="col-md-3 text-end">
-                    <?php if (isset($_SESSION['email'])) {
-                        echo'<a href="index.php?Modules=Module_connexion&action=deconnexion"type="button" class="btn btn-outline-primary me-2 ">Se deconnecter</a>';
+                        <?php if (isset($_SESSION['email'])) {
+                            echo '<a href="index.php?Modules=Module_connexion&action=deconnexion"type="button" class="btn btn-outline-primary me-2 ">Se deconnecter</a>';
                         }
-                        if(!isset($_SESSION['email'])){
-                        echo'<a href="index.php?Modules=Module_connexion&action=connexion"type="button" class="btn btn-outline-primary me-2">Se connecter</a>';
-                        echo '<a href="index.php?Modules=Module_connexion&action=sign-up"type="button" class="btn btn-primary">S\'inscrire</a>';
+                        if (!isset($_SESSION['email'])) {
+                            echo '<a href="index.php?Modules=Module_connexion&action=connexion"type="button" class="btn btn-outline-primary me-2">Se connecter</a>';
+                            echo '<a href="index.php?Modules=Module_connexion&action=sign-up"type="button" class="btn btn-primary">S\'inscrire</a>';
                         }
-                    ?>    
+                        ?>
                     </div>
                 </header>
-        </div>
-    </body>
-</html>
+            </div>
+            
+        </body>
 
-        <?php
+        </html>
+
+<?php
     }
 }
 

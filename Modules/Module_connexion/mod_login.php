@@ -38,8 +38,6 @@ class moduleLogin
                     die();
                     $this->control->getVue();
                 }
-                if ($canDisconnect == true) {
-                }
                 break;
 
 
