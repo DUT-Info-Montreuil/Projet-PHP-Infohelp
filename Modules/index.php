@@ -59,8 +59,31 @@ session_start();
                     break;
             }
         }
-
-
+        ?>
+        <style>
+        <?php if($_SESSION['mode'] == 1){?>
+          body {
+          background: black;
+          
+          }
+          body {
+            color: green;
+          }
+          tbody{
+            color: green;
+          }
+        <?php } ?>
+        <?php if($_SESSION['mode'] == 2){?>
+          body {
+          background: gray;
+          
+          }
+          body {
+            color: red;
+          }
+        <?php } ?>
+      </style>
+    <?php
         $result = $vue_gen->getAffichage();
 
         echo "<a href=\"index.php?Modules=Module_rendezVous&action=prendreRdv\">Prendre un rdv</a><br>";

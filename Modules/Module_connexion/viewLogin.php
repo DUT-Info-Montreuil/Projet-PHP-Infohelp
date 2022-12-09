@@ -43,7 +43,7 @@ class View extends vueGenerique
 
                     <label id="ville" for="floatingInput">Selectionner une ville :</label>
                     <select id="selectVille" name="city" class="form-select" aria-label="Default select example">
-                        <option selected>ville à selectionner</option>
+                        <option disabled selected>--ville à selectionner--</option>
                         <option value="Paris">Paris</option>
                         <option value="Sarcelles">Sarcelles</option>
                         <option value="Nanterre">Nanterre</option>

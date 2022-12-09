@@ -27,7 +27,7 @@ class modeleLogin extends ConnexionUI
             }*/
             $city = htmlspecialchars($_POST["city"]);
             $postAdress = htmlspecialchars($_POST["postal_address"]);
-            $insertUser = self::$bdd->prepare('INSERT INTO `utilisateurs` (`last_name`, `first_name`, `email`, `password`, `postal_address`, `city`, `admin`) VALUES (:par,:par2,:par3,:par4,:par5,:par6, :par7)');
+            $insertUser = self::$bdd->prepare('INSERT INTO `utilisateurs` (`last_name`, `first_name`, `email`, `password`, `postal_address`, `city`, `mode`) VALUES (:par,:par2,:par3,:par4,:par5,:par6, :par7)');
             $insertUser->execute(array(':par' => $lastname, ':par2' => $firstname, ':par3' => $email, ':par4' => $passwd, ':par5' => $postAdress, ':par6' => $city, ':par7' => 0));
 
 
@@ -63,7 +63,7 @@ class modeleLogin extends ConnexionUI
                     $_SESSION["admin"] = 0;
                 }*/
 
-                $_SESSION["admin"] = $tab["admin"];
+                $_SESSION["mode"] = $tab["mode"];
 
                 $_SESSION['email'] = $_POST['email'];
                 $_SESSION['password'] = $_POST['password'];

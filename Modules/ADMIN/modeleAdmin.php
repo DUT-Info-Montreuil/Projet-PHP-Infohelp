@@ -14,11 +14,13 @@ class modeleAdmin extends ConnexionUI
     }
     public function suppUser()
     {
-        if (isset($_POST['idUser'])) {
-            $iduser = $_POST['idUser'];
+        if (isset($_GET['id'])) {
+            $iduser = $_GET['id'];
             $delete = self::$bdd->prepare("DELETE FROM `utilisateurs` where `userID` = '$iduser'");
             $delete->execute();
+            echo"Suppression effectuée!";
         }
+
     }
 
     public function getlistTechnicien()
