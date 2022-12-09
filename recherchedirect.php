@@ -4,7 +4,7 @@
     //echo "hello";
     if (isset($_POST['nom'])) {
      $input = $_POST['nom'];
-     $query =  ConnexionUI::getBDD()->prepare("SELECT * FROM `techniciens` where nom LIKE '{$input}%' ");
+     $query =  ConnexionUI::getBDD()->prepare("SELECT * FROM `techniciens` where nom LIKE '%{$input}%' or prenom LIKE '%{$input}%'");
      $query->execute();
      if($query->rowCount() > 0){?>
         <table class="table table-bordered table-striped mt-4">
