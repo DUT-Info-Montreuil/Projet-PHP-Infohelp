@@ -11,7 +11,7 @@ class moduleHeader
 
     public function __construct(){
         ConnexionUI::initConnexion();
-        $this->controlleur = new  controlleurHeader;
+        $this->controlleur = new  controleurHeader;
     }
     
 
