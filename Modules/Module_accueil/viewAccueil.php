@@ -29,13 +29,16 @@ class ViewAccueil extends vueGenerique
         <div class="small-container">
           <div class="row">
             <div class="col-3">
-              <a href="index.php?Modules=Module_achatEtVente&action=boutique"><img src="Modules/images/ventes.webp" alt="">Achat et Ventes</a>
+              <a href="index.php?Modules=Module_achatEtVente&action=boutique"><img src="Modules/images/ventes.webp" alt=""></a>
+              <h5>ACHAT/VENTE</h5>
             </div>
             <div class="col-3">
-              <a href="index.php?Modules=Module_reparations&action=reparation"><img src="Modules/images/reparation.webp" alt="">Réparations</a>
+              <a href="index.php?Modules=Module_reparations&action=reparation"><img src="Modules/images/reparation.webp" alt=""></a>
+              <h5>REPARATION</h5>
             </div>
             <div class="col-3">
-              <a href="#"><img src="Modules/images/acceuil.webp" alt="">Tutos</a>
+              <a href="#"><img src="Modules/images/acceuil.webp" alt=""></a>
+              <h5>TUTOS</h5>
             </div>
           </div>
         </div>
