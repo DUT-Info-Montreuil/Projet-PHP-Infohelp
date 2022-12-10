@@ -8,7 +8,6 @@ class modeleRdv extends ConnexionUI
 
     public function ajouterRdv()
     {
-        echo "var dump". var_dump($_POST['tec']);
         if(isset($_POST['jour']) && isset($_POST['heure']) && isset($_POST['tec'])){
             echo"jour enregistré";
             $date=$_POST['jour'];
@@ -25,10 +24,11 @@ class modeleRdv extends ConnexionUI
         }
     }
 
+
     public function getListeRdv()
     {
         $iduser=$_SESSION['userID'];
-        $requete = self::$bdd->prepare("SELECT * FROM `rendezvous` inner join `utilisateurs` on rendezvous.idUtilisateur=utilisateurs.userID WHERE idUtilisateur = '$iduser'");
+        $requete = self::$bdd->prepare("SELECT * FROM `utilisateurs` inner join `rendezvous` on rendezvous.idUtilisateur=utilisateurs.userID inner join techniciens on techniciens.idTechnicien = rendezvous.idTechnicien WHERE idUtilisateur = '$iduser'");
         $requete->execute();
         $recupRdv=$requete->fetchAll();
         
@@ -36,28 +36,79 @@ class modeleRdv extends ConnexionUI
 
     }
 
-    public function annulerRdv()
+
+    public function getRdv()
     {
-        if(isset($_POST['idRdv'])){
+
+        $idRDV=$_POST['idRdv'];
+        $requete = self::$bdd->prepare("SELECT * FROM `utilisateurs` inner join `rendezvous` on rendezvous.idUtilisateur=utilisateurs.userID inner join techniciens on techniciens.idTechnicien = rendezvous.idTechnicien WHERE idRdv = '$idRDV'");
+        $requete->execute();
+        $recupRdv=$requete->fetchAll();
+
+        return $recupRdv;
+
+    }
+
+
+
+    public function annulerRdv($idRdv)
+    {
             $idRdv=$_POST['idRdv'];
             echo $idRdv;
             $delete = self::$bdd->prepare("DELETE FROM `rendezvous` WHERE idRdv='$idRdv'");
             $delete->execute();
             echo"suppression effectuée";
-
-        }
-        else{
-            echo "erreur lors de l'execution de la requete SQL";
-    
-        }
     }
     
+
+
+    public function modifRdv()
+    {
+        if(isset($_POST['boutonAnnuler'])){
+            $idRdv=$_POST['idRdv'];
+            $this->annulerRdv($idRdv);
+        }
+        if(isset($_POST['MettreFavoris'])){
+            $idTechnicien=$_POST['idTechnicien'];
+            $idUtilisateur=$_POST['idUtilisateur'];
+
+            $this->ajoutFavoris($idTechnicien,$idUtilisateur);
+        }
+        if(isset($_POST['note'])&&($_POST['note']!='')&&($_POST['note']<='5')){
+            $note=$_POST['note'];
+            $idRdv=$_POST['idRdv'];
+            $this->ajoutNoteRdv($note,$idRdv);
+        }
+        else{
+            echo "erreur inserez une note inferieur ou egale a 5";
+        }    
+    }
+
+
+
+    public function ajoutNoteRdv($note,$idRdv)
+    {
+            $requete = self::$bdd->prepare("UPDATE `rendezvous` SET note = '$note' WHERE idRdv = '$idRdv'");
+            $requete->execute();
+            echo"note ajoutée au rdv: ".$idRdv;
+    }
+
+
+
+    public function ajoutFavoris($idTechnicien,$idUtilisateur)
+    {
+            $insert = self::$bdd->prepare("INSERT INTO `favoris` (`idTechnicien`, `idUtilisateur`) VALUES (:par,:par2)");
+            $insert->execute(array(':par' => $idTechnicien, ':par2' => $idUtilisateur));
+            echo"nouveau favoris ajouté";
+    }
+
+
 
     public function envoiNotification($date,$heure)
     {
         $to = $_SESSION['email'];
         $subject = "Confirmation rendez-vous";
-        $message = "Bonjour, votre rendez vous a bien été pris en compte.\nNous vous attendons donc le ".$date ." à ". $heure." dans nos locaux. A bientôt !  ";
+        $message = "Bonjour, votre rendez vous a bien été pris en compte.\nLe technicien se presentera donc à vous le ".$date ." à ". $heure." . A bientôt !  ";
         $headers = "Content-Type: text/plain; charset=utf-8\r\n";
         $headers .= "From: infoHelp@gmail.com\r\n";
 
@@ -66,6 +117,8 @@ class modeleRdv extends ConnexionUI
         else
             echo "Erreur de l'envoi";
     }  
+
+
 
     public function getlistTechnicien()
     {
@@ -78,21 +131,23 @@ class modeleRdv extends ConnexionUI
         return $recuptech;
     }
 
+
+    
     public function getCategories()
     {
         $sth = self::$bdd->query("SELECT * FROM `categories`");
+        $sth->execute();
+        $recupCate = $sth->fetchAll();
         return $sth;
     }
-    /* public function detailsCat()
+
+
+    public function getFavoris()
     {
-        $id = $_GET["idCat"];
-        try {
-            foreach (self::$bdd->query("SELECT * from Categories where id=$id ") as $row) {
-                print_r($row);
-            }
-        } catch (PDOException $e) {
-            print "Erreur !: " . $e->getMessage() . "<br/>";
-            die();
-        }
-    } */
+        $requete = self::$bdd->prepare("SELECT DISTINCT * FROM `favoris` inner join `techniciens` on  favoris.idTechnicien = techniciens.idTechnicien ");
+        $requete->execute();
+        $recupFavoris=$requete->fetchAll();
+        return $recupFavoris;
+    }
 }
+

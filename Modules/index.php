@@ -22,7 +22,12 @@ session_start();
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="CSS/style.css">
-        <title>InfoHelp</title>
+    <script src="JS/javaScript.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+    <title>InfoHelp</title>
 </head>
 
 <body>
@@ -36,7 +41,7 @@ session_start();
         $vue_gen = new vueGenerique();
 
         $header = new moduleHeader();
-
+        
 
         if (isset($_GET["Modules"])) {
             $module = $_GET['Modules'];
@@ -60,6 +65,7 @@ session_start();
 
 
         $result = $vue_gen->getAffichage();
+
 
         echo $result;
 

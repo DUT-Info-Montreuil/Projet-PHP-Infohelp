@@ -40,7 +40,9 @@ section img{
 }
 
 #profil{
-    width: 25px;
+    width: 28px;
+    border-radius: 50%;
+    border: 1px solid #DCDCDC;
 }
 
 #c1{
@@ -152,8 +154,8 @@ h1{
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 420px;
-    height: 450px;
+    width: 400px;
+    height: 350px;
 }
   
   /* The Close Button */
@@ -216,4 +218,6 @@ h1{
   input[type=file]::-webkit-file-upload-button{
       cursor: pointer;
   }
+  
+
   

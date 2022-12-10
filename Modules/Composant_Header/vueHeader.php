@@ -5,9 +5,9 @@ class VueHeader extends vueGenerique
 {
     public function __construct()
     {
-        $this->afficherFooter();
+        $this->afficherHeader();
     }
-    public function afficherFooter()
+    public function afficherHeader()
     {
 ?>
     
@@ -19,14 +19,20 @@ class VueHeader extends vueGenerique
                     <use xlink:href="#bootstrap" />
                 </svg>
             </a>
+            <?php if (isset($_SESSION['image'])) {
+                $image=$_SESSION['image'];    
+            }else{
+                $image="profile.png";
+            }
 
+            ?>  
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                 <li class="nav-item"><a href="index.php?Modules=Module_accueil&action=Accueil" class="nav-link px-2 link-secondary">Accueil</a></li>
                 <li class="nav-item"><a href="index.php?Modules=Module_rendezVous&action=liste_catégorie" class="nav-link px-2 link-primary text-white">Catgories</a></li>
                 <li class="nav-item"><a href="index.php?Modules=Module_tuto&action=afficheCategorieVideo" class="nav-link px-2 link-primary text-white">Tutos</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 link-primary text-white">FAQs</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 link-primary text-white">A propos</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 link-primary text-white"><img id="profil" src="images/profile.png" alt=""></a></li>
+                <li class="nav-item"><a href="index.php?Modules=Module_connexion&action=monProfil" class="nav-link px-2 link-primary text-white"><img id="profil" src="image_profil/<?=$image?>" alt=""></a></li>
 
             </ul>
 
@@ -41,6 +47,7 @@ class VueHeader extends vueGenerique
             ?>    
             </div>
         </header>
+            </br>
     </div>
 
         <?php

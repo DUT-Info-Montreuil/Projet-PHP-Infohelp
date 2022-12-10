@@ -12,30 +12,50 @@ class moduleRdv
         ConnexionUI::initConnexion();
         $this->control = new  controleurRdv;
         $this->action = isset($_GET['action']) ? $_GET['action'] : "rien";
-        switch ($this->action) {
+        if(isset($_SESSION['email'])){
 
-             case "prendreRdv":
+        switch ($this->action) {
                 
-                $this->control->getVue()->affichageFormRdv();
-                break; 
-            case "ajoutRdv":
-                var_dump($_POST['tec']);
-                $idtec=$_POST['tec'];
-                $this->control->getModele()->ajouterRdv();
-                break;
-            case "retirerRdv":
-                $this->control->getModele()->annulerRdv();
-                break;
-            case "annulerRdv":
-                $this->control->getRdv();
-                break;
-            case 'liste_tech':
-                $this->control->listeTechnicien();
-            case 'liste_catégorie':
-                $this->control->listeCategorie();
-                break;
-            default:
-                break;
-        }
+                case"prendreRdv":
+                    $this->control->getVue()->affichageFormRdv();
+                    break; 
+
+                case "ajoutRdv":
+                    $this->control->getModele()->ajouterRdv();
+                    break;
+
+                case "afficherRdv":
+                    $this->control->getRdv();
+                    break;
+
+                case "retirerRdv":
+                    $this->control->getModele()->annulerRdv();
+                    break;
+
+                case "afficherListeRdv":
+                    $this->control->getListeRdv();
+                    break;
+                    
+                case 'liste_tech':
+                    $this->control->listeTechnicien();
+                
+                case 'liste_catégorie':    
+                    $this->control->listeCategorie();
+                    break;
+
+                case 'rdvTechnicien':    
+                    $this->control->getModele()->modifRdv();
+                    break;
+
+                case 'afficherFavoris':    
+                    $this->control->getTechnicienFavoris();
+                    break;
+                default:
+                    break;
+            }
+
+        }else {
+            echo"connectez vous";
+        }    
     }
 }

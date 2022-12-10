@@ -18,18 +18,90 @@ class VueRdv extends vueGenerique
             <input type="time" name="heure" required>
             <input type="hidden" name="tec" value="<?=$_POST['tec']?>">
         </label>
-        <p><button class="btn btn-outline-secondary" value=<?=$_POST['tec']?>>Confirmer</button></p>
+        <button class="btn btn-outline-secondary" value=<?=$_POST['tec']?>>Confirmer</button>
     </form>
 
 <?php
     }
 
+
+    public function afficherRdv($data)
+    {
+?>
+
+        <body>
+            <form action="index.php?Modules=Module_rendezVous&action=rdvTechnicien" method="post">
+            <?php
+                foreach ($data as $rdv) { 
+                    $idRdv=$rdv["idRdv"];
+                    $dateRdv=$rdv["dateRDV"];
+                    $heureRdv=$rdv["horaire"];
+                    $nomTechnicien=$rdv["nom"];
+                    $prenomTechnicien=$rdv["prenom"];
+                    $note=$rdv["note"];
+                    $idTechnicien=$rdv["idTechnicien"];
+                    $idUtilisateur=$rdv["idUtilisateur"];
+
+/*                     $fav= isset($_GET['MettreFavoris']) ? $_GET['MettreFavoris'] : 0;
+ */                ?>                        
+                    <div>
+                        <h3>Rendez-vous<h3></br>
+                    </div>
+                    <label>Technicien: <?= $nomTechnicien." ".$prenomTechnicien?></br>
+                    Le <?=$dateRdv?>, à <?=$dateRdv?></label></br>
+                    
+                    <label>Mettre une note au technicien (note/5): </label>
+                    <input placeholder="<?=$note?>" minlength="0" maxlength="1" size="3" type="text" name="note"></br>
+                    <label for="MettreFavoris">Mettre ce technicien en favoris </label>
+                        <input type="checkbox" class="form-check-input" id="MettreFavoris" name="MettreFavoris" value="1" <?php if(isset($_GET['MettreFavoris'])==1){echo"checked";}?>></br>
+                        <button class="btn btn-outline-secondary">Confirmer</button>
+
+
+                        <button type="submit" name="boutonAnnuler" class="btn btn-outline-danger">Annuler le rendez-vous</button>
+
+                    
+                    <input type="hidden" name="idRdv" value="<?=$idRdv?>">
+                    <input type="hidden" name="idTechnicien" value="<?=$idTechnicien?>">
+                    <input type="hidden" name="idUtilisateur" value="<?=$idUtilisateur?>">
+
+                <?php
+                }
+                ?> 
+            </form>
+        </body>
+
+        </html>
+    <?php
+    }
+
+
     public function afficherRdvUtilisateur($data)
     {
         ?>
-        <form action="index.php?Modules=Module_rendezVous&action=retirerRdv" method="POST">
+        <form action="index.php?Modules=Module_rendezVous&action=afficherRdv" method="POST">
+        <label>Selectionnez le rendez-vous vous souhaitez consulter:</label></br>
+        <?php
+        foreach ($data as $rdv) { 
+            $idRdv=$rdv["idRdv"];
+            $dateRdv=$rdv["dateRDV"];
+            $nomTechnicien=$rdv["nom"];
+
+            ?>
+            <button class="btn btn-outline-secondary" name="idRdv" value="<?php echo $idRdv;?>">
+            <?php echo $nomTechnicien.", le ".$dateRdv;?>
+            </button>
+
+        <?php
+        }
+        ?> 
+
+        </form>
+
+
+        <!-- <form action="index.php?Modules=Module_rendezVous&action=retirerRdv" method="POST">
         <label>Selectionnez le rendez-vous que vous souhaitez annuler:</label></br>
         <?php
+        /*
         foreach ($data as $rdv) { 
             $idRdv=$rdv["idRdv"];
             $horaireRdv=$rdv["horaire"];
@@ -42,14 +114,18 @@ class VueRdv extends vueGenerique
             </button>
 
         <?php
-        }
+        }*/
         ?> 
-
-        </form>
+        
+        </form> -->
+        
         
    
 <?php
     }
+
+
+
 
 
 
@@ -103,24 +179,104 @@ class VueRdv extends vueGenerique
     public function afficherCat($req)
     { var_dump($req);
         ?>
-            <form action="index.php?Modules=Module_rendezVous&action=liste_tech" method="POST">
-                <label>Selectionnez la categorie que vous souhaitez :</label></br>
-                <?php
-                foreach ($req->fetchAll() as $line) {
-                    $id = $line["idCat"];
-                    $nomCategorie = $line["nomCat"];
-                ?>
-                    <button class="btn btn-outline-secondary" name="categorie" value=<?= $id ?>>
+
+<form id="formCategorie" action="index.php?Modules=Module_rendezVous&action=liste_tech" method="POST">
+    <label>Selectionnez la categorie que vous souhaitez :</label></br>
+    <?php
+        $id = $req[1]["idCat"];
+        $nomCategorie = $req[1]["nomCat"];
+    ?>
+        <div id="categorie">
+            <button onclick="afficheSousCat()" name="categorie">
+                Reparation
+            </button>
+        <div>
+            
+            <div id="div_categorie" >
+                <button type="submit" class="btn btn-outline-secondary" name="categorie" value=<?= $req[0]["idCat"] ?> name="categorie">
+                    <?=$req[0]["nomCat"];?>
+                </button>
+
+                <button type="submit" class="btn btn-outline-secondary" name="categorie" value=<?= $id ?>>
                         <?= $nomCategorie; ?>
-                    </button></br>
+                </button>
+            <div>
+
+    <?php
+    
+    ?>
+
+</form>
+
+    <?php
+    }
+    public function afficherTechnicienFavoris($data)
+    {
+        ?>
+                <label>Liste de mes techniciens favoris: </label></br>
+                <?php
+                foreach ($data as $tech) {
+                    $nom = $tech["nom"];
+                    $prenom = $tech["prenom"];
+                ?>
+                    <label><?=$nom?> , <?=$prenom?></label>
 
                 <?php
                 }
                 ?>
-
-            </form>
     <?php
+    /*                           <div id="div_categorie" class="d-none">
+                <button id="squeez" onclick="afficheSousCat1()" name="categorie">
+                    <?=$req[0]["nomCat"];?>
+                </button>
+            <div>
+
+            <div id="div_categorie1" class="d-none">
+                <button type="submit" class="btn btn-outline-secondary" name="categorie" value=<?= $id ?>>
+                        <?= $nomCategorie; ?>
+                </button>
+            <div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <form id="formCategorie" action="index.php?Modules=Module_rendezVous&action=liste_tech" method="POST">
+    <label>Selectionnez la categorie que vous souhaitez :</label></br>
+    <?php
+        $id = $req[1]["idCat"];
+        $nomCategorie = $req[1]["nomCat"];
+    ?>
+        <div id="categorie">
+            <button id="squeez" onclick="afficheSousCat()" name="categorie">
+                Reparation
+            </button>
+        <div>
+            
+            <div id="div_categorie" class="d-none">
+                <button id="squeez" onclick="afficheSousCat1()" name="categorie">
+                    <?=$req[0]["nomCat"];?>
+                </button>
+            <div>
+
+            <div id="div_categorie1" class="d-none">
+                <button type="submit" class="btn btn-outline-secondary" name="categorie" value=<?= $id ?>>
+                        <?= $nomCategorie; ?>
+    </button>
+            <div>
+
+    <?php
+    
+    ?>
+
+</form>*/ 
     }
+
+    
 }
 ?>
 
