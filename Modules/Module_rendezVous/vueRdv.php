@@ -203,14 +203,14 @@ class VueRdv extends vueGenerique
             <ul class="nav nav-list nav-left-ml">
                     <li><label class="dropdown-item dropdown-toggle nav-toggle nav-header"><span>Developpement</span></label>
                         <ul class="nav nav-list nav-left-ml">
-                        <li><button class="nav-link px-2 link-secondary text-black categorie" name="categorie" id="cat1"></li></button>  
-                        <li><button class="nav-link px-2 link-secondary text-black categorie" name="categorie" id="cat2"></button></li>
+                        <li><button class="btn btn-outline-dark categorie" name="categorie" id="cat1"></li></button>  
+                        <li><button class="btn btn-outline-dark categorie" name="categorie" id="cat2"></button></li>
                         </ul>
                     </li>
                     <li><label class="dropdown-item dropdown-toggle nav-toggle nav-header"><span>Securité</span></label>
                         <ul class="nav nav-list nav-left-ml">
-                        <li><button class="nav-link px-2 link-secondary text-black categorie" name="categorie" id="cat3"></button></li> 
-                        <li><button class="nav-link px-2 link-secondary text-black categorie" name="categorie" id="cat4"></button></li>
+                        <li><button class="btn btn-outline-dark categorie" name="categorie" id="cat3"></button></li> 
+                        <li><button class="btn btn-outline-dark categorie" name="categorie" id="cat4"></button></li>
  
                         </ul>
                     </li>
@@ -220,10 +220,10 @@ class VueRdv extends vueGenerique
             <ul class="nav nav-list nav-left-ml">
             <li><label class="dropdown-item dropdown-toggle nav-toggle nav-header"><span>Appareils éléctroniques</span></label>
                         <ul class="nav nav-list nav-left-ml">
-                        <li><button class="nav-link px-2 link-secondary text-black categorie" name="categorie" id="cat5"></button></li>  
-                        <li><button class="nav-link px-2 link-secondary text-black categorie" name="categorie" id="cat6"></button></li>
-                        <li><button class="nav-link px-2 link-secondary text-black categorie" name="categorie" id="cat7"></button></li>
-                        <li><button class="nav-link px-2 link-secondary text-black categorie" name="categorie" id="cat8"></button></li>
+                        <li><button class="btn btn-outline-dark categorie" name="categorie" id="cat5"></button></li>  
+                        <li><button class="btn btn-outline-dark categorie" name="categorie" id="cat6"></button></li>
+                        <li><button class="btn btn-outline-dark categorie" name="categorie" id="cat7"></button></li>
+                        <li><button class="btn btn-outline-dark categorie" name="categorie" id="cat8"></button></li>
 
                         </ul>
                     </li>
@@ -254,7 +254,7 @@ class VueRdv extends vueGenerique
             var nom;
             $('.nav-header').click(function() {
                 $.ajax({
-                    url: '../nom.php',
+                    url: '../categorieAjax.php',
                     type: 'POST',
                     dataType: 'json',
                     data: {id1 : "<?=$req[0]['idCat']?>", id2 : "<?=$req[1]['idCat']?>",id3 : "<?=$req[2]['idCat']?>",id4 : "<?=$req[3]['idCat']?>",id5 : "<?=$req[4]['idCat']?>",id6 : "<?=$req[5]['idCat']?>",id7 : "<?=$req[6]['idCat']?>",id8 : "<?=$req[7]['idCat']?>"},
