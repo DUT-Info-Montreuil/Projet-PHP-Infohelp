@@ -153,8 +153,6 @@ class modeleLogin extends ConnexionUI
                 $update = self::$bdd->prepare("UPDATE `utilisateurs` SET `email`= '$email' , `first_name`= '$firstname' ,`last_name`= '$lastname' , `city`= '$city' , `postal_address`= '$postal_address' WHERE `userID`= '$userID'");
                 $update->execute();
                 $_SESSION['email']=$email;
-                echo"vos informations ont bien été modifié";
-
 
             }
             }
