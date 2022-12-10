@@ -189,13 +189,6 @@ class VueRdv extends vueGenerique
                             </button>
                         <div>
 
-                                <?php
-
-                                ?>
-            <?php
-            }
-            ?>
-
 
             </form>
         </main>
@@ -340,26 +333,5 @@ class VueRdv extends vueGenerique
         </div>
 <?php
     }
-    public function afficherTechnicienFavoris($data)
-    {
-    ?>
-        <main>
-            <label>Liste de mes techniciens favoris: </label></br>
-            <?php
-            foreach ($data as $tech) {
-                $nom = $tech["nom"];
-                $prenom = $tech["prenom"];
-            ?>
-                <label><?= $nom ?> , <?= $prenom ?></label>
-
-            <?php
-            }
-            ?>
-
-            </form>
-        </main>
-<?php
-    }
-
-?>
+}
 ?>
