@@ -137,7 +137,7 @@ class modeleRdv extends ConnexionUI
         $sth = self::$bdd->query("SELECT * FROM `categories`");
         $sth->execute();
         $recupCate = $sth->fetchAll();
-        return $sth;
+        return $recupCate;
     }
 
 

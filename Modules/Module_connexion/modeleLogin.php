@@ -90,6 +90,9 @@ class modeleLogin extends ConnexionUI
 
     public function modifInformationsUtilisateur()
     {
+        if (isset($_GET['token'] )|| !verification_token())
+            return 1;
+
         $userID=$_SESSION['userID'];
         $userEmail=$_SESSION['email'];
         $verifAncienMdp=$_SESSION['password'];
@@ -135,7 +138,7 @@ class modeleLogin extends ConnexionUI
             $_SESSION['image']=$newImageName;
             $query = self::$bdd->prepare("UPDATE `utilisateurs` SET image = '$newImageName' WHERE userID = $userID");
             $query->execute();
-            move_uploaded_file($tmpName, 'image_profil/' . $newImageName);
+            move_uploaded_file($tmpName, 'Modules/image_profil/' . $newImageName);
             echo"votre photo de profil a bien été modifié";
 
             

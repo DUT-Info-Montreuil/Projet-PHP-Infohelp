@@ -1,5 +1,5 @@
 <?php
-require_once('Module_tutos/controleur_tuto.php');
+require_once('controleur_tuto.php');
 require_once('Login.php');
 
 
@@ -15,7 +15,6 @@ class moduleTuto
         switch ($this->action) {
             case "afficheCategorieVideo":
                 $this->control->getCategorie();
-
                 break;
             case "afficheListeTutos":
                 if(isset($_POST['ajoutTutoBtn'])){

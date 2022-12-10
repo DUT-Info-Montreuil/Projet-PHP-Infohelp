@@ -52,7 +52,11 @@ session_start();
                 case 'Module_achatEtVente':
                     require_once('Modules/Module_achatEtVente/mod_achatEtVente.php');
                     $module = new modAchatEtVente();
-                        break;
+                    break;
+                case 'Module_tutos':
+                    require_once('Modules/Module_tutos/mod_tuto.php');
+                    $module = new moduleTuto();
+                    break;
                 default:
                     # code...
                     break;

@@ -27,47 +27,51 @@ class VueRdv extends vueGenerique
 
     public function afficherRdv($data)
     {
-?>
+    ?>
 
         <body>
+            <main>
             <form action="index.php?Modules=Module_rendezVous&action=rdvTechnicien" method="post">
-            <?php
-                foreach ($data as $rdv) { 
-                    $idRdv=$rdv["idRdv"];
-                    $dateRdv=$rdv["dateRDV"];
-                    $heureRdv=$rdv["horaire"];
-                    $nomTechnicien=$rdv["nom"];
-                    $prenomTechnicien=$rdv["prenom"];
-                    $note=$rdv["note"];
-                    $idTechnicien=$rdv["idTechnicien"];
-                    $idUtilisateur=$rdv["idUtilisateur"];
+                <?php
+                foreach ($data as $rdv) {
+                    $idRdv = $rdv["idRdv"];
+                    $dateRdv = $rdv["dateRDV"];
+                    $heureRdv = $rdv["horaire"];
+                    $nomTechnicien = $rdv["nom"];
+                    $prenomTechnicien = $rdv["prenom"];
+                    $note = $rdv["note"];
+                    $idTechnicien = $rdv["idTechnicien"];
+                    $idUtilisateur = $rdv["idUtilisateur"];
 
-/*                     $fav= isset($_GET['MettreFavoris']) ? $_GET['MettreFavoris'] : 0;
- */                ?>                        
+                    /*                     $fav= isset($_GET['MettreFavoris']) ? $_GET['MettreFavoris'] : 0;
+ */                ?>
                     <div>
                         <h3>Rendez-vous<h3></br>
                     </div>
-                    <label>Technicien: <?= $nomTechnicien." ".$prenomTechnicien?></br>
-                    Le <?=$dateRdv?>, à <?=$dateRdv?></label></br>
-                    
+                    <label>Technicien: <?= $nomTechnicien . " " . $prenomTechnicien ?></br>
+                        Le <?= $dateRdv ?>, à <?= $dateRdv ?></label></br>
+
                     <label>Mettre une note au technicien (note/5): </label>
-                    <input placeholder="<?=$note?>" minlength="0" maxlength="1" size="3" type="text" name="note"></br>
+                    <input placeholder="<?= $note ?>" minlength="0" maxlength="1" size="3" type="text" name="note"></br>
                     <label for="MettreFavoris">Mettre ce technicien en favoris </label>
-                        <input type="checkbox" class="form-check-input" id="MettreFavoris" name="MettreFavoris" value="1" <?php if(isset($_GET['MettreFavoris'])==1){echo"checked";}?>></br>
-                        <button class="btn btn-outline-secondary">Confirmer</button>
+                    <input type="checkbox" class="form-check-input" id="MettreFavoris" name="MettreFavoris" value="1" <?php if (isset($_GET['MettreFavoris']) == 1) {
+                                                                                                                            echo "checked";
+                                                                                                                        } ?>></br>
+                    <button class="btn btn-outline-secondary">Confirmer</button>
 
 
-                        <button type="submit" name="boutonAnnuler" class="btn btn-outline-danger">Annuler le rendez-vous</button>
+                    <button type="submit" name="boutonAnnuler" class="btn btn-outline-danger">Annuler le rendez-vous</button>
 
-                    
-                    <input type="hidden" name="idRdv" value="<?=$idRdv?>">
-                    <input type="hidden" name="idTechnicien" value="<?=$idTechnicien?>">
-                    <input type="hidden" name="idUtilisateur" value="<?=$idUtilisateur?>">
+
+                    <input type="hidden" name="idRdv" value="<?= $idRdv ?>">
+                    <input type="hidden" name="idTechnicien" value="<?= $idTechnicien ?>">
+                    <input type="hidden" name="idUtilisateur" value="<?= $idUtilisateur ?>">
 
                 <?php
                 }
-                ?> 
+                ?>
             </form>
+            </main>
         </body>
 
         </html>
@@ -80,30 +84,30 @@ class VueRdv extends vueGenerique
     ?>
         <main>
             <form action="index.php?Modules=Module_rendezVous&action=afficherRdv" method="POST">
-        <label>Selectionnez le rendez-vous vous souhaitez consulter:</label></br>
-        <?php
-        foreach ($data as $rdv) { 
-            $idRdv=$rdv["idRdv"];
-            $dateRdv=$rdv["dateRDV"];
-            $nomTechnicien=$rdv["nom"];
+                <label>Selectionnez le rendez-vous vous souhaitez consulter:</label></br>
+                <?php
+                foreach ($data as $rdv) {
+                    $idRdv = $rdv["idRdv"];
+                    $dateRdv = $rdv["dateRDV"];
+                    $nomTechnicien = $rdv["nom"];
 
-            ?>
-            <button class="btn btn-outline-secondary" name="idRdv" value="<?php echo $idRdv;?>">
-            <?php echo $nomTechnicien.", le ".$dateRdv;?>
-            </button>
+                ?>
+                    <button class="btn btn-outline-secondary" name="idRdv" value="<?php echo $idRdv; ?>">
+                        <?php echo $nomTechnicien . ", le " . $dateRdv; ?>
+                    </button>
 
-        <?php
-        }
-        ?> 
+                <?php
+                }
+                ?>
 
-        </form>
+            </form>
 
 
-        <!-- <form action="index.php?Modules=Module_rendezVous&action=retirerRdv" method="POST">
+            <form action="index.php?Modules=Module_rendezVous&action=retirerRdv" method="POST">
                 <label>Selectionnez le rendez-vous que vous souhaitez annuler:</label></br>
                 <?php
-                /*
-        foreach ($data as $rdv) {
+
+                foreach ($data as $rdv) {
                     $idRdv = $rdv["idRdv"];
                     $horaireRdv = $rdv["horaire"];
                     $dateRdv = $rdv["dateRDV"];
@@ -114,32 +118,17 @@ class VueRdv extends vueGenerique
                         <?php echo $horaireRdv . " " . $dateRdv; ?>
                     </button>
 
-        <?php
-        }
-        ?> 
+                <?php
+                }
+                ?>
 
-        </form>
-        
-   
-<?php
-    }
-
-
-
-    public function barre_de_recherche()
-    {
-?>
-
-        <body>
-            <form action="index.php?Modules=Module_rendezVous&action=list" method="post">
-                <label> rechercher </label>
-                <input type="text" name="recherche" placeholder="Technicien de la catégorie ...">
-                <input type="submit" value="sub">
             </form>
+            </main>
 
-        </main>
-    <?php
+
+        <?php
     }
+
 
     public function afficherTechnicien($req)
     {
@@ -174,36 +163,38 @@ class VueRdv extends vueGenerique
     }
 
     public function afficherCat($req)
-    { var_dump($req);
-        ?>
-
-<form id="formCategorie" action="index.php?Modules=Module_rendezVous&action=liste_tech" method="POST">
-    <label>Selectionnez la categorie que vous souhaitez :</label></br>
-    <?php
-        $id = $req[1]["idCat"];
-        $nomCategorie = $req[1]["nomCat"];
-    ?>
-        <div id="categorie">
-            <button onclick="afficheSousCat()" name="categorie">
-                Reparation
-            </button>
-        <div>
-            
-            <div id="div_categorie" >
-                <button type="submit" class="btn btn-outline-secondary" name="categorie" value=<?= $req[0]["idCat"] ?> name="categorie">
-                    <?=$req[0]["nomCat"];?>
-                </button>
-
-                <button type="submit" class="btn btn-outline-secondary" name="categorie" value=<?= $id ?>>
-                        <?= $nomCategorie; ?>
-                </button>
-            <div>
-
-    <?php
-    
+    {
     ?>
 
-</form>
+        <main>
+            <form id="formCategorie" action="index.php?Modules=Module_rendezVous&action=liste_tech" method="POST">
+                <label>Selectionnez la categorie que vous souhaitez :</label></br>
+                <?php
+                $id = $req[1]["idCat"];
+                $nomCategorie = $req[1]["nomCat"];
+                ?>
+                <div id="categorie">
+                    <button onclick="afficheSousCat()" name="categorie">
+                        Reparation
+                    </button>
+                    <div>
+
+                        <div id="div_categorie">
+                            <button type="submit" class="btn btn-outline-secondary" name="categorie" value=<?= $req[0]["idCat"] ?> name="categorie">
+                                <?= $req[0]["nomCat"]; ?>
+                            </button>
+
+                            <button type="submit" class="btn btn-outline-secondary" name="categorie" value=<?= $id ?>>
+                                <?= $nomCategorie; ?>
+                            </button>
+                        <div>
+
+                                <?php
+
+                                ?>
+
+            </form>
+        </main>
 
     <?php
     }
@@ -211,22 +202,21 @@ class VueRdv extends vueGenerique
     {
     ?>
         <main>
-                <label>Liste de mes techniciens favoris: </label></br>
-                <?php
-                foreach ($data as $tech) {
-                    $nom = $tech["nom"];
-                    $prenom = $tech["prenom"];
-                ?>
-                    <label><?=$nom?> , <?=$prenom?></label>
+            <label>Liste de mes techniciens favoris: </label></br>
+            <?php
+            foreach ($data as $tech) {
+                $nom = $tech["nom"];
+                $prenom = $tech["prenom"];
+            ?>
+                <label><?= $nom ?> , <?= $prenom ?></label>
 
-                <?php
-                }
-                ?>
+            <?php
+            }
+            ?>
 
             </form>
-    <?php
+        </main>
+<?php
     }
-
-    
 }
 ?>

@@ -82,6 +82,7 @@ class viewAchatEtVente extends vueGenerique
     {
     ?>
         <main>
+        <h1>En vente</h1>
             <section>
                 <table class="tableau-style">
                     <form action="index.php?Modules=Module_achatEtVente&action=afficher" method="POST">
@@ -123,6 +124,7 @@ class viewAchatEtVente extends vueGenerique
 
     ?>
         <main>
+
             <section class="bg-light">
                 <div class="container">
                     <div class="row">
@@ -171,12 +173,5 @@ class viewAchatEtVente extends vueGenerique
             </section>
         </main>
     <?php
-    }
-
-
-    public function affichageAchat()
-    {
-    ?>
-<?php
     }
 }

@@ -44,6 +44,7 @@ class moduleLogin
                 break;
 
             case "monProfil":
+                creation_token();
                 $this->control->getUtilisateurAchanger();
                 break;  
                 

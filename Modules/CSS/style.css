@@ -24,15 +24,9 @@ main {
     width: 90vw;
     margin: 0 auto;
     padding: 30px 20px;
-    min-height: calc(100vh - 200px - 58px);
+    min-height: calc(100vh - 190px - 58px);
 }
 
-main {
-    width: 90vw;
-    margin: 0 auto;
-    padding: 30px 20px;
-    min-height: calc(100vh - 200px - 58px);
-}
 
 h3{
     font-size: 20px;

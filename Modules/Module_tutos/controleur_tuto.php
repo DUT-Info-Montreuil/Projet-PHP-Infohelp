@@ -1,6 +1,6 @@
 <?php
-require_once('Module_tutos/modeleTuto.php');
-require_once('Module_tutos/vueTuto.php');
+require_once('modeleTuto.php');
+require_once('vueTuto.php');
 
 class controlTuto
 {
