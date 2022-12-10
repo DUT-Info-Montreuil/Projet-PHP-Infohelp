@@ -19,16 +19,38 @@ class VueHeader extends vueGenerique
                     <use xlink:href="#bootstrap" />
                 </svg>
             </a>
+<?php
+if ($_SESSION["mode"] == 1) {
+?>
+                <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
 
-            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                 <li class="nav-item"><a href="index.php?Modules=Module_accueil&action=Accueil" class="nav-link px-2 link-secondary">Accueil</a></li>
-                <li class="nav-item"><a href="index.php?Modules=Module_rendezVous&action=liste_catégorie" class="nav-link px-2 link-primary text-white">Catgories</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 link-primary text-white">Tutos</a></li>
+</ul>
+ <?php } 
+else if ($_SESSION["mode"] == 2) {
+     ?>
+                <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+
+                <li class="nav-item"><a href="index.php?Modules=Module_accueil&action=Accueil" class="nav-link px-2 link-secondary">Accueil</a></li>
+                <li class="nav-item"><a href="index.php?Modules=Module_accueil&action=Accueil" class="nav-link px-2 link-secondary">Accueil</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 link-primary text-white">Tutos</a></li>
+</ul>
+ <?php } 
+else{
+     ?>
+                <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                <li class="nav-item"><a href="index.php?Modules=Module_accueil&action=Accueil" class="nav-link px-2 link-secondary">Accueil</a></li>
+                <li class="nav-item"><a href="index.php?Modules=Module_rendezVous&action=liste_catégorie" class="nav-link px-2 link-primary text-white">Categories</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 link-primary text-white">Tutos</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 link-primary text-white">FAQs</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 link-primary text-white">A propos</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 link-primary text-white"><img id="profil" src="images/profile.png" alt=""></a></li>
 
             </ul>
+ <?php } ?>
+            
+           
 
             <div class="col-md-3 text-end">
             <?php if (isset($_SESSION['email'])) {
