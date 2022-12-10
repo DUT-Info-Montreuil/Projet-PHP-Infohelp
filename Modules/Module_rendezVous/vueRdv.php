@@ -1,10 +1,69 @@
-<!-- Template ou utiliser les variables stocker dans le modeles -->
 <?php
 require_once("Modules/vuegenerique.php");
 class VueRdv extends vueGenerique
 {
     public function __construct()
     {
+    }
+    public function afficherVille()
+    {
+        ?>
+                <form action="index.php?Modules=Module_rendezVous&action=voirTechnicien" method="POST">
+                    <label id="ville" for="floatingInput">Selectionner une ville :</label>
+                    <select id="selectVille" name="city" class="form-select" aria-label="Default select example">
+                        <option selected>ville à selectionner</option>
+                        <option value="Paris">Paris</option>
+                        <option value="Sarcelles">Sarcelles</option>
+                        <option value="Nanterre">Nanterre</option>
+                        <option value="Montreuil">Montreuil</option>
+                        <option value="Creteil">Creteil</option>
+                        <option value="Cergy">Cergy</option>
+                    </select>
+                    <button class="btn btn-primary" type="submit">Validé</button>
+                </form>
+        <?php
+    }
+    public function afficherTechnicien($req)
+    {   
+    ?>
+        <form action="index.php?Modules=Module_rendezVous&action=prendreRdv" method="POST">
+            <?php
+            foreach ($req as $row) {
+            ?>
+                <tr>
+                    <br>
+                    <td> n° : <?= $row['idTechnicien'] ?></td><br>
+                    <td> nom : <?= $row['nom']; ?></td><br>
+                    <td> prenom : <?= $row['prenom']; ?></td><br>
+                    <td> categorie :<?= $row["nomCat"]; ?></td><br>
+                    <label>Choisir le technicien n° </label><input class="btn btn-outline-secondary" type="submit" name="tec" value="<?php echo $row['idTechnicien']; ?>">
+                </tr>
+            <?php
+            }
+            ?>
+        </form>
+    <?php
+    }
+    public function toutLesTechniciens($req){
+        /*index.php?Modules=Module_rendezVous&action=voirTechnicien*/
+        ?>
+        <form action="index.php?Modules=Module_rendezVous&action=prendreRdv" method="post">
+            <label>Liste des techniciens</label></br>
+
+            <?php
+            foreach ($req as $technicien) {
+                $idTech = $technicien["idTechnicien"];
+                $nom = $technicien["nom"];
+                $prenom = $technicien["prenom"];
+
+
+            ?>
+                <button class="btn btn-outline-secondary" name="tec" value="<?= $idTech ?>">
+                    <?= $nom . " " . $prenom ?>
+                </button>
+            <?php } ?>
+        </form>
+        <?php
     }
 
     public function affichageFormRdv()
@@ -83,7 +142,7 @@ class VueRdv extends vueGenerique
     {
     ?>
         <main>
-            <form action="index.php?Modules=Module_rendezVous&action=afficherRdv" method="POST">
+            <form action="index.php?Modules=Module_rendezVous&action=retirerRdv" method="POST">
                 <label>Selectionnez le rendez-vous vous souhaitez consulter:</label></br>
                 <?php
                 foreach ($data as $rdv) {
@@ -96,71 +155,64 @@ class VueRdv extends vueGenerique
                         <?php echo $nomTechnicien . ", le " . $dateRdv; ?>
                     </button>
 
-                <?php
-                }
-                ?>
-
-            </form>
-
-
-            <form action="index.php?Modules=Module_rendezVous&action=retirerRdv" method="POST">
-                <label>Selectionnez le rendez-vous que vous souhaitez annuler:</label></br>
-                <?php
-
-                foreach ($data as $rdv) {
-                    $idRdv = $rdv["idRdv"];
-                    $horaireRdv = $rdv["horaire"];
-                    $dateRdv = $rdv["dateRDV"];
-                    $idTechnicien = $rdv["userID"];
-
-                ?>
-                    <button class="btn btn-outline-secondary" name="idRdv" value="<?php echo $idRdv; ?>">
-                        <?php echo $horaireRdv . " " . $dateRdv; ?>
-                    </button>
-
-                <?php
-                }
-                ?>
-
-            </form>
-            </main>
-
-
         <?php
+        }
+        ?> 
+
+        </form>
+        
+   
+<?php
     }
 
+
+
+    public function barre_de_recherche()
+    {
+?>
+
+        <body>
+            <form action="index.php?Modules=Module_rendezVous&action=list" method="post">
+                <label> rechercher </label>
+                <input type="text" name="recherche" placeholder="Technicien de la catégorie ...">
+                <input type="submit" value="sub">
+            </form>
+        </body>
+
+        </html>
+    <?php
+    }
 
     public function afficherTechnicien($req)
     {
         //if ($req->rowcount() > 0) {
     ?>
-        <main>
-            <form action="index.php?Modules=Module_rendezVous&action=prendreRdv" method="POST">
-                <?php
+        <form action="index.php?Modules=Module_rendezVous&action=prendreRdv" method="POST">
+        <?php
 
-                foreach ($req as $row) {
-                ?>
-                    <tr>
-                        <br>
-                        <td> n° : <?= $row['idTechnicien'] ?></td><br>
-                        <td> nom : <?= $row['nom']; ?></td><br>
-                        <td> prenom : <?= $row['prenom']; ?></td><br>
-                        <td> categorie :<?= $row["nomCat"]; ?></td><br>
+        foreach ($req as $row) {
+        ?>
+            <tr>
+                <br>
+                <td> n° : <?= $row['idTechnicien']?></td><br>
+                <td> nom : <?= $row['nom']; ?></td><br>
+                <td> prenom : <?= $row['prenom']; ?></td><br>
+                <td> categorie :<?= $row["nomCat"];?></td><br>
+                
+                <label>Choisir le technicien n° </label><input class="btn btn-outline-secondary" type="submit" name="tec" value="<?php echo $row['idTechnicien'];?>"> 
 
-                        <label>Choisir le technicien n° </label><input class="btn btn-outline-secondary" type="submit" name="tec" value="<?php echo $row['idTechnicien']; ?>">
+            </tr>
+                <?php 
 
-                    </tr>
-                <?php
-
-                }
-
-
-                ?>
+            } 
+            
+            
+            ?>  
 
             </form>
-        </main>
-    <?php
-    }
+       
+        <?php 
+        }
 
     public function afficherCat($req)
     {

@@ -58,6 +58,12 @@ class moduleRdv
                 case "devis":
                     $this->control->exportTraces();
                     break;
+                case 'selectionVille':
+                    $this->control->getVue()->afficherVille();
+                    break;
+                case 'voirTechnicien':
+                    $this->control->getVue()->toutLesTechniciens($this->control->getModele()->getTechnicienParVille());
+                    break;
             }
         } else {
             echo "connectez vous";

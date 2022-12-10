@@ -29,6 +29,15 @@ class VueHeader extends vueGenerique
                             <use xlink:href="#bootstrap" />
                         </svg>
                     </a>
+<?php
+if (isset($_SESSION["mode"]) && $_SESSION["mode"] == 1) {
+?>
+                <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+
+                <li class="nav-item"><a href="index.php?Modules=Module_accueil&action=Accueil" class="nav-link px-2 link-secondary">Accueil</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 link-primary text-white">Tutos</a></li>
+                <li class="nav-item"><a href="index.php?Modules=ADMIN&action=recherche_liste" class="nav-link px-2 link-secondary">liste des techniciens</a><br></li>
+                <li><a href="index.php?Modules=ADMIN&action=Afficher_user" class="nav-link px-2 link-secondary">afficher les utilisateurs</a><br></li>
                     <img src="Modules/images/logo.PNG" alt="" id="logo" onlick="menutoggle()">
                     <nav>            <?php if (isset($_SESSION['image'])) {
                 $image=$_SESSION['image'];    
@@ -36,17 +45,31 @@ class VueHeader extends vueGenerique
                 $image="profile.png";
             }
 
-                        ?>  
-            <ul class="nav col-12 col-md-auto mb-2 mb-md-0" id="MenuItems" style="margin-right: 100px;">
-                            <li class="nav-item"><a href="index.php?Modules=Module_accueil&action=Accueil" class="nav-link px-2 link-secondary">Accueil</a></li>
-                            <li class="nav-item"><a href="index.php?Modules=Module_rendezVous&action=liste_catégorie" class="nav-link px-2 link-primary text-white">Réparation</a></li>
-                            <li class="nav-item"><a href="index.php?Modules=Module_tutos&action=afficheCategorieVideo" class="nav-link px-2 link-primary text-white">Tutos</a></li>
-                            <li class="nav-item"><a href="index.php?Modules=Module_achatEtVente&action=boutique" class="nav-link px-2 link-primary text-white">Achat/Ventes</a></li>
-                            <li class="nav-item"><a href="#" class="nav-link px-2 link-primary text-white">A propos</a></li>
-                            <li class="nav-item"><a href="index.php?Modules=Module_connexion&action=monProfil" class="nav-link px-2 link-primary text-white"><img id="profil" src="Modules/image_profil/<?=$image?>" alt=""></a></li>
-                        </ul>
-                    </nav>
+            </ul>
+ <?php } 
+else if (isset($_SESSION["mode"]) && $_SESSION["mode"]  == 2) {
+     ?>
+                <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
 
+                <li class="nav-item"><a href="index.php?Modules=Module_accueil&action=Accueil" class="nav-link px-2 link-secondary">Accueil</a></li>
+                <li class="nav-item"><a href="index.php?Modules=ADMIN&action=Afficher_rdv" class="nav-link px-2 link-secondary">liste des rdv</a><br></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 link-primary text-white">Tutos</a></li>
+</ul>
+ <?php } 
+else{
+     ?>
+                <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                <li class="nav-item"><a href="index.php?Modules=Module_accueil&action=Accueil" class="nav-link px-2 link-secondary">Accueil</a></li>
+                <li class="nav-item"><a href="index.php?Modules=Module_rendezVous&action=liste_catégorie" class="nav-link px-2 link-primary text-white">Réparation</a></li>
+                <li class="nav-item"><a href="index.php?Modules=Module_tutos&action=afficheCategorieVideo" class="nav-link px-2 link-primary text-white">Tutos</a></li>
+                <li class="nav-item"><a href="index.php?Modules=Module_achatEtVente&action=boutique" class="nav-link px-2 link-primary text-white">Achat/Ventes</a></li>
+
+                <li class="nav-item"><a href="#" class="nav-link px-2 link-primary text-white"><img id="profil" src="images/profile.png" alt=""></a></li>
+
+            </ul>
+ <?php } ?>
+            
+           
 
             <div class="col-md-3 text-end">
             <?php if (isset($_SESSION['email'])) {

@@ -1,7 +1,7 @@
 <?php
 require_once('vueHeader.php');
 
-class controlleurHeader
+class controleurHeader
 {
     public $vue;
 
