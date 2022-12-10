@@ -95,6 +95,7 @@ class modeleLogin extends ConnexionUI
             if ($ancienMdp==$verifAncienMdp) {
 
                 if ($mdp1 == $mdp2) {
+                    $_SESSION['password'] = $mdp1;
                     $nouveauMdp = password_hash($mdp1, PASSWORD_DEFAULT);
                     $update = self::$bdd->prepare("UPDATE `utilisateurs` SET `password`= '$nouveauMdp' WHERE `userID`= '$userID'");
                     $update->execute();
