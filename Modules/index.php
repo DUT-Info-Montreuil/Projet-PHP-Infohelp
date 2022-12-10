@@ -63,7 +63,7 @@ session_start();
         <style>
         <?php if($_SESSION['mode'] == 1){?>
           body {
-          background: black;
+          background-color: black;
           
           }
           body {
@@ -75,7 +75,7 @@ session_start();
         <?php } ?>
         <?php if($_SESSION['mode'] == 2){?>
           body {
-          background: gray;
+          background-color: #bababa;
           
           }
           body {

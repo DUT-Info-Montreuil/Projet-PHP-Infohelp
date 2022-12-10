@@ -32,12 +32,6 @@ class moduleAdmin
                     $this->control->listeRdv();
                 }
                 break;
-            case "supprimerRdv":
-                if ($_SESSION["mode"] == 2) {
-                    $this->control->getModele()->suppRdv();
-                }
-                break;
-
             case 'recherche_liste':
                 if ($_SESSION["mode"] == 1) {
                     $this->control->getVue()->barre_de_recherche();

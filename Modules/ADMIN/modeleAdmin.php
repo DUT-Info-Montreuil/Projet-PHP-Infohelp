@@ -41,9 +41,4 @@ class modeleAdmin extends ConnexionUI
         return $affiche;
         
     }
-    public function suppRdv(){
-        $rdv = $_POST['idRdv'];
-        $del = self::$bdd->prepare("DELETE FROM `rendezvous` where `idRdv` = '%$rdv%'");
-        $del->execute();
-    }
 }

@@ -51,32 +51,6 @@ class vueAdmin extends vueGenerique
 
         </html>
     <?php
-
-
-
-
-
-/*
-?>
-        <!-- <form action="index.php?Modules=ADMIN&action=retirerUser" method="post">
-            <label>Liste des utilisateurs, cliquer sur celui que vous souhaitez supprimer :</label></br>
-
-            <?php
-            foreach ($data as $user) {
-                $idUser = $user["userID"];
-                $nom = $user["first_name"];
-                $prenom = $user["last_name"];
-
-
-            ?>
-                <button class="btn btn-outline-secondary" name="idUser" value="<?= $idUser ?>">
-                    <?= $nom . " " . $prenom ?>
-                </button>
-            <?php } ?>
-        </form> -->
-
-    <?php
-    */
     }
 
     public function barre_de_recherche()
@@ -148,7 +122,7 @@ class vueAdmin extends vueGenerique
     {
         
     ?>
-    <form action="index.php?Modules=ADMIN&action=supprimerRdv" method="post">
+    <form action="index.php?Modules=Module_rendezVous&action=retirerRdv" method="post">
         <label>Liste des rendez vous :</label></br>
  <?php
             foreach ($req as $rdv) {
@@ -157,7 +131,7 @@ class vueAdmin extends vueGenerique
                 $date = $rdv["dateRDV"];
                 $nbUser = $rdv["idUtilisateur"];
             ?>
-                <br><button class="btn btn-outline-secondary" name="idRdv" value="<?="numéro attribuer au rdv : " . $idRdv ?>">
+                <br><button class="btn btn-outline-secondary" name="idRdv" value="<?= $idRdv ?>">
                     <?= "Heure : " . $heure ?>
                     <?= "Date : " . $date  ?>
                     <?= "identifiant de l'utilisateur : " . $nbUser ?>
