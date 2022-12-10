@@ -37,7 +37,7 @@ class VueHeader extends vueGenerique
             }
 
                         ?>  
-            <ul class="nav col-12 col-md-auto mb-2 mb-md-0" id="MenuItems" style="margin-right: 50px;">
+            <ul class="nav col-12 col-md-auto mb-2 mb-md-0" id="MenuItems" style="margin-right: 100px;">
                             <li class="nav-item"><a href="index.php?Modules=Module_accueil&action=Accueil" class="nav-link px-2 link-secondary">Accueil</a></li>
                             <li class="nav-item"><a href="index.php?Modules=Module_rendezVous&action=liste_catégorie" class="nav-link px-2 link-primary text-white">Réparation</a></li>
                             <li class="nav-item"><a href="index.php?Modules=Module_tutos&action=afficheCategorieVideo" class="nav-link px-2 link-primary text-white">Tutos</a></li>
