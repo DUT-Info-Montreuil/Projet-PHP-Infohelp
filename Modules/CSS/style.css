@@ -150,3 +150,20 @@ span.nav-toggle-icon{font-size:7px !important;top:-2px !important;color:#888 !im
     color: black;
     background-color:transparent;
 }
+
+
+#tech{
+    display: flex;
+        float: right;
+}
+
+.col-3 {
+    text-align: center;
+    padding: 40px 20px;
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
+    flex-basis: 100%;
+    display: flex;
+    float: right;
+    margin-right: 15%;
+
+}
