@@ -102,36 +102,38 @@ class viewAchatEtVente extends vueGenerique
     {
     ?>
         <main>
-            <table class="tableau-style">
-                <form action="index.php?Modules=Module_achatEtVente&action=afficher" method="POST">
-                    <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
-                    <?php
-                    foreach ($materiels as $materiel) { ?>
-                        <section id="produit1" class="section-p1">
-                            <div class="pro-container">
-                                <div>
-                                    <div class="pro">
-                                        <img src="Modules/Module_achatEtVente/images_produits/<?= $materiel["image"] ?>" alt="">
-                                        <div class="des">
-                                            <h5><?= $materiel["nomMateriel"] ?></h5>
-                                            <div class="star">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
+            <section>
+                <table class="tableau-style">
+                    <form action="index.php?Modules=Module_achatEtVente&action=afficher" method="POST">
+                        <!-- <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'> -->
+                        <?php
+                        foreach ($materiels as $materiel) { ?>
+                            <section id="produit1" class="section-p1">
+                                <div class="pro-container">
+                                    <div>
+                                        <div class="pro">
+                                            <img src="Modules/Module_achatEtVente/images_produits/<?= $materiel["image"] ?>" alt="">
+                                            <div class="des">
+                                                <h5><?= $materiel["nomMateriel"] ?></h5>
+                                                <div class="star">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <h4><?= $materiel["prix"] ?>€</h4>
                                             </div>
-                                            <h4><?= $materiel["prix"] ?>€</h4>
+                                            <button type="submit" name="idMateriel" value="<?= $materiel['idMateriel'] ?>"><i class="fal fa-shopping-cart cart">Voir</i></button>
                                         </div>
-                                        <button type="submit" name="idMateriel" value="<?= $materiel['idMateriel'] ?>"><i class="fal fa-shopping-cart cart">Voir</i></button>
                                     </div>
                                 </div>
-                            </div>
-                        </section>
-                    <?php } ?>
-                </form>
-            </table>
+                            </section>
+                        <?php } ?>
+                    </form>
+                </table>
+            </section>
         </main>
     <?php
     }
