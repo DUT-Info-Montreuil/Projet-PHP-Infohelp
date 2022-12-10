@@ -1,5 +1,5 @@
 <?php
-require_once('Composant_Footer/vueFooter.php');
+require_once('vueFooter.php');
 
 class controlleurFooter
 {

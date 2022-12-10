@@ -110,7 +110,7 @@ class modeleRdv extends ConnexionUI
         $subject = "Confirmation rendez-vous";
         $message = "Bonjour, votre rendez vous a bien été pris en compte.\nLe technicien se presentera donc à vous le ".$date ." à ". $heure." . A bientôt !  ";
         $headers = "Content-Type: text/plain; charset=utf-8\r\n";
-        $headers .= "From: infoHelp@gmail.com\r\n";
+        $headers .= "From: infohelp93100Montreuil@gmail.com\r\n";
 
         if(mail($to, $subject, $message, $headers))
             echo "Envoyé !";
@@ -122,8 +122,7 @@ class modeleRdv extends ConnexionUI
 
     public function getlistTechnicien()
     {
-        //$str = $_POST["recherche"];
-        //$idCat = $_POST["idCat"] where techniciens.idCategorie ='$idCat';
+       
         $cat = $_POST["categorie"];
         $sth1 = self::$bdd->prepare("SELECT * FROM `techniciens` inner join `categories` on techniciens.idCategorie = categories.idCat where idCat = '$cat'");
         $sth1->execute();

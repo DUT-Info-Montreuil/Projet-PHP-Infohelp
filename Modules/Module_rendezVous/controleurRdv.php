@@ -1,6 +1,6 @@
 <?php
-require_once('Module_rendezVous/modeleRdv.php');
-require_once('Module_rendezVous/vueRdv.php');
+require_once('modeleRdv.php');
+require_once('vueRdv.php');
 
 class controleurRdv
 {
