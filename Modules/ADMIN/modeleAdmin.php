@@ -12,11 +12,22 @@ class modeleAdmin extends ConnexionUI
         $recup = $requete->fetchAll();
         return $recup;
     }
-    public function suppUser()
+    public function suppUtilisateur()
     {
         if (isset($_GET['id'])) {
-            $iduser = $_GET['id'];
-            $delete = self::$bdd->prepare("DELETE FROM `utilisateurs` where `userID` = '$iduser'");
+            $idUtilisateur = $_GET['id'];
+            $delete = self::$bdd->prepare("DELETE FROM `utilisateurs` where `userID` = '$idUtilisateur'");
+            $delete->execute();
+            echo"Suppression effectuée!";
+        }
+
+    }
+
+    public function suppTechnicien()
+    {
+        if (isset($_GET['id'])) {
+            $idtech = $_GET['id'];
+            $delete = self::$bdd->prepare("DELETE FROM `techniciens` where `idTechnicien` = '$idtech'");
             $delete->execute();
             echo"Suppression effectuée!";
         }

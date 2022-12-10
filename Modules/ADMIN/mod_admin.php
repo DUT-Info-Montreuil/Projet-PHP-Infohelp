@@ -21,9 +21,14 @@ class moduleAdmin
                     $this->control->listeUSer();
                 }
                 break;
-            case "retirerUser":
+            case "retirerUtilisateur":
                 if ($_SESSION["mode"] == 1) {
-                    $this->control->getModele()->suppUser();
+                    $this->control->getModele()->suppUtilisateur();
+                }
+                break;
+            case "retirerTechnicien":
+                if ($_SESSION["mode"] == 1) {
+                    $this->control->getModele()->suppTechnicien();
                 }
                 break;
 

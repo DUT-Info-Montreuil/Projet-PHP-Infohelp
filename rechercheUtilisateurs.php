@@ -53,7 +53,7 @@
                     <td><?= $Email; ?></td>
                     <td><?= $Adresse; ?></td>
                     <td><?= $Ville; ?></td>
-                    <td><a class="w-100 btn btn-lg btn-primary" href="index.php?Modules=ADMIN&action=retirerUser&id=<?=$id;?>">Supprimer</a></td>
+                    <td><a class="w-100 btn btn-lg btn-primary" href="index.php?Modules=ADMIN&action=retirerUtilisateur&id=<?=$id;?>">Supprimer</a></td>
 
                 </tr>
                 <?php

@@ -59,7 +59,7 @@
                     <td><?= $favoris; ?></td>
                     <td><?= $rayonDactivite; ?></td>
                     <td><?= $idCategorie; ?></td>
-                    <td><button type="submit">Supprimer</button></td>
+                    <td><a class="btn btn-outline-light" href="index.php?Modules=ADMIN&action=retirerTechnicien&id=<?=$id;?>">Supprimer</a></td>
 
                 </tr>
                 <?php

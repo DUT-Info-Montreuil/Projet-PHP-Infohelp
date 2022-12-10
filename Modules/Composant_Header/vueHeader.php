@@ -20,7 +20,7 @@ class VueHeader extends vueGenerique
                 </svg>
             </a>
 <?php
-if ($_SESSION["mode"] == 1) {
+if (isset($_SESSION["mode"]) && $_SESSION["mode"] == 1) {
 ?>
                 <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
 
@@ -31,7 +31,7 @@ if ($_SESSION["mode"] == 1) {
 
             </ul>
  <?php } 
-else if ($_SESSION["mode"] == 2) {
+else if (isset($_SESSION["mode"]) && $_SESSION["mode"]  == 2) {
      ?>
                 <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
 
