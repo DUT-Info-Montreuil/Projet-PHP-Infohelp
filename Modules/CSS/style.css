@@ -57,34 +57,14 @@ section img {
 }
 
 #c1 {
-    display: inline-block;
-    background: url("Modules\images\vente.webp");
-    /* margin-left: 2%; */
-    margin-top: 5%;
-    width: 50%;
+    display:inline-block;
+    margin-left: 15%;
 }
 
 #c2 {
-    display: inline-block;
-    float: right;
-    /* margin-right: 15%; */
-    margin-top: 5%;
-    width: 50%;
-}
-
-#c3 {
-    display: inline-block;
-    margin-left: 15%;
-    margin-top: 7%;
-    width: 45%;
-}
-
-#c4 {
-    display: inline-block;
+    display: flex;
     float: right;
     margin-right: 15%;
-    margin-top: 7%;
-    width: 70%;
 }
 
 h1 {

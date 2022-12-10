@@ -14,19 +14,19 @@ class viewAchatEtVente extends vueGenerique
                 <h1>
                     <p id="nosServices">Achat et Vente</p>
                 </h1>
-                <section class="card" style="width: 25rem;" id="c1">
-                    <img src="Modules/images/vente.webp" alt="">
+                <section class="card" style="width: 20rem;" id="c1">
+                    <img src="Modules/images/achat.jpg" alt="" style="width: 100%;">
                     <div class="" style="width: 25rem;">
 
-                        <div class="">
+                        <div class="card-body">
                             <h5 class="card-title">Achat</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Venez ici trouvé l'achat de vos rêves <br> au prix abordant! </p>
                             <a href="index.php?Modules=Module_achatEtVente&action=achat" class="btn btn-primary">Achat</a>
                         </div>
                     </div>
                 </section>
                 <section class="card" style="width: 25rem;" id="c2">
-                    <img src="Modules/images/vente.png" alt="">
+                    <img src="Modules/images/achat.png" alt="">
                     <div class="" style="width: 25rem;">
 
                         <div class="card-body">
