@@ -167,52 +167,6 @@ class VueRdv extends vueGenerique
 
 
 
-    public function barre_de_recherche()
-    {
-?>
-
-        <body>
-            <form action="index.php?Modules=Module_rendezVous&action=list" method="post">
-                <label> rechercher </label>
-                <input type="text" name="recherche" placeholder="Technicien de la catégorie ...">
-                <input type="submit" value="sub">
-            </form>
-        </body>
-
-        </html>
-    <?php
-    }
-
-    public function afficherTechnicien($req)
-    {
-        //if ($req->rowcount() > 0) {
-    ?>
-        <form action="index.php?Modules=Module_rendezVous&action=prendreRdv" method="POST">
-        <?php
-
-        foreach ($req as $row) {
-        ?>
-            <tr>
-                <br>
-                <td> n° : <?= $row['idTechnicien']?></td><br>
-                <td> nom : <?= $row['nom']; ?></td><br>
-                <td> prenom : <?= $row['prenom']; ?></td><br>
-                <td> categorie :<?= $row["nomCat"];?></td><br>
-                
-                <label>Choisir le technicien n° </label><input class="btn btn-outline-secondary" type="submit" name="tec" value="<?php echo $row['idTechnicien'];?>"> 
-
-            </tr>
-                <?php 
-
-            } 
-            
-            
-            ?>  
-
-            </form>
-       
-        <?php 
-        }
 
     public function afficherCat($req)
     {

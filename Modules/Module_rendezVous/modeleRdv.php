@@ -57,7 +57,7 @@ class modeleRdv extends ConnexionUI
             $delete->execute();
             echo"suppression effectuée";
     }
-    
+}
 
 
     public function modifRdv()
