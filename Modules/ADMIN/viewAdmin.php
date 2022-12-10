@@ -88,7 +88,7 @@ class vueAdmin extends vueGenerique
                     <h2>Rechercher des techniciens</h2>
                 </div>
                 
-                <input type="text" class="form-control" name="recherche" id="rechercheEnDirect" autocomplete="off" placeholder="Nom du technicien">
+                <input type="text" class="form-control" name="recherche" id="rechercheEnDirect" autocomplete="off" placeholder="Nom ou prenom du technicien">
                 </div>
 
             <div id="resultatRecherche"></div>

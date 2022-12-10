@@ -39,12 +39,12 @@ class moduleAdmin
                 break;
 
             case 'recherche_liste':
-                if ($_SESSION["mode"] == 2) {
+                if ($_SESSION["mode"] == 1) {
                     $this->control->getVue()->barre_de_recherche();
                 }
                 break;
             case 'liste_tech':
-                if ($_SESSION["mode"] == 2) {
+                if ($_SESSION["mode"] == 1) {
                     $this->control->listeTechnicien();
                 }
                 break;
