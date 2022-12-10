@@ -34,11 +34,11 @@ class ViewAccueil extends vueGenerique
                 <h5>ACHAT/VENTE</h5>
               </div>
               <div class="col-3">
-                <a href="index.php?Modules=Module_reparations&action=reparation"><img src="Modules/images/reparation.webp" alt=""></a>
+                <a href="index.php?Modules=Module_rendezVous&action=liste_catégorie"><img src="Modules/images/reparation.webp" alt=""></a>
                 <h5>REPARATION</h5>
               </div>
               <div class="col-3">
-                <a href="#"><img src="Modules/images/acceuil.webp" alt=""></a>
+                <a href="index.php?Modules=Module_tutos&action=afficheCategorieVideo"><img src="Modules/images/acceuil.webp" alt=""></a>
                 <h5>TUTOS</h5>
               </div>
             </div>

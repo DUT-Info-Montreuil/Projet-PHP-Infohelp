@@ -51,7 +51,7 @@ class modeleRdv extends ConnexionUI
 
 
 
-    public function annulerRdv($idRdv)
+    public function annulerRdv()
     {
             $idRdv=$_POST['idRdv'];
             echo $idRdv;
