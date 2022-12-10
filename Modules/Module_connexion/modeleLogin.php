@@ -9,6 +9,10 @@ class modeleLogin extends ConnexionUI
     {
 
         if (isset($_POST["email"]) && isset($_POST["password"])) {
+
+            if ($_POST["password"] == $_POST["motsDePasse2"]) {
+                
+            
             $lastname = htmlspecialchars($_POST["last_name"]);
             $firstname = htmlspecialchars($_POST["first_name"]);
             $email = htmlspecialchars($_POST["email"]);
@@ -28,9 +32,11 @@ class modeleLogin extends ConnexionUI
             $insert->execute(array(':par' => $lastname, ':par2' => $firstname, ':par3' => $email, ':par4' => $passwd, ':par5' => $postAdress, ':par6' => $city));
             header("Location: index.php?Modules=Module_connexion&action=connexion");
             die();
-            echo "Good registration \t";            
-        }
-
+            echo "Good registration \t";     
+            }
+            }else{
+                echo"les mots de passe ne sont pas les mêmes.";
+            }       
         } else {
             echo "Pas adjout";
         }
@@ -80,10 +86,34 @@ class modeleLogin extends ConnexionUI
     {
         $userID=$_SESSION['userID'];
         $userEmail=$_SESSION['email'];
+        $verifAncienMdp=$_SESSION['password'];
 
+        $ancienMdp=strval($_POST["ancienMdp"]);
+        $mdp1=strval($_POST["mdp1"]);
+        $mdp2=strval($_POST["mdp2"]);
+        if($mdp1!="" && $mdp2!=""){
+            if ($ancienMdp==$verifAncienMdp) {
 
-        if(isset($_FILES["image"]["name"])){
-      
+                if ($mdp1 == $mdp2) {
+                    $nouveauMdp = password_hash($mdp1, PASSWORD_DEFAULT);
+                    $update = self::$bdd->prepare("UPDATE `utilisateurs` SET `password`= '$nouveauMdp' WHERE `userID`= '$userID'");
+                    $update->execute();
+                    echo"votre mot de passe a bien été modifié";
+
+                }else{
+                    var_dump($mdp1);
+                    var_dump($mdp2);
+                    echo"erreur les mots de passe ne sont pas identiques";
+                }
+
+        }else{
+            var_dump($ancienMdp);
+            echo"erreur lors de la saisie de l'ancien mdp";
+        }
+        }
+        
+        if(isset($_FILES["image"]["name"]) && $_FILES["image"]["error"]!=4){
+            print_r($_FILES);
             $imageName = $_FILES["image"]["name"];
             $imageSize = $_FILES["image"]["size"];
             $tmpName = $_FILES["image"]["tmp_name"];
@@ -99,18 +129,12 @@ class modeleLogin extends ConnexionUI
             $query = self::$bdd->prepare("UPDATE `utilisateurs` SET image = '$newImageName' WHERE userID = $userID");
             $query->execute();
             move_uploaded_file($tmpName, 'image_profil/' . $newImageName);
+            echo"votre photo de profil a bien été modifié";
 
             
         }
         
-        if(isset($_POST["changeMdpBtn"]) && isset($_POST["mdp1"])&&isset($_POST["mdp2"])){
-            if ($_POST['mdp1'] == $_POST['mdp2']) {
-                $mdp1=$_POST["mdp1"];
-                $nouveauMdp = password_hash($mdp1, PASSWORD_DEFAULT);
-                $update = self::$bdd->prepare("UPDATE `utilisateurs` SET `password`= '$nouveauMdp' WHERE `userID`= '$userID'");
-                $update->execute();
-            }
-        }
+
         if (isset($_POST["btnChangerInfo"]) && isset($_POST["email"]) || isset($_POST["first_name"]) || isset($_POST["last_name"]) || isset($_POST["city"]) || isset($_POST["password"])|| isset($_POST["postal_address"])) {
             $lastname = htmlspecialchars($_POST["last_name"]);
             $firstname = htmlspecialchars($_POST["first_name"]);
@@ -129,11 +153,13 @@ class modeleLogin extends ConnexionUI
                 $update = self::$bdd->prepare("UPDATE `utilisateurs` SET `email`= '$email' , `first_name`= '$firstname' ,`last_name`= '$lastname' , `city`= '$city' , `postal_address`= '$postal_address' WHERE `userID`= '$userID'");
                 $update->execute();
                 $_SESSION['email']=$email;
+                echo"vos informations ont bien été modifié";
+
 
             }
             }
-            header("Location: index.php?Modules=Module_connexion&action=monProfil");
-            die;
+
+            
 
     }
 

@@ -39,6 +39,10 @@ class View extends vueGenerique
         <label for="floatingInput">Mot de passe</label>
         </div>
         <div class="form-floating">
+        <input type="password" class="form-control" name="motsDePasse2" >
+        <label for="floatingInput">Confirmer le mot de passe</label>
+        </div>
+        <div class="form-floating">
         <input type="text" class="form-control" name="city">
         <label for="floatingInput">Ville</label>
         </div>
@@ -220,6 +224,8 @@ class View extends vueGenerique
                                         <span class="close">&times;</span>
                                         <h3>Changement de mot de passe</h3>
                                         <div class="form-group">
+                                        <label for="ancienMdp">Saisir l'ancien mot de passe</label>
+                                            <input type="password" class="form-control" name="ancienMdp" id="ancienMdp" placeholder="ancien mot de passe">
                                             <label for="mdp1">Saisir le nouveau mot de passe</label>
                                             <input type="password" class="form-control" name="mdp1" id="mdp1" placeholder="mot de passe">
                                             <label for="mdp2">Confirmer le nouveau mot de passe</label>

@@ -186,13 +186,13 @@ class VueRdv extends vueGenerique
         $id = $req[1]["idCat"];
         $nomCategorie = $req[1]["nomCat"];
     ?>
-        <div id="categorie" class="d-block">
+        <div id="categorie">
             <button onclick="afficheSousCat()" name="categorie">
                 Reparation
             </button>
         <div>
             
-            <div id="div_categorie" class="d-none">
+            <div id="div_categorie" >
                 <button type="submit" class="btn btn-outline-secondary" name="categorie" value=<?= $req[0]["idCat"] ?> name="categorie">
                     <?=$req[0]["nomCat"];?>
                 </button>
