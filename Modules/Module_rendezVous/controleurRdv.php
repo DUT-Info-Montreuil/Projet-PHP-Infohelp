@@ -54,14 +54,14 @@ class controleurRdv
 	public function exportTraces()
 	{
 		$traces = $this->getModele()->getTraces();
-		
+    }
 	
     public function getTechnicienFavoris()
     {
         $resultat=$this->modele->getFavoris();
         $this->vue->afficherTechnicienFavoris($resultat);
     }
-}
+
 
     public function affichageDevis()
 	{

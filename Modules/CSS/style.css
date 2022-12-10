@@ -1,27 +1,12 @@
 *,
 ::before,
 ::after {
-<<<<<<< HEAD
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-=======
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
->>>>>>> origin/feature/inscription_techniciens
 }
 
-body {
-  background: #333, url("images/acceuil.webp");
-  font-family: Arial, Helvetica, sans-serif;
-  height: 100vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  overflow-x: hidden;
 
-<<<<<<< HEAD
 body {
     background: #333, url('images/acceuil.webp');
     font-family: 'Poppins', sans-serif;
@@ -93,95 +78,9 @@ h1 {
     font-size: 15px;
     color: black;
     font-family: "Abril fatface", sans-serif;
-=======
-  margin: auto;
 }
 
-section img {
-  width: 100%;
-}
 
-#bienvenue {
-  width: 100%;
-  text-align: center;
-  margin: auto;
-  font-size: 250px;
-}
-
-#nosServices {
-  font: bold 1.2em "Fira Sans", serif;
-  font-size: 30px;
-}
-
-#profil {
-  width: 25px;
-}
-
-#c1 {
-  display: inline-block;
-  margin-left: 15%;
-  margin-top: 5%;
-  width: 45%;
-}
-
-#c2 {
-  display: inline-block;
-  float: right;
-  margin-right: 15%;
-  margin-top: 5%;
-  width: 45%;
-}
-
-#c3 {
-  display: inline-block;
-  margin-left: 15%;
-  margin-top: 7%;
-  width: 45%;
-}
-
-#c4 {
-  display: inline-block;
-  float: right;
-  margin-right: 15%;
-  margin-top: 7%;
-  width: 70%;
-}
-
-h1 {
-  text-transform: uppercase;
-  font-size: 15px;
-  color: black;
-  font-family: "Abril fatface", sans-serif;
-}
-
-.bulle {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid #f1f1f1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: grey;
-}
-
-.logo-medias {
-  width: 25px;
-  height: 25px;
-}
-
-#ville {
-  display: block;
-  text-align: center;
-  margin-bottom: 10px;
->>>>>>> origin/feature/inscription_techniciens
-}
-
-#selectVille {
-  margin-bottom: 1em;
-}
-
-<<<<<<< HEAD
 .bulle img {
     cursor: pointer;
     filter: grayscale(100%);
@@ -694,94 +593,27 @@ h1 {
       cursor: pointer;
   }
   
-/* ------------------ Devis ------------------ */
-
-.div_saut_ligne-1, .div_saut_ligne-3{
-    height:30px;
-}
-
-.div_saut_ligne-2{
-    height:5px;
-}
-
-
-
-.part{
-    width:10%;height:50px;float:left;
-}
-
-.part1{
-    width:10%;
-    height:75px;
-    float:left;
-}
-
-.part2{
-    width:15%;
-    height:75px;
-    float:left;
-    font-size:16px;
-    font-weight:bold;
-    text-align:left;
-}
-
-.part3{
-    width:35%;
-    height:50px;
-    float:left;
-    font-size:16px;
-    font-weight:bold;
-    text-align:left;
-}
-
-.part4{
-    width:15%;
-    height:50px;
-    float:left;
-    font-size:16px;
-    font-weight:bold;
-    text-align:left;
-}
-
-.part5{
-    width:25%;
-    height:75px;
-    float:left;
-    font-size:16px;
-    font-weight:bold;
-    text-align:left;
-}
-
-
-
-.part6{
-    width:80%;
-    height:50px;
-    float:left;
-    font-size:20px;
-    font-weight:bold;
-    text-align:left;
-    color:#a13638;
-}
-
-#telecharger{
-    float:left;
-    font-size:16px;
-    font-weight:bold;
-    text-align:left;
-}
 
   
-=======
-form {
-  width: 500px;
-  margin: auto;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  padding: 30px;
-}
-
-.form-floating {
-  margin-bottom: 15px;
-}
-
->>>>>>> origin/feature/inscription_techniciens
+#ville {
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  #selectVille {
+    margin-bottom: 1em;
+  }
+  
+  form {
+    width: 500px;
+    margin: auto;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+  }
+  
+  .form-floating {
+    margin-bottom: 15px;
+  }
+  
+  

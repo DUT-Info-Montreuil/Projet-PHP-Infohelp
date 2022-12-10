@@ -58,14 +58,19 @@ else if (isset($_SESSION["mode"]) && $_SESSION["mode"]  == 2) {
  <?php } 
 else{
      ?>
+     <?php if (isset($_SESSION['image'])) {
+                $image=$_SESSION['image'];    
+            }else{
+                $image="profile.png";
+            }
+
+                        ?>  
                 <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                 <li class="nav-item"><a href="index.php?Modules=Module_accueil&action=Accueil" class="nav-link px-2 link-secondary">Accueil</a></li>
                 <li class="nav-item"><a href="index.php?Modules=Module_rendezVous&action=liste_catégorie" class="nav-link px-2 link-primary text-white">Réparation</a></li>
                 <li class="nav-item"><a href="index.php?Modules=Module_tutos&action=afficheCategorieVideo" class="nav-link px-2 link-primary text-white">Tutos</a></li>
                 <li class="nav-item"><a href="index.php?Modules=Module_achatEtVente&action=boutique" class="nav-link px-2 link-primary text-white">Achat/Ventes</a></li>
-
-                <li class="nav-item"><a href="#" class="nav-link px-2 link-primary text-white"><img id="profil" src="images/profile.png" alt=""></a></li>
-
+                <li class="nav-item"><a href="index.php?Modules=Module_connexion&action=monProfil" class="nav-link px-2 link-primary text-white"><img id="profil" src="Modules/image_profil/<?=$image?>" alt=""></a></li>
             </ul>
  <?php } ?>
             
