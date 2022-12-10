@@ -45,9 +45,27 @@ class controleurRdv
         $this->vue->afficherCat($resultat);
     }
 
+
+        /**
+	 * Exporte les traces
+	 *
+	 * @return void
+	 */
+	public function exportTraces()
+	{
+		$traces = $this->getModele()->getTraces();
+		
+	
     public function getTechnicienFavoris()
     {
         $resultat=$this->modele->getFavoris();
         $this->vue->afficherTechnicienFavoris($resultat);
     }
+}
+
+    public function affichageDevis()
+	{
+		$traces = $this->getModele();
+		
+	}
 }

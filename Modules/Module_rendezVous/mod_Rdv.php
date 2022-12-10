@@ -12,13 +12,13 @@ class moduleRdv
         ConnexionUI::initConnexion();
         $this->control = new  controleurRdv;
         $this->action = isset($_GET['action']) ? $_GET['action'] : "rien";
-        if(isset($_SESSION['email'])){
+        if (isset($_SESSION['email'])) {
 
-        switch ($this->action) {
-                
-                case"prendreRdv":
+            switch ($this->action) {
+
+                case "prendreRdv":
                     $this->control->getVue()->affichageFormRdv();
-                    break; 
+                    break;
 
                 case "ajoutRdv":
                     $this->control->getModele()->ajouterRdv();
@@ -35,27 +35,32 @@ class moduleRdv
                 case "afficherListeRdv":
                     $this->control->getListeRdv();
                     break;
-                    
+
                 case 'liste_tech':
                     $this->control->listeTechnicien();
-                
-                case 'liste_catégorie':    
+
+                case 'liste_catégorie':
                     $this->control->listeCategorie();
                     break;
 
-                case 'rdvTechnicien':    
+                case 'rdvTechnicien':
                     $this->control->getModele()->modifRdv();
                     break;
 
-                case 'afficherFavoris':    
+                case 'afficherFavoris':
                     $this->control->getTechnicienFavoris();
                     break;
                 default:
                     break;
+                case "reparation":
+                    $this->control->getVue()->affichageDevis();
+                    break;
+                case "devis":
+                    $this->control->exportTraces();
+                    break;
             }
-
-        }else {
-            echo"connectez vous";
-        }    
+        } else {
+            echo "connectez vous";
+        }
     }
 }

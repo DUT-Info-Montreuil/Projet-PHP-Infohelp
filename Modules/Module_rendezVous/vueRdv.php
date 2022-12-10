@@ -192,6 +192,10 @@ class VueRdv extends vueGenerique
                                 <?php
 
                                 ?>
+            <?php
+            }
+            ?>
+
 
             </form>
         </main>
@@ -214,9 +218,148 @@ class VueRdv extends vueGenerique
             }
             ?>
 
+
             </form>
         </main>
 <?php
     }
-}
+
+
+    public function affichageDevis()
+    {
+
+    ?>
+        <div style="width:100%;display:block;text-align:center;"></div>
+
+        <div style="float:left;width:10%;height:40px;"></div>
+        <div style="float:left;width:80%;height:auto;text-align:center;">
+            <div class="titre_h1">
+                <h1>Facturation</h1>
+            </div>
+        </div>
+
+        <div class="div_saut_ligne-1">
+        </div>
+
+        <div style="float:left;width:10%;height:350px;"></div>
+        <div style="float:left;width:80%;height:350px;text-align:center;">
+            <form id="formulaire" name="formulaire" method="post" action="Module_rendezVous/Export.php">
+                <div class="titre_h1" style="height:350px;">
+                    <div style="width:35%;height:50px;float:left;font-size:20px;font-weight:bold;text-align:left;color:#a13638;">
+                        <u>Informations du client</u><br />
+                    </div>
+                    <div class="part3"></div>
+                    <div class="part"></div>
+
+                    <div class="part1"></div>
+                    <div class="part2">
+                        Réf. Client :<br />
+                        <select name="ref_client">
+                            <option value="0">Choisir client</option>
+                            <option id="ref_client" value="1">Vous</option>
+                            <option value="2">Une autre personne</option>
+                            <?php
+                            ?>
+                        </select>
+                    </div>
+                    <div class="part4">
+
+                    </div>
+                    <div class="part5">
+                        Nom du client :<br />
+                        <input type="text" id="nom_client" name="nom_client" value="" />
+                    </div>
+                    <div class="part5">
+                        Prénom du client :<br />
+                        <input type="text" id="prenom_client" name="prenom_client" />
+                    </div>
+                    <div class="part1"></div>
+
+                    <div class="div_saut_ligne-2">
+                    </div>
+
+                    <div class="part"></div>
+                    <div class="part6">
+                        <u>Informations du service</u><br />
+                    </div>
+                    <div class="part"></div>
+
+                    <div class="part1"></div>
+
+                    <div class="part5">
+                        Service <br>
+                        <label for=""> B</label>
+                    </div>
+
+                    <div class="part5">
+                        Prix unitaire :<br />
+                        <input type="text" id="puht" name="puht" />
+                    </div>
+
+                    <div class="div_saut_ligne-3">
+                    </div>
+
+
+                    <div class="part2">
+                        Total commande :<br />
+                        <input type="text" id="total_commande" name="total_commande" />
+                    </div>
+
+
+                    <div class="part1"></div>
+                    <div class="part5">
+                        <br>
+                        <input class="btn btn-outline-success" id="telecharger" type="submit" value="Télécharger vers Excel">
+                    </div>
+
+
+
+                </div>
+
+            </form>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+            <script>
+                $('#ref_client').click(function() {
+                    $.ajax({
+                        url: '../devis.php',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {
+                            id: "<?= $_SESSION['userID'] ?>"
+                        },
+                        success: function(reponse) {
+                            console.log(reponse);
+                            nom = reponse[1];
+                            prenom = reponse[2];
+                            document.getElementById('nom_client').setAttribute('value', nom);
+                            document.getElementById('prenom_client').setAttribute('value', prenom);
+                        }
+                    });
+                })
+            </script>
+        </div>
+<?php
+    }
+    public function afficherTechnicienFavoris($data)
+    {
+    ?>
+        <main>
+            <label>Liste de mes techniciens favoris: </label></br>
+            <?php
+            foreach ($data as $tech) {
+                $nom = $tech["nom"];
+                $prenom = $tech["prenom"];
+            ?>
+                <label><?= $nom ?> , <?= $prenom ?></label>
+
+            <?php
+            }
+            ?>
+
+            </form>
+        </main>
+<?php
+    }
+
+?>
 ?>

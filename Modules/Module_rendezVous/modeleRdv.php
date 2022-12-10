@@ -125,6 +125,7 @@ class modeleRdv extends ConnexionUI
        
         $cat = $_POST["categorie"];
         $sth1 = self::$bdd->prepare("SELECT * FROM `techniciens` inner join `categories` on techniciens.idCategorie = categories.idCat where idCat = '$cat'");
+        $sth1 = self::$bdd->prepare("SELECT * FROM `techniciens` inner join `categories` on techniciens.idCategorie = categories.idCat where idCat = '$cat'");
         $sth1->execute();
         $recuptech = $sth1->fetchAll();
         return $recuptech;
@@ -147,6 +148,14 @@ class modeleRdv extends ConnexionUI
         $requete->execute();
         $recupFavoris=$requete->fetchAll();
         return $recupFavoris;
+    }
+
+    public function getTraces(){
+        $requete = self::$bdd->prepare("SELECT * FROM materiels");
+        $requete->execute();
+        $data= $requete->fetchAll();
+        return $data;
+        print($data);
     }
 }
 
