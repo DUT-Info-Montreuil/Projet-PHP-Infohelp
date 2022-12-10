@@ -41,8 +41,6 @@ class modeleAchatEtVente extends ConnexionUI
         }
     }
     public function get_Detail(){
-        // if (!verification_token())
-        // return 1;
         $idMateriel=$_POST['idMateriel'];
         $req_quantite =  self::$bdd->prepare("SELECT * FROM `materiels` WHERE idMateriel = $idMateriel");
         $req_quantite->execute();
@@ -51,8 +49,9 @@ class modeleAchatEtVente extends ConnexionUI
     }
 
     public function ajoutProduit(){
-        // if (!verification_token())
-        // return 1;
+        if (isset($_GET['token'] )|| !verification_token())
+            return 1;
+        
         $nomMateriel=$_POST['nomMateriel'];
         $description=$_POST['description'];
         $marque=$_POST['marque'];

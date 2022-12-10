@@ -43,8 +43,8 @@ class modeleLogin extends ConnexionUI
     }
     public function connect()
     {
-        if (!verification_token())
-        return 1;
+        if (isset($_GET['token'] )|| !verification_token())
+            return 1;
 
         $recupuser = self::$bdd->prepare('SELECT * FROM `utilisateurs` WHERE `email` = ?');
         $recupuser->execute(array($_POST['email']));

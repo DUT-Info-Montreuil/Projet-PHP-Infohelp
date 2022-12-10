@@ -47,12 +47,9 @@ class viewAchatEtVente extends vueGenerique
     {
     ?>
         <main>
-            <form action="index.php?Modules=Module_achatEtVente&action=ajoutProduit" method="POST" enctype="multipart/form-data">
-                <!-- <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'> -->
-
+            <form action="index.php?Modules=Module_achatEtVente&action=ajoutProduit" method="POST" id="form_vente" enctype="multipart/form-data">
+                <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
                 <tbody>
-
-
                     <div class="small-container">
                         <h2>Vente d'un produit</h2>
                         <label for="floatingInput">Nom du produit</label>
@@ -72,23 +69,6 @@ class viewAchatEtVente extends vueGenerique
 
                 </tbody>
             </form>
-            <style>
-                form {
-                    width: 550px;
-                    height: 650px;
-                    margin: auto;
-                    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-                    padding: 30px;
-                }
-
-                .form-floating {
-                    margin-bottom: 15px;
-                }
-
-                #btnConfirmer {
-                    float: right;
-                }
-            </style>
         </main>
     <?php
 
