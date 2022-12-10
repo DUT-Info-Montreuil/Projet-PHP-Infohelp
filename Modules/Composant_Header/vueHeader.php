@@ -44,7 +44,7 @@ if (isset($_SESSION["mode"]) && $_SESSION["mode"] == 1) {
             }else{
                 $image="profile.png";
             }
-
+?>
             </ul>
  <?php } 
 else if (isset($_SESSION["mode"]) && $_SESSION["mode"]  == 2) {
