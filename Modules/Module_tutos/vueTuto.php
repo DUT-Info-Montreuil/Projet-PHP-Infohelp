@@ -100,11 +100,11 @@ class VueTuto extends vueGenerique
     public function afficher_Liste_Video($data)
     {
     ?>
-
+    
 
         <body>
             <main>
-                <form action="index.php?Modules=Module_tutos&action=afficheVideo" method="POST">
+                <!-- <form action="index.php?Modules=Module_tutos&action=afficheVideo" method="POST"> -->
                     <label>Selectionnez la video qui vous concerne:</label></br>
                     <?php
                     foreach ($data as $videos) {
@@ -113,17 +113,20 @@ class VueTuto extends vueGenerique
                         $miniature = $videos["miniature"];
 
                     ?>
+                    <div id="row-tuto">
                         <div id="col-1-tuto">
-                            <!-- <button name="lien" value="<?= $lienVideo ?>"> -->
+                        <!-- <button name="lien" value="<?= $lienVideo ?>"> -->
                             <img id="miniature" src="Modules/Module_tutos/images/<?= $miniature ?>" alt="miniature de la video"></br>
                             <?= $titreVideo ?>
-                            <!-- </button> -->
+                        <!-- </button> -->
                         </div>
+                    </div>
+                    </div>
                     <?php
                     }
                     ?>
 
-                </form>
+                <!-- </form> -->
             </main>
         </body>
 
