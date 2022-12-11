@@ -80,8 +80,8 @@ else{
                 echo'<a href="index.php?Modules=Module_connexion&action=deconnexion"type="button" class="btn btn-outline-primary me-2 ">Se deconnecter</a>';
                 }
                 if(!isset($_SESSION['email'])){
-                echo'<a href="index.php?Modules=Module_connexion&action=connexion"type="button" class="btn btn-outline-primary me-2">Se connecter</a>';
-                echo '<a href="index.php?Modules=Module_connexion&action=inscription"type="button" class="btn btn-primary">S\'inscrire</a>';
+                echo'<a href="index.php?Modules=Module_connexion&action=form_connexion"type="button" class="btn btn-outline-primary me-2">Se connecter</a>';
+                echo '<a href="index.php?Modules=Module_connexion&action=form_inscription"type="button" class="btn btn-primary">S\'inscrire</a>';
                 }
             ?>    
             </div>

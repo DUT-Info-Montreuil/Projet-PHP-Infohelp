@@ -2,12 +2,12 @@
 <?php
 require_once("Modules/vuegenerique.php");
 
-class View extends vueGenerique
+class VueConnexion extends vueGenerique
 {
     public function __construct()
     {
     }
-    public function showRegistration()
+    public function formulaire_inscription()
     {
 
 ?>
@@ -20,7 +20,7 @@ class View extends vueGenerique
 
         <body>
             <main>
-                <form action="index.php?Modules=Module_connexion&action=b1" method="POST">
+                <form action="index.php?Modules=Module_connexion&action=inscription" method="POST">
                     <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
                     <img class="mb-4" src="Modules/images/logo.PNG" alt="" width="72" height="57">
                     <h1 class="h3 mb-3 fw-normal">Inscription</h1>
@@ -87,7 +87,7 @@ class View extends vueGenerique
 
     <?php
     }
-    public function showConnection($verif)
+    public function formulaire_connexion($verif)
     {
     ?>
         <!DOCTYPE html>
@@ -95,7 +95,7 @@ class View extends vueGenerique
 
         <body>
             <main>
-                <form id="formConnexion" action="index.php?Modules=Module_connexion&action=b2" method="POST">
+                <form id="formConnexion" action="index.php?Modules=Module_connexion&action=connexion" method="POST">
                     <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
                     <img class="mb-4" src="Modules/images/logo.PNG" alt="" width="72" height="57">
                     <h1 class="h3 mb-3 fw-normal">Connexion</h1>

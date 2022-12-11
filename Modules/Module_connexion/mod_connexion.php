@@ -1,53 +1,52 @@
 <?php
 require_once('controleur.php');
-require_once('Login.php');
+require_once('Connexion.php');
 require_once("Common/Bibliotheque_commune/Verification_creation_token.php");
 
 
-class moduleLogin
+class moduleConnexion
 {
-    public $control;
+    public $controleur;
     public $action;
     public function __construct()
     {
         ConnexionUI::initConnexion();
-        $this->control = new  controlLogin;
+        $this->controleur = new controleurConnexion;
         $this->action = isset($_GET['action']) ? $_GET['action'] : "rien";
         switch ($this->action) {
+            case "form_inscription":
+                creation_token();
+                $this->controleur->getVue()->formulaire_inscription();
+                break;
             case "inscription":
+                $this->controleur->getModele()->inscription();
+                break;
+            case "form_connexion":
                 creation_token();
-                $this->control->getVue()->showRegistration();
+                $this->controleur->getVue()->formulaire_connexion($verif=0);
                 break;
-            case "b1":
-                $this->control->getModele()->add_log_in();
-                break;
-            case "connexion":
-                creation_token();
-                $this->control->getVue()->showConnection($verif=0);
-                break;
-            case "b2":
-                case "b2":
-                    $canDisconnect = false;
-                    $verifConnexion=$this->control->getModele()->connect();
+            
+                case "connexion":
+                    $verifConnexion=$this->controleur->getModele()->connexion();
     
                     if($verifConnexion==1){
-                        $this->control->getVue()->showConnection($verif=$verifConnexion);
+                        $this->controleur->getVue()->formulaire_connexion($verif=$verifConnexion);
                     }else{
                         header("Location: index.php?Modules=Module_accueil&action=Accueil");
                         die();
                     }
                 break;
             case "deconnexion":
-                $this->control->getModele()->log_out();
+                $this->controleur->getModele()->deconnexion();
                 break;
 
             case "monProfil":
                 creation_token();
-                $this->control->getUtilisateurAchanger();
+                $this->controleur->getUtilisateurAchanger();
                 break;  
                 
             case "changement":
-                $this->control->getModele()->modifInformationsUtilisateur();
+                $this->controleur->getModele()->modifInformationsUtilisateur();
                 break;         
             default:
                 break;

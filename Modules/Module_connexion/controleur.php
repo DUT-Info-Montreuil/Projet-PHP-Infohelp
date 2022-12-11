@@ -1,16 +1,16 @@
 <?php
-require_once('modeleLogin.php');
-require_once('viewLogin.php');
+require_once('modeleConnexion.php');
+require_once('vueConnexion.php');
 
-class controlLogin
+class controleurConnexion
 {
     public $vue;
     public $modele;
 
     public function __construct()
     {
-        $this->vue = new View();
-        $this->modele = new modeleLogin();
+        $this->vue = new VueConnexion();
+        $this->modele = new modeleConnexion();
     }
     public function getVue()
     {

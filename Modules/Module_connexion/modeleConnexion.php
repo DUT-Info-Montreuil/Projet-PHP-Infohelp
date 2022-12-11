@@ -1,12 +1,12 @@
 <?php
-require_once('Login.php');
+require_once('Connexion.php');
 require_once("Common/Bibliotheque_commune/Verification_creation_token.php");
-class modeleLogin extends ConnexionUI
+class modeleConnexion extends ConnexionUI
 {
     public function __construct()
     {
     }
-    public function add_log_in()
+    public function inscription()
     {
         if (isset($_GET['token'] )|| !verification_token())
             return 1;
@@ -33,7 +33,7 @@ class modeleLogin extends ConnexionUI
             $insert = self::$bdd->prepare('INSERT INTO `utilisateurs` (`last_name`, `first_name`, `email`, `password`, `postal_address`, `city`) VALUES (:par,:par2,:par3,:par4,:par5,:par6)');
 
             $insert->execute(array(':par' => $lastname, ':par2' => $firstname, ':par3' => $email, ':par4' => $passwd, ':par5' => $postAdress, ':par6' => $city));
-            header("Location: index.php?Modules=Module_connexion&action=connexion");
+            header("Location: index.php?Modules=Module_connexion&action=form_connexion");
             die();
             echo "Good registration \t";     
             }
@@ -47,7 +47,7 @@ class modeleLogin extends ConnexionUI
         
         return true;
     }
-    public function connect()
+    public function connexion()
     {
         if (isset($_GET['token'] )|| !verification_token())
             return 1;
@@ -68,17 +68,12 @@ class modeleLogin extends ConnexionUI
                 $_SESSION['userID'] = $tab['userID'];
                 $_SESSION['image']=$tab['image'];
 
-                echo "utilisateur " . $_SESSION['email'] . " vous êtes bien connecté";
-                //header("Location: index.php?Modules=Module_accueil&action=Accueil");
-                //die();
                 return 0;
             } else {
                 return 1;
             }
         } else{
-            // header("Location: index.php?Modules=Module_connexion&action=connexion");
-            // die(); 
-            // echo "<h6 class='text-danger text center mt-3'>Email ou mot de passe incorrect</h6>";
+
             return 1;
 
             ?> 
@@ -136,7 +131,6 @@ class modeleLogin extends ConnexionUI
             $imageSize = $_FILES["image"]["size"];
             $tmpName = $_FILES["image"]["tmp_name"];
       
-            // Image validation
             $validImageExtension = ['jpg', 'jpeg', 'png'];
             $imageExtension = explode('.', $imageName);
             $imageExtension = strtolower(end($imageExtension));
@@ -147,7 +141,7 @@ class modeleLogin extends ConnexionUI
             $query = self::$bdd->prepare("UPDATE `utilisateurs` SET image = '$newImageName' WHERE userID = $userID");
             $query->execute();
             move_uploaded_file($tmpName, 'Modules/image_profil/' . $newImageName);
-            echo"votre photo de profil a bien été modifié";
+
 
             
         }
@@ -180,13 +174,13 @@ class modeleLogin extends ConnexionUI
     }
 
 
-    public function log_out()
+    public function deconnexion()
     {
         unset($_SESSION['userID']);
         unset($_SESSION['email']);
         unset($_SESSION['password']);
         unset($_SESSION['mode']);
-        header("Location: index.php?Modules=Module_connexion&action=connexion");
+        header("Location: index.php?Modules=Module_connexion&action=form_connexion");
         die();
     }
 }

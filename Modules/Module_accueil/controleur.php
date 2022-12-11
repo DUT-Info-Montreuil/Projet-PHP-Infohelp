@@ -1,5 +1,4 @@
 <?php
-require_once('modeleAccueil.php');
 require_once('viewAccueil.php');
 
 class controlAccueil

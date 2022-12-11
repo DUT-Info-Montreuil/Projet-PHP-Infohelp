@@ -38,8 +38,8 @@ session_start();
             $module = $_GET['Modules'];
             switch ($module) {
                 case 'Module_connexion':
-                    require_once('Modules/Module_connexion/mod_login.php');
-                    $module = new moduleLogin();
+                    require_once('Modules/Module_connexion/mod_connexion.php');
+                    $module = new moduleConnexion();
                     break;
                 case 'Module_rendezVous':
                     require_once('Modules/Module_rendezVous/mod_Rdv.php');
@@ -62,7 +62,7 @@ session_start();
                     $module = new moduleAdmin();
                     break;    
                 default:
-                    # code...
+                    
                     break;
             }
         }
