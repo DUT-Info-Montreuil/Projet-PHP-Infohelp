@@ -37,8 +37,7 @@ section img {
     width: 100%;
 }
 
-#bienvenue {
-    font: italic 1.2em "Fira Sans", serif;
+#bienvenue{
     width: 100%;
     text-align: center;
     margin: auto;

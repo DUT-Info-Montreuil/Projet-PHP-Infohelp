@@ -27,16 +27,15 @@ class moduleLogin
                 break;
             case "b2":
                 $canDisconnect = false;
-                try {
-                    $this->control->getModele()->connect();
-                    $canDisconnect = true;
-                } catch (Exception $e) {
-                    $canDisconnect = false;
+                $verifConnexion=$this->control->getModele()->connect();
 
-                    echo "dans l'exception veuillez vous connectez";
-                    header("Location: index.php?Modules=Module_connexion&action=connexion");
+                if($verifConnexion==1){
+                    $this->control->getVue()->showConnection($verif=$verifConnexion);
+                }else{
+                    header("Location: index.php?Modules=Module_accueil&action=Accueil");
                     die();
-                    $this->control->getVue();
+                }
+                if ($canDisconnect == true) {
                 }
                 break;
             case "deconnexion":

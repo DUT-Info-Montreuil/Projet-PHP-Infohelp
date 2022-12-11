@@ -55,8 +55,9 @@ class modeleLogin extends ConnexionUI
         $recupuser = self::$bdd->prepare('SELECT * FROM `utilisateurs` WHERE `email` = ?');
         $recupuser->execute(array($_POST['email']));
         if (($tab = $recupuser->fetch()) === false) {
-            throw new Exception("Error Processing Request", 1);
-        }
+            return 1;
+        }else{
+
         if (password_verify($_POST['password'], $tab['password'])) {
             if ($recupuser->rowCount() > 0) {
 
@@ -68,16 +69,22 @@ class modeleLogin extends ConnexionUI
                 $_SESSION['image']=$tab['image'];
 
                 echo "utilisateur " . $_SESSION['email'] . " vous êtes bien connecté";
-                header("Location: index.php?Modules=Module_accueil&action=Accueil");
-                die();
+                //header("Location: index.php?Modules=Module_accueil&action=Accueil");
+                //die();
+                return 0;
             } else {
-                echo "completer tous les champs ";
+                return 1;
             }
-        } else {
-            header("Location: index.php?Modules=Module_connexion&action=connexion");
-            die();
-            echo "erreur de connexion";
+        } else{
+            // header("Location: index.php?Modules=Module_connexion&action=connexion");
+            // die(); 
+            // echo "<h6 class='text-danger text center mt-3'>Email ou mot de passe incorrect</h6>";
+            return 1;
+
+            ?> 
+            <?php 
         }
+    }
     }
 
     public function getUtilisateur()
@@ -91,58 +98,24 @@ class modeleLogin extends ConnexionUI
 
     public function modifInformationsUtilisateur()
     {
-        if (isset($_GET['token'] )|| !verification_token())
-            return 1;
+        if (isset($_POST["email"]) || isset($_POST["first_name"]) || isset($_POST["last_name"]) || isset($_POST["city"]) || isset($_POST["password"])|| isset($_POST["postal_address"])) {
+            $lastname = htmlspecialchars($_POST["last_name"]);
+            $firstname = htmlspecialchars($_POST["first_name"]);
+            $email = htmlspecialchars($_POST["email"]);
+            $postal_address = htmlspecialchars($_POST["postal_address"]);;
+            $city = htmlspecialchars($_POST["city"]);
+            $userID=$_SESSION['userID'];
+            $userEmail=$_SESSION['email'];
 
-        $userID=$_SESSION['userID'];
-        $userEmail=$_SESSION['email'];
-        $verifAncienMdp=$_SESSION['password'];
+            $verifEmailExistant = self::$bdd->prepare("SELECT * FROM `utilisateurs` WHERE `email` = '$email' and `email` !='$userEmail' ");
+            $verifEmailExistant->execute();
 
-        $ancienMdp=strval($_POST["ancienMdp"]);
-        $mdp1=strval($_POST["mdp1"]);
-        $mdp2=strval($_POST["mdp2"]);
-        if($mdp1!="" && $mdp2!=""){
-            if ($ancienMdp==$verifAncienMdp) {
-
-                if ($mdp1 == $mdp2) {
-                    $_SESSION['password'] = $mdp1;
-                    $nouveauMdp = password_hash($mdp1, PASSWORD_DEFAULT);
-                    $update = self::$bdd->prepare("UPDATE `utilisateurs` SET `password`= '$nouveauMdp' WHERE `userID`= '$userID'");
-                    $update->execute();
-                    echo"votre mot de passe a bien été modifié";
-
-                }else{
-                    var_dump($mdp1);
-                    var_dump($mdp2);
-                    echo"erreur les mots de passe ne sont pas identiques";
-                }
-
-        }else{
-            var_dump($ancienMdp);
-            echo"erreur lors de la saisie de l'ancien mdp";
-        }
-        }
-        
-        if(isset($_FILES["image"]["name"]) && $_FILES["image"]["error"]!=4){
-            print_r($_FILES);
-            $imageName = $_FILES["image"]["name"];
-            $imageSize = $_FILES["image"]["size"];
-            $tmpName = $_FILES["image"]["tmp_name"];
-      
-            // Image validation
-            $validImageExtension = ['jpg', 'jpeg', 'png'];
-            $imageExtension = explode('.', $imageName);
-            $imageExtension = strtolower(end($imageExtension));
-
-            $newImageName = date("Y.m.d") . " - " . date("h.i.sa"); // Generate new image name
-            $newImageName .= '.' . $imageExtension;
-            $_SESSION['image']=$newImageName;
-            $query = self::$bdd->prepare("UPDATE `utilisateurs` SET image = '$newImageName' WHERE userID = $userID");
-            $query->execute();
-            move_uploaded_file($tmpName, 'Modules/image_profil/' . $newImageName);
-            echo"votre photo de profil a bien été modifié";
-
-            
+            if ($verifEmailExistant->rowCount() > 0) {
+                echo"errerur l'email existe déjà";
+            }else{
+            $update = self::$bdd->prepare("UPDATE `utilisateurs` SET `email`= '$email' , `first_name`= '$firstname' ,`last_name`= '$lastname' , `city`= '$city' , `postal_address`= '$postal_address' WHERE `userID`= '$userID'");
+            $update->execute();
+            }
         }
         
 

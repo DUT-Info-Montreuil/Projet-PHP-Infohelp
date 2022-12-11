@@ -6,7 +6,9 @@ class VueHeader extends vueGenerique
     public function __construct()
     {
         $this->afficherHeader();
+        $this->afficherHeader();
     }
+    public function afficherHeader()
     public function afficherHeader()
     {
 ?>
@@ -86,6 +88,7 @@ else{
             ?>    
             </div>
         </header>
+            </br>
     </div>
 
 <?php

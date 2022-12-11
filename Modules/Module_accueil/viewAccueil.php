@@ -154,6 +154,25 @@ Merci à Daniel.</p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="1
     </body>
 
     </html>
+            <?php
+    }
+
+
+    public function affichePageProfil()
+    {
+?>
+            
+  <body>
+    <h1>Mon Profil</h1>    
+    <tr>        
+
+                <br>
+                <td> <a href="index.php?Modules=Module_connexion&action=monProfil">Changer mes informations</a></td><br>
+                <td> <a href="index.php?Modules=Module_rendezVous&action=afficherListeRdv">Voir mes rendez-vous</a></td><br>
+                <td> <a href="index.php?Modules=Module_rendezVous&action=afficherFavoris">Voir mes techniciens favoris</a></td><br>
+            </tr>
+  </body>
+</html>
 <?php
   }
 }

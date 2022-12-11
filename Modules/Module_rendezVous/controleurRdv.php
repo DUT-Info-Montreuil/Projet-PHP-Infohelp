@@ -34,7 +34,8 @@ class controleurRdv
     }
    
     public function listeTechnicien()
-    {
+    {        var_dump($_POST['categorie']);
+
         $res=$this->modele->getlistTechnicien();
         $this->vue->afficherTechnicien($res);
     }
