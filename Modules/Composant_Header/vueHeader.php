@@ -43,6 +43,8 @@ if (isset($_SESSION["mode"]) && $_SESSION["mode"] == 1) {
                 <li class="nav-item"><a href="index.php?Modules=Module_accueil&action=Accueil" class="nav-link px-2 link-secondary">Accueil</a></li>
                 <li class="nav-item"><a href="index.php?Modules=ADMIN&action=recherche_liste" class="nav-link px-2 link-secondary">Gestion des techniciens</a><br></li>
                 <li><a href="index.php?Modules=ADMIN&action=Afficher_user" class="nav-link px-2 link-secondary">Gestion des utilisateurs</a><br></li>
+                <li class="nav-item"><a href="index.php?Modules=Module_connexion&action=monProfil" class="nav-link px-2 link-primary text-white"><img id="profil" src="Modules/image_profil/<?=$image?>" alt=""></a></li>
+
             </ul>
  <?php } 
 else if (isset($_SESSION["mode"]) && $_SESSION["mode"]  == 2) {
@@ -52,6 +54,8 @@ else if (isset($_SESSION["mode"]) && $_SESSION["mode"]  == 2) {
                 <li class="nav-item"><a href="index.php?Modules=Module_accueil&action=Accueil" class="nav-link px-2 link-secondary">Accueil</a></li>
                 <li class="nav-item"><a href="index.php?Modules=ADMIN&action=Afficher_rdv" class="nav-link px-2 link-secondary">Gestion des rendez vous</a><br></li>
                 <li class="nav-item"><a href="index.php?Modules=Module_tutos&action=afficheFormTuto" class="nav-link px-2 link-primary text-white">Gestion des tutos</a></li>
+                <li class="nav-item"><a href="index.php?Modules=Module_connexion&action=monProfil" class="nav-link px-2 link-primary text-white"><img id="profil" src="Modules/image_profil/<?=$image?>" alt=""></a></li>
+
 </ul>
  <?php } 
 else{
@@ -77,7 +81,7 @@ else{
                 }
                 if(!isset($_SESSION['email'])){
                 echo'<a href="index.php?Modules=Module_connexion&action=connexion"type="button" class="btn btn-outline-primary me-2">Se connecter</a>';
-                echo '<a href="index.php?Modules=Module_connexion&action=sign-up"type="button" class="btn btn-primary">S\'inscrire</a>';
+                echo '<a href="index.php?Modules=Module_connexion&action=inscription"type="button" class="btn btn-primary">S\'inscrire</a>';
                 }
             ?>    
             </div>

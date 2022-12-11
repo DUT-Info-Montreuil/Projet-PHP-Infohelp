@@ -14,7 +14,7 @@ class moduleLogin
         $this->control = new  controlLogin;
         $this->action = isset($_GET['action']) ? $_GET['action'] : "rien";
         switch ($this->action) {
-            case "sign-up":
+            case "inscription":
                 creation_token();
                 $this->control->getVue()->showRegistration();
                 break;
