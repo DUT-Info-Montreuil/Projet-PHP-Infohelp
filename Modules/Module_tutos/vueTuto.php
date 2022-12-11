@@ -101,6 +101,7 @@ class VueTuto extends vueGenerique
     {
     ?>
 
+
         <body>
             <main>
                 <form action="index.php?Modules=Module_tutos&action=afficheVideo" method="POST">
@@ -112,12 +113,12 @@ class VueTuto extends vueGenerique
                         $miniature = $videos["miniature"];
 
                     ?>
-                        <button name="lien" value="<?= $lienVideo ?>">
-
+                        <div id="col-1-tuto">
+                            <!-- <button name="lien" value="<?= $lienVideo ?>"> -->
                             <img id="miniature" src="Modules/Module_tutos/images/<?= $miniature ?>" alt="miniature de la video"></br>
                             <?= $titreVideo ?>
-
-                        </button>
+                            <!-- </button> -->
+                        </div>
                     <?php
                     }
                     ?>
