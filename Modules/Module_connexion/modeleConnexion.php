@@ -126,7 +126,7 @@ class modeleConnexion extends ConnexionUI
         }
         
         if(isset($_FILES["image"]["name"]) && $_FILES["image"]["error"]!=4){
-            print_r($_FILES);
+            
             $imageName = $_FILES["image"]["name"];
             $imageSize = $_FILES["image"]["size"];
             $tmpName = $_FILES["image"]["tmp_name"];
