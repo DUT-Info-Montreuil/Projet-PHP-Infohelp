@@ -82,36 +82,28 @@ class viewAchatEtVente extends vueGenerique
     {
     ?>
         <main>
-        <h1>En vente</h1>
-            <section>
+            <h1>En vente</h1>
+            <section id="sec">
                 <table class="tableau-style">
                     <form action="index.php?Modules=Module_achatEtVente&action=afficher" method="POST">
-                        <!-- <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'> -->
-                        <?php
-                        foreach ($materiels as $materiel) { ?>
-                            <section id="produit1" class="section-p1">
+                        <!-- <section id="produit1" class="section-p1"> -->
+                            <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
+                            <?php
+                            foreach ($materiels as $materiel) { ?>
                                 <div class="pro-container">
                                     <div>
                                         <div class="pro">
                                             <img src="Modules/Module_achatEtVente/images_produits/<?= $materiel["image"] ?>" alt="">
                                             <div class="des">
                                                 <h5><?= $materiel["nomMateriel"] ?></h5>
-                                                <div class="star">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </div>
                                                 <h4><?= $materiel["prix"] ?>€</h4>
                                             </div>
                                             <button type="submit" name="idMateriel" value="<?= $materiel['idMateriel'] ?>"><i class="fal fa-shopping-cart cart">Voir</i></button>
                                         </div>
                                     </div>
                                 </div>
-                            </section>
-                        <?php } ?>
+                            <?php } ?>
+                        <!-- </section> -->
                     </form>
                 </table>
             </section>
@@ -133,8 +125,8 @@ class viewAchatEtVente extends vueGenerique
                                 <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
                                     <div class="row align-items-center">
                                         <?php
-                                        foreach ($materiels as $materiel) { 
-                                            $id=$materiel['idMateriel']; ?>
+                                        foreach ($materiels as $materiel) {
+                                            $id = $materiel['idMateriel']; ?>
                                             <div class="col-lg-6 mb-4 mb-lg-0">
                                                 <img src="Modules/Module_achatEtVente/images_produits/<?= $materiel['image'] ?>" alt="...">
                                             </div>
@@ -155,7 +147,7 @@ class viewAchatEtVente extends vueGenerique
                                                 </tbody>
                                             </div>
                                     </div>
-                                        <a class="btn btn-light" href="index.php?Modules=Module_achatEtVente&action=acheter&id=<?=$id;?>" id="achat">Acheter</a>
+                                    <a class="btn btn-light" href="index.php?Modules=Module_achatEtVente&action=acheter&id=<?= $id; ?>" id="achat">Acheter</a>
                                 </div>
                             </div>
                         </div>
@@ -171,6 +163,6 @@ class viewAchatEtVente extends vueGenerique
                 </div>
             </section>
         </main>
-    <?php
+<?php
     }
 }

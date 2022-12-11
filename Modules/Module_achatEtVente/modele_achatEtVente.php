@@ -90,7 +90,7 @@ class modeleAchatEtVente extends ConnexionUI
         $headers .= "From: infohelp93100@gmail.com\r\n";
 
         if(mail($to, $subject, $message, $headers))
-            echo "Envoyé !";
+            echo "Un mail vous a été envoyé !";
         else
             echo "Erreur de l'envoi";
     } 
