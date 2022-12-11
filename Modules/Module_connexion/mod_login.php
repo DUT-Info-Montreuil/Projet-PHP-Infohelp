@@ -23,20 +23,19 @@ class moduleLogin
                 break;
             case "connexion":
                 creation_token();
-                $this->control->getVue()->showConnection();
+                $this->control->getVue()->showConnection($verif=0);
                 break;
             case "b2":
-                $canDisconnect = false;
-                $verifConnexion=$this->control->getModele()->connect();
-
-                if($verifConnexion==1){
-                    $this->control->getVue()->showConnection($verif=$verifConnexion);
-                }else{
-                    header("Location: index.php?Modules=Module_accueil&action=Accueil");
-                    die();
-                }
-                if ($canDisconnect == true) {
-                }
+                case "b2":
+                    $canDisconnect = false;
+                    $verifConnexion=$this->control->getModele()->connect();
+    
+                    if($verifConnexion==1){
+                        $this->control->getVue()->showConnection($verif=$verifConnexion);
+                    }else{
+                        header("Location: index.php?Modules=Module_accueil&action=Accueil");
+                        die();
+                    }
                 break;
             case "deconnexion":
                 $this->control->getModele()->log_out();

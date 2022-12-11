@@ -57,6 +57,10 @@ session_start();
                     require_once('Modules/Module_tutos/mod_tuto.php');
                     $module = new moduleTuto();
                     break;
+                case 'ADMIN':
+                    require_once('Modules/ADMIN/mod_admin.php');
+                    $module = new moduleAdmin();
+                    break;    
                 default:
                     # code...
                     break;
@@ -99,6 +103,5 @@ session_start();
         ?>
 
     </header>
-
 
 </body>

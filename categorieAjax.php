@@ -1,6 +1,6 @@
 <?php
     header('Content-Type: application/json; charset=utf-8');
-    require_once("./Modules/Login.php");
+    require_once("Login.php");
     ConnexionUI::initConnexion();
     $id1 = $_POST["id1"];
     $id2 = $_POST["id2"];

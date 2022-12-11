@@ -29,16 +29,24 @@ class VueTuto extends vueGenerique
                     }
 
                     ?>
+                </form>
+            </main>
+        </body>
 
-                    <!-- Trigger/Open The Modal -->
-                    <button type="submit" class="btn btn-secondary px-4" id="ajoutTuto">Ajouter un nouveau Tuto</button>
+    <?php
+    }
 
-                    <!-- The Modal -->
-                    <div id="ModalTuto" class="modal">
 
-                        <!-- Modal content -->
-                        <div class="modal-content">
-                            <span class="close">&times;</span>
+
+    public function ajouterTuto($data)
+    {
+
+
+?>
+
+        <body>
+            <main>
+                <form action="index.php?Modules=Module_tutos&action=ajoutTuto" method="POST" enctype="multipart/form-data">
 
                             <h3>Ajout d'un tuto</h3>
                             <div class="form-group">
@@ -64,38 +72,13 @@ class VueTuto extends vueGenerique
                             <div>
                                 <input name="ajoutTutoBtn" type="submit" class="btn btn-primary px-4" value="Confirmer">
                             </div>
-                        </div>
-
-                        <script>
-                            var modal = document.getElementById("ModalTuto");
-
-                            var btn = document.getElementById("ajoutTuto");
-
-                            var span = document.getElementsByClassName("close")[0];
-
-                            btn.onclick = function(e) {
-                                e.preventDefault();
-
-                                modal.style.display = "block";
-                            }
-
-                            span.onclick = function() {
-                                modal.style.display = "none";
-                            }
-
-                            window.onclick = function(event) {
-                                if (event.target == modal) {
-                                    modal.style.display = "none";
-                                }
-                            }
-                        </script>
+                    
                 </form>
             </main>
         </body>
 
     <?php
     }
-
 
     public function afficher_Liste_Video($data)
     {
@@ -116,8 +99,9 @@ class VueTuto extends vueGenerique
                     <div id="row-tuto">
                         <div id="col-1-tuto">
                         <!-- <button name="lien" value="<?= $lienVideo ?>"> -->
+                        <a href="index.php?Modules=Module_tutos&action=afficheVideo&lien=<?= $lienVideo ?>">     
                             <img id="miniature" src="Modules/Module_tutos/images/<?= $miniature ?>" alt="miniature de la video"></br>
-                            <?= $titreVideo ?>
+                            <?= $titreVideo ?></a>
                         <!-- </button> -->
                         </div>
                     </div>

@@ -40,6 +40,17 @@ class modeleTuto extends ConnexionUI
         return $recupvideo;
     }
 
+    
+    public function get_categorieVideo()
+    {
+        $requete = self::$bdd->prepare("SELECT * FROM `categorietutos`");
+        $requete->execute();
+        $recupCategorieVideo=$requete->fetchAll();
+
+        return $recupCategorieVideo;
+    }
+
+
     public function ajoutTuto()
     {
         var_dump($_POST['choix']);
@@ -60,7 +71,7 @@ class modeleTuto extends ConnexionUI
 
             $insert = self::$bdd->prepare("INSERT INTO `tutos` (`titre`, `auteur`, `lienVideo`, `idCategorieVideo`, `miniature`) VALUES (:par,:par2,:par3,:par4,:par5)");
             $insert->execute(array(':par' => $titre, ':par2' => $auteur, ':par3' => $lien, ':par4' => $categorie, ':par5' => $newImageName));
-            move_uploaded_file($tmpName, 'Module_tutos/images/' . $newImageName);
+            move_uploaded_file($tmpName, 'Modules/Module_tutos/images/' . $newImageName);
 
         }
     }

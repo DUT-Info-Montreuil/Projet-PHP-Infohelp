@@ -24,28 +24,40 @@ class VueRdv extends vueGenerique
         <?php
     }
     public function afficherTechnicien($req)
-    {   
+    {
     ?>
         <form action="index.php?Modules=Module_rendezVous&action=prendreRdv" method="POST">
             <?php
+
             foreach ($req as $row) {
             ?>
-                <tr>
-                    <br>
-                    <td> n° : <?= $row['idTechnicien'] ?></td><br>
-                    <td> nom : <?= $row['nom']; ?></td><br>
-                    <td> prenom : <?= $row['prenom']; ?></td><br>
-                    <td> categorie :<?= $row["nomCat"]; ?></td><br>
-                    <label>Choisir le technicien n° </label><input class="btn btn-outline-secondary" type="submit" name="tec" value="<?php echo $row['idTechnicien']; ?>">
-                </tr>
+                <div id="technicienListe">
+                    <tr>
+                        <br>
+                        <td><?= $row['nom']; ?></td><br>
+                        <td><?= $row['prenom']; ?></td><br>
+                        <td><?= $row["nomCat"]; ?></td><br>
+
+                        <button style="height:35px" class="btn btn-outline-secondary" type="submit" name="tec" value="<?php echo $row['idTechnicien']; ?>">Choisir ce technicien </button>
+                        <input type="hidden" name="categorieRDV" value="<?=$row["idCategorie"]; ?>">
+                    </tr>
+                </div>
             <?php
+
             }
+
+
             ?>
+
         </form>
+        </br></br></br></br></br></br></br></br>
+
+
     <?php
     }
+
+
     public function toutLesTechniciens($req){
-        /*index.php?Modules=Module_rendezVous&action=voirTechnicien*/
         ?>
         <form action="index.php?Modules=Module_rendezVous&action=prendreRdv" method="post">
             <label>Liste des techniciens</label></br>
@@ -73,9 +85,11 @@ class VueRdv extends vueGenerique
             <form action="index.php?Modules=Module_rendezVous&action=ajoutRdv" method="POST">
                 <label>
                     Veuillez selectionner le jour ainsi que l'heure qui vous convient :
-                    <input type="date" name="jour" required>
-                    <input type="time" name="heure" required>
+                    <input type="date" name="jour" min="<?=date("Y-m-d")?>" max="2023-12-31" required>
+                    <input type="time" name="heure" min="09:00" max="18:00" required>
                     <input type="hidden" name="tec" value="<?= $_POST['tec'] ?>">
+                    <input type="hidden" name="categorieRDV" value="<?= $_POST['categorieRDV'] ?>">
+
                 </label>
                 <button class="btn btn-outline-secondary" value=<?= $_POST['tec'] ?>>Confirmer</button>
             </form>
@@ -84,13 +98,14 @@ class VueRdv extends vueGenerique
     }
 
 
+
     public function afficherRdv($data)
     {
     ?>
 
         <body>
             <main>
-            <form action="index.php?Modules=Module_rendezVous&action=rdvTechnicien" method="post">
+            <form id="box" action="index.php?Modules=Module_rendezVous&action=rdvTechnicien" method="post">
                 <?php
                 foreach ($data as $rdv) {
                     $idRdv = $rdv["idRdv"];
@@ -102,61 +117,7 @@ class VueRdv extends vueGenerique
                     $idTechnicien = $rdv["idTechnicien"];
                     $idUtilisateur = $rdv["idUtilisateur"];
 
-                    /*                     $fav= isset($_GET['MettreFavoris']) ? $_GET['MettreFavoris'] : 0;
- */                ?>
-                    <div>
-                        <h3>Rendez-vous<h3></br>
-                    </div>
-                    <label>Technicien: <?= $nomTechnicien . " " . $prenomTechnicien ?></br>
-                        Le <?= $dateRdv ?>, à <?= $dateRdv ?></label></br>
-
-                    <label>Mettre une note au technicien (note/5): </label>
-                    <input placeholder="<?= $note ?>" minlength="0" maxlength="1" size="3" type="text" name="note"></br>
-                    <label for="MettreFavoris">Mettre ce technicien en favoris </label>
-                    <input type="checkbox" class="form-check-input" id="MettreFavoris" name="MettreFavoris" value="1" <?php if (isset($_GET['MettreFavoris']) == 1) {
-                                                                                                                            echo "checked";
-                                                                                                                        } ?>></br>
-                    <button class="btn btn-outline-secondary">Confirmer</button>
-
-
-                    <button type="submit" name="boutonAnnuler" class="btn btn-outline-danger">Annuler le rendez-vous</button>
-
-
-                    <input type="hidden" name="idRdv" value="<?= $idRdv ?>">
-                    <input type="hidden" name="idTechnicien" value="<?= $idTechnicien ?>">
-                    <input type="hidden" name="idUtilisateur" value="<?= $idUtilisateur ?>">
-
-                <?php
-                }
-                ?>
-            </form>
-            </main>
-        </body>
-
-        </html>
-    <?php
-    }
-
-
-    public function afficherRdv($data)
-    {
-    ?>
-
-        <body>
-            <form action="index.php?Modules=Module_rendezVous&action=rdvTechnicien" method="post">
-                <?php
-                foreach ($data as $rdv) {
-                    $idRdv = $rdv["idRdv"];
-                    $dateRdv = $rdv["dateRDV"];
-                    $heureRdv = $rdv["horaire"];
-                    $nomTechnicien = $rdv["nom"];
-                    $prenomTechnicien = $rdv["prenom"];
-                    $note = $rdv["note"];
-                    $idTechnicien = $rdv["idTechnicien"];
-                    $idUtilisateur = $rdv["idUtilisateur"];
-
-                    /*                     $fav= isset($_GET['MettreFavoris']) ? $_GET['MettreFavoris'] : 0;
- */                ?>
+               ?>
                     <div>
                         <h3>Rendez-vous<h3></br>
                     </div>
@@ -179,7 +140,7 @@ class VueRdv extends vueGenerique
 
 
                     <button type="submit" name="boutonAnnuler" class="btn btn-outline-danger">Annuler le rendez-vous</button>
-
+                    <a href="index.php?Modules=Module_rendezVous&action=afficherDevis&id=<?= $idRdv ?>">Afficher le devis</a>
 
                     <input type="hidden" name="idRdv" value="<?= $idRdv ?>">
                     <input type="hidden" name="idTechnicien" value="<?= $idTechnicien ?>">
@@ -189,6 +150,7 @@ class VueRdv extends vueGenerique
                 }
                 ?>
             </form>
+            </main>
         </body>
 
         </html>
@@ -200,7 +162,7 @@ class VueRdv extends vueGenerique
     {
     ?>
         <main>
-            <form action="index.php?Modules=Module_rendezVous&action=affichererRdv" method="POST">
+            <form action="index.php?Modules=Module_rendezVous&action=afficherRdv" method="POST">
                 <label>Selectionnez le rendez-vous vous souhaitez consulter:</label></br>
                 <?php
                 foreach ($data as $rdv) {
@@ -210,22 +172,19 @@ class VueRdv extends vueGenerique
 
                 ?>
                     <button class="btn btn-outline-secondary" name="idRdv" value="<?php echo $idRdv; ?>">
-                        <?php echo $nomTechnicien . ", le " . $dateRdv; ?>
+                        Rdv avec le technicien <?php echo $nomTechnicien . ", le " . $dateRdv; ?>
                     </button>
 
         <?php
-        }*/
+        }
         ?> 
         
-        </form> -->
-
+        </form> 
+    </main>
 
 
     <?php
     }
-
-
-
 
 
 
@@ -233,74 +192,9 @@ class VueRdv extends vueGenerique
     public function afficherCat($req)
     {
     ?>
-    ?>
+
 
         <main>
-            <form id="formCategorie" action="index.php?Modules=Module_rendezVous&action=liste_tech" method="POST">
-                <label>Selectionnez la categorie que vous souhaitez :</label></br>
-                <?php
-                $id = $req[1]["idCat"];
-                $nomCategorie = $req[1]["nomCat"];
-                ?>
-                <div id="categorie">
-                    <button onclick="afficheSousCat()" name="categorie">
-                        Reparation
-                    </button>
-                    <div>
-
-                        <div id="div_categorie">
-                            <button type="submit" class="btn btn-outline-secondary" name="categorie" value=<?= $req[0]["idCat"] ?> name="categorie">
-                                <?= $req[0]["nomCat"]; ?>
-                            </button>
-
-                            <button type="submit" class="btn btn-outline-secondary" name="categorie" value=<?= $id ?>>
-                                <?= $nomCategorie; ?>
-                            </button>
-                        <div>
-
-
-            </form>
-        </main>
-
-    <?php
-    }
-    public function afficherTechnicienFavoris($data)
-    {
-    ?>
-        <form action="index.php?Modules=Module_rendezVous&action=prendreRdv" method="POST">
-        <?php
-
-        foreach ($req as $row) {
-        ?>
-            <tr>
-                <br>
-                <td> n° : <?= $row['idTechnicien']?></td><br>
-                <td> nom : <?= $row['nom']; ?></td><br>
-                <td> prenom : <?= $row['prenom']; ?></td><br>
-                <td> categorie :<?= $row["nomCat"];?></td><br>
-                
-                <label>Choisir le technicien n° </label><input class="btn btn-outline-secondary" type="submit" name="tec" value="<?php echo $row['idTechnicien'];?>"> 
-
-            </tr>
-                <?php 
-
-            } 
-            
-            
-            ?>  
-
-            </form>
-       
-        <?php 
-        }
-
-
-    public function affichageDevis()
-    {
-    ?>
-
-
-
         <form action="index.php?Modules=Module_rendezVous&action=liste_tech" method="POST">
 
             <div class="container">
@@ -343,92 +237,6 @@ class VueRdv extends vueGenerique
                                         </li>
                                         <li><a class="categorie" id="cat2" href="#"></a></li>
 
-    ?>
-        <div style="width:100%;display:block;text-align:center;"></div>
-
-        <div style="float:left;width:10%;height:40px;"></div>
-        <div style="float:left;width:80%;height:auto;text-align:center;">
-            <div class="titre_h1">
-                <h1>Facturation</h1>
-            </div>
-        </div>
-
-        <div class="div_saut_ligne-1">
-        </div>
-
-        <div style="float:left;width:10%;height:350px;"></div>
-        <div style="float:left;width:80%;height:350px;text-align:center;">
-            <form id="formulaire" name="formulaire" method="post" action="Module_rendezVous/Export.php">
-                <div class="titre_h1" style="height:350px;">
-                    <div style="width:35%;height:50px;float:left;font-size:20px;font-weight:bold;text-align:left;color:#a13638;">
-                        <u>Informations du client</u><br />
-                    </div>
-                    <div class="part3"></div>
-                    <div class="part"></div>
-
-                    <div class="part1"></div>
-                    <div class="part2">
-                        Réf. Client :<br />
-                        <select name="ref_client">
-                            <option value="0">Choisir client</option>
-                            <option id="ref_client" value="1">Vous</option>
-                            <option value="2">Une autre personne</option>
-                            <?php
-                            ?>
-                        </select>
-                    </div>
-                    <div class="part4">
-
-                    </div>
-                    <div class="part5">
-                        Nom du client :<br />
-                        <input type="text" id="nom_client" name="nom_client" value="" />
-                    </div>
-                    <div class="part5">
-                        Prénom du client :<br />
-                        <input type="text" id="prenom_client" name="prenom_client" />
-                    </div>
-                    <div class="part1"></div>
-
-                    <div class="div_saut_ligne-2">
-                    </div>
-
-                    <div class="part"></div>
-                    <div class="part6">
-                        <u>Informations du service</u><br />
-                    </div>
-                    <div class="part"></div>
-
-                    <div class="part1"></div>
-
-                    <div class="part5">
-                        Service <br>
-                        <label for=""> B</label>
-                    </div>
-
-                    <div class="part5">
-                        Prix unitaire :<br />
-                        <input type="text" id="puht" name="puht" />
-                    </div>
-
-                    <div class="div_saut_ligne-3">
-                    </div>
-
-
-                    <div class="part2">
-                        Total commande :<br />
-                        <input type="text" id="total_commande" name="total_commande" />
-                    </div>
-
-
-                    <div class="part1"></div>
-                    <div class="part5">
-                        <br>
-                        <input class="btn btn-outline-success" id="telecharger" type="submit" value="Télécharger vers Excel">
-                    </div>
-
-
-
                                     </ul>
                             </ul>
                         </li>
@@ -436,6 +244,9 @@ class VueRdv extends vueGenerique
                 </div>
             </div>
         </form>
+
+        </main>
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <script>
             $('ul.nav-left-ml').toggle();
@@ -451,9 +262,13 @@ class VueRdv extends vueGenerique
             });
 
             var nom;
+
+        
             $('.nav-header').click(function() {
+            
+                
                 $.ajax({
-                    url: '../categorieAjax.php',
+                    url: 'categorieAjax.php',
                     type: 'POST',
                     dataType: 'json',
                     data: {
@@ -503,33 +318,145 @@ class VueRdv extends vueGenerique
 
         ?>
 
+        </form>
+
+    <?php
+    }
+
+    public function affichageDevis()
+    {
+
+    ?>
+    <main>
+        <div style="width:100%;display:block;text-align:center;"></div>
+
+        <div style="float:left;width:10%;height:40px;"></div>
+        <div style="float:left;width:80%;height:auto;text-align:center;">
+            <div class="titre_h1">
+                <h1>Facturation</h1>
+            </div>
+        </div>
+
+        <div class="div_saut_ligne-1">
+        </div>
+
+        <div style="float:left;width:10%;height:350px;"></div>
+        <div style="float:left;width:80%;height:350px;text-align:center;">
+            <form id="formulaire" name="formulaire" method="post" action="Modules/Module_rendezVous/Export.php">
+                <div class="titre_h1" style="height:350px;">
+                    <div style="width:35%;height:50px;float:left;font-size:20px;font-weight:bold;text-align:left;color:#a13638;">
+                        <u>Informations du client</u><br />
+                    </div>
+                    <div class="part3"></div>
+                    <div class="part"></div>
+
+                    <div class="part1"></div>
+                    <div class="part5">
+                        Nom du client :<br />
+                        <input type="text" id="nom_client" name="nom_client" value="" />
+                    </div>
+                    <div class="part5">
+                        Prénom du client :<br />
+                        <input type="text" id="prenom_client" name="prenom_client" />
+                    </div>
+                    <div class="part5">
+                        Adresse mail du client :<br />
+                        <input type="text" id="email_client" name="email_client" />
+                    </div>
+                    <div class="part1"></div>
+
+                    <div class="div_saut_ligne-2">
+                    </div>
+
+                    <div class="part"></div>
+                    <div class="part6">
+                        <u>Informations du service </u><br />
+                    </div>
+                    <div class="part"></div>
+
+                    <div class="part1"></div>
+
+                    <div class="part5">
+                        Service <br>
+                        <input disabled id="service">
+                    </div>
+
+
+
+
+                    <div class="part2">
+                        Total commande :<br />
+                        <input type="text" id="total_commande" name="total_commande" />
+                    </div>
+
+
+                    <div class="part1"></div>
+                    <div class="part5">
+                        <br>
+                        <input class="btn btn-outline-success" id="telecharger" type="submit" value="Télécharger vers Excel">
+                    </div>
+
+
+
+                </div>
+
             </form>
+            </main>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
             <script>
-                $('#ref_client').click(function() {
                     $.ajax({
-                        url: '../devis.php',
+                        url: 'devis.php',
                         type: 'POST',
                         dataType: 'json',
                         data: {
-                            id: "<?= $_SESSION['userID'] ?>"
+                            id: "<?= $_SESSION['userID'] ?>", idRDV:"<?=$_GET['id']?>"
                         },
                         success: function(reponse) {
                             console.log(reponse);
                             nom = reponse[1];
                             prenom = reponse[2];
+                            service = reponse[17];
+                            email = reponse[3];
+                            prix=0;
+
                             document.getElementById('nom_client').setAttribute('value', nom);
                             document.getElementById('prenom_client').setAttribute('value', prenom);
+                            document.getElementById('service').setAttribute('value', service);
+                            document.getElementById('email_client').setAttribute('value', email);
+
+                            if(service =="développement logiciel"){
+                                prix=1000;
+                            }else if(service =="développement mobile"){
+                                prix=500;
+                            }else if(service =="périphériques (ex:écran)"){
+                                prix=100;
+                            }else if(service =="appareils ménagers"){
+                                prix=70;
+                            }else if(service =="appareils portatifs"){
+                                prix=150;
+                            }else if(service =="maintenance"){
+                                prix=250;
+                            }else if(service =="sécurité réseaux/logiciels"){
+                                prix=750;
+                            }else if(service =="unité centrale (composants)"){
+                                prix=250;
+                            }
+                            
+
+
+                            document.getElementById('total_commande').setAttribute('value', prix);
+
                         }
                     });
-                })
             </script>
         </div>
+
 <?php
     }
     public function afficherTechnicienFavoris($data)
-    {
+    { 
     ?>
+    <main>
         <label>Liste de mes techniciens favoris: </label></br>
         <?php
         foreach ($data as $tech) {
@@ -541,6 +468,7 @@ class VueRdv extends vueGenerique
         <?php
         }
         ?>
+        </main>
 <?php
 
     }

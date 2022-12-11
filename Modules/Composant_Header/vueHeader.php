@@ -6,9 +6,7 @@ class VueHeader extends vueGenerique
     public function __construct()
     {
         $this->afficherHeader();
-        $this->afficherHeader();
     }
-    public function afficherHeader()
     public function afficherHeader()
     {
 ?>
@@ -31,6 +29,12 @@ class VueHeader extends vueGenerique
                             <use xlink:href="#bootstrap" />
                         </svg>
                     </a>
+                    <?php if (isset($_SESSION['image'])) {
+                $image=$_SESSION['image'];    
+            }else{
+                $image="profile.png";
+            }
+?>
 <?php
 if (isset($_SESSION["mode"]) && $_SESSION["mode"] == 1) {
 ?>
@@ -39,13 +43,6 @@ if (isset($_SESSION["mode"]) && $_SESSION["mode"] == 1) {
                 <li class="nav-item"><a href="index.php?Modules=Module_accueil&action=Accueil" class="nav-link px-2 link-secondary">Accueil</a></li>
                 <li class="nav-item"><a href="index.php?Modules=ADMIN&action=recherche_liste" class="nav-link px-2 link-secondary">Gestion des techniciens</a><br></li>
                 <li><a href="index.php?Modules=ADMIN&action=Afficher_user" class="nav-link px-2 link-secondary">Gestion des utilisateurs</a><br></li>
-                    <img src="Modules/images/logo.PNG" alt="" id="logo" onlick="menutoggle()">
-                    <nav>            <?php if (isset($_SESSION['image'])) {
-                $image=$_SESSION['image'];    
-            }else{
-                $image="profile.png";
-            }
-?>
             </ul>
  <?php } 
 else if (isset($_SESSION["mode"]) && $_SESSION["mode"]  == 2) {
@@ -54,18 +51,13 @@ else if (isset($_SESSION["mode"]) && $_SESSION["mode"]  == 2) {
 
                 <li class="nav-item"><a href="index.php?Modules=Module_accueil&action=Accueil" class="nav-link px-2 link-secondary">Accueil</a></li>
                 <li class="nav-item"><a href="index.php?Modules=ADMIN&action=Afficher_rdv" class="nav-link px-2 link-secondary">Gestion des rendez vous</a><br></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 link-primary text-white">Gestion des tutos</a></li>
+                <li class="nav-item"><a href="index.php?Modules=Module_tutos&action=afficheFormTuto" class="nav-link px-2 link-primary text-white">Gestion des tutos</a></li>
 </ul>
  <?php } 
 else{
      ?>
-     <?php if (isset($_SESSION['image'])) {
-                $image=$_SESSION['image'];    
-            }else{
-                $image="profile.png";
-            }
-
-                        ?>  
+        <img src="Modules/images/logo.PNG" alt="" id="logo" onlick="menutoggle()">
+        <nav>
                 <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                 <li class="nav-item"><a href="index.php?Modules=Module_accueil&action=Accueil" class="nav-link px-2 link-secondary">Accueil</a></li>
                 <li class="nav-item"><a href="index.php?Modules=Module_rendezVous&action=liste_catégorie" class="nav-link px-2 link-primary text-white">Réparation</a></li>
@@ -73,6 +65,8 @@ else{
                 <li class="nav-item"><a href="index.php?Modules=Module_achatEtVente&action=boutique" class="nav-link px-2 link-primary text-white">Achat/Ventes</a></li>
                 <li class="nav-item"><a href="index.php?Modules=Module_connexion&action=monProfil" class="nav-link px-2 link-primary text-white"><img id="profil" src="Modules/image_profil/<?=$image?>" alt=""></a></li>
             </ul>
+        </nav>
+
  <?php } ?>
             
            
@@ -88,9 +82,8 @@ else{
             ?>    
             </div>
         </header>
-            </br>
     </div>
-
+<br><br>
 <?php
     }
 }

@@ -1,7 +1,6 @@
 <?php
-    require_once("./Modules/Login.php");
+    require_once("Login.php");
     ConnexionUI::initConnexion();
-    //echo "hello";
     if (isset($_POST['nom'])) {
      $input = $_POST['nom'];
      $query =  ConnexionUI::getBDD()->prepare("SELECT * FROM `techniciens` where nom LIKE '%{$input}%' or prenom LIKE '%{$input}%'");
@@ -26,12 +25,6 @@
                         note
                     </th>
                     <th>
-                        favoris
-                    </th>
-                    <th>
-                        rayon d'activité
-                    </th>
-                    <th>
                         idCategorie
                     </th>
                     
@@ -46,8 +39,6 @@
                     $Prenom = $row['prenom'];
                     $idVille = $row['idVille'];
                     $note = $row['note'];
-                    $favoris = $row['favoris'];
-                    $rayonDactivite = $row['rayon_activite'];
                     $idCategorie = $row['idCategorie'];
                 
                 ?><tr>
@@ -56,8 +47,6 @@
                     <td><?= $Prenom; ?></td>
                     <td><?= $idVille; ?></td>
                     <td><?= $note; ?></td>
-                    <td><?= $favoris; ?></td>
-                    <td><?= $rayonDactivite; ?></td>
                     <td><?= $idCategorie; ?></td>
                     <td><a class="btn btn-outline-light" href="index.php?Modules=ADMIN&action=retirerTechnicien&id=<?=$id;?>">Supprimer</a></td>
 
@@ -74,7 +63,6 @@
      }
 
  }
-    //$recup = $query->fetchAll();
 
 
 ?>

@@ -17,17 +17,19 @@ class moduleTuto
                 $this->control->getCategorie();
                 break;
             case "afficheListeTutos":
-                if(isset($_POST['ajoutTutoBtn'])){
-                    $this->control->getModele()->ajoutTuto();
-                }else{
-                    $this->control->getListeVideos();
-                }
+                $this->control->getListeVideos();
                 break;
             case "afficheVideo":
-                $lien=$_POST['lien'];
+                $lien=$_GET['lien'];
                 $this->control->afficher_Video($lien);
                 break;
+            case "afficheFormTuto":
+                $this->control->ajouterTuto();
+                break;    
             case "ajoutTuto":
+                if ($_SESSION["mode"] == 2) {
+                $this->control->getModele()->ajoutTuto();
+                }
                 break;
 
                 default:

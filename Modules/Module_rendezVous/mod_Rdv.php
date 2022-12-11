@@ -52,7 +52,7 @@ class moduleRdv
                     break;
                 default:
                     break;
-                case "reparation":
+                case "afficherDevis":
                     $this->control->getVue()->affichageDevis();
                     break;
                 case "devis":

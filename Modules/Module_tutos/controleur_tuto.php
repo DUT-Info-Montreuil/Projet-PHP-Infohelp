@@ -39,4 +39,11 @@ class controlTuto
         $tab = $this->modele->get_Video($data);
         $this->vue->afficher_Video($tab);
     }
+
+    public function ajouterTuto()
+    {
+        $tab = $this->modele->get_categorieVideo();
+        $this->vue->ajouterTuto($tab);
+    }
+    
 }

@@ -1,5 +1,5 @@
 <?php
-require_once('ADMIN/controleurAdmin.php');
+require_once('controleurAdmin.php');
 require_once('Login.php');
 
 

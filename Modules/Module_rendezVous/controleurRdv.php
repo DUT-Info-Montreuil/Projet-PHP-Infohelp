@@ -63,10 +63,4 @@ class controleurRdv
         $this->vue->afficherTechnicienFavoris($resultat);
     }
 
-
-    public function affichageDevis()
-	{
-		$traces = $this->getModele();
-		
-	}
 }

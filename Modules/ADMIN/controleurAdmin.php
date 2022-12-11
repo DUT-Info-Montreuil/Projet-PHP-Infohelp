@@ -1,6 +1,6 @@
 <?php
-require_once('ADMIN/modeleAdmin.php');
-require_once('ADMIN/viewAdmin.php');
+require_once('modeleAdmin.php');
+require_once('viewAdmin.php');
 
 class controlAdmin
 {

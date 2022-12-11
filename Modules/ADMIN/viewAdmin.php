@@ -1,6 +1,6 @@
 <!-- Template ou utiliser les variables stocker dans le modeles -->
 <?php
-require_once("vuegenerique.php");
+require_once("Modules/vuegenerique.php");
 class vueAdmin extends vueGenerique
 {
     public function __construct()
@@ -13,6 +13,7 @@ class vueAdmin extends vueGenerique
 
         ?>
         <body>
+            <main>
                 <div class="container" style="max-width: 50%">
                 <div class="text-center mt-5 mb-4">
                     <h2>Rechercher des utilisateurs</h2>
@@ -30,7 +31,7 @@ class vueAdmin extends vueGenerique
                             //alert(input);
                             if (input != "") {                                
                                 $.ajax({
-                                    url:"../rechercheUtilisateurs.php",
+                                    url:"rechercheUtilisateurs.php",
                                     type:"POST",
                                     data:{nom:input},
 
@@ -46,7 +47,7 @@ class vueAdmin extends vueGenerique
                     });
 
                 </script>
-                
+                </main>
         </body>
 
         </html>
@@ -57,6 +58,7 @@ class vueAdmin extends vueGenerique
     {
     ?>
         <body>
+        <main>
                 <div class="container" style="max-width: 50%">
                 <div class="text-center mt-5 mb-4">
                     <h2>Rechercher des techniciens</h2>
@@ -74,7 +76,7 @@ class vueAdmin extends vueGenerique
                             //alert(input);
                             if (input != "") {                                
                                 $.ajax({
-                                    url:"../recherchedirect.php",
+                                    url:"recherchedirect.php",
                                     type:"POST",
                                     data:{nom:input},
 
@@ -90,7 +92,7 @@ class vueAdmin extends vueGenerique
                     });
 
                 </script>
-                
+               </main> 
         </body>
 
         </html>

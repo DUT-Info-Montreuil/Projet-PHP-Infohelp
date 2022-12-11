@@ -1,11 +1,14 @@
 <?php
 
         /* Initialisation de l'excel */
-        require_once('C:/wamp64/www/Projet-PHP-Infohelp/PHPExcel/Classes/PHPExcel.php');
+        include('C:\wamp64\www\Projet-PHP-Infohelp\PHPExcel\Classes\PHPExcel.php');
         $objPHPExcel = new PHPExcel();
         $objPHPExcel->setActiveSheetIndex(0);
         $prenom=$_POST['prenom_client'];
         $nom=$_POST['nom_client'];
+        $email=$_POST['email_client'];
+        $prix=$_POST['total_commande'];
+
         $i = 0;
         // $adresse= $_POST['adresse'];
         $objPHPExcel->getActiveSheet()->SetCellValue("B1", "Nom de société :");
@@ -19,18 +22,17 @@
         $objPHPExcel->getActiveSheet()->SetCellValue("C3", "Fax: ");
         $objPHPExcel->getActiveSheet()->SetCellValue("C4", "Téléphone: ");
         $objPHPExcel->getActiveSheet()->SetCellValue("C5", "Télécopie");
-        $objPHPExcel->getActiveSheet()->SetCellValue("C6", "Email :");
+        $objPHPExcel->getActiveSheet()->SetCellValue("C6", "Email : $email");
         $objPHPExcel->getActiveSheet()->SetCellValue("D2", "Email: infohelp93100@gmail.com");
         $objPHPExcel->getActiveSheet()->SetCellValue("D3", "Site web : http://localhost/Projet-PHP-InfoHelp.com");
         $objPHPExcel->getActiveSheet()->SetCellValue("D4", "N° Facture :");
         $objPHPExcel->getActiveSheet()->SetCellValue("D5", "Date de facture: ");
         $objPHPExcel->getActiveSheet()->SetCellValue("B8", "Description :");
-        $objPHPExcel->getActiveSheet()->SetCellValue("E8", "Remise ");
-        $objPHPExcel->getActiveSheet()->SetCellValue("F8", "Prix : ");
-        $objPHPExcel->getActiveSheet()->SetCellValue("E12", "Total HT de la facture :");
+        $objPHPExcel->getActiveSheet()->SetCellValue("E8", "Remise : 0€");
+        $objPHPExcel->getActiveSheet()->SetCellValue("E12", "Total HT de la facture  : $prix");
         $objPHPExcel->getActiveSheet()->SetCellValue("E13", "Net comercial :");
-        $objPHPExcel->getActiveSheet()->SetCellValue("E14", "TVA(20%) : ");
-        $objPHPExcel->getActiveSheet()->SetCellValue("E15", "TOTAL : ");
+        $objPHPExcel->getActiveSheet()->SetCellValue("E14", "TVA(20%) :  ".$prix*1.2);
+        $objPHPExcel->getActiveSheet()->SetCellValue("E15", "TOTAL (en €) :  ".$prix*1.2);
 
 
         // //Style
