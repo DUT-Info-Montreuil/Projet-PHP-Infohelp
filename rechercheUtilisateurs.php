@@ -4,7 +4,7 @@
     //echo "hello";
     if (isset($_POST['nom'])) {
      $input = $_POST['nom'];
-     $query =  ConnexionUI::getBDD()->prepare("SELECT * FROM `utilisateurs` WHERE `last_name` LIKE '%{$input}%' and `mode`=0 or `first_name` LIKE '%{$input}%'and `mode`=0 ");
+     $query =  ConnexionUI::getBDD()->prepare("SELECT * FROM `utilisateurs` WHERE `nom` LIKE '%{$input}%' and `mode`=0 or `prenom` LIKE '%{$input}%'and `mode`=0 ");
      $query->execute();
      if($query->rowCount() > 0){?>
         <table class="table table-bordered table-striped mt-4">

@@ -26,29 +26,29 @@ class VueConnexion extends vueGenerique
                     <h1 class="h3 mb-3 fw-normal">Inscription</h1>
 
                     <div class="form-floating">
-                        <input type="text" class="form-control" name="first_name">
+                        <input required type="text" class="form-control" name="prenom">
                         <label for="floatingInput">Prenom</label>
                     </div>
                     <div class="form-floating">
-                        <input type="text" class="form-control" name="last_name">
+                        <input required type="text" class="form-control" name="nom">
                         <label for="floatingInput">Nom</label>
                     </div>
                     <div class="form-floating">
-                        <input type="email" class="form-control" name="email">
+                        <input required type="email" class="form-control" name="email">
                         <label for="floatingInput">Email</label>
                     </div>
-                    <div class="form-floating">
-                        <input type="password" class="form-control" name="password">
+                    <div required class="form-floating">
+                        <input required type="password" class="form-control" name="mot_de_passe">
                         <label for="floatingInput">Mot de passe</label>
                     </div>
                     <div class="form-floating">
-                        <input type="password" class="form-control" name="motsDePasse2">
+                        <input required type="password" class="form-control" name="motsDePasse2">
                         <label for="floatingInput">Confirmer le mot de passe</label>
                     </div>
                     <div>
 
                     <label id="ville" for="floatingInput">Selectionner une ville :</label>
-                    <select id="selectVille" name="city" class="form-select" aria-label="Default select example">
+                    <select required id="selectVille" name="ville" class="form-select" aria-label="Default select example">
                         <option disabled selected>--ville à selectionner--</option>
                         <option value="Paris">Paris</option>
                         <option value="Sarcelles">Sarcelles</option>
@@ -59,8 +59,8 @@ class VueConnexion extends vueGenerique
                     </select>
                 </div>
                     <div class="form-floating">
-                        <input type="text" class="form-control" name="postal_address">
-                        <label for="floatingInput">Code Postal</label>
+                        <input required type="text" class="form-control" name="adresse_postal">
+                        <label for="floatingInput">Adresse postale </label>
                     </div>
                     <button class="btn btn-primary" type="submit">S'inscrire</button>
                 </form>
@@ -102,13 +102,13 @@ class VueConnexion extends vueGenerique
 
             <div class="form-floating">
             <input required name="email" type="email" class="form-control" id="email" placeholder="name@example.com">
-            <label for="floatingInput">Email address</label>
+            <label for="floatingInput">Adresse email</label>
             </div>
             <div class="form-floating">
-            <input required name="password" type="password" class="form-control" id="password" placeholder="Password">
-            <label for="floatingPassword">Password</label>
+            <input required name="mot_de_passe" type="password" class="form-control" id="mot_de_passe" placeholder="Mot de passe">
+            <label for="floatingPassword">Mot de passe</label>
             </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit" onclick="message()">Se connecter</button>
+            <button class="w-100 btn btn-lg btn-primary" type="submit" >Se connecter</button>
             <span class="d-none" id="erreurVide"></span> 
 
             <?php if($verif==1){ ?>
@@ -163,8 +163,8 @@ class VueConnexion extends vueGenerique
                                                         <i class="fa fa-camera" style="color: #fff;"></i>
                                                     </div>
                                             </div>
-                                            <h4><?=$utilisateur['first_name']." ".$utilisateur['last_name']?></h4>
-									<p class="text-muted font-size-sm"><?=$utilisateur['city'].", ".$utilisateur['postal_address']?></p>
+                                            <h4><?=$utilisateur['prenom']." ".$utilisateur['nom']?></h4>
+									<p class="text-muted font-size-sm"><?=$utilisateur['ville'].", ".$utilisateur['adresse_postale']?></p>
                                         </div>
 
                                         <hr class="my-4">
@@ -193,7 +193,7 @@ class VueConnexion extends vueGenerique
                                                 <h6 class="mb-0">Nom</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
-                                                <input type="text" class="form-control" value="<?= $utilisateur['last_name'] ?>" name="last_name">
+                                                <input type="text" class="form-control" value="<?= $utilisateur['nom'] ?>" name="nom">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
@@ -201,7 +201,7 @@ class VueConnexion extends vueGenerique
                                                 <h6 class="mb-0">Prenom</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
-                                                <input type="text" class="form-control" value="<?= $utilisateur['first_name'] ?>" name="first_name">
+                                                <input type="text" class="form-control" value="<?= $utilisateur['prenom'] ?>" name="prenom">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
@@ -217,15 +217,15 @@ class VueConnexion extends vueGenerique
                                                 <h6 class="mb-0">Ville</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
-                                                <input type="text" class="form-control" value="<?= $utilisateur['city'] ?>" name="city">
+                                                <input type="text" class="form-control" value="<?= $utilisateur['ville'] ?>" name="ville">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col-sm-3">
-                                                <h6 class="mb-0">Code Postal</h6>
+                                                <h6 class="mb-0">Adresse postale</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
-                                                <input type="text" class="form-control" value="<?= $utilisateur['postal_address'] ?>" name="postal_address">
+                                                <input type="text" class="form-control" value="<?= $utilisateur['adresse_postale'] ?>" name="adresse_postale">
                                             </div>
                                         </div>
                                         <div class="row">

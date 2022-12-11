@@ -11,26 +11,26 @@ class modeleConnexion extends ConnexionUI
         if (isset($_GET['token'] )|| !verification_token())
             return 1;
 
-        if (isset($_POST["email"]) && isset($_POST["password"])) {
+        if (isset($_POST["email"]) && isset($_POST["mot_de_passe"])) {
 
-            if ($_POST["password"] == $_POST["motsDePasse2"]) {
+            if ($_POST["mot_de_passe"] == $_POST["motsDePasse2"]) {
                 
             
-            $lastname = htmlspecialchars($_POST["last_name"]);
-            $firstname = htmlspecialchars($_POST["first_name"]);
+            $lastname = htmlspecialchars($_POST["nom"]);
+            $firstname = htmlspecialchars($_POST["prenom"]);
             $email = htmlspecialchars($_POST["email"]);
-            $passwd = password_hash($_POST["password"], PASSWORD_DEFAULT);
-            $postAdress = htmlspecialchars($_POST["postal_address"]);
-            $city = htmlspecialchars($_POST["city"]);
+            $passwd = password_hash($_POST["mot_de_passe"], PASSWORD_DEFAULT);
+            $postAdress = htmlspecialchars($_POST["adresse_postale"]);
+            $city = htmlspecialchars($_POST["ville"]);
 
             $verifEmailExistant = self::$bdd->prepare("SELECT * FROM `utilisateurs` WHERE `email` = '$email'");
             $verifEmailExistant->execute();
 
             if ($verifEmailExistant->rowCount() > 0) {
-                echo"errerur l'email existe déjà";
+                echo"erreur l'email existe déjà";
             }else{
 
-            $insert = self::$bdd->prepare('INSERT INTO `utilisateurs` (`last_name`, `first_name`, `email`, `password`, `postal_address`, `city`) VALUES (:par,:par2,:par3,:par4,:par5,:par6)');
+            $insert = self::$bdd->prepare('INSERT INTO `utilisateurs` (`nom`, `prenom`, `email`, `mot_de_passe`, `adresse_postale`, `ville`) VALUES (:par,:par2,:par3,:par4,:par5,:par6)');
 
             $insert->execute(array(':par' => $lastname, ':par2' => $firstname, ':par3' => $email, ':par4' => $passwd, ':par5' => $postAdress, ':par6' => $city));
             header("Location: index.php?Modules=Module_connexion&action=form_connexion");
@@ -38,7 +38,7 @@ class modeleConnexion extends ConnexionUI
             echo "Good registration \t";     
             }
             }else{
-                echo"les mots de passe ne sont pas les mêmes.";
+                echo"les mots de passe ne sont pas les mêmes.(modele connexion methode inscription)";
             }       
         } else {
             echo "Pas adjout";
@@ -58,14 +58,14 @@ class modeleConnexion extends ConnexionUI
             return 1;
         }else{
 
-        if (password_verify($_POST['password'], $tab['password'])) {
+        if (password_verify($_POST['mot_de_passe'], $tab['mot_de_passe'])) {
             if ($recupuser->rowCount() > 0) {
 
                 $_SESSION["mode"] = $tab["mode"];
 
                 $_SESSION['email'] = $_POST['email'];
-                $_SESSION['password'] = $_POST['password'];
-                $_SESSION['userID'] = $tab['userID'];
+                $_SESSION['mot_de_passe'] = $_POST['mot_de_passe'];
+                $_SESSION['idUtilisateur'] = $tab['idUtilisateur'];
                 $_SESSION['image']=$tab['image'];
 
                 return 0;
@@ -96,9 +96,9 @@ class modeleConnexion extends ConnexionUI
         if (isset($_GET['token'] )|| !verification_token())
             return 1;
 
-        $userID=$_SESSION['userID'];
+        $userID=$_SESSION['idUtilisateur'];
         $userEmail=$_SESSION['email'];
-        $verifAncienMdp=$_SESSION['password'];
+        $verifAncienMdp=$_SESSION['mot_de_passe'];
 
         $ancienMdp=strval($_POST["ancienMdp"]);
         $mdp1=strval($_POST["mdp1"]);
@@ -107,9 +107,9 @@ class modeleConnexion extends ConnexionUI
             if ($ancienMdp==$verifAncienMdp) {
 
                 if ($mdp1 == $mdp2) {
-                    $_SESSION['password'] = $mdp1;
+                    $_SESSION['mot_de_passe'] = $mdp1;
                     $nouveauMdp = password_hash($mdp1, PASSWORD_DEFAULT);
-                    $update = self::$bdd->prepare("UPDATE `utilisateurs` SET `password`= '$nouveauMdp' WHERE `userID`= '$userID'");
+                    $update = self::$bdd->prepare("UPDATE `utilisateurs` SET `mot_de_passe`= '$nouveauMdp' WHERE `idUtilisateur`= '$userID'");
                     $update->execute();
                     echo"votre mot de passe a bien été modifié";
 
@@ -138,7 +138,7 @@ class modeleConnexion extends ConnexionUI
             $newImageName = date("Y.m.d") . " - " . date("h.i.sa"); // Generate new image name
             $newImageName .= '.' . $imageExtension;
             $_SESSION['image']=$newImageName;
-            $query = self::$bdd->prepare("UPDATE `utilisateurs` SET image = '$newImageName' WHERE userID = $userID");
+            $query = self::$bdd->prepare("UPDATE `utilisateurs` SET image = '$newImageName' WHERE idUtilisateur = $userID");
             $query->execute();
             move_uploaded_file($tmpName, 'Modules/image_profil/' . $newImageName);
 
@@ -147,13 +147,13 @@ class modeleConnexion extends ConnexionUI
         }
         
 
-        if (isset($_POST["btnChangerInfo"]) && isset($_POST["email"]) || isset($_POST["first_name"]) || isset($_POST["last_name"]) || isset($_POST["city"]) || isset($_POST["password"])|| isset($_POST["postal_address"])) {
-            $lastname = htmlspecialchars($_POST["last_name"]);
-            $firstname = htmlspecialchars($_POST["first_name"]);
+        if (isset($_POST["btnChangerInfo"]) && isset($_POST["email"]) || isset($_POST["prenom"]) || isset($_POST["nom"]) || isset($_POST["ville"]) || isset($_POST["mot_de_passe"])|| isset($_POST["adresse_postale"])) {
+            $lastname = htmlspecialchars($_POST["nom"]);
+            $firstname = htmlspecialchars($_POST["prenom"]);
             $email = htmlspecialchars($_POST["email"]);
-            $postal_address = htmlspecialchars($_POST["postal_address"]);;
-            $city = htmlspecialchars($_POST["city"]);
-            $userID=$_SESSION['userID'];
+            $postal_address = htmlspecialchars($_POST["adresse_postale"]);;
+            $city = htmlspecialchars($_POST["ville"]);
+            $userID=$_SESSION['idUtilisateur'];
             $userEmail=$_SESSION['email'];
 
             $verifEmailExistant = self::$bdd->prepare("SELECT * FROM `utilisateurs` WHERE `email` = '$email' and `email` !='$userEmail' ");
@@ -162,7 +162,7 @@ class modeleConnexion extends ConnexionUI
             if ($verifEmailExistant->rowCount() > 0) {
                 echo"errerur l'email existe déjà";
             }else{
-                $update = self::$bdd->prepare("UPDATE `utilisateurs` SET `email`= '$email' , `first_name`= '$firstname' ,`last_name`= '$lastname' , `city`= '$city' , `postal_address`= '$postal_address' WHERE `userID`= '$userID'");
+                $update = self::$bdd->prepare("UPDATE `utilisateurs` SET `email`= '$email' , `prenom`= '$firstname' ,`nom`= '$lastname' , `ville`= '$city' , `adresse_postale`= '$postal_address' WHERE `idUtilisateur`= '$userID'");
                 $update->execute();
                 $_SESSION['email']=$email;
 
@@ -176,10 +176,12 @@ class modeleConnexion extends ConnexionUI
 
     public function deconnexion()
     {
-        unset($_SESSION['userID']);
+        unset($_SESSION['idUtilisateur']);
         unset($_SESSION['email']);
-        unset($_SESSION['password']);
+        unset($_SESSION['mot_de_passe']);
         unset($_SESSION['mode']);
+        unset($_SESSION['image']);
+
         header("Location: index.php?Modules=Module_connexion&action=form_connexion");
         die();
     }

@@ -1,5 +1,5 @@
 <?php
-require_once('Login.php');
+require_once('Connexion.php');
 class modeleAdmin extends ConnexionUI
 {
     public function __construct()
@@ -7,7 +7,7 @@ class modeleAdmin extends ConnexionUI
     }
      public function afficheUser()
     {
-        $requete = self::$bdd->prepare("SELECT * FROM `utilisateurs` where `userID` != 1 ");
+        $requete = self::$bdd->prepare("SELECT * FROM `utilisateurs` where `idUtilisateur` != 1 ");
         $requete->execute();
         $recup = $requete->fetchAll();
         return $recup;
@@ -16,7 +16,7 @@ class modeleAdmin extends ConnexionUI
     {
         if (isset($_GET['id'])) {
             $idUtilisateur = $_GET['id'];
-            $delete = self::$bdd->prepare("DELETE FROM `utilisateurs` where `userID` = '$idUtilisateur'");
+            $delete = self::$bdd->prepare("DELETE FROM `utilisateurs` where `idUtilisateur` = '$idUtilisateur'");
             $delete->execute();
             echo"Suppression effectuée!";
         }

@@ -1,5 +1,5 @@
 <?php
-require_once('Login.php');
+require_once('Connexion.php');
 class modeleRdv extends ConnexionUI
 {
     public function __construct()
@@ -27,8 +27,8 @@ class modeleRdv extends ConnexionUI
 
     public function getListeRdv()
     {
-        $iduser=$_SESSION['userID'];
-        $requete = self::$bdd->prepare("SELECT * FROM `utilisateurs` inner join `rendezvous` on rendezvous.idUtilisateur=utilisateurs.userID inner join techniciens on techniciens.idTechnicien = rendezvous.idTechnicien WHERE idUtilisateur = '$iduser'");
+        $iduser=$_SESSION['idUtilisateur'];
+        $requete = self::$bdd->prepare("SELECT * FROM `utilisateurs` inner join `rendezvous` on rendezvous.idUtilisateur=utilisateurs.idUtilisateur inner join techniciens on techniciens.idTechnicien = rendezvous.idTechnicien WHERE rendezvous.idUtilisateur = '$iduser'");
         $requete->execute();
         $recupRdv = $requete->fetchAll();
 
@@ -40,7 +40,7 @@ class modeleRdv extends ConnexionUI
     {
 
         $idRDV=$_POST['idRdv'];
-        $requete = self::$bdd->prepare("SELECT * FROM `utilisateurs` inner join `rendezvous` on rendezvous.idUtilisateur=utilisateurs.userID inner join techniciens on techniciens.idTechnicien = rendezvous.idTechnicien WHERE idRdv = '$idRDV'");
+        $requete = self::$bdd->prepare("SELECT * FROM `utilisateurs` inner join `rendezvous` on rendezvous.idUtilisateur=utilisateurs.idUtilisateur inner join techniciens on techniciens.idTechnicien = rendezvous.idTechnicien WHERE idRdv = '$idRDV'");
         $requete->execute();
         $recupRdv=$requete->fetchAll();
 
