@@ -45,10 +45,19 @@ class View extends vueGenerique
                         <input type="password" class="form-control" name="motsDePasse2">
                         <label for="floatingInput">Confirmer le mot de passe</label>
                     </div>
-                    <div class="form-floating">
-                        <input type="text" class="form-control" name="city">
-                        <label for="floatingInput">Ville</label>
-                    </div>
+                    <div>
+
+                    <label id="ville" for="floatingInput">Selectionner une ville :</label>
+                    <select id="selectVille" name="city" class="form-select" aria-label="Default select example">
+                        <option disabled selected>--ville à selectionner--</option>
+                        <option value="Paris">Paris</option>
+                        <option value="Sarcelles">Sarcelles</option>
+                        <option value="Nanterre">Nanterre</option>
+                        <option value="Montreuil">Montreuil</option>
+                        <option value="Creteil">Creteil</option>
+                        <option value="Cergy">Cergy</option>
+                    </select>
+                </div>
                     <div class="form-floating">
                         <input type="text" class="form-control" name="postal_address">
                         <label for="floatingInput">Code Postal</label>
