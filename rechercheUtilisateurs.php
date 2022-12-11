@@ -1,5 +1,5 @@
 <?php
-    require_once("Login.php");
+require_once('Connexion.php');
     ConnexionUI::initConnexion();
     //echo "hello";
     if (isset($_POST['nom'])) {
@@ -38,12 +38,12 @@
             foreach ($res as $row) { ?>
                 <?php
 
-                    $id = $row['userID'];
-                    $Nom = $row['last_name'];
-                    $Prenom = $row['first_name'];
+                    $id = $row['idUtilisateur'];
+                    $Nom = $row['nom'];
+                    $Prenom = $row['prenom'];
                     $Email = $row['email'];
-                    $Adresse = $row['postal_address'];
-                    $Ville = $row['city'];
+                    $Adresse = $row['adresse_postale'];
+                    $Ville = $row['ville'];
 
                 
                 ?><tr>
@@ -64,7 +64,7 @@
         </table>
     <?php 
     }else{
-         echo "<h6 class='text-danger text center mt-3'> No data found</h6>";
+         echo "<h6 class='text-danger text center mt-3'> Pas de resultat </h6>";
      }
 
  }

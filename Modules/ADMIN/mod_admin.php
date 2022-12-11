@@ -1,6 +1,6 @@
 <?php
 require_once('controleurAdmin.php');
-require_once('Login.php');
+require_once('Connexion.php');
 
 
 class moduleAdmin

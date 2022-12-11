@@ -164,7 +164,7 @@ class modeleRdv extends ConnexionUI
 
     public function getFavoris()
     {
-        $idUtilisateur=$_SESSION['userID'];
+        $idUtilisateur=$_SESSION['idUtilisateur'];
         $requetefav = self::$bdd->prepare("SELECT * FROM `favoris` INNER JOIN `techniciens` ON favoris.idTechnicien = techniciens.idTechnicien WHERE idUtilisateur='$idUtilisateur'");
         $requetefav->execute();
         $recupFav=$requetefav->fetchAll();
@@ -173,7 +173,7 @@ class modeleRdv extends ConnexionUI
 
     public function getStats()
     {
-        $idUtilisateur=$_SESSION['userID'];
+        $idUtilisateur=$_SESSION['idUtilisateur'];
         $requetefav = self::$bdd->prepare("SELECT * FROM `favoris` INNER JOIN `techniciens` ON favoris.idTechnicien = techniciens.idTechnicien WHERE idUtilisateur='$idUtilisateur'");
         $requetefav->execute();
         $recupFav=$requetefav->fetchAll();

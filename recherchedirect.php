@@ -1,5 +1,5 @@
 <?php
-    require_once("Login.php");
+require_once('Connexion.php');
     ConnexionUI::initConnexion();
     if (isset($_POST['nom'])) {
      $input = $_POST['nom'];
@@ -59,7 +59,7 @@
         </table>
     <?php 
     }else{
-         echo "<h6 class='text-danger text center mt-3'> No data found</h6>";
+         echo "<h6 class='text-danger text center mt-3'> Pas de resultat </h6>";
      }
 
  }

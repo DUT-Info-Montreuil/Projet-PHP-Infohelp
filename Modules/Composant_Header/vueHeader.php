@@ -29,7 +29,7 @@ class VueHeader extends vueGenerique
                             <use xlink:href="#bootstrap" />
                         </svg>
                     </a>
-                    <?php if (isset($_SESSION['image'])) {
+                    <?php if (isset($_SESSION['image'])&& $_SESSION['image']!='') {
                 $image=$_SESSION['image'];    
             }else{
                 $image="2022.12.11 - 08.06.19pm.png";
