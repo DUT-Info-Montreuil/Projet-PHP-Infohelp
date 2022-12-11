@@ -133,7 +133,8 @@ class viewAchatEtVente extends vueGenerique
                                 <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
                                     <div class="row align-items-center">
                                         <?php
-                                        foreach ($materiels as $materiel) { ?>
+                                        foreach ($materiels as $materiel) { 
+                                            $id=$materiel['idMateriel']; ?>
                                             <div class="col-lg-6 mb-4 mb-lg-0">
                                                 <img src="Modules/Module_achatEtVente/images_produits/<?= $materiel['image'] ?>" alt="...">
                                             </div>
@@ -154,9 +155,7 @@ class viewAchatEtVente extends vueGenerique
                                                 </tbody>
                                             </div>
                                     </div>
-                                    <form action="index.php?Modules=Module_achatEtVente&action=acheter" method="POST">
-                                        <button id="achat" name="idMateriel" value="<?php echo $materiel['idMateriel'] ?>">Acheter</button>
-                                    </form>
+                                        <a class="btn btn-light" href="index.php?Modules=Module_achatEtVente&action=acheter&id=<?=$id;?>" id="achat">Acheter</a>
                                 </div>
                             </div>
                         </div>

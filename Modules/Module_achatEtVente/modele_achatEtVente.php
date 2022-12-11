@@ -15,17 +15,16 @@ class modeleAchatEtVente extends ConnexionUI
     }
 
     public function acheterMateriel(){
-            $idMateriel=$_POST['idMateriel'];
+            $idMateriel=$_GET['id'];
             $requete = self::$bdd->prepare("UPDATE `materiels` SET `quantite`= (`quantite`-1) WHERE `idMateriel`=$idMateriel");
             $requete->execute();
-            $this->envoiNotification($this->get_Nom());
+            $this->envoiNotification($this->get_Nom($idMateriel));
             $this->verif_quantite($idMateriel);
             // header("Location: index.php?Modules=Module_achatEtVente&action=vente");
             die();
     }
 
-    public function get_Nom(){
-        $idMateriel=$_POST['idMateriel'];
+    public function get_Nom($idMateriel){
         $requetNom = self::$bdd->prepare("SELECT nomMateriel FROM materiels WHERE `idMateriel`=$idMateriel");
         $requetNom->execute();
         $nomMateriel= $requetNom->fetch();

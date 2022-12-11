@@ -18,15 +18,10 @@ class modeleTuto extends ConnexionUI
     public function getListeVideos()
     {
         $idCat=$_POST["categorie"];
-        echo "categorie selectionnée: ".$idCat;
         $requete = self::$bdd->prepare("SELECT * FROM `tutos` where idCategorieVideo='$idCat'");
         $requete->execute();
         $recupvideos=$requete->fetchAll();
-        if ($requete->rowCount() > 0) {
-            echo"  | requete SQL reussi <br>";
-        }else{
-            echo"  | erreur select SQL";
-        }
+
         return $recupvideos;
     
     }

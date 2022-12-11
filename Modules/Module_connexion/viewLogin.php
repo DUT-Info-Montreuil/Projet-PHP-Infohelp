@@ -153,7 +153,9 @@ class View extends vueGenerique
                                                         <input type="file" name="image" id="image" accept=".jpg, .jpeg, .png">
                                                         <i class="fa fa-camera" style="color: #fff;"></i>
                                                     </div>
-                                                </div>
+                                            </div>
+                                            <h4><?=$utilisateur['first_name']." ".$utilisateur['last_name']?></h4>
+									<p class="text-muted font-size-sm"><?=$utilisateur['city'].", ".$utilisateur['postal_address']?></p>
                                         </div>
 
                                         <hr class="my-4">

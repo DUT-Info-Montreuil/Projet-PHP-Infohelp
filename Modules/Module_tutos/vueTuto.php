@@ -114,7 +114,7 @@ class VueTuto extends vueGenerique
                     ?>
                         <button name="lien" value="<?= $lienVideo ?>">
 
-                            <img id="miniature" src="Module_tutos/images/<?= $miniature ?>" alt="miniature de la video"></br>
+                            <img id="miniature" src="Modules/Module_tutos/images/<?= $miniature ?>" alt="miniature de la video"></br>
                             <?= $titreVideo ?>
 
                         </button>
