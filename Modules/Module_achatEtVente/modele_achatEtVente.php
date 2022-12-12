@@ -1,6 +1,13 @@
 <?php
 require_once('Connexion.php');
 require_once("Common/Bibliotheque_commune/Verification_creation_token.php");
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require_once (ROOT.'/PHPMailer/PHPMailer.php');
+require_once (ROOT.'/PHPMailer/SMTP.php');  
+require_once (ROOT.'/PHPMailer/Exception.php');  
+
 class modeleAchatEtVente extends ConnexionUI
 {
     public function __construct()
@@ -81,17 +88,50 @@ class modeleAchatEtVente extends ConnexionUI
         
     }
 
-    public function envoiNotification($materiel)
-    {
-        $to = $_SESSION['email'];
-        $subject = "Confirmation d'achat";
-        $message = "Bonjour, votre achat de " . $materiel. " a bien été effectué. Veuillez voir avec le vendeur pour récupérer votre matériel !  ";
-        $headers = "Content-Type: text/plain; charset=utf-8\r\n";
-        $headers .= "From: infohelp93100@gmail.com\r\n";
 
-        if(mail($to, $subject, $message, $headers))
-            echo "Un mail vous a été envoyé !";
-        else
-            echo "Erreur de l'envoi";
-    } 
+    // AVEC SERVEUR
+    // public function envoiNotification($materiel)
+    // {
+    //     $to = $_SESSION['email'];
+    //     $subject = "Confirmation d'achat";
+    //     $message = "Bonjour, votre achat de " . $materiel. " a bien été effectué. Veuillez voir avec le vendeur pour récupérer votre matériel !  ";
+    //     $headers = "Content-Type: text/plain; charset=utf-8\r\n";
+    //     $headers .= "From: infohelp93100@gmail.com\r\n";
+
+    //     if(mail($to, $subject, $message, $headers))
+    //         echo "Un mail vous a été envoyé !";
+    //     else
+    //         echo "Erreur de l'envoi";
+    // } 
+
+    // SANS SERVEUR
+    public function envoiNotification($materiel) {
+        $websiteSupportMail = "infohelp93100montreuil@gmail.com";
+
+        $mail = new PHPMailer;
+
+        $mail->isSMTP(); // Paramétrer le Mailer pour utiliser SMTP
+        $mail->SMTPSecure = 'ssl';
+        $mail->Host = 'smtp.gmail.com'; // Spécifier le serveur SMTP
+        $mail->SMTPAuth = true; // Activer authentication SMTP
+        $mail->Username = $websiteSupportMail; // Votre adresse email d'envoi
+        $mail->Password = 'rgumuwxbvicmrmkz'; // Le mot de passe de cette adresse email
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Accepter SSL
+        $mail->Port = 465;
+
+        $mail->setFrom($websiteSupportMail, 'InfoHelp'); // Personnaliser l'envoyeur
+        $mail->addAddress($_SESSION['email']); // Ajouter le destinataire
+        $mail->addReplyTo($websiteSupportMail, 'Information'); // L'adresse de réponse
+
+        $mail->Subject = 'Confirmation d\'achat';
+        $mail->Body = "Bonjour, votre achat de " . $materiel. " a bien été effectué. Veuillez voir avec le vendeur pour récupérer votre matériel !  ";  
+
+        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+        if(!$mail->send()) {
+            echo "Une erreur s'est produite, veuillez contacter un administrateur";
+         } else {
+            echo "Mail envoyé !";
+         }
+    }
 }

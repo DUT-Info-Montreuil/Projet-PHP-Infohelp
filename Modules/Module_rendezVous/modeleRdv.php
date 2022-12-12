@@ -124,7 +124,7 @@ class modeleRdv extends ConnexionUI
 }
 
 
-// AVEC SERVEUR
+// AVEC SERVEUR DE MAIL
     /*public function envoiNotification($date, $heure)
     {
         $to = $_SESSION['email'];
@@ -155,19 +155,19 @@ class modeleRdv extends ConnexionUI
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Accepter SSL
         $mail->Port = 465;
 
-        $mail->setFrom($websiteSupportMail, 'Support Eaxo'); // Personnaliser l'envoyeur
+        $mail->setFrom($websiteSupportMail, 'InfoHelp'); // Personnaliser l'envoyeur
         $mail->addAddress($_SESSION['email']); // Ajouter le destinataire
         $mail->addReplyTo($websiteSupportMail, 'Information'); // L'adresse de réponse
 
-        $mail->Subject = 'Reinitialisation mot de passe Eaxo';
-        $mail->Body = "Bonjour, votre rendez vous a bien été pris en compte.\nLe technicien se presentera donc à vous le ".$date ." à ". $heure." . A bientôt !  ";
+        $mail->Subject = 'Confirmation de rendez-vous';
+        $mail->Body = "Bonjour, votre rendez vous a bien été pris en compte.\nLe technicien se presentera à vous le ".$date ." à ". $heure." . A bientôt !  ";
 
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
         if(!$mail->send()) {
             echo "Une erreur s'est produite, veuillez contacter un administrateur";
          } else {
-            echo "Mail envoyé";
+            echo "Mail envoyé !";
          }
     }
 
