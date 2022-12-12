@@ -1,0 +1,34 @@
+<?php
+require_once('controleur.php');
+require_once('Connexion.php');
+
+
+class moduleAccueil
+{
+    public $control;
+    public $action;
+    public function __construct()
+    {
+        ConnexionUI::initConnexion();
+        $this->control = new  controlAccueil;
+        $this->action = isset($_GET['action']) ? $_GET['action'] : "rien";
+        switch ($this->action) {
+
+            case "Accueil":
+                $this->control->getVue()->affichePageAccueil();
+                break;
+
+            case "Profil":
+                if(isset($_SESSION['idUtilisateur'])){
+                    $this->control->getVue()->affichePageProfil();
+                }else{            
+                    header("Location: index.php?Modules=Module_connexion&action=form_connexion");
+                    die();
+                }
+                break;
+            
+            default:
+                break;
+        }
+    }
+}
