@@ -43,6 +43,7 @@ class controlTuto
     public function ajouterTuto()
     {
         $tab = $this->modele->get_categorieVideo();
+        creation_token();
         $this->vue->ajouterTuto($tab);
     }
     

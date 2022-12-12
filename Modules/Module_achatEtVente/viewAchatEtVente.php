@@ -53,17 +53,17 @@ class viewAchatEtVente extends vueGenerique
                     <div class="small-container">
                         <h2>Vente d'un produit</h2>
                         <label for="floatingInput">Nom du produit</label>
-                        <input type="text" class="form-control" name="nomMateriel"></br>
+                        <input required type="text" class="form-control" name="nomMateriel"></br>
                         <label for="floatingInput">Marque du produit</label>
-                        <input type="text" class="form-control" name="marque"></br>
+                        <input required type="text" class="form-control" name="marque"></br>
                         <label for="floatingInput">Description du produit</label>
-                        <input type="text" class="form-control" name="description"></br>
+                        <input required type="text" class="form-control" name="description"></br>
                         <label for="floatingInput">Prix du produit</label>
-                        <input type="text" class="form-control" name="prix"></br>
+                        <input required type="text" class="form-control" name="prix"></br>
                         <label for="floatingInput">Couleur du produit</label>
-                        <input type="text" class="form-control" name="couleur"></br>
+                        <input required type="text" class="form-control" name="couleur"></br>
                         <label for="floatingInput">Image du produit</label>
-                        <input type="file" class="form-control" name="image" id="image" accept=".jpg, .jpeg, .png"></br>
+                        <input required type="file" class="form-control" name="image" id="image" accept=".jpg, .jpeg, .png"></br>
                     </div>
                     <button id="btnConfirmer" class="w-10 btn btn-lg btn-primary" type="submit">Confirmer</button>
 
@@ -85,7 +85,6 @@ class viewAchatEtVente extends vueGenerique
             <h1>En vente</h1>
             <section id="sec">
                 <table class="tableau-style">
-                    <form action="index.php?Modules=Module_achatEtVente&action=afficher" method="POST">
                         <!-- <section id="produit1" class="section-p1"> -->
                             <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
                             <?php
@@ -98,13 +97,12 @@ class viewAchatEtVente extends vueGenerique
                                                 <h5><?= $materiel["nomMateriel"] ?></h5>
                                                 <h4><?= $materiel["prix"] ?>€</h4>
                                             </div>
-                                            <button type="submit" name="idMateriel" value="<?= $materiel['idMateriel'] ?>"><i class="fal fa-shopping-cart cart">Voir</i></button>
+                                            <a href="index.php?Modules=Module_achatEtVente&action=afficher&idMateriel=<?= $materiel['idMateriel'] ?>" type="submit" name="idMateriel"><i class="fal fa-shopping-cart cart">Voir</i></a>
                                         </div>
                                     </div>
                                 </div>
                             <?php } ?>
                         <!-- </section> -->
-                    </form>
                 </table>
             </section>
         </main>
@@ -142,6 +140,9 @@ class viewAchatEtVente extends vueGenerique
                                                         </li>
                                                         <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Couleur :</span>
                                                             <td><?= $materiel['couleur'] ?></td>
+                                                        </li>
+                                                        <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Nom du vendeur :</span>
+                                                            <td><?= $materiel['vendeur'] ?></td>
                                                         </li>
                                                     </tr>
                                                 </tbody>

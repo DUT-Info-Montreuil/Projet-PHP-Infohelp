@@ -54,7 +54,7 @@ class vueAdmin extends vueGenerique
     <?php
     }
 
-    public function barre_de_recherche()
+    public function barre_de_recherche_Techniciens()
     {
     ?>
         <body>
@@ -112,34 +112,39 @@ class vueAdmin extends vueGenerique
                 $nom = $tech["nom"];
                 $prenom = $tech["prenom"];
             ?>
-                <br><button class="btn btn-outline-secondary" name="idUser" value="<?= $idTech ?>">
+                <br><a href="index.php?Modules=ADMIN&action=user$idUser=<?= $idTech ?>" class="btn btn-outline-secondary" >
                     <?= $nom . " " . $prenom ?>
-                </button>
+            </a>
             <?php } ?>
         </form>
         </tr>
     <?php }
 
     public function afficherRdv($req)
-    {
+    { 
         
     ?>
-    <form action="index.php?Modules=Module_rendezVous&action=retirerRdv" method="post">
+    <main>
         <label>Liste des rendez vous :</label></br>
  <?php
             foreach ($req as $rdv) {
                 $idRdv = $rdv["idRdv"];
                 $heure = $rdv["horaire"];
                 $date = $rdv["dateRDV"];
-                $nbUser = $rdv["idUtilisateur"];
-            ?>
-                <br><button class="btn btn-outline-secondary" name="idRdv" value="<?= $idRdv ?>">
+                $nomUtilisateur = $rdv['nom'];
+                $prenomNomUtilisateur = $rdv[0];
+                $adresseUtilisateur = $rdv['adresse_postale'];
+
+            ?>                
+                <br><br>
                     <?= "Heure : " . $heure ?>
                     <?= "Date : " . $date  ?>
-                    <?= "identifiant de l'utilisateur : " . $nbUser ?>
-                </button>
+                    <?= "Rdv pris par : " . $nomUtilisateur ?>
+                    <?= "Lieu : " . $adresseUtilisateur ?>
+                    <a href="index.php?Modules=Module_rendezVous&action=retirerRdv&idRdv=<?= $idRdv ?>"class="btn btn-danger" name="idRdv" >Annuler le Rdv</a>
             <?php } ?>
-        </form>
+        </main>
+
 <?php
     }
 }

@@ -5,30 +5,38 @@ class VueRdv extends vueGenerique
     public function __construct()
     {
     }
-    public function afficherVille()
+    public function afficherSelectionVille($tabVille)
     {
         ?>
-                <form action="index.php?Modules=Module_rendezVous&action=voirTechnicien" method="POST">
+        <main>
+                <form id="box" action="index.php?Modules=Module_rendezVous&action=voirTechnicien" method="POST">
                     <label id="ville" for="floatingInput">Selectionner une ville :</label>
-                    <select id="selectVille" name="city" class="form-select" aria-label="Default select example">
-                        <option selected>ville à selectionner</option>
-                        <option value="Paris">Paris</option>
-                        <option value="Sarcelles">Sarcelles</option>
-                        <option value="Nanterre">Nanterre</option>
-                        <option value="Montreuil">Montreuil</option>
-                        <option value="Creteil">Creteil</option>
-                        <option value="Cergy">Cergy</option>
+                    <select id="selectVille" name="ville" class="form-select" aria-label="Default select example">
+                        <option selected disabled>--ville à selectionner--</option>
+                       <?php foreach ($tabVille as $villes) { ?>
+                        <option value="<?=$villes['nomVille']?>"><?=$villes['nomVille']?></option>
+                        <?php } ?>
                     </select>
-                    <button class="btn btn-primary" type="submit">Validé</button>
+                    <button class="btn btn-primary" type="submit" name="uneVille">Selectionner</button>
+                    <button class="btn btn-secondary" type="submit" name="toutesVilles">Toutes les villes</button>
+
+                    <input type="hidden" name="categorie" value="<?=$_POST['categorie']?>">
                 </form>
+                </main>
         <?php
     }
     public function afficherTechnicien($req)
     {
-    ?>
-        <form action="index.php?Modules=Module_rendezVous&action=prendreRdv" method="POST">
-            <?php
 
+    ?>
+    <main>
+    <?php if(empty($req))
+            echo "il y a aucun technicien dans cette ville....";
+            else{ ?>
+        <form action="index.php?Modules=Module_rendezVous&action=prendreRdv" method="POST">
+        
+
+<?php
             foreach ($req as $row) {
             ?>
                 <div id="technicienListe">
@@ -37,6 +45,7 @@ class VueRdv extends vueGenerique
                         <td><?= $row['nom']; ?></td><br>
                         <td><?= $row['prenom']; ?></td><br>
                         <td><?= $row["nomCat"]; ?></td><br>
+                        <td>Note: <?= $row["note"]; ?>/5</td><br>
 
                         <button style="height:35px" class="btn btn-outline-secondary" type="submit" name="tec" value="<?php echo $row['idTechnicien']; ?>">Choisir ce technicien </button>
                         <input type="hidden" name="categorieRDV" value="<?=$row["idCategorie"]; ?>">
@@ -46,10 +55,11 @@ class VueRdv extends vueGenerique
 
             }
 
-
+        }
             ?>
 
         </form>
+        </main>
         </br></br></br></br></br></br></br></br>
 
 
@@ -57,26 +67,6 @@ class VueRdv extends vueGenerique
     }
 
 
-    public function toutLesTechniciens($req){
-        ?>
-        <form action="index.php?Modules=Module_rendezVous&action=prendreRdv" method="post">
-            <label>Liste des techniciens</label></br>
-
-            <?php
-            foreach ($req as $technicien) {
-                $idTech = $technicien["idTechnicien"];
-                $nom = $technicien["nom"];
-                $prenom = $technicien["prenom"];
-
-
-            ?>
-                <button class="btn btn-outline-secondary" name="tec" value="<?= $idTech ?>">
-                    <?= $nom . " " . $prenom ?>
-                </button>
-            <?php } ?>
-        </form>
-        <?php
-    }
 
     public function affichageFormRdv()
     {
@@ -91,7 +81,7 @@ class VueRdv extends vueGenerique
                     <input type="hidden" name="categorieRDV" value="<?= $_POST['categorieRDV'] ?>">
 
                 </label>
-                <button class="btn btn-outline-secondary" value=<?= $_POST['tec'] ?>>Confirmer</button>
+                <button type="submit" class="btn btn-outline-secondary">Confirmer</button>
             </form>
         </main>
     <?php
@@ -101,6 +91,7 @@ class VueRdv extends vueGenerique
 
     public function afficherRdv($data)
     {
+
     ?>
 
         <body>
@@ -160,9 +151,13 @@ class VueRdv extends vueGenerique
 
     public function afficherRdvUtilisateur($data)
     {
+
     ?>
-        <main>
-            <form action="index.php?Modules=Module_rendezVous&action=afficherRdv" method="POST">
+        <main> <?php
+        if(empty($data))
+        echo "il y a aucun technicien dans cette ville";
+        else{ ?>
+            <form action="" method="POST">
                 <label>Selectionnez le rendez-vous vous souhaitez consulter:</label></br>
                 <?php
                 foreach ($data as $rdv) {
@@ -171,12 +166,12 @@ class VueRdv extends vueGenerique
                     $nomTechnicien = $rdv["nom"];
 
                 ?>
-                    <button class="btn btn-outline-secondary" name="idRdv" value="<?php echo $idRdv; ?>">
+                    <a href="index.php?Modules=Module_rendezVous&action=afficherRdv&idRdv=<?php echo $idRdv; ?>" class="btn btn-outline-secondary" name="idRdv">
                         Rdv avec le technicien <?php echo $nomTechnicien . ", le " . $dateRdv; ?>
-                    </button>
+                </a>
 
         <?php
-        }
+        }}
         ?> 
         
         </form> 
@@ -195,7 +190,7 @@ class VueRdv extends vueGenerique
 
 
         <main>
-        <form action="index.php?Modules=Module_rendezVous&action=liste_tech" method="POST">
+        <form action="index.php?Modules=Module_rendezVous&action=selectionTechParVille" method="POST">
 
             <div class="container">
                 <div class="col-md-12">

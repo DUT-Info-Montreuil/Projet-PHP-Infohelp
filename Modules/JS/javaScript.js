@@ -1,3 +1,4 @@
+
 function cliquePhoto() {
   document.querySelector("#profileImage").click();
 }
@@ -7,3 +8,5 @@ function affichageImage(e) {
     var reader = new FileReader();
   }
 }
+
+

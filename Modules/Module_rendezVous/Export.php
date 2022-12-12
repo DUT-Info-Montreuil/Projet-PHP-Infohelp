@@ -1,7 +1,7 @@
 <?php
 
         /* Initialisation de l'excel */
-        include('/home/etudiants/info/ggermana/local_html/Projet-PHP-Infohelp/PHPExcel/Classes/PHPExcel.php');
+        include('C:\wamp64\www\Projet-PHP-Infohelp\PHPExcel\Classes\PHPExcel.php');
         $objPHPExcel = new PHPExcel();
         $objPHPExcel->setActiveSheetIndex(0);
         $prenom=$_POST['prenom_client'];

@@ -41,8 +41,13 @@ class moduleConnexion
                 break;
 
             case "monProfil":
-                creation_token();
-                $this->controleur->getUtilisateurAchanger();
+                if(isset($_SESSION['idUtilisateur'])){
+                    $this->controleur->getUtilisateurAchanger();
+                }
+                else{            
+                    header("Location: index.php?Modules=Module_connexion&action=form_connexion");
+                    die();
+                }
                 break;  
                 
             case "changement":

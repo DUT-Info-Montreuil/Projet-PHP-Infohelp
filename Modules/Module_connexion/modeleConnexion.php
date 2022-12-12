@@ -66,6 +66,8 @@ class modeleConnexion extends ConnexionUI
                 $_SESSION['email'] = $_POST['email'];
                 $_SESSION['mot_de_passe'] = $_POST['mot_de_passe'];
                 $_SESSION['idUtilisateur'] = $tab['idUtilisateur'];
+                $_SESSION['nom'] = $tab['nom'];
+
                 $_SESSION['image']=$tab['image'];
 
                 return 0;
@@ -181,6 +183,7 @@ class modeleConnexion extends ConnexionUI
         unset($_SESSION['mot_de_passe']);
         unset($_SESSION['mode']);
         unset($_SESSION['image']);
+        unset($_SESSION['nom']);
 
         header("Location: index.php?Modules=Module_connexion&action=form_connexion");
         die();

@@ -15,21 +15,19 @@ class VueTuto extends vueGenerique
 
         <body>
             <main>
-                <form action="index.php?Modules=Module_tutos&action=afficheListeTutos" method="POST" enctype="multipart/form-data">
                     <label>Selectionnez la categorie qui vous concerne:</label></br>
                     <?php
                     foreach ($data as $categorie) {
                         $idCategorie = $categorie["idCategorieTuto"];
                         $nomCategorie = $categorie["nomCategorie"];
                     ?>
-                        <button name="categorie" value="<?= $idCategorie; ?>">
+                        <a href="index.php?Modules=Module_tutos&action=afficheListeTutos&categorie=<?= $idCategorie; ?>" class="btn btn-secondary" name="categorie">
                             <?= $nomCategorie ?>
-                        </button>
+                    </a>
                     <?php
                     }
 
                     ?>
-                </form>
             </main>
         </body>
 
@@ -43,10 +41,10 @@ class VueTuto extends vueGenerique
 
 
 ?>
-
         <body>
             <main>
                 <form action="index.php?Modules=Module_tutos&action=ajoutTuto" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="token" value='<?= $_SESSION['token'] ?>'>    
 
                             <h3>Ajout d'un tuto</h3>
                             <div class="form-group">
@@ -87,7 +85,6 @@ class VueTuto extends vueGenerique
 
         <body>
             <main>
-                <!-- <form action="index.php?Modules=Module_tutos&action=afficheVideo" method="POST"> -->
                     <label>Selectionnez la video qui vous concerne:</label></br>
                     <?php
                     foreach ($data as $videos) {
@@ -98,19 +95,15 @@ class VueTuto extends vueGenerique
                     ?>
                     <div id="row-tuto">
                         <div id="col-1-tuto">
-                        <!-- <button name="lien" value="<?= $lienVideo ?>"> -->
                         <a href="index.php?Modules=Module_tutos&action=afficheVideo&lien=<?= $lienVideo ?>">     
                             <img id="miniature" src="Modules/Module_tutos/images/<?= $miniature ?>" alt="miniature de la video"></br>
                             <?= $titreVideo ?></a>
-                        <!-- </button> -->
                         </div>
                     </div>
                     </div>
                     <?php
                     }
                     ?>
-
-                <!-- </form> -->
             </main>
         </body>
 

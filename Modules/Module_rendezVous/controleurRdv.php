@@ -33,12 +33,6 @@ class controleurRdv
         $this->vue->afficherRdv($resultat);
     }
    
-    public function listeTechnicien()
-    {        var_dump($_POST['categorie']);
-
-        $res=$this->modele->getlistTechnicien();
-        $this->vue->afficherTechnicien($res);
-    }
     
     public function listeCategorie()
     {
@@ -63,4 +57,10 @@ class controleurRdv
         $this->vue->afficherTechnicienFavoris($resultat);
     }
 
+    public function afficherTechnicienParVille()
+    {
+        $resultat=$this->modele->getVilles();
+        $this->vue->afficherSelectionVille($resultat);
+    }
+    
 }

@@ -20,7 +20,7 @@ class VueConnexion extends vueGenerique
 
         <body>
             <main>
-                <form action="index.php?Modules=Module_connexion&action=inscription" method="POST">
+                <form id="formInscription" action="index.php?Modules=Module_connexion&action=inscription" method="POST">
                     <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
                     <img class="mb-4" src="Modules/images/logo.PNG" alt="" width="72" height="57">
                     <h1 class="h3 mb-3 fw-normal">Inscription</h1>
@@ -64,19 +64,6 @@ class VueConnexion extends vueGenerique
                     </div>
                     <button class="btn btn-primary" type="submit">S'inscrire</button>
                 </form>
-
-                <style>
-                    form {
-                        width: 500px;
-                        margin: auto;
-                        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-                        padding: 30px;
-                    }
-
-                    .form-floating {
-                        margin-bottom: 15px;
-                    }
-                </style>
             </main>
         </body>
 
@@ -118,19 +105,6 @@ class VueConnexion extends vueGenerique
         <?php   }  ?>
 
         </form>
-
-                <style>
-                    form {
-                        width: 500px;
-                        margin: auto;
-                        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-                        padding: 30px;
-                    }
-
-                    .form-floating {
-                        margin-bottom: 15px;
-                    }
-                </style>
             </main>
         </body>
 
@@ -155,9 +129,9 @@ class VueConnexion extends vueGenerique
                                     <div class="card-body">
                                         <div class="d-flex flex-column align-items-center text-center">
                                             <form id="form" class="col-lg-12" action="index.php?Modules=Module_connexion&action=changement" method="POST" enctype="multipart/form-data">
-                                            <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>    
+                                            <input type="hidden" name="token" value='<?= $_SESSION['token'] ?>'>    
                                             <div class="upload">
-                                                    <img src="Modules/image_profil/<?php echo $image; ?>" width=125 height=125 title="<?php echo $image; ?>">
+                                                    <img src="Modules/image_profil/<?=$image; ?>" width=125 height=125 title="<?= $image; ?>">
                                                     <div class="round">
                                                         <input type="file" name="image" id="image" accept=".jpg, .jpeg, .png">
                                                         <i class="fa fa-camera" style="color: #fff;"></i>

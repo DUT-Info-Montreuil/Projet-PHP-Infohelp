@@ -16,7 +16,6 @@ class modeleRdv extends ConnexionUI
     public function ajouterRdv()
     {
         if(isset($_POST['jour']) && isset($_POST['heure']) && isset($_POST['tec'])){
-            echo"rdv enregistré ";
             $date=$_POST['jour'];
             $heure=$_POST['heure'];
             $idTech=$_POST['tec'];
@@ -46,7 +45,7 @@ class modeleRdv extends ConnexionUI
     public function getRdv()
     {
 
-        $idRDV=$_POST['idRdv'];
+        $idRDV=$_GET['idRdv'];
         $requete = self::$bdd->prepare("SELECT * FROM `utilisateurs` inner join `rendezvous` on rendezvous.idUtilisateur=utilisateurs.idUtilisateur inner join techniciens on techniciens.idTechnicien = rendezvous.idTechnicien WHERE idRdv = '$idRDV'");
         $requete->execute();
         $recupRdv=$requete->fetchAll();
@@ -58,9 +57,9 @@ class modeleRdv extends ConnexionUI
 
 
 
-    public function annulerRdv($idRdv)
+    public function annulerRdv()
     {
-            $idRdv=$_POST['idRdv'];
+            $idRdv=$_GET['idRdv'];
             $delete = self::$bdd->prepare("DELETE FROM `rendezvous` WHERE idRdv='$idRdv'");
             $delete->execute();
             echo"suppression effectuée";
@@ -167,28 +166,45 @@ class modeleRdv extends ConnexionUI
         if(!$mail->send()) {
             echo "Une erreur s'est produite, veuillez contacter un administrateur";
          } else {
-            echo "Mail envoyé !";
+            echo "</br> un mail vous a été envoyé !";
          }
     }
 
 
 
+    public function getVilles()
+    {
+        $villes = self::$bdd->prepare("SELECT * FROM `ville`");
+        $villes->execute();
+        $recupVilles = $villes->fetchAll();
+        return $recupVilles;
+    }
+
+
     public function getTechnicienParVille()
     {
-        $ville = $_POST["city"];
-        $ville = self::$bdd->prepare("SELECT * FROM `techniciens` inner join `ville` on techniciens.idVille = ville.idVille where nomVille = '$ville'");
-        $ville->execute();
-        $recuptech = $ville->fetchAll();
-        return $recuptech;
+        if(isset($_POST["ville"]) && isset($_POST["uneVille"])){
+            $ville = $_POST["ville"];
+            $categorie = $_POST["categorie"];
+            $ville = self::$bdd->prepare("SELECT * FROM `categories` inner join `techniciens` on categories.idCat = techniciens.idCategorie  inner join `ville` on techniciens.idVille = ville.idVille  where nomVille = '$ville' and nomCat='$categorie'");
+            $ville->execute();
+            $recuptech = $ville->fetchAll();
+    
+            return $recuptech;
+        }else{
+            $cat = $_POST["categorie"];
+            $sth1 = self::$bdd->prepare("SELECT * FROM `techniciens` inner join `categories` on techniciens.idCategorie = categories.idCat where nomCat = '$cat'");
+            $sth1->execute();
+            $recuptech = $sth1->fetchAll();
+            return $recuptech;
+        }
+
     }
     public function getlistTechnicien()
     {
         $cat = $_POST["categorie"];
         echo"ikhn".var_dump($cat);
-        $sth1 = self::$bdd->prepare("SELECT * FROM `techniciens` inner join `categories` on techniciens.idCategorie = categories.idCat where nomCat = '$cat'");
-        $sth1->execute();
-        $recuptech = $sth1->fetchAll();
-        return $recuptech;
+
     }
 
 

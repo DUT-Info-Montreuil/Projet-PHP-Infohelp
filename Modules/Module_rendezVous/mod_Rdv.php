@@ -12,7 +12,7 @@ class moduleRdv
         ConnexionUI::initConnexion();
         $this->control = new  controleurRdv;
         $this->action = isset($_GET['action']) ? $_GET['action'] : "rien";
-        if (isset($_SESSION['email'])) {
+        if (isset($_SESSION['idUtilisateur'])) {
 
             switch ($this->action) {
 
@@ -36,9 +36,6 @@ class moduleRdv
                     $this->control->getListeRdv();
                     break;
 
-                case 'liste_tech':
-                    $this->control->listeTechnicien();
-
                 case 'liste_catégorie':
                     $this->control->listeCategorie();
                     break;
@@ -58,15 +55,17 @@ class moduleRdv
                 case "devis":
                     $this->control->exportTraces();
                     break;
-                case 'selectionVille':
-                    $this->control->getVue()->afficherVille();
+                case 'selectionTechParVille':
+                    $this->control->afficherTechnicienParVille();
                     break;
+
                 case 'voirTechnicien':
-                    $this->control->getVue()->toutLesTechniciens($this->control->getModele()->getTechnicienParVille());
+                    $this->control->getVue()->afficherTechnicien($this->control->getModele()->getTechnicienParVille());
                     break;
             }
         } else {
-            echo "connectez vous";
+            header("Location: index.php?Modules=Module_connexion&action=form_connexion");
+            die();        
         }
     }
 }

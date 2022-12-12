@@ -14,10 +14,18 @@ class VueHeader extends vueGenerique
         <html lang="en">
 
         <head>
-            <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Document</title>
+        <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="Modules/CSS/style.css">
+    <link rel="shortcut icon" href="C:\wamp64\www\Projet-PHP-Infohelp\Modules\images\logo.PNG">
+    <script src="JS/javaScript"></script>
+
+    <title>InfoHelp</title>
         </head>
 
         <body>
@@ -41,8 +49,8 @@ if (isset($_SESSION["mode"]) && $_SESSION["mode"] == 1) {
                 <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
 
                 <li class="nav-item"><a href="index.php?Modules=Module_accueil&action=Accueil" class="nav-link px-2 link-secondary">Accueil</a></li>
-                <li class="nav-item"><a href="index.php?Modules=ADMIN&action=recherche_liste" class="nav-link px-2 link-secondary">Gestion des techniciens</a><br></li>
-                <li><a href="index.php?Modules=ADMIN&action=Afficher_user" class="nav-link px-2 link-secondary">Gestion des utilisateurs</a><br></li>
+                <li class="nav-item"><a href="index.php?Modules=ADMIN&action=recherche_liste" class="nav-link px-2 link-primary text-white">Gestion des techniciens</a><br></li>
+                <li><a href="index.php?Modules=ADMIN&action=Afficher_user" class="nav-link px-2 link-primary text-white">Gestion des utilisateurs</a><br></li>
                 <li class="nav-item"><a href="index.php?Modules=Module_connexion&action=monProfil" class="nav-link px-2 link-primary text-white"><img id="profil" src="Modules/image_profil/<?=$image?>" alt=""></a></li>
 
             </ul>
@@ -52,7 +60,7 @@ else if (isset($_SESSION["mode"]) && $_SESSION["mode"]  == 2) {
                 <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
 
                 <li class="nav-item"><a href="index.php?Modules=Module_accueil&action=Accueil" class="nav-link px-2 link-secondary">Accueil</a></li>
-                <li class="nav-item"><a href="index.php?Modules=ADMIN&action=Afficher_rdv" class="nav-link px-2 link-secondary">Gestion des rendez vous</a><br></li>
+                <li class="nav-item"><a href="index.php?Modules=ADMIN&action=Afficher_rdv" class="nav-link px-2 link-primary text-white">Gestion des rendez vous</a><br></li>
                 <li class="nav-item"><a href="index.php?Modules=Module_tutos&action=afficheFormTuto" class="nav-link px-2 link-primary text-white">Gestion des tutos</a></li>
                 <li class="nav-item"><a href="index.php?Modules=Module_connexion&action=monProfil" class="nav-link px-2 link-primary text-white"><img id="profil" src="Modules/image_profil/<?=$image?>" alt=""></a></li>
 
@@ -86,6 +94,7 @@ else{
             ?>    
             </div>
         </header>
+            </br></br>
     </div>
 <br><br>
 <?php

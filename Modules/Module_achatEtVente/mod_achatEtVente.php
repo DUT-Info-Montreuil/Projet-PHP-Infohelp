@@ -12,6 +12,8 @@ class modAchatEtVente
         ConnexionUI::initConnexion();
         $this->control = new  controlAchatEtVente;
         $this->action = isset($_GET['action']) ? $_GET['action'] : "rien";
+        if (isset($_SESSION['idUtilisateur'])) {
+
         switch ($this->action) {
             case "boutique":
                 $this->control->getVue()->affichageBoutique();
@@ -35,5 +37,9 @@ class modAchatEtVente
             default:
                 break;
         }
+    } else {
+        header("Location: index.php?Modules=Module_connexion&action=form_connexion");
+        die();        
+    }
     }
 }

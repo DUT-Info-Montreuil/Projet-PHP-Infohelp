@@ -23,6 +23,7 @@ class controleurConnexion
     public function getUtilisateurAchanger()
     {
         $data=$this->modele->getUtilisateur();
+        creation_token();
         $this->getVue()->afficherFormChangerInfo($data);
 
     }

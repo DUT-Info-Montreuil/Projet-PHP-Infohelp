@@ -1,5 +1,7 @@
 <?php
 require_once('Connexion.php');
+require_once("Common/Bibliotheque_commune/Verification_creation_token.php");
+
 class modeleTuto extends ConnexionUI
 {
     public function __construct()
@@ -17,7 +19,7 @@ class modeleTuto extends ConnexionUI
 
     public function getListeVideos()
     {
-        $idCat=$_POST["categorie"];
+        $idCat=$_GET["categorie"];
         $requete = self::$bdd->prepare("SELECT * FROM `tutos` where idCategorieVideo='$idCat'");
         $requete->execute();
         $recupvideos=$requete->fetchAll();

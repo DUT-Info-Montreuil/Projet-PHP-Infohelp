@@ -12,7 +12,8 @@ class moduleTuto
         ConnexionUI::initConnexion();
         $this->control = new  controlTuto;
         $this->action = isset($_GET['action']) ? $_GET['action'] : "rien";
-        switch ($this->action) {
+        if (isset($_SESSION['idUtilisateur'])) {
+            switch ($this->action) {
             case "afficheCategorieVideo":
                 $this->control->getCategorie();
                 break;
@@ -35,5 +36,9 @@ class moduleTuto
                 default:
                     break;
         }
+    } else {
+        header("Location: index.php?Modules=Module_connexion&action=form_connexion");
+        die();        
+    }
     }
 }

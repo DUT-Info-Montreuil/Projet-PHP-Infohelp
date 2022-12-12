@@ -32,10 +32,10 @@ class modeleAchatEtVente extends ConnexionUI
     }
 
     public function get_Nom($idMateriel){
-        $requetNom = self::$bdd->prepare("SELECT nomMateriel FROM materiels WHERE `idMateriel`=$idMateriel");
+        $requetNom = self::$bdd->prepare("SELECT nomMateriel, vendeur FROM materiels WHERE `idMateriel`=$idMateriel");
         $requetNom->execute();
         $nomMateriel= $requetNom->fetch();
-        return $nomMateriel[0];
+        return $nomMateriel;
     }
 
     public function verif_quantite($idMateriel){
@@ -47,7 +47,7 @@ class modeleAchatEtVente extends ConnexionUI
         }
     }
     public function get_Detail(){
-        $idMateriel=$_POST['idMateriel'];
+        $idMateriel=$_GET['idMateriel'];
         $req_quantite =  self::$bdd->prepare("SELECT * FROM `materiels` WHERE idMateriel = $idMateriel");
         $req_quantite->execute();
         $res=$req_quantite->fetchAll();
@@ -63,6 +63,8 @@ class modeleAchatEtVente extends ConnexionUI
         $marque=$_POST['marque'];
         $couleur=$_POST['couleur'];
         $prix=$_POST['prix'];
+        $vendeur=$_SESSION['nom'];
+
         print_r($_POST);
         if(isset($_FILES["image"]["name"])){
             $imageName = $_FILES["image"]["name"];
@@ -76,7 +78,7 @@ class modeleAchatEtVente extends ConnexionUI
 
             $newImageName = date("Y.m.d") . " - " . date("h.i.sa"); // Generate new image name
             $newImageName .= '.' . $imageExtension;
-            $insert = self::$bdd->prepare("INSERT INTO `materiels` (`nomMateriel`, `quantite`, `description`, `marque`, `couleur`,`image`,`prix`) VALUES ('$nomMateriel','1','$description','$marque','$couleur','$newImageName','$prix')");
+            $insert = self::$bdd->prepare("INSERT INTO `materiels` (`nomMateriel`, `quantite`, `description`, `marque`, `couleur`,`image`,`prix`,`vendeur`) VALUES ('$nomMateriel','1','$description','$marque','$couleur','$newImageName','$prix','$vendeur')");
 
             $insert->execute();
             move_uploaded_file($tmpName, 'Modules/Module_achatEtVente/images_produits/' . $newImageName);
@@ -124,7 +126,7 @@ class modeleAchatEtVente extends ConnexionUI
         $mail->addReplyTo($websiteSupportMail, 'Information'); // L'adresse de réponse
 
         $mail->Subject = 'Confirmation d\'achat';
-        $mail->Body = "Bonjour, votre achat de " . $materiel. " a bien été effectué. Veuillez voir avec le vendeur pour récupérer votre matériel !  ";  
+        $mail->Body = "Bonjour, votre achat de " . $materiel[0]. " a bien été effectué. Veuillez voir avec le vendeur " .$materiel[1]." pour récupérer votre matériel !  ";  
 
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 

@@ -46,7 +46,8 @@ class modeleAdmin extends ConnexionUI
         return $recuptech;
     }
     public function afficherRdv (){
-        $req = self::$bdd->prepare("SELECT * FROM `rendezvous` inner join `techniciens` on rendezvous.idTechnicien = techniciens.idTechnicien  Where `idRdv` != 0 ");
+        $nomTech=$_SESSION['nom'];
+        $req = self::$bdd->prepare("SELECT * FROM `techniciens` inner join `rendezvous` on rendezvous.idTechnicien = techniciens.idTechnicien inner join `utilisateurs` on rendezvous.idUtilisateur = utilisateurs.idUtilisateur Where techniciens.nom = '$nomTech' ");
         $req->execute();
         $affiche = $req->fetchAll();
         return $affiche;

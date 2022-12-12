@@ -19,9 +19,12 @@ class moduleAccueil
                 break;
 
             case "Profil":
-                if(isset($_SESSION['email'])){
+                if(isset($_SESSION['idUtilisateur'])){
                     $this->control->getVue()->affichePageProfil();
-                }else{echo "connectez vous";}
+                }else{            
+                    header("Location: index.php?Modules=Module_connexion&action=form_connexion");
+                    die();
+                }
                 break;
             
             default:
