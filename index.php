@@ -1,5 +1,6 @@
 <?php
 session_start();
+define("ROOT", __DIR__);
 //user : dutinfopw201612
 //passwd : rupapare
 ?>

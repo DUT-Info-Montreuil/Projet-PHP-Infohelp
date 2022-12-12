@@ -1,5 +1,12 @@
 <?php
 require_once('Connexion.php');
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require_once (ROOT.'/PHPMailer/PHPMailer.php');
+require_once (ROOT.'/PHPMailer/SMTP.php');  
+require_once (ROOT.'/PHPMailer/Exception.php');  
+
 class modeleRdv extends ConnexionUI
 {
     public function __construct()
@@ -16,7 +23,7 @@ class modeleRdv extends ConnexionUI
             $idCategorie=$_POST['categorieRDV'];
 
             $insert = self::$bdd->prepare("INSERT INTO `rendezvous` (`horaire`, `DateRDV`,`idTechnicien`, `idUtilisateur`, `idCategorie`) VALUES (:par,:par2,:par3,:par4,:par5)");
-            $insert->execute(array(':par' => $heure, ':par2' => $date, ':par3' => $idTech, ':par4' => $_SESSION['userID'], ':par5' => $idCategorie));
+            $insert->execute(array(':par' => $heure, ':par2' => $date, ':par3' => $idTech, ':par4' => $_SESSION['idUtilisateur'], ':par5' => $idCategorie));
             echo "rdv enregistré pour le " . $date . " à " . $heure;
             $this->envoiNotification($date, $heure);
         } else {
@@ -117,8 +124,8 @@ class modeleRdv extends ConnexionUI
 }
 
 
-
-    public function envoiNotification($date, $heure)
+// AVEC SERVEUR
+    /*public function envoiNotification($date, $heure)
     {
         $to = $_SESSION['email'];
         $subject = "Confirmation rendez-vous";
@@ -130,7 +137,39 @@ class modeleRdv extends ConnexionUI
             echo "Envoyé !";
         else
             echo "Erreur de l'envoi du mail";
-    }  
+    } */
+
+
+// SANS SERVEUR
+    public function envoiNotification($date, $heure) {
+        $websiteSupportMail = "infohelp93100montreuil@gmail.com";
+
+        $mail = new PHPMailer;
+
+        $mail->isSMTP(); // Paramétrer le Mailer pour utiliser SMTP
+        $mail->SMTPSecure = 'ssl';
+        $mail->Host = 'smtp.gmail.com'; // Spécifier le serveur SMTP
+        $mail->SMTPAuth = true; // Activer authentication SMTP
+        $mail->Username = $websiteSupportMail; // Votre adresse email d'envoi
+        $mail->Password = 'rgumuwxbvicmrmkz'; // Le mot de passe de cette adresse email
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Accepter SSL
+        $mail->Port = 465;
+
+        $mail->setFrom($websiteSupportMail, 'Support Eaxo'); // Personnaliser l'envoyeur
+        $mail->addAddress($_SESSION['email']); // Ajouter le destinataire
+        $mail->addReplyTo($websiteSupportMail, 'Information'); // L'adresse de réponse
+
+        $mail->Subject = 'Reinitialisation mot de passe Eaxo';
+        $mail->Body = "Bonjour, votre rendez vous a bien été pris en compte.\nLe technicien se presentera donc à vous le ".$date ." à ". $heure." . A bientôt !  ";
+
+        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+        if(!$mail->send()) {
+            echo "Une erreur s'est produite, veuillez contacter un administrateur";
+         } else {
+            echo "Mail envoyé";
+         }
+    }
 
 
 

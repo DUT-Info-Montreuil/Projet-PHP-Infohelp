@@ -409,7 +409,7 @@ class VueRdv extends vueGenerique
                         type: 'POST',
                         dataType: 'json',
                         data: {
-                            id: "<?= $_SESSION['userID'] ?>", idRDV:"<?=$_GET['id']?>"
+                            id: "<?= $_SESSION['idUtilisateur']?>", idRDV:"<?=$_GET['id']?>"
                         },
                         success: function(reponse) {
                             console.log(reponse);
