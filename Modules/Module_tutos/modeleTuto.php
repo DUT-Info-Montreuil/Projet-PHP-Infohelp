@@ -37,7 +37,7 @@ class modeleTuto extends ConnexionUI
             $update = self::$bdd->prepare("UPDATE `tutos` SET `nbVues`= (`nbVues`+1) where lienVideo='$lien'");
             $update->execute();
         }else{
-            echo"  | erreur requete SQL";
+            echo"erreur requete SQL";
         }
         return $recupvideo;
     }
@@ -55,7 +55,6 @@ class modeleTuto extends ConnexionUI
 
     public function ajoutTuto()
     {
-        var_dump($_POST['choix']);
         if(isset($_POST['ajoutTutoBtn'])){
             $titre=$_POST['titreTuto'];
             $auteur=$_POST['auteurTuto'];

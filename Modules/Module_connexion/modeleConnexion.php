@@ -223,6 +223,9 @@ class modeleConnexion extends ConnexionUI
 
     public function recuperationMDP()
     {
+        if (isset($_GET['token']) || !verification_token())
+            return 1;
+
         if (isset($_POST['email'])) {
             $email = $_POST['email'];
             $nouveauMdp = uniqid();
@@ -246,7 +249,7 @@ class modeleConnexion extends ConnexionUI
             $mail->addAddress($email); // Ajouter le destinataire
             $mail->addReplyTo($websiteSupportMail, 'Information'); // L'adresse de réponse
 
-            $mail->Subject = 'Confirmation de rendez-vous';
+            $mail->Subject = 'Recupération de mot de passe';
             $mail->Body = "Bonjour, voici votre nouveau mot de passe : " . $nouveauMdp . "\nPensez à le changer rapidement en cliquant sur \"Modifier mon mot de passe\" dans \"Mon Profil\".";
 
             $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';

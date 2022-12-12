@@ -28,7 +28,6 @@ class controlAchatEtVente
     }
     public function getDetailMateriel()
     {
-        // creation_token();
         $resultat=$this->modele->get_Detail();
         $this->vue->afficheDetailMateriel($resultat);
     }

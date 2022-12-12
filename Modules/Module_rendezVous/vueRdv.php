@@ -131,6 +131,7 @@ class VueRdv extends vueGenerique
 
 
                     <button type="submit" name="boutonAnnuler" class="btn btn-outline-danger">Annuler le rendez-vous</button>
+                    
                     <a href="index.php?Modules=Module_rendezVous&action=afficherDevis&id=<?= $idRdv ?>">Afficher le devis</a>
 
                     <input type="hidden" name="idRdv" value="<?= $idRdv ?>">

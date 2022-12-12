@@ -18,7 +18,6 @@ class ViewAccueil extends vueGenerique
               <h1>Réparation de qualité à un prix abordable!</h1>
               <p>Nos spécialistes sont à votre écoute pour répondre à vos besoins bien spécifiques concernant vos différents types de problèmes informatique</p>
               <a href="index.php?Modules=Module_rendezVous&action=liste_catégorie" class="btn btn-primary bouton">Nos spécialistes &#8594;</a>
-              <!-- <a href="index.php?Modules=Module_achatEtVente&action=vente" class="btn btn-primary">Achat&#8594;</a> -->
             </div>
             <div class="col-2">
               <img src="Modules/images/conseil.webp" alt="">
@@ -80,7 +79,6 @@ Merci Lucas </p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" f
                 </svg>
                 <p>Merci pour votre écoute , votre disponibilité et compétence. Je dois ajouter aussi votre patience.
 Merci à Daniel.</p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-quote" viewBox="0 0 16 16">
-                  <!-- <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z" /> -->
                 </svg>
                 <div class="rating">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -106,7 +104,6 @@ Merci à Daniel.</p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="1
                   <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z" />
                 </svg>
                 <p>Une équipe vraiment compétant qui vont jusqu’au bout des problèmes les plus difficiles. </p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-quote" viewBox="0 0 16 16">
-                  <!-- <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z" /> -->
                 </svg>
                 <div class="rating">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -157,24 +154,6 @@ Merci à Daniel.</p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="1
             <?php
     }
 
-
-    public function affichePageProfil()
-    {
-?>
-            
-  <body>
-    <h1>Mon Profil</h1>    
-    <tr>        
-
-                <br>
-                <td> <a href="index.php?Modules=Module_connexion&action=monProfil">Changer mes informations</a></td><br>
-                <td> <a href="index.php?Modules=Module_rendezVous&action=afficherListeRdv">Voir mes rendez-vous</a></td><br>
-                <td> <a href="index.php?Modules=Module_rendezVous&action=afficherFavoris">Voir mes techniciens favoris</a></td><br>
-            </tr>
-  </body>
-</html>
-<?php
-  }
 }
 
 ?>

@@ -22,6 +22,7 @@ class moduleConnexion
                 $this->controleur->getModele()->inscription();
                 break;
             case "motDePasse_Oublie":
+                creation_token();
                 $this->controleur->getVue()->formulaire_recuperation_motDePasse();
                 break;
             case "recuperation_MDP":

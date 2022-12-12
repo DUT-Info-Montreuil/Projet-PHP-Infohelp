@@ -27,8 +27,7 @@ class modeleAchatEtVente extends ConnexionUI
             $requete->execute();
             $this->envoiNotification($this->get_Nom($idMateriel));
             $this->verif_quantite($idMateriel);
-            // header("Location: index.php?Modules=Module_achatEtVente&action=vente");
-            die();
+
     }
 
     public function get_Nom($idMateriel){
@@ -65,7 +64,6 @@ class modeleAchatEtVente extends ConnexionUI
         $prix=$_POST['prix'];
         $vendeur=$_SESSION['nom'];
 
-        print_r($_POST);
         if(isset($_FILES["image"]["name"])){
             $imageName = $_FILES["image"]["name"];
             $imageSize = $_FILES["image"]["size"];
@@ -83,7 +81,8 @@ class modeleAchatEtVente extends ConnexionUI
             $insert->execute();
             move_uploaded_file($tmpName, 'Modules/Module_achatEtVente/images_produits/' . $newImageName);
 
-            // header("Location : index.php?Modules=Module_achatEtVente&action=boutique");
+            echo"votre produit a bien été mis en vente";
+
         }else{
             echo"erreur lors de la saisie du produit";
         }

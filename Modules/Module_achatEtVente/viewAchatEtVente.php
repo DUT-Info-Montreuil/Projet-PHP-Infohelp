@@ -85,7 +85,6 @@ class viewAchatEtVente extends vueGenerique
             <h1>En vente</h1>
             <section id="sec">
                 <table class="tableau-style">
-                        <!-- <section id="produit1" class="section-p1"> -->
                             <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
                             <?php
                             foreach ($materiels as $materiel) { ?>
@@ -102,7 +101,6 @@ class viewAchatEtVente extends vueGenerique
                                     </div>
                                 </div>
                             <?php } ?>
-                        <!-- </section> -->
                 </table>
             </section>
         </main>
@@ -131,7 +129,6 @@ class viewAchatEtVente extends vueGenerique
                                             <div class="col-lg-6 px-xl-10">
                                                 <tbody>
                                                     <tr>
-                                                        <!--                 <td><button name="idMateriel" value="<?= $materiel['idMateriel'] ?>">Ajouter dans panier</button></td> -->
                                                         <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Nom :</span>
                                                             <td><?= $materiel['nomMateriel'] ?></td>
                                                         </li>

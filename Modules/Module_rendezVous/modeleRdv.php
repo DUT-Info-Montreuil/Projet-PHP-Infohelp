@@ -57,9 +57,8 @@ class modeleRdv extends ConnexionUI
 
 
 
-    public function annulerRdv()
+    public function annulerRdv($idRdv)
     {
-            $idRdv=$_GET['idRdv'];
             $delete = self::$bdd->prepare("DELETE FROM `rendezvous` WHERE idRdv='$idRdv'");
             $delete->execute();
             echo"suppression effectuée";
@@ -200,13 +199,6 @@ class modeleRdv extends ConnexionUI
         }
 
     }
-    public function getlistTechnicien()
-    {
-        $cat = $_POST["categorie"];
-        echo"ikhn".var_dump($cat);
-
-    }
-
 
     
     public function getCategories()
@@ -218,15 +210,6 @@ class modeleRdv extends ConnexionUI
 
 
     public function getFavoris()
-    {
-        $idUtilisateur=$_SESSION['idUtilisateur'];
-        $requetefav = self::$bdd->prepare("SELECT * FROM `favoris` INNER JOIN `techniciens` ON favoris.idTechnicien = techniciens.idTechnicien WHERE idUtilisateur='$idUtilisateur'");
-        $requetefav->execute();
-        $recupFav=$requetefav->fetchAll();
-        return $recupFav;
-    } 
-
-    public function getStats()
     {
         $idUtilisateur=$_SESSION['idUtilisateur'];
         $requetefav = self::$bdd->prepare("SELECT * FROM `favoris` INNER JOIN `techniciens` ON favoris.idTechnicien = techniciens.idTechnicien WHERE idUtilisateur='$idUtilisateur'");

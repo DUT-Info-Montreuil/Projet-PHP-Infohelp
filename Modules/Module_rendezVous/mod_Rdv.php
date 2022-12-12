@@ -28,9 +28,6 @@ class moduleRdv
                     $this->control->getRdv();
                     break;
 
-                case "retirerRdv":
-                    $this->control->getModele()->annulerRdv();
-                    break;
 
                 case "afficherListeRdv":
                     $this->control->getListeRdv();
