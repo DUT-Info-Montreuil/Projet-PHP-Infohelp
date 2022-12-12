@@ -21,38 +21,43 @@ class moduleConnexion
             case "inscription":
                 $this->controleur->getModele()->inscription();
                 break;
+            case "motDePasse_Oublie":
+                $this->controleur->getVue()->formulaire_recuperation_motDePasse();
+                break;
+            case "recuperation_MDP":
+                $this->controleur->getModele()->recuperationMDP();
+                break;
             case "form_connexion":
                 creation_token();
-                $this->controleur->getVue()->formulaire_connexion($verif=0);
+                $this->controleur->getVue()->formulaire_connexion($verif = 0);
                 break;
-            
-                case "connexion":
-                    $verifConnexion=$this->controleur->getModele()->connexion();
-    
-                    if($verifConnexion==1){
-                        $this->controleur->getVue()->formulaire_connexion($verif=$verifConnexion);
-                    }else{
-                        header("Location: index.php?Modules=Module_accueil&action=Accueil");
-                        die();
-                    }
+
+            case "connexion":
+                $verifConnexion = $this->controleur->getModele()->connexion();
+
+                if ($verifConnexion == 1) {
+                    $this->controleur->getVue()->formulaire_connexion($verif = $verifConnexion);
+                } else {
+                    header("Location: index.php?Modules=Module_accueil&action=Accueil");
+                    die();
+                }
                 break;
             case "deconnexion":
                 $this->controleur->getModele()->deconnexion();
                 break;
 
             case "monProfil":
-                if(isset($_SESSION['idUtilisateur'])){
+                if (isset($_SESSION['idUtilisateur'])) {
                     $this->controleur->getUtilisateurAchanger();
-                }
-                else{            
+                } else {
                     header("Location: index.php?Modules=Module_connexion&action=form_connexion");
                     die();
                 }
-                break;  
-                
+                break;
+
             case "changement":
                 $this->controleur->getModele()->modifInformationsUtilisateur();
-                break;         
+                break;
             default:
                 break;
         }
