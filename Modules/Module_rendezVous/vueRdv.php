@@ -266,7 +266,7 @@ class VueRdv extends vueGenerique
                 $.ajax({
                     url: 'categorieAjax.php',
                     type: 'POST',
-                    dataType: 'json',
+                    dataType: '',
                     data: {
                         id1: "<?= $req[0]['idCat'] ?>",
                         id2: "<?= $req[1]['idCat'] ?>",
@@ -397,7 +397,6 @@ class VueRdv extends vueGenerique
                 </div>
 
             </form>
-            </main>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
             <script>
                     $.ajax({
@@ -446,6 +445,8 @@ class VueRdv extends vueGenerique
                     });
             </script>
         </div>
+        </main>
+
 
 <?php
     }

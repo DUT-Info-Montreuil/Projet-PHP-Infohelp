@@ -1,7 +1,13 @@
+<!-- 
+Version 1.0 - 2022/12/12
+GNU GPL Copyleft (C inversé) 2022-2032 
+Initiated by Daniel & Lucas & Geovany
+Web Site = <https://InfoHelp.com>
+ -->
 <?php
 
         /* Initialisation de l'excel */
-        include('C:\wamp64\www\Projet-PHP-Infohelp\PHPExcel\Classes\PHPExcel.php');
+        include('../../PHPExcel/Classes/PHPExcel.php');
         $objPHPExcel = new PHPExcel();
         $objPHPExcel->setActiveSheetIndex(0);
         $prenom=$_POST['prenom_client'];

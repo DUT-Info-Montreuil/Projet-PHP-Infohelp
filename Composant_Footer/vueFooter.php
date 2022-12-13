@@ -1,6 +1,5 @@
-<!-- Template ou utiliser les variables stocker dans le modeles -->
 <?php
-require_once("Modules/vuegenerique.php");
+require_once("./Modules/vuegenerique.php");
 class VueFooter extends vueGenerique
 {
   public function __construct()

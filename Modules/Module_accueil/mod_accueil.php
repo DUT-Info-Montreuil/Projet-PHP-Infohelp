@@ -1,7 +1,12 @@
+<!-- 
+Version 1.0 - 2022/12/12
+GNU GPL Copyleft (C inversé) 2022-2032 
+Initiated by Daniel & Lucas & Geovany
+Web Site = <https://InfoHelp.com>
+ -->
 <?php
-require_once('controleur.php');
+require_once('Modules/Module_accueil/controleur.php');
 require_once('Connexion.php');
-
 
 class moduleAccueil
 {
@@ -16,15 +21,6 @@ class moduleAccueil
 
             case "Accueil":
                 $this->control->getVue()->affichePageAccueil();
-                break;
-
-            case "Profil":
-                if(isset($_SESSION['idUtilisateur'])){
-                    $this->control->getVue()->affichePageProfil();
-                }else{            
-                    header("Location: index.php?Modules=Module_connexion&action=form_connexion");
-                    die();
-                }
                 break;
             
             default:

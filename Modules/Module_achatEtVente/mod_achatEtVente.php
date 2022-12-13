@@ -1,5 +1,11 @@
+<!-- 
+Version 1.0 - 2022/12/12
+GNU GPL Copyleft (C inversé) 2022-2032 
+Initiated by Daniel & Lucas & Geovany
+Web Site = <https://InfoHelp.com>
+ -->
 <?php
-require_once('controleurBoutique.php');
+require_once('Modules/Module_achatEtVente/controleurBoutique.php');
 require_once("Common/Bibliotheque_commune/Verification_creation_token.php");
 
 

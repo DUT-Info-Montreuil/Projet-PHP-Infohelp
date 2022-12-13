@@ -1,6 +1,6 @@
 <?php
-require_once('controleur_header.php');
-require_once('Connexion.php');
+require_once('./Composant_Header/controleur_header.php');
+require_once('./Connexion.php');
 
 
 

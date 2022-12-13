@@ -1,4 +1,3 @@
-<!-- Template ou utiliser les variables stocker dans le modeles -->
 <?php
 require_once("Modules/vuegenerique.php");
 class vueAdmin extends vueGenerique

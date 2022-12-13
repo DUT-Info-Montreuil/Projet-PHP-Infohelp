@@ -1,6 +1,12 @@
+<!-- 
+Version 1.0 - 2022/12/12
+GNU GPL Copyleft (C inversé) 2022-2032 
+Initiated by Daniel & Lucas & Geovany
+Web Site = <https://InfoHelp.com>
+ -->
 <?php
-require_once('modeleRdv.php');
-require_once('vueRdv.php');
+require_once('Modules/Module_rendezVous/modeleRdv.php');
+require_once('Modules/Module_rendezVous/vueRdv.php');
 
 class controleurRdv
 {

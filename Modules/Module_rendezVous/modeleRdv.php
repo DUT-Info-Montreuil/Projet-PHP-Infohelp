@@ -1,3 +1,9 @@
+<!-- 
+Version 1.0 - 2022/12/12
+GNU GPL Copyleft (C inversé) 2022-2032 
+Initiated by Daniel & Lucas & Geovany
+Web Site = <https://InfoHelp.com>
+ -->
 <?php
 require_once('Connexion.php');
 use PHPMailer\PHPMailer\PHPMailer;
@@ -217,6 +223,14 @@ class modeleRdv extends ConnexionUI
         $recupFav=$requetefav->fetchAll();
         return $recupFav;
     } 
+
+    public function getTraces(){
+        $requete = self::$bdd->prepare("SELECT * FROM materiels");
+        $requete->execute();
+        $data= $requete->fetchAll();
+        return $data;
+        print($data);
+    }
 
 }
 
