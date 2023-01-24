@@ -88,7 +88,7 @@ else{
 
             <div class="col-md-3 text-end">
             <?php if (isset($_SESSION['email'])) {
-                echo'<a href="index.php?Modules=Module_connexion&action=deconnexion"type="button" class="btn btn-outline-primary me-2 ">Se deconnecter</a>';
+                echo'<a href="index.php?Modules=Module_connexion&action=deconnexion"type="button" class="btn btn-outline-primary me-2 ">Se déconnecter</a>';
                 }
                 if(!isset($_SESSION['email'])){
                 echo'<a href="index.php?Modules=Module_connexion&action=form_connexion"type="button" class="btn btn-outline-primary me-2">Se connecter</a>';

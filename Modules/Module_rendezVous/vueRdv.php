@@ -10,14 +10,14 @@ class VueRdv extends vueGenerique
         ?>
         <main>
                 <form id="box" action="index.php?Modules=Module_rendezVous&action=voirTechnicien" method="POST">
-                    <label id="ville" for="floatingInput">Selectionner une ville :</label>
+                    <label id="ville" for="floatingInput">Sélectionner une ville :</label>
                     <select id="selectVille" name="ville" class="form-select" aria-label="Default select example">
-                        <option selected disabled>--ville à selectionner--</option>
+                        <option selected disabled>--ville à sélectionner--</option>
                        <?php foreach ($tabVille as $villes) { ?>
                         <option value="<?=$villes['nomVille']?>"><?=$villes['nomVille']?></option>
                         <?php } ?>
                     </select>
-                    <button class="btn btn-primary" type="submit" name="uneVille">Selectionner</button>
+                    <button class="btn btn-primary" type="submit" name="uneVille">Sélectionner</button>
                     <button class="btn btn-secondary" type="submit" name="toutesVilles">Toutes les villes</button>
 
                     <input type="hidden" name="categorie" value="<?=$_POST['categorie']?>">
@@ -159,7 +159,7 @@ class VueRdv extends vueGenerique
         echo "il n'y a aucun rendez vous..";
         else{ ?>
             <form action="" method="POST">
-                <label>Selectionnez le rendez-vous vous souhaitez consulter:</label></br>
+                <label>Selectionnez le rendez-vous que vous souhaitez consulter:</label></br>
                 <?php
                 foreach ($data as $rdv) {
                     $idRdv = $rdv["idRdv"];
@@ -195,23 +195,23 @@ class VueRdv extends vueGenerique
 
             <div class="container">
                 <div class="col-md-12">
-                    <h2>Choisir la catégorie de reparation</h2>
+                    <h2>Choisir la catégorie de réparation</h2>
                 </div>
                 <div class="col-md-3">
 
                     <ul class="nav nav-list-main">
                         <li class="nav-divider"></li>
-                        <li><label class="btn btn-secondary dropdown-toggle nav-toggle nav-header"><span>Reparation</span></label>
+                        <li><label class="btn btn-secondary dropdown-toggle nav-toggle nav-header"><span>Réparation</span></label>
                             <ul class="nav nav-list nav-left-ml">
                                 <li><label class="dropdown-item dropdown-toggle nav-toggle nav-header"><span>Logiciel</span></label>
                                     <ul class="nav nav-list nav-left-ml">
-                                        <li><label class="dropdown-item dropdown-toggle nav-toggle nav-header"><span>Developpement</span></label>
+                                        <li><label class="dropdown-item dropdown-toggle nav-toggle nav-header"><span>Développement</span></label>
                                             <ul class="nav nav-list nav-left-ml">
                                                 <li><button class="btn btn-outline-dark categorie" name="categorie" id="cat1"></li></button>
                                                 <li><button class="btn btn-outline-dark categorie" name="categorie" id="cat2"></button></li>
                                             </ul>
                                         </li>
-                                        <li><label class="dropdown-item dropdown-toggle nav-toggle nav-header"><span>Securité</span></label>
+                                        <li><label class="dropdown-item dropdown-toggle nav-toggle nav-header"><span>Sécurité</span></label>
                                             <ul class="nav nav-list nav-left-ml">
                                                 <li><button class="btn btn-outline-dark categorie" name="categorie" id="cat3"></button></li>
                                                 <li><button class="btn btn-outline-dark categorie" name="categorie" id="cat4"></button></li>
@@ -220,7 +220,7 @@ class VueRdv extends vueGenerique
                                         </li>
 
                                     </ul>
-                                <li><label class="dropdown-item dropdown-toggle nav-toggle nav-header"><span>Materiel</span></label>
+                                <li><label class="dropdown-item dropdown-toggle nav-toggle nav-header"><span>Matériel</span></label>
                                     <ul class="nav nav-list nav-left-ml">
                                         <li><label class="dropdown-item dropdown-toggle nav-toggle nav-header"><span>Appareils éléctroniques</span></label>
                                             <ul class="nav nav-list nav-left-ml">

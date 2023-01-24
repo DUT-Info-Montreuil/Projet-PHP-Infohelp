@@ -20,7 +20,7 @@ class viewAchatEtVente extends vueGenerique
 
                         <div class="card-body">
                             <h5 class="card-title">Achat</h5>
-                            <p class="card-text">Venez ici trouvé l'achat de vos rêves <br> au prix abordant! </p>
+                            <p class="card-text">Venez ici trouver l'achat de vos rêves <br> à prix abordable ! </p>
                             <a href="index.php?Modules=Module_achatEtVente&action=achat" class="btn btn-primary">Achat</a>
                         </div>
                     </div>
@@ -31,7 +31,7 @@ class viewAchatEtVente extends vueGenerique
 
                         <div class="card-body">
                             <h5 class="card-title">Vente</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Vous n'utilisez plus un appareil ? Vendez le à nos clients !</p>
                             <a href="index.php?Modules=Module_achatEtVente&action=vente" class="btn btn-primary">Vente</a>
                         </div>
                     </div>

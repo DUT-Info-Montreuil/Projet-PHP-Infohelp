@@ -16,7 +16,7 @@ class ViewAccueil extends vueGenerique
           <div class="row">
             <div class="col-2">
               <h1>Réparation de qualité à un prix abordable!</h1>
-              <p>Nos spécialistes sont à votre écoute pour répondre à vos besoins bien spécifiques concernant vos différents types de problèmes informatique</p>
+              <p>Nos spécialistes sont à votre écoute pour répondre à vos besoins bien spécifiques concernant vos différents types de problèmes informatiques et éléctroniques</p>
               <a href="index.php?Modules=Module_rendezVous&action=liste_catégorie" class="btn btn-primary bouton">Nos spécialistes &#8594;</a>
             </div>
             <div class="col-2">

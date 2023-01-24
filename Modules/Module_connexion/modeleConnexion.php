@@ -210,9 +210,9 @@ class modeleConnexion extends ConnexionUI
         $mail->addReplyTo($websiteSupportMail, 'Information'); // L'adresse de réponse
 
         $mail->Subject = 'Confirmation de rendez-vous';
-        $mail->Body = "Bonjour, votre rendez vous a bien été pris en compte.\nLe technicien se presentera à vous le " . $date . " à " . $heure . " . A bientôt !  ";
+        $mail->Body = "Bonjour, votre demande de rendez vous a bien été pris en compte.\nLe technicien se presentera à vous le " . $date . " à " . $heure . " . A bientôt !  ";
 
-        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+        $mail->AltBody = '';
 
         if (!$mail->send()) {
             echo "Le mail ne s'est pas envoyé. Réésayez ou ontactez l'administrateur.";

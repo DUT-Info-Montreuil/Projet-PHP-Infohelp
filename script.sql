@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 12 déc. 2022 à 20:10
+-- Généré le : mar. 24 jan. 2023 à 17:17
 -- Version du serveur : 5.7.36
 -- Version de PHP : 7.4.26
 
@@ -59,16 +59,17 @@ CREATE TABLE IF NOT EXISTS `categorietutos` (
   `idCategorieTuto` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `nomCategorie` varchar(32) NOT NULL,
   PRIMARY KEY (`idCategorieTuto`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `categorietutos`
 --
 
 INSERT INTO `categorietutos` (`idCategorieTuto`, `nomCategorie`) VALUES
-(1, 'Systeme exploitation'),
+(1, 'Système exploitation'),
 (2, 'Ordinateur portable'),
-(5, 'Ordinateur');
+(5, 'Ordinateur'),
+(6, 'Téléphone');
 
 -- --------------------------------------------------------
 
@@ -83,7 +84,14 @@ CREATE TABLE IF NOT EXISTS `favoris` (
   `idUtilisateur` bigint(20) UNSIGNED NOT NULL,
   PRIMARY KEY (`idFavoris`),
   KEY `idTechnicien` (`idTechnicien`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `favoris`
+--
+
+INSERT INTO `favoris` (`idFavoris`, `idTechnicien`, `idUtilisateur`) VALUES
+(2, 11, 95);
 
 -- --------------------------------------------------------
 
@@ -103,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `materiels` (
   `prix` smallint(6) NOT NULL,
   `vendeur` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`idMateriel`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `materiels`
@@ -111,9 +119,10 @@ CREATE TABLE IF NOT EXISTS `materiels` (
 
 INSERT INTO `materiels` (`idMateriel`, `nomMateriel`, `quantite`, `description`, `marque`, `couleur`, `image`, `prix`, `vendeur`) VALUES
 (2, 'Dell G15 5511', 18, ' Processeur Intel Core i5-11400H 15.6\" Full HD Black 8Go SSD de 256Go NVIDIA GeForce RTX 3050 Windows 11H Home\nPerformances puissantes : avec des processeurs Intel Core jusqu\'à la 11e génération, vous pouvez profiter de performances puissantes sans interrompre vos jeux, votre streaming ou vos vidéos.\nLe panneau d\'affichage 120 Hz offre des taux de rafraîchissement rapides et une résolution FHD pour garantir une expérience de jeu rapide, fluide et détaillée.\nOffrez-vous un boost de puissance lorsque le jeu devient critique en appuyant simplement sur FN plus le bouton Game Shift pour déclencher un mode de performance dynamique.\nSon immersif : deux haut-parleurs avec audio 3D nahimique pour les joueurs vous permettent d\'entendre chaque plan d\'attaque avec une clarté nette ', 'Dell', 'Noir', '2022.12.09 - 09.52.05pm.jpg', 899, NULL),
-(4, 'MacBook Air 2020 ', 18, 'Le produit est reconditionné, il est entièrement fonctionnel et en \"Excellent état\". Il n\'est pas certifié par Apple.', 'Apple', 'Argent', 'macbook.jpg', 950, NULL),
-(5, 'Samsung UE43AU7172U', 19, 'Télévision LED mesurant 109,9 cm (43\") 4K Ultra HD. Totalement neuve jamais utilisé', 'Samsung', 'Gris', 'tele.jpg', 280, NULL),
-(6, 'SanDisk Ultra', 1, 'Cle', 'SanDisk', 'Noir', '2022.12.10 - 03.31.20pm.jpg', 16, NULL);
+(6, 'SanDisk Ultra', 1, 'Cle', 'SanDisk', 'Noir', '2022.12.10 - 03.31.20pm.jpg', 16, NULL),
+(7, 'AMD Ryzen 5 5600X Processeur 3,7 GHz 32 Mo L3 Boîte Multicolore', 1, 'Fabricant : AMD. Nb de cœurs du CPU: 6. Fréquence de base 3.7GHz', 'AMD', '-', '2023.01.23 - 07.29.50pm.jpg', 189, 'DILIPE'),
+(8, 'Clavier Souris sans Fil', 1, 'Le clavier et la souris sans fil fonctionnent confortablement. La technologie sans fil 2,4 GHz, le clavier et la souris assurent une connexion stable et fiable avec une distance maximale de 15 mètres.', 'TedGem', 'Noir', '2023.01.23 - 07.32.08pm.jpg', 28, 'DILIPE'),
+(11, 'Seagate BarraCuda, 1 To, Disque dur interne HDD', 1, 'Disque dur mécanique', 'Seagate', 'Noir et vert', '2023.01.23 - 07.39.25pm.jpg', 45, 'DILIPE');
 
 -- --------------------------------------------------------
 
@@ -134,7 +143,15 @@ CREATE TABLE IF NOT EXISTS `rendezvous` (
   KEY `idTechnicien` (`idTechnicien`),
   KEY `idUtilisateur` (`idUtilisateur`),
   KEY `idCategorie` (`idCategorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `rendezvous`
+--
+
+INSERT INTO `rendezvous` (`idRdv`, `horaire`, `dateRDV`, `idTechnicien`, `idUtilisateur`, `idCategorie`, `note`) VALUES
+(6, '10:25:00', '2023-01-28', 11, 89, 2, 0),
+(7, '10:00:00', '2023-01-28', 11, 89, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -161,23 +178,22 @@ CREATE TABLE IF NOT EXISTS `techniciens` (
 
 INSERT INTO `techniciens` (`idTechnicien`, `nom`, `prenom`, `idVille`, `note`, `idCategorie`) VALUES
 (2, 'CHIPAN', 'Lucas', 1, '0', 1),
-(3, 'GHLOUCI', 'Merwan', 1, '0', 2),
+(3, 'GHLOUC', 'Merwanne', 1, '0', 2),
 (4, 'GERMANA KINKELA', 'Geovany', 6, '0', 3),
-(5, 'TOURE', 'Mehedi', 6, '0', 4),
-(6, 'GROFF', 'Geoffrey', 4, '0', 5),
-(8, 'BAUDE', 'Patrice', 1, '0', 7),
-(9, 'PINCHON', 'Frédéric', 3, '0', 8),
-(10, 'JACQUEMIN', 'Tristan', 2, '2', 3),
+(5, 'TOUR', 'Modi', 6, '0', 4),
+(8, 'BAU', 'Patric', 1, '0', 7),
+(9, 'PINCHONNIER', 'Franc', 3, '0', 8),
+(10, 'JACQUE', 'Thommy', 2, '2', 3),
 (11, 'DILIPE', 'Daniel', 1, '0', 2),
-(12, 'KEMAYOU', 'Yann', 6, '0', 3),
-(13, 'NGATCHOU', 'Antoine', 4, '0', 4),
+(12, 'KEMA', 'Yannis', 6, '0', 3),
+(13, 'NGATCH', 'Antoinette', 4, '0', 4),
 (14, 'BOULAND', 'Fabrice', 3, '0', 5),
-(15, 'AHAMED', 'Khaled', 5, '0', 6),
-(16, 'DIOMANDE', 'Yacou', 4, '0', 7),
-(17, 'AHAMED', 'Mborea', 1, '0', 8),
-(18, 'TOUIL', 'Lotfi', 2, '0', 1),
-(19, 'BAKILI', 'Shaina', 3, '0', 2),
-(20, 'ADJOVIE', 'Raphael', 4, '0', 3),
+(15, 'AHAMO', 'Clark', 5, '0', 6),
+(16, 'MANDE', 'Yanis', 4, '0', 7),
+(17, 'AHAMO', 'Mohamed', 1, '0', 8),
+(18, 'TOU', 'Louis', 2, '0', 1),
+(19, 'KILI', 'Shainis', 3, '0', 2),
+(20, 'ADJO', 'Raphaelle', 4, '0', 3),
 (21, 'MALEBE', 'Corneil', 5, '0', 4);
 
 -- --------------------------------------------------------
@@ -196,20 +212,22 @@ CREATE TABLE IF NOT EXISTS `tutos` (
   `idCategorieVideo` bigint(20) UNSIGNED NOT NULL,
   `lienVideo` varchar(255) NOT NULL,
   PRIMARY KEY (`idTuto`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `tutos`
 --
 
 INSERT INTO `tutos` (`idTuto`, `titre`, `miniature`, `auteur`, `nbVues`, `idCategorieVideo`, `lienVideo`) VALUES
-(1, 'Installer / Réinstaller Windows 10 sur son PC ! [Tuto Complet]', '2022.12.05 - 01.29.06pm.jpeg', 'iPodTouchisapro', 6, 1, 'KecoxVL2UDU'),
-(2, 'Pour comprendre et réparer des problèmes d\'absence ou échec du démarrage de Windows 10', '2022.12.05 - 01.30.04pm.jpeg', 'DellVousAide', 3, 1, 'pG1QaXPvvO4'),
-(3, 'Comment démonter un ordinateur portable', '2022.12.05 - 01.31.15pm.jpeg', 'Spareka', 5, 2, 'FoQnCVos0XE'),
+(1, 'Installer / Réinstaller Windows 10 sur son PC ! [Tuto Complet]', '2022.12.05 - 01.29.06pm.jpeg', 'iPodTouchisapro', 9, 1, 'KecoxVL2UDU'),
+(2, 'Pour comprendre et réparer des problèmes d\'absence ou échec du démarrage de Windows 10', '2022.12.05 - 01.30.04pm.jpeg', 'DellVousAide', 6, 1, 'pG1QaXPvvO4'),
+(3, 'Comment démonter un ordinateur portable', '2022.12.05 - 01.31.15pm.jpeg', 'Spareka', 6, 2, 'FoQnCVos0XE'),
 (4, 'Comment Monter Son Premier PC Gamer en 2022', '2022.12.05 - 01.32.57pm.jpeg', 'DiscoverID', 3, 5, '_lnDdxbrRF8'),
 (5, 'COMMENT MONTER SON PC en 2022 !', '2022.12.05 - 01.37.03pm.jpeg', 'FrenchHardware', 3, 5, 'W_81oSroorU'),
-(6, 'Cours informatique débutant : Les BASES de Windows 10 (tuto français)', '2022.12.11 - 07.22.16pm.jpg', 'La Tech avec Bertrand', 2, 1, 'jvL8jUglStA'),
-(8, 'Comment changer le disque dur d\'un ordinateur portable', '2022.12.12 - 07.28.35pm.jpg', 'Spareka', 2, 2, 'HHC4MxHU0ik');
+(6, 'Cours informatique débutant : Les BASES de Windows 10 (tuto français)', '2022.12.11 - 07.22.16pm.jpg', 'La Tech avec Bertrand', 3, 1, 'jvL8jUglStA'),
+(8, 'Comment changer le disque dur d\'un ordinateur portable', '2022.12.12 - 07.28.35pm.jpg', 'Spareka', 3, 2, 'HHC4MxHU0ik'),
+(11, 'Comment remplacer la batterie iPhone 11 ', '2023.01.23 - 01.06.26pm.jpeg', 'SOSav', 3, 6, '0FhEUIA59wU'),
+(12, 'Comment réparer un téléphone Android qui ne s’allume plus (écran noir) ?', '2023.01.23 - 07.44.06pm.jpg', 'Wondershare Français', 0, 6, '4sN4u8dipZ4');
 
 -- --------------------------------------------------------
 
@@ -226,40 +244,35 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
   `mot_de_passe` varchar(255) NOT NULL,
   `adresse_postale` varchar(255) NOT NULL,
   `ville` varchar(255) NOT NULL,
-  `mode` int(11) DEFAULT NULL,
+  `mode` int(11) DEFAULT '0',
   `image` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`idUtilisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `utilisateurs`
 --
 
 INSERT INTO `utilisateurs` (`idUtilisateur`, `nom`, `prenom`, `email`, `mot_de_passe`, `adresse_postale`, `ville`, `mode`, `image`) VALUES
-(1, 'ADMIN', 'ADMIN', 'admin@gmail.com', '$2y$10$DefrXX/eYzA9J/xi9DidE.oQxhY9kRwH6p59vpe4oPANYfaYvXe5i', '94000', 'Creteil', 1, '2022.12.11 - 09.32.50pm.jpg'),
-(51, 'Germana', 'Geovany', 'geovafrancisco3012@gmail.com', '$2y$10$ia.2qVUKIpLxfJWNl/CnTeQ2o93/obpjdvYjyWNohcPQrl9wC0SOW', '75018', 'Paris', 0, ''),
-(62, 'CHIPAN', 'Lucas', 'lchipan@gmail.com', '$2y$10$U3qmUHsKZy4G.ZD0v..UROAOcuRUxSE7pbLz1//Z0nJ3o0Ev4Ma1O', '7 RUE DE L\'ALBONI', 'Pars', 2, '2022.12.11 - 09.55.18pm.png'),
-(63, 'GHLOUCI', 'Merwan', 'mghlouci@gmail.com', '$2y$10$U3qmUHsKZy4G.ZD0v..UROAOcuRUxSE7pbLz1//Z0nJ3o0Ev4Ma1O', '3 RUE RUDOLF NOUREEV\r\n', 'Paris', 2, ''),
-(64, 'TOURE', 'Mehedi', 'mtoure@gmail.com', '$2y$10$U3qmUHsKZy4G.ZD0v..UROAOcuRUxSE7pbLz1//Z0nJ3o0Ev4Ma1O', '104 RUE DE LA GLACIERE\r\n', 'Cergy', 2, ''),
-(65, 'GROFF', 'Geoffrey', 'ggroff@gmail.com', '$2y$10$U3qmUHsKZy4G.ZD0v..UROAOcuRUxSE7pbLz1//Z0nJ3o0Ev4Ma1O', '20 RUE JEAN ZAY\r\n', 'Nanterre', 2, ''),
-(66, 'BOSSARD', 'Aurelien', 'abossard@gmail.com', '$2y$10$U3qmUHsKZy4G.ZD0v..UROAOcuRUxSE7pbLz1//Z0nJ3o0Ev4Ma1O', '44 RUE DU RENDEZ-VOUS\r\n', 'Montreuil', 2, ''),
-(67, 'BAUDE', 'Patrice', 'pbaude@gmail.com', '$2y$10$U3qmUHsKZy4G.ZD0v..UROAOcuRUxSE7pbLz1//Z0nJ3o0Ev4Ma1O', '162 AV D\'ITALIE\r\n', 'Paris', 2, ''),
-(68, 'PINCHON', 'Frédéric', 'fpinchon@gmail.com', '$2y$10$U3qmUHsKZy4G.ZD0v..UROAOcuRUxSE7pbLz1//Z0nJ3o0Ev4Ma1O', '3 PAS JEAN NICOT\r\n', 'Sarcelles', 2, ''),
-(69, 'JACQUEMIN', 'Tristan', 'tjacquemin@gmail.com', '$2y$10$U3qmUHsKZy4G.ZD0v..UROAOcuRUxSE7pbLz1//Z0nJ3o0Ev4Ma1O', '48 RUE LEON FROT\r\n', 'Creteil', 2, ''),
-(70, 'DILIPE', 'Daniel', 'ddilipe@gmail.com', '$2y$10$DefrXX/eYzA9J/xi9DidE.oQxhY9kRwH6p59vpe4oPANYfaYvXe5i', '12 HAM DU DANUBE\r\n', 'Paris', 2, ''),
-(71, 'KEMAYOU', 'Yann', 'ykemayou@gmail.com', '$2y$10$U3qmUHsKZy4G.ZD0v..UROAOcuRUxSE7pbLz1//Z0nJ3o0Ev4Ma1O', '35 RUE DU REPOS\r\n', 'Cergy', 2, ''),
-(72, 'NGATCHOU', 'Antoine', 'angatchou@gmail.com', '$2y$10$U3qmUHsKZy4G.ZD0v..UROAOcuRUxSE7pbLz1//Z0nJ3o0Ev4Ma1O', '2 RUE VOLTA\r\n', 'Nanterre', 2, ''),
-(73, 'BOULAND', 'Fabrice', 'fbouland@gmail.com', '$2y$10$U3qmUHsKZy4G.ZD0v..UROAOcuRUxSE7pbLz1//Z0nJ3o0Ev4Ma1O', '80 GAL DE BEAUJOLAIS\r\n', 'Sarcelles', 2, ''),
-(74, 'AHAMED', 'Khaled', 'kahamed@gmail.com', '$2y$10$U3qmUHsKZy4G.ZD0v..UROAOcuRUxSE7pbLz1//Z0nJ3o0Ev4Ma1O', '2 SQ DE VAUCLUSE\r\n', 'Montreuil', 2, ''),
-(75, 'DIOMANDE', 'Yacou', 'ydiomande@gmail.com', '$2y$10$U3qmUHsKZy4G.ZD0v..UROAOcuRUxSE7pbLz1//Z0nJ3o0Ev4Ma1O', '14 RUE GAVARNI\r\n', 'Nanterre', 2, ''),
-(76, 'AHAMED', 'Mborea', 'mahamed@gmail.com', '$2y$10$U3qmUHsKZy4G.ZD0v..UROAOcuRUxSE7pbLz1//Z0nJ3o0Ev4Ma1O', '10 RUE JOSEPH DIJON\r\n', 'Paris', 2, ''),
-(77, 'TOUIL', 'Touil', 'ttouil@gmail.com', '$2y$10$U3qmUHsKZy4G.ZD0v..UROAOcuRUxSE7pbLz1//Z0nJ3o0Ev4Ma1O', '82 RUE MANIN\r\n', 'Creteil', 2, ''),
-(78, 'BAKILI', 'Shaina', 'sbakili@gmail.com', '$2y$10$U3qmUHsKZy4G.ZD0v..UROAOcuRUxSE7pbLz1//Z0nJ3o0Ev4Ma1O', '152 RUE DE GRENELLE\r\n', 'Sarcelles', 2, ''),
-(79, 'ADJOVIE', 'Raphael', 'radjovie@gmail.com', '$2y$10$U3qmUHsKZy4G.ZD0v..UROAOcuRUxSE7pbLz1//Z0nJ3o0Ev4Ma1O', '2 RUE DES MAUVAIS GARCONS\r\n', 'Nanterre', 2, ''),
-(80, 'MALEBE', 'Corneil', 'cmalebe@gmail.com', '$2y$10$U3qmUHsKZy4G.ZD0v..UROAOcuRUxSE7pbLz1//Z0nJ3o0Ev4Ma1O', '85 P RUE DU BAC\r\n', 'Montreuil', 2, ''),
-(81, 'GERMANA KINKELA', 'Geovany', 'ggermana@gmail.com', '$2y$10$U3qmUHsKZy4G.ZD0v..UROAOcuRUxSE7pbLz1//Z0nJ3o0Ev4Ma1O', '30 RUE FABERT\r\n', 'Cergy', 2, ''),
-(82, 'DILIPE', 'Daniel', 'dilidani2003@gmail.com', '$2y$10$QtSxI424cRTUS1Kx8SNgBuuJWOT9iLjhRulpp/gjAnRwXQ3nicL.y', '94000', 'Creteil', 0, '2022.12.10 - 11.00.01pm.jpg'),
-(88, 'chipan', 'lucas', 'lucas@gmail.com', '$2y$10$3VsAB4Y7AlruZnC1YQI3GuU.m/UMEH9496.jhjCqOWD5psdu8ve0C', '', 'Paris', NULL, NULL);
+(1, 'ADMIN', 'ADMIN', 'admin@gmail.com', '$2y$10$JfIHaxsdGrkVoN0vwpdoZOt03IYUImnHMD8XbxP/X/zmpacXxQvzu', '94000', 'Creteil', 1, '2022.12.11 - 09.32.50pm.jpg'),
+(62, 'CHIPAN', 'Lucas', 'lchipan@gmail.com', '$2y$10$JfIHaxsdGrkVoN0vwpdoZOt03IYUImnHMD8XbxP/X/zmpacXxQvzu', '7 RUE DE L\'ALBONI', 'Pars', 2, '2022.12.11 - 09.55.18pm.png'),
+(63, 'GHLOUC', 'Merwanne', 'mghlouci@gmail.com', '$2y$10$JfIHaxsdGrkVoN0vwpdoZOt03IYUImnHMD8XbxP/X/zmpacXxQvzu', '3 RUE RUDOLF NOUREEV\r\n', 'Paris', 2, ''),
+(64, 'TOUR', 'Modi', 'mtoure@gmail.com', '$2y$10$JfIHaxsdGrkVoN0vwpdoZOt03IYUImnHMD8XbxP/X/zmpacXxQvzu', '104 RUE DE LA GLACIERE\r\n', 'Cergy', 2, ''),
+(67, 'BAU', 'Patric', 'pbaude@gmail.com', '$2y$10$JfIHaxsdGrkVoN0vwpdoZOt03IYUImnHMD8XbxP/X/zmpacXxQvzu', '162 AV D\'ITALIE\r\n', 'Paris', 2, ''),
+(68, 'PINCHONNIER', 'Franc', 'fpinchon@gmail.com', '$2y$10$JfIHaxsdGrkVoN0vwpdoZOt03IYUImnHMD8XbxP/X/zmpacXxQvzu', '3 PAS JEAN NICOT\r\n', 'Sarcelles', 2, ''),
+(69, 'JACQUE', 'Thommy', 'tjacquemin@gmail.com', '$2y$10$JfIHaxsdGrkVoN0vwpdoZOt03IYUImnHMD8XbxP/X/zmpacXxQvzu', '48 RUE LEON FROT\r\n', 'Creteil', 2, ''),
+(70, 'DILIPE', 'Daniel', 'ddilipe@gmail.com', '$2y$10$JfIHaxsdGrkVoN0vwpdoZOt03IYUImnHMD8XbxP/X/zmpacXxQvzu', '12 HAM DU DANUBE\r\n', 'Paris', 2, ''),
+(71, 'KEMA', 'Yannis', 'ykemayou@gmail.com', '$2y$10$JfIHaxsdGrkVoN0vwpdoZOt03IYUImnHMD8XbxP/X/zmpacXxQvzu', '35 RUE DU REPOS\r\n', 'Cergy', 2, ''),
+(72, 'NGATCH', 'Antoinette', 'angatchou@gmail.com', '$2y$10$U3qmUHsKZy4G.ZD0v..UROAOcuRUxSE7pbLz1//Z0nJ3o0Ev4Ma1O', '2 RUE VOLTA\r\n', 'Nanterre', 2, ''),
+(74, 'AHAMO', 'Clark', 'kahamed@gmail.com', '$2y$10$U3qmUHsKZy4G.ZD0v..UROAOcuRUxSE7pbLz1//Z0nJ3o0Ev4Ma1O', '2 SQ DE VAUCLUSE\r\n', 'Montreuil', 2, ''),
+(75, 'MANDE', 'Yanis', 'ydiomande@gmail.com', '$2y$10$U3qmUHsKZy4G.ZD0v..UROAOcuRUxSE7pbLz1//Z0nJ3o0Ev4Ma1O', '14 RUE GAVARNI\r\n', 'Nanterre', 2, ''),
+(76, 'AHAMO', 'Mohamed', 'mahamed@gmail.com', '$2y$10$U3qmUHsKZy4G.ZD0v..UROAOcuRUxSE7pbLz1//Z0nJ3o0Ev4Ma1O', '10 RUE JOSEPH DIJON\r\n', 'Paris', 2, ''),
+(77, 'TOU', 'Louis', 'ttouil@gmail.com', '$2y$10$U3qmUHsKZy4G.ZD0v..UROAOcuRUxSE7pbLz1//Z0nJ3o0Ev4Ma1O', '82 RUE MANIN\r\n', 'Creteil', 2, ''),
+(78, 'KILI', 'Shainis', 'sbakili@gmail.com', '$2y$10$U3qmUHsKZy4G.ZD0v..UROAOcuRUxSE7pbLz1//Z0nJ3o0Ev4Ma1O', '152 RUE DE GRENELLE\r\n', 'Sarcelles', 2, ''),
+(79, 'ADJO', 'Raphaelle', 'radjovie@gmail.com', '$2y$10$U3qmUHsKZy4G.ZD0v..UROAOcuRUxSE7pbLz1//Z0nJ3o0Ev4Ma1O', '2 RUE DES MAUVAIS GARCONS\r\n', 'Nanterre', 2, ''),
+(80, 'MALE', 'Corneille', 'cmalebe@gmail.com', '$2y$10$U3qmUHsKZy4G.ZD0v..UROAOcuRUxSE7pbLz1//Z0nJ3o0Ev4Ma1O', '85 P RUE DU BAC\r\n', 'Montreuil', 2, ''),
+(81, 'GERMANA KINKELA', 'Geovany', 'ggermana@gmail.com', '$2y$10$JfIHaxsdGrkVoN0vwpdoZOt03IYUImnHMD8XbxP/X/zmpacXxQvzu', '30 RUE FABERT\r\n', 'Cergy', 0, ''),
+(89, 'DILIPE', 'Daniel', 'daniel@gmail.com', '$2y$10$JfIHaxsdGrkVoN0vwpdoZOt03IYUImnHMD8XbxP/X/zmpacXxQvzu', '29 rue edison', 'Creteil', 0, NULL);
 
 -- --------------------------------------------------------
 
