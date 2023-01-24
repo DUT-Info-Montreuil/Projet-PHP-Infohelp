@@ -11,4 +11,11 @@
     $req->execute();
     $resultat = $req->fetch();
     echo json_encode($resultat);
+
+/* 
+Version 4.0 - 2023/01/24
+CC BY-NC-ND © 2023-2033 
+Initiated by Daniel & Lucas & Geovany
+Web Site = <https://InfoHelp.com>
+*/
 ?>

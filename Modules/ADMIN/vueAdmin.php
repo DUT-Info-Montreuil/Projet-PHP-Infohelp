@@ -121,7 +121,6 @@ class vueAdmin extends vueGenerique
 
     public function afficherRdv($req)
     { 
-        
     ?>
     <main>
         <label>Liste des rendez vous :</label></br>
@@ -133,13 +132,14 @@ class vueAdmin extends vueGenerique
                 $nomUtilisateur = $rdv['nom'];
                 $prenomNomUtilisateur = $rdv[0];
                 $adresseUtilisateur = $rdv['adresse_postale'];
-
+                $categorieReparation = $rdv['idCategorie'];
             ?>                
                 <br><br>
-                    <?= "Heure : " . $heure ?>
-                    <?= "Date : " . $date  ?>
-                    <?= "Rdv pris par : " . $nomUtilisateur ?>
-                    <?= "Lieu : " . $adresseUtilisateur ?>
+                    <?= "Categorie : " . $categorieReparation ?>
+                    <?= ", Heure : " . $heure ?>
+                    <?= ", Date : " . $date  ?>
+                    <?= ", Rendez-vous pris par : " . $nomUtilisateur ?>
+                    <?= ", Lieu : " . $adresseUtilisateur ."."?><br>
                     <a href="index.php?Modules=Module_rendezVous&action=retirerRdv&idRdv=<?= $idRdv ?>"class="btn btn-danger" name="idRdv" >Annuler le Rdv</a>
             <?php } ?>
         </main>
@@ -147,5 +147,11 @@ class vueAdmin extends vueGenerique
 <?php
     }
 }
-
+/* 
+Version 4.0 - 2023/01/24
+CC BY-NC-ND © 2023-2033 
+Initiated by Daniel & Lucas & Geovany
+Web Site = <https://InfoHelp.com>
+*/
 ?>
+

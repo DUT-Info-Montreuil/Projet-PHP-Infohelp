@@ -1,9 +1,4 @@
-<!-- 
-Version 1.0 - 2022/12/12
-GNU GPL Copyleft (C inversé) 2022-2032 
-Initiated by Daniel & Lucas & Geovany
-Web Site = <https://InfoHelp.com>
- -->
+
 <?php
 require_once("Modules/vuegenerique.php");
 class VueTuto extends vueGenerique
@@ -48,7 +43,7 @@ class VueTuto extends vueGenerique
 ?>
         <body>
             <main>
-                <form action="index.php?Modules=Module_tutos&action=ajoutTuto" method="POST" enctype="multipart/form-data">
+                <form id="box" action="index.php?Modules=Module_tutos&action=ajoutTuto" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="token" value='<?= $_SESSION['token'] ?>'>    
 
                             <h3>Ajout d'un tuto</h3>
@@ -130,4 +125,11 @@ class VueTuto extends vueGenerique
 <?php
     }
 }
+
+/* 
+Version 4.0 - 2023/01/24
+CC BY-NC-ND © 2023-2033 
+Initiated by Daniel & Lucas & Geovany
+Web Site = <https://InfoHelp.com>
+*/
 ?>

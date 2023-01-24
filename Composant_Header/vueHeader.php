@@ -27,8 +27,12 @@ class VueHeader extends vueGenerique
     <title>InfoHelp</title>
         </head>
 
-        <body>
-
+        /* 
+Version 4.0 - 2023/01/24
+CC BY-NC-ND © 2023-2033 
+Initiated by Daniel & Lucas & Geovany
+Web Site = <https://InfoHelp.com>
+*/
             <div class="container">
                 <header class=" text-bg-dark d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom fixed-top">
                     <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
@@ -100,4 +104,11 @@ else{
     }
 }
 
+
+/* 
+Version 4.0 - 2023/01/24
+CC BY-NC-ND © 2023-2033 
+Initiated by Daniel & Lucas & Geovany
+Web Site = <https://InfoHelp.com>
+*/
 ?>

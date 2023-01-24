@@ -1,9 +1,4 @@
-<!-- 
-Version 1.0 - 2022/12/12
-GNU GPL Copyleft (C inversé) 2022-2032 
-Initiated by Daniel & Lucas & Geovany
-Web Site = <https://InfoHelp.com>
- -->
+
 <?php
 require_once('Modules/Module_accueil/controleur.php');
 require_once('Connexion.php');
@@ -16,7 +11,7 @@ class moduleAccueil
     {
         ConnexionUI::initConnexion();
         $this->control = new  controlAccueil;
-        $this->action = isset($_GET['action']) ? $_GET['action'] : "rien";
+        $this->action = isset($_GET['action']) ? $_GET['action'] : "Accueil";
         switch ($this->action) {
 
             case "Accueil":
@@ -28,3 +23,11 @@ class moduleAccueil
         }
     }
 }
+
+
+/* 
+Version 4.0 - 2023/01/24
+CC BY-NC-ND © 2023-2033 
+Initiated by Daniel & Lucas & Geovany
+Web Site = <https://InfoHelp.com>
+*/

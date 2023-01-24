@@ -34,3 +34,11 @@ class controlAdmin
         $this->vue->afficher($this->modele->getlistTechnicien());
     }
 }
+
+
+/* 
+Version 4.0 - 2023/01/24
+CC BY-NC-ND © 2023-2033 
+Initiated by Daniel & Lucas & Geovany
+Web Site = <https://InfoHelp.com>
+*/

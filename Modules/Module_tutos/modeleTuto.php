@@ -1,9 +1,4 @@
-<!-- 
-Version 1.0 - 2022/12/12
-GNU GPL Copyleft (C inversé) 2022-2032 
-Initiated by Daniel & Lucas & Geovany
-Web Site = <https://InfoHelp.com>
- -->
+
 <?php
 require_once('Connexion.php');
 require_once("Common/Bibliotheque_commune/Verification_creation_token.php");
@@ -81,8 +76,17 @@ class modeleTuto extends ConnexionUI
             move_uploaded_file($tmpName, 'Modules/Module_tutos/images/' . $newImageName);
 
         }
+        header("Location: index.php?Modules=Module_accueil&action=Accueil");
+
     }
 
 }
+
+/* 
+Version 4.0 - 2023/01/24
+CC BY-NC-ND © 2023-2033 
+Initiated by Daniel & Lucas & Geovany
+Web Site = <https://InfoHelp.com>
+*/
 
 ?>

@@ -1,9 +1,3 @@
-<!-- 
-Version 1.0 - 2022/12/12
-GNU GPL Copyleft (C inversé) 2022-2032 
-Initiated by Daniel & Lucas & Geovany
-Web Site = <https://InfoHelp.com>
- -->
 <?php
 require_once("Modules/vuegenerique.php");
 
@@ -64,7 +58,7 @@ class VueConnexion extends vueGenerique
                         </select>
                     </div>
                     <div class="form-floating">
-                        <input required type="text" class="form-control" name="adresse_postal">
+                        <input required type="text" class="form-control" name="adresse_postale">
                         <label for="floatingInput">Adresse postale </label>
                     </div>
                     <button class="btn btn-primary" type="submit">S'inscrire</button>
@@ -318,4 +312,11 @@ class VueConnexion extends vueGenerique
     }
 }
 
+
+/* 
+Version 4.0 - 2023/01/24
+CC BY-NC-ND © 2023-2033 
+Initiated by Daniel & Lucas & Geovany
+Web Site = <https://InfoHelp.com>
+*/
 ?>

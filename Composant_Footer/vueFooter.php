@@ -30,7 +30,7 @@ class VueFooter extends vueGenerique
           <div class="cs-copyright" style="text-align: center;">
             <div class="cs-copyright-row">
               <div class="cs-copyright-col">
-                <span class="cs-copyright_element">&copy; INFOHELP 2022 - Tous droits réservés</span><span class="cs-copyright_element"> - Mise à jour du site 09/12/2022</span>
+                <span class="cs-copyright_element">&copy; INFOHELP 2023 - Tous droits réservés</span><span class="cs-copyright_element"> - Mise à jour du site 24/01/2023</span>
                 <p class="cs-copyright_separator"></p>
               </div>
               <span class="cs-copyright_element">Réalisé par Daniel Lucas et Geovany</span>
@@ -43,4 +43,11 @@ class VueFooter extends vueGenerique
   }
 }
 
+
+/* 
+Version 4.0 - 2023/01/24
+CC BY-NC-ND © 2023-2033 
+Initiated by Daniel & Lucas & Geovany
+Web Site = <https://InfoHelp.com>
+*/
 ?>

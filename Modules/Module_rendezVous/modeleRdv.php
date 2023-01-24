@@ -1,9 +1,4 @@
-<!-- 
-Version 1.0 - 2022/12/12
-GNU GPL Copyleft (C inversé) 2022-2032 
-Initiated by Daniel & Lucas & Geovany
-Web Site = <https://InfoHelp.com>
- -->
+
 <?php
 require_once('Connexion.php');
 use PHPMailer\PHPMailer\PHPMailer;
@@ -29,8 +24,10 @@ class modeleRdv extends ConnexionUI
 
             $insert = self::$bdd->prepare("INSERT INTO `rendezvous` (`horaire`, `DateRDV`,`idTechnicien`, `idUtilisateur`, `idCategorie`) VALUES (:par,:par2,:par3,:par4,:par5)");
             $insert->execute(array(':par' => $heure, ':par2' => $date, ':par3' => $idTech, ':par4' => $_SESSION['idUtilisateur'], ':par5' => $idCategorie));
-            echo "rdv enregistré pour le " . $date . " à " . $heure;
+            
             $this->envoiNotification($date, $heure);
+            header("Location: index.php?Modules=Module_rendezVous&action=afficherListeRdv");
+            die();
         } else {
             echo "erreur lors de l'insertion dans la BDD";
         }
@@ -234,3 +231,9 @@ class modeleRdv extends ConnexionUI
 
 }
 
+/* 
+Version 4.0 - 2023/01/24
+CC BY-NC-ND © 2023-2033 
+Initiated by Daniel & Lucas & Geovany
+Web Site = <https://InfoHelp.com>
+*/

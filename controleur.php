@@ -9,7 +9,7 @@ class Controleur
     {
         require_once("modele.php"); // pour les Faille include 
         $this->modele = new Modele();
-        $this->module = isset($_GET['Modules']) ? $_GET['Modules'] : 'Module_connexion';
+        $this->module = isset($_GET['Modules']) ? $_GET['Modules'] : 'Module_accueil';
         $this->exec();
     }
 
@@ -61,7 +61,12 @@ class Controleur
 }
 
 
-
+/* 
+Version 4.0 - 2023/01/24
+CC BY-NC-ND © 2023-2033 
+Initiated by Daniel & Lucas & Geovany
+Web Site = <https://InfoHelp.com>
+*/
 
 
 

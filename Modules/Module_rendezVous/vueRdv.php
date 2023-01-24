@@ -156,7 +156,7 @@ class VueRdv extends vueGenerique
     ?>
         <main> <?php
         if(empty($data))
-        echo "il y a aucun technicien dans cette ville";
+        echo "il n'y a aucun rendez vous..";
         else{ ?>
             <form action="" method="POST">
                 <label>Selectionnez le rendez-vous vous souhaitez consulter:</label></br>
@@ -470,4 +470,11 @@ class VueRdv extends vueGenerique
 
     }
 }
+
+/* 
+Version 4.0 - 2023/01/24
+CC BY-NC-ND © 2023-2033 
+Initiated by Daniel & Lucas & Geovany
+Web Site = <https://InfoHelp.com>
+*/
 ?>
